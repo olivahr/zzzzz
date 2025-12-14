@@ -3,33 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenSite | Demos</title>
+<title>Demos | ZenSite</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:#0b0f17;
+  background:#05070c;
   color:#fff;
+  overflow-x:hidden;
 }
 
-/* HEADER */
-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:#0b0f17;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  padding:14px 22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+/* ===== BACKGROUND ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 25%,rgba(0,200,255,.18),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(140,90,255,.2),transparent 40%),
+    #05070c;
+  z-index:-2;
 }
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  backdrop-filter:blur(90px);
+  z-index:-1;
+}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:64px;
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  z-index:1000;
+}
+
 nav{
   display:flex;
-  gap:20px;
+  gap:18px;
 }
+
 nav a{
   color:#fff;
   text-decoration:none;
@@ -38,79 +61,74 @@ nav a{
 }
 nav a:hover{opacity:1}
 
-/* MAIN */
-main{
-  max-width:1100px;
-  margin:50px auto 100px;
-  padding:0 16px;
-  text-align:center;
-}
-
-h1{
-  font-size:clamp(28px,6vw,54px);
-  margin-bottom:30px;
-}
-
-/* SLIDER */
-.slider{
-  position:relative;
-  background:#111827;
-  border-radius:22px;
-  padding:16px;
-}
-
-/* SLIDES */
-.slides{
+.lang{
+  margin-left:auto;
   display:flex;
-  transition:transform .45s ease;
+  gap:8px;
 }
-.slide{
-  min-width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.slide img{
-  width:100%;
-  max-width:900px;
-  max-height:70vh;
-  object-fit:contain;
-  border-radius:18px;
-  background:#000;
-}
-
-/* ARROWS */
-.arrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:rgba(255,255,255,.15);
-  border:none;
+.lang button{
+  padding:6px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
   color:#fff;
-  font-size:22px;
+  font-weight:600;
   cursor:pointer;
 }
-.arrow.left{left:10px}
-.arrow.right{right:10px}
+.lang button.active{
+  background:#00cfff;
+  color:#000;
+}
 
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:56px;
-  height:56px;
-  background:#25D366;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  color:#fff;
-  text-decoration:none;
+/* ===== MAIN ===== */
+main{
+  margin-top:90px;
+  padding:30px 16px 120px;
+}
+
+/* ===== TITLE ===== */
+h1{
+  text-align:center;
+  font-size:38px;
+  margin-bottom:10px;
+}
+.subtitle{
+  text-align:center;
+  opacity:.75;
+  margin-bottom:50px;
+}
+
+/* ===== DEMO GRID ===== */
+.demos{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  gap:28px;
+}
+
+.demo{
+  background:rgba(255,255,255,.06);
+  border-radius:28px;
+  padding:22px;
+  box-shadow:0 40px 120px rgba(0,0,0,.9);
+  transition:transform .5s ease, box-shadow .5s ease;
+}
+.demo:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 40px rgba(0,200,255,.25);
+}
+
+.demo img{
+  width:100%;
+  border-radius:20px;
+  display:block;
+}
+
+/* DESKTOP GRID */
+@media(min-width:900px){
+  .demos{
+    grid-template-columns:repeat(2,1fr);
+  }
 }
 </style>
 </head>
@@ -118,56 +136,54 @@ h1{
 <body>
 
 <header>
-  <strong>ZenSite</strong>
   <nav>
-    <a href="index.html">Inicio</a>
-    <a href="demo.html">Demos</a>
-    <a href="planes.html">Planes</a>
-    <a href="nosotros.html">Nosotros</a>
+    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
+    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
+    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
+
+  <div class="lang">
+    <button id="es" class="active">ES</button>
+    <button id="en">EN</button>
+  </div>
 </header>
 
 <main>
+  <h1 data-es="Demostraciones reales" data-en="Real demonstrations">
+    Demostraciones reales
+  </h1>
+  <p class="subtitle"
+     data-es="Ejemplos del nivel de diseño que creamos."
+     data-en="Examples of the design level we create.">
+     Ejemplos del nivel de diseño que creamos.
+  </p>
 
-<h1>Demos</h1>
-
-<div class="slider">
-  <button class="arrow left" onclick="prev()">‹</button>
-
-  <div class="slides" id="slides">
-    <div class="slide"><img src="demo1.jpg" alt="Demo 1"></div>
-    <div class="slide"><img src="demo2.jpg" alt="Demo 2"></div>
-    <div class="slide"><img src="demo3.jpg" alt="Demo 3"></div>
-    <div class="slide"><img src="demo4.jpg" alt="Demo 4"></div>
-    <div class="slide"><img src="demo5.jpg" alt="Demo 5"></div>
+  <div class="demos">
+    <!-- NO TOQUES LOS NOMBRES DE LAS IMÁGENES -->
+    <div class="demo"><img src="demo1.jpg" alt="Demo 1"></div>
+    <div class="demo"><img src="demo2.jpg" alt="Demo 2"></div>
+    <div class="demo"><img src="demo3.jpg" alt="Demo 3"></div>
+    <div class="demo"><img src="demo4.jpg" alt="Demo 4"></div>
+    <div class="demo"><img src="demo5.jpg" alt="Demo 5"></div>
   </div>
-
-  <button class="arrow right" onclick="next()">›</button>
-</div>
-
 </main>
 
-<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
-
 <script>
-let index=0;
-const slides=document.getElementById("slides");
-const total=5;
+const esBtn=document.getElementById("es");
+const enBtn=document.getElementById("en");
+const texts=document.querySelectorAll("[data-es]");
 
-function update(){
-  slides.style.transform=`translateX(-${index*100}%)`;
+function setLang(lang){
+  texts.forEach(el=>el.textContent=el.dataset[lang]);
+  esBtn.classList.toggle("active",lang==="es");
+  enBtn.classList.toggle("active",lang==="en");
+  localStorage.setItem("lang",lang);
 }
-function next(){
-  index=(index+1)%total;
-  update();
-}
-function prev(){
-  index=(index-1+total)%total;
-  update();
-}
+esBtn.onclick=()=>setLang("es");
+enBtn.onclick=()=>setLang("en");
+setLang(localStorage.getItem("lang")||"es");
 </script>
 
 </body>
 </html>
-
-
