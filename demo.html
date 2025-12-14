@@ -9,71 +9,111 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:Segoe UI,Arial,sans-serif;
-  background:#000;
+  background:#0b0e14;
   color:#fff;
+  overflow-x:hidden;
 }
 
-/* HEADER */
+/* ===== FONDO ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url('background.jpg') center/cover no-repeat;
+  z-index:-2;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.9));
+  z-index:-1;
+}
+
+/* ===== HEADER ===== */
 header{
+  position:sticky;
+  top:0;
+  z-index:1000;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 26px;
+  padding:16px 30px;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(10px);
 }
-header strong{font-size:18px}
+nav{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
 nav a{
   color:#fff;
   text-decoration:none;
-  margin-left:18px;
   font-weight:600;
   opacity:.85;
 }
 nav a:hover{opacity:1}
 
-/* TITLES */
+/* LANG */
+.lang-switch{
+  display:flex;
+  gap:8px;
+}
+.lang-switch button{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.3);
+  color:#fff;
+  padding:4px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+}
+.lang-switch button:hover{
+  background:#00cfff;
+  color:#000;
+}
+
+/* ===== TITLE ===== */
 main{
-  padding:100px 16px 80px;
   max-width:1200px;
   margin:auto;
+  padding:100px 20px;
   text-align:center;
 }
 h1{
-  font-size:clamp(34px,6vw,60px);
-  margin-bottom:12px;
+  font-size:clamp(36px,6vw,64px);
+  margin-bottom:14px;
 }
 p{
-  opacity:.85;
-  margin-bottom:50px;
+  opacity:.9;
+  margin-bottom:60px;
   font-size:18px;
 }
 
-/* SLIDER */
+/* ===== SLIDER ===== */
 .slider-wrapper{
   position:relative;
-  overflow:hidden;
 }
-
 .slider{
   display:flex;
-  gap:20px;
+  gap:30px;
   overflow-x:auto;
+  scroll-snap-type:x mandatory;
   scroll-behavior:smooth;
-  padding-bottom:10px;
+  padding-bottom:20px;
 }
-.slider::-webkit-scrollbar{display:none}
-
 .slide{
-  min-width:300px;
-  max-width:300px;
-  background:#111;
+  min-width:280px;
+  max-width:280px;
+  background:rgba(255,255,255,.06);
   border-radius:22px;
-  padding:14px;
+  padding:16px;
+  scroll-snap-align:center;
 }
-
 .slide img{
   width:100%;
-  border-radius:16px;
-  display:block;
+  border-radius:14px;
 }
 
 /* ARROWS */
@@ -81,45 +121,44 @@ p{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:48px;
-  height:48px;
+  background:rgba(0,200,255,.2);
+  border:none;
+  color:#fff;
+  font-size:26px;
+  width:44px;
+  height:44px;
   border-radius:50%;
-  border:1px solid #00cfff;
-  background:rgba(0,0,0,.6);
-  color:#00cfff;
-  font-size:22px;
   cursor:pointer;
-  z-index:10;
 }
-.arrow.left{left:10px}
-.arrow.right{right:10px}
+.arrow.left{left:-10px}
+.arrow.right{right:-10px}
 
-/* REVIEWS */
+/* ===== REVIEWS ===== */
 .reviews{
-  margin-top:90px;
-  display:grid;
-  gap:22px;
+  margin-top:100px;
+}
+.review-slider{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
 }
 .review{
-  background:#111;
+  min-width:300px;
+  background:rgba(255,255,255,.06);
   padding:26px;
   border-radius:20px;
+  scroll-snap-align:center;
   text-align:left;
 }
-.review span{
-  display:block;
-  margin-top:10px;
-  font-weight:700;
-  opacity:.85;
-}
 
-/* WHATSAPP */
+/* ===== WHATSAPP ===== */
 .whatsapp{
   position:fixed;
   bottom:22px;
   right:22px;
-  width:58px;
-  height:58px;
+  width:60px;
+  height:60px;
   background:#25D366;
   border-radius:50%;
   display:flex;
@@ -128,6 +167,7 @@ p{
   font-size:30px;
   color:#fff;
   text-decoration:none;
+  z-index:3000;
 }
 </style>
 </head>
@@ -137,45 +177,71 @@ p{
 <header>
   <strong>ZenSite</strong>
   <nav>
-    <a href="index.html">Inicio</a>
-    <a href="planes.html">Planes</a>
-    <a href="nosotros.html">Nosotros</a>
+    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
+    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
+    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
+
+    <div class="lang-switch">
+      <button onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
   </nav>
 </header>
 
 <main>
+  <h1 data-es="Trabajos y demostraciones" data-en="Work & Demos">
+    Trabajos y demostraciones
+  </h1>
 
-<h1>Trabajos y demostraciones</h1>
-<p>Ejemplos reales del estilo de webs que creamos.</p>
+  <p data-es="Desliza o usa las flechas para ver ejemplos reales."
+     data-en="Swipe or use arrows to view real examples.">
+  </p>
 
-<div class="slider-wrapper">
-  <button class="arrow left" onclick="moveSlider(-1)">‹</button>
-  <button class="arrow right" onclick="moveSlider(1)">›</button>
+  <!-- SLIDER -->
+  <div class="slider-wrapper">
+    <button class="arrow left" onclick="slide(-1)">‹</button>
 
-  <div class="slider" id="slider">
-    <div class="slide"><img src="demo1.jpg" alt="Demo 1"></div>
-    <div class="slide"><img src="demo2.jpg" alt="Demo 2"></div>
-    <div class="slide"><img src="demo3.jpg" alt="Demo 3"></div>
-    <div class="slide"><img src="demo4.jpg" alt="Demo 4"></div>
-    <div class="slide"><img src="demo5.jpg" alt="Demo 5"></div>
+    <div class="slider" id="slider">
+      <div class="slide"><img src="demo1.jpg" alt="Demo 1"></div>
+      <div class="slide"><img src="demo2.jpg" alt="Demo 2"></div>
+      <div class="slide"><img src="demo3.jpg" alt="Demo 3"></div>
+      <div class="slide"><img src="demo4.jpg" alt="Demo 4"></div>
+      <div class="slide"><img src="demo5.jpg" alt="Demo 5"></div>
+    </div>
+
+    <button class="arrow right" onclick="slide(1)">›</button>
   </div>
-</div>
 
-<section class="reviews">
-  <div class="review">⭐⭐⭐⭐⭐ “La web se ve limpia y profesional.” <span>— Carlos M.</span></div>
-  <div class="review">⭐⭐⭐⭐⭐ “Ahora mi negocio sí da confianza.” <span>— Andrea R.</span></div>
-  <div class="review">⭐⭐⭐⭐⭐ “Funciona perfecto en el celular.” <span>— Luis G.</span></div>
-</section>
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <h2 data-es="Opiniones reales" data-en="Real reviews">Opiniones reales</h2>
 
+    <div class="review-slider">
+      <div class="review">⭐⭐⭐⭐⭐<br>“La web se ve limpia y profesional.”<br><strong>— Carlos M.</strong></div>
+      <div class="review">⭐⭐⭐⭐⭐<br>“Ahora mi negocio sí da confianza.”<br><strong>— Andrea R.</strong></div>
+      <div class="review">⭐⭐⭐⭐⭐<br>“Funciona perfecto en el celular.”<br><strong>— Luis G.</strong></div>
+      <div class="review">⭐⭐⭐⭐⭐<br>“Diseño claro y sin complicaciones.”<br><strong>— Miguel T.</strong></div>
+    </div>
+  </section>
 </main>
 
 <a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
 
 <script>
-function moveSlider(dir){
-  const slider=document.getElementById('slider');
-  slider.scrollBy({left:dir*320,behavior:'smooth'});
+const slider=document.getElementById("slider");
+function slide(dir){
+  slider.scrollBy({left:dir*320,behavior:"smooth"});
 }
+
+function setLang(lang){
+  document.querySelectorAll("[data-es]").forEach(el=>{
+    el.innerText = el.getAttribute("data-" + lang);
+  });
+  localStorage.setItem("lang", lang);
+}
+const savedLang=localStorage.getItem("lang");
+if(savedLang){setLang(savedLang);}
 </script>
 
 </body>
