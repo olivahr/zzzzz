@@ -3,83 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenSite | Demos</title>
+<title>ZenSite | Demo System</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
-  font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;
-  background:#0b0f17;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#05070c;
   color:#fff;
+  overflow-x:hidden;
+}
+
+/* SYSTEM BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(0,200,255,.18),transparent 40%),
+    radial-gradient(circle at 80% 75%,rgba(140,90,255,.18),transparent 40%),
+    #05070c;
+  z-index:-2;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  backdrop-filter:blur(90px);
+  z-index:-1;
 }
 
 /* HEADER */
 header{
-  position:sticky;
+  position:fixed;
   top:0;
-  z-index:10;
-  background:#0b0f17;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  padding:14px 20px;
+  width:100%;
+  z-index:1000;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  padding:16px 28px;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+nav{
+  display:flex;
+  align-items:center;
+  gap:22px;
 }
 nav a{
   color:#fff;
   text-decoration:none;
-  margin-left:16px;
   font-weight:600;
   opacity:.85;
 }
 nav a:hover{opacity:1}
 
+/* LANG */
+.lang-switch{
+  display:flex;
+  gap:8px;
+}
+.lang-switch button{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
 /* MAIN */
 main{
-  max-width:1100px;
-  margin:40px auto 100px;
-  padding:0 16px;
-  text-align:center;
+  max-width:1300px;
+  margin:140px auto 120px;
+  padding:0 20px;
 }
 
-h1{
-  font-size:clamp(28px,6vw,52px);
-  margin-bottom:12px;
+/* TITLE PANEL */
+.title-panel{
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.14),
+    rgba(255,255,255,.04)
+  );
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:32px;
+  padding:60px;
+  backdrop-filter:blur(26px);
+  box-shadow:0 40px 120px rgba(0,0,0,.85);
+  margin-bottom:90px;
 }
-p{
-  max-width:720px;
-  margin:0 auto 40px;
-  opacity:.9;
-  line-height:1.6;
+.title-panel h1{
+  font-size:clamp(42px,6vw,76px);
+  margin-bottom:18px;
+}
+.title-panel p{
+  font-size:20px;
+  max-width:760px;
+  opacity:.95;
 }
 
-/* SLIDER */
-.slider{
+/* DEMO SLIDER */
+.demo-system{
   position:relative;
-  background:#111827;
-  border-radius:20px;
-  padding:16px;
+  margin-bottom:120px;
 }
-
-/* CONTENEDOR DE IMAGEN */
-.slide{
-  display:none;
+.demo-track{
+  display:flex;
+  gap:34px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding-bottom:20px;
 }
-.slide.active{
-  display:block;
+.demo-card{
+  min-width:300px;
+  scroll-snap-align:center;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.18),
+    rgba(255,255,255,.05)
+  );
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:30px;
+  padding:18px;
+  backdrop-filter:blur(22px);
+  box-shadow:0 30px 80px rgba(0,0,0,.7);
+  transition:.6s cubic-bezier(.16,1,.3,1);
 }
-
-/* IMAGEN – ESTA ES LA CLAVE */
-.slide img{
-  display:block;
-  margin:auto;
+.demo-card:hover{
+  transform:translateY(-16px) scale(1.03);
+}
+.demo-card img{
   width:100%;
-  max-width:900px;
-  max-height:70vh;        /* ← CLAVE */
-  object-fit:contain;     /* ← CLAVE */
-  border-radius:14px;
-  background:#000;
+  border-radius:20px;
 }
 
 /* ARROWS */
@@ -87,51 +146,72 @@ p{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:40px;
-  height:40px;
+  width:52px;
+  height:52px;
   border-radius:50%;
-  border:none;
-  background:rgba(255,255,255,.15);
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);
   color:#fff;
-  font-size:22px;
+  font-size:26px;
   cursor:pointer;
 }
-.arrow.left{left:10px}
-.arrow.right{right:10px}
+.arrow.left{left:-10px}
+.arrow.right{right:-10px}
 
-/* REVIEWS */
-.reviews{
-  margin-top:50px;
+/* REVIEWS SYSTEM */
+.reviews-system{
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.12),
+    rgba(255,255,255,.03)
+  );
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:36px;
+  padding:60px;
+  backdrop-filter:blur(26px);
+  box-shadow:0 40px 120px rgba(0,0,0,.8);
+}
+.reviews-system h2{
+  font-size:34px;
+  margin-bottom:36px;
+}
+
+.review-track{
+  display:flex;
+  gap:26px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
 }
 .review{
-  display:none;
-  font-size:16px;
-  line-height:1.6;
-}
-.review.active{
-  display:block;
+  min-width:320px;
+  scroll-snap-align:center;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:26px;
+  padding:30px;
 }
 .review strong{
   display:block;
-  margin-top:8px;
+  margin-top:14px;
   color:#00cfff;
 }
 
 /* WHATSAPP */
 .whatsapp{
   position:fixed;
-  bottom:20px;
-  right:20px;
-  width:56px;
-  height:56px;
+  bottom:22px;
+  right:22px;
+  width:62px;
+  height:62px;
   background:#25D366;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
+  font-size:30px;
   color:#fff;
   text-decoration:none;
+  z-index:2000;
 }
 </style>
 </head>
@@ -144,53 +224,74 @@ p{
     <a href="index.html">Inicio</a>
     <a href="demo.html">Demos</a>
     <a href="planes.html">Planes</a>
-    <a href="nosotros.html">Nosotros</a>
+    <a href="nosotros.html">Sistema</a>
+
+    <div class="lang-switch">
+      <button onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
   </nav>
 </header>
 
 <main>
 
-<h1>Demos reales</h1>
-<p>
-Ejemplos claros del tipo de webs que diseñamos.
-Sin exageraciones, sin efectos raros.
-</p>
+<section class="title-panel">
+  <h1 data-es="Demo System" data-en="Demo System">Demo System</h1>
+  <p data-es="Explora ejemplos reales como si navegaras un sistema digital premium."
+     data-en="Explore real examples as if you were navigating a premium digital system.">
+  </p>
+</section>
 
-<div class="slider">
-  <button class="arrow left" onclick="prev()">‹</button>
+<section class="demo-system">
+  <button class="arrow left" onclick="moveDemo(-1)">‹</button>
 
-  <div class="slide active"><img src="demo1.jpg"></div>
-  <div class="slide"><img src="demo2.jpg"></div>
-  <div class="slide"><img src="demo3.jpg"></div>
-  <div class="slide"><img src="demo4.jpg"></div>
-  <div class="slide"><img src="demo5.jpg"></div>
+  <div class="demo-track" id="demoTrack">
+    <div class="demo-card"><img src="demo1.jpg"></div>
+    <div class="demo-card"><img src="demo2.jpg"></div>
+    <div class="demo-card"><img src="demo3.jpg"></div>
+    <div class="demo-card"><img src="demo4.jpg"></div>
+    <div class="demo-card"><img src="demo5.jpg"></div>
+  </div>
 
-  <button class="arrow right" onclick="next()">›</button>
-</div>
+  <button class="arrow right" onclick="moveDemo(1)">›</button>
+</section>
 
-<div class="reviews">
-  <div class="review active">⭐⭐⭐⭐⭐ “Ahora sí se ve claro.”<strong>— María Pérez</strong></div>
-  <div class="review">⭐⭐⭐⭐⭐ “Nada gigante ni raro.”<strong>— Williams Brandom</strong></div>
-  <div class="review">⭐⭐⭐⭐⭐ “Perfecta en el teléfono.”<strong>— Carmen García</strong></div>
-  <div class="review">⭐⭐⭐⭐⭐ “Todo se entiende.”<strong>— Diane Olazabal</strong></div>
-  <div class="review">⭐⭐⭐⭐⭐ “Así era como debía verse.”<strong>— Roberto M.</strong></div>
-</div>
+<section class="reviews-system">
+  <h2 data-es="Feedback del sistema" data-en="System feedback">Feedback del sistema</h2>
+
+  <div class="review-track" id="reviewTrack">
+    <div class="review">⭐⭐⭐⭐⭐<br>“Esto se siente como una app.”<strong>— Carlos M.</strong></div>
+    <div class="review">⭐⭐⭐⭐⭐<br>“No parece una web común.”<strong>— Andrea R.</strong></div>
+    <div class="review">⭐⭐⭐⭐⭐<br>“Se ve caro y serio.”<strong>— Luis G.</strong></div>
+    <div class="review">⭐⭐⭐⭐⭐<br>“Carga rápido y fluido.”<strong>— Miguel T.</strong></div>
+  </div>
+</section>
 
 </main>
 
-<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
+<a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
 
 <script>
-let index=0;
-const slides=document.querySelectorAll(".slide");
-const reviews=document.querySelectorAll(".review");
-
-function show(){
-  slides.forEach((s,i)=>s.classList.toggle("active",i===index));
-  reviews.forEach((r,i)=>r.classList.toggle("active",i===index));
+const demo=document.getElementById("demoTrack");
+function moveDemo(dir){
+  demo.scrollBy({left:dir*340,behavior:"smooth"});
 }
-function next(){index=(index+1)%slides.length;show();}
-function prev(){index=(index-1+slides.length)%slides.length;show();}
+
+// AUTO SLIDE REVIEWS
+setInterval(()=>{
+  document.getElementById("reviewTrack")
+    .scrollBy({left:340,behavior:"smooth"});
+},3500);
+
+// LANG
+function setLang(lang){
+  document.querySelectorAll("[data-es]").forEach(el=>{
+    el.innerText = el.getAttribute("data-" + lang);
+  });
+  localStorage.setItem("lang", lang);
+}
+const savedLang=localStorage.getItem("lang");
+if(savedLang){setLang(savedLang);}
 </script>
 
 </body>
