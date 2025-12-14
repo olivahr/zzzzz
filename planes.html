@@ -5,117 +5,158 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZenSite | Planes</title>
 
-<meta name="description" content="Planes de diseño web profesional con precios claros y sin pagos ocultos.">
-
 <style>
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+
 body{
-  font-family:Segoe UI,Arial,sans-serif;
-  background:#000;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#0b0f17;
   color:#fff;
-  overflow-x:hidden;
 }
 
 /* HEADER */
 header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#0b0f17;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:14px 22px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:16px 20px;
-}
-header strong{
-  font-weight:800;
-  font-size:18px;
 }
 nav{
   display:flex;
-  gap:14px;
+  gap:20px;
 }
 nav a{
   color:#fff;
   text-decoration:none;
-  font-weight:700;
+  font-weight:600;
   opacity:.85;
 }
 nav a:hover{opacity:1}
 
 /* MAIN */
 main{
-  padding:100px 18px 90px;
   max-width:1200px;
-  margin:auto;
+  margin:60px auto 120px;
+  padding:0 18px;
   text-align:center;
 }
+
 h1{
-  font-size:clamp(36px,6vw,62px);
+  font-size:clamp(32px,6vw,56px);
   margin-bottom:14px;
 }
 .subtitle{
-  max-width:760px;
-  margin:0 auto 70px;
-  font-size:18px;
-  opacity:.9;
+  max-width:720px;
+  margin:0 auto 60px;
+  opacity:.85;
+  line-height:1.6;
 }
 
-/* PLANS */
+/* PLANS GRID */
 .plans{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
 }
+
+/* CARD */
 .plan{
-  background:rgba(255,255,255,.06);
-  padding:36px 30px;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.06),
+    rgba(255,255,255,.02)
+  );
+  border:1px solid rgba(255,255,255,.12);
   border-radius:26px;
-  transition:.35s;
+  padding:36px 28px 40px;
+  position:relative;
+  backdrop-filter:blur(16px);
+  transition:.35s ease;
 }
 .plan:hover{
   transform:translateY(-10px);
-  box-shadow:0 0 30px rgba(0,200,255,.4);
-}
-.plan h2{
-  font-size:26px;
-  margin-bottom:10px;
-}
-.price{
-  font-size:44px;
-  font-weight:900;
-  color:#00cfff;
-  margin:14px 0 20px;
-}
-.plan ul{
-  list-style:none;
-  text-align:left;
-  margin-bottom:28px;
-}
-.plan li{
-  margin:10px 0;
-  opacity:.95;
-}
-
-/* BUTTON */
-.plan a{
-  display:inline-block;
-  padding:14px 40px;
-  border-radius:40px;
-  background:#00cfff;
-  color:#000;
-  font-weight:900;
-  text-decoration:none;
+  box-shadow:0 40px 90px rgba(0,0,0,.7);
 }
 
 /* HIGHLIGHT */
-.plan.featured{
-  border:1px solid rgba(0,200,255,.6);
+.plan.popular{
+  border-color:#00cfff;
+  box-shadow:0 0 0 1px rgba(0,200,255,.35);
+}
+.badge{
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#00cfff;
+  color:#000;
+  font-weight:700;
+  font-size:13px;
+  padding:6px 14px;
+  border-radius:999px;
 }
 
-/* WHATSAPP */
+/* TEXT */
+.plan h2{
+  font-size:26px;
+  margin-bottom:8px;
+}
+.price{
+  font-size:46px;
+  font-weight:800;
+  margin:16px 0;
+}
+.price span{
+  font-size:16px;
+  opacity:.7;
+}
+.desc{
+  opacity:.85;
+  line-height:1.6;
+  margin-bottom:22px;
+}
+
+/* FEATURES */
+.features{
+  text-align:left;
+  margin-bottom:30px;
+}
+.features li{
+  list-style:none;
+  margin-bottom:12px;
+  opacity:.9;
+}
+.features li::before{
+  content:"✔";
+  margin-right:10px;
+  color:#00cfff;
+}
+
+/* BUTTON */
+.btn{
+  display:inline-block;
+  padding:14px 26px;
+  border-radius:999px;
+  background:#00cfff;
+  color:#000;
+  font-weight:700;
+  text-decoration:none;
+  transition:.25s ease;
+}
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* WHATSAPP FLOAT */
 .whatsapp{
   position:fixed;
-  bottom:16px;
-  right:16px;
+  bottom:20px;
+  right:20px;
   width:56px;
   height:56px;
   background:#25D366;
@@ -126,7 +167,6 @@ h1{
   font-size:28px;
   color:#fff;
   text-decoration:none;
-  z-index:50;
 }
 </style>
 </head>
@@ -145,61 +185,77 @@ h1{
 
 <main>
 
-<h1>Planes y precios</h1>
+<h1>Planes</h1>
 <p class="subtitle">
-Precios claros, sin mensualidades ocultas.
-Pagas una sola vez y la web es 100% tuya.
+Elige el plan que mejor se adapte a tu negocio.
+Sin pagos mensuales, sin letras pequeñas, sin complicaciones.
 </p>
 
-<section class="plans">
+<div class="plans">
 
   <!-- PLAN Z -->
   <div class="plan">
-    <h2>Plan Z</h2>
-    <div class="price">$190</div>
-    <ul>
-      <li>✔ Landing page profesional</li>
-      <li>✔ Diseño moderno y limpio</li>
-      <li>✔ Optimizada para celular</li>
-      <li>✔ Botón de contacto</li>
+    <h2>Z</h2>
+    <div class="price">$190 <span>USD</span></div>
+    <p class="desc">
+      Ideal para empezar con una presencia profesional clara y directa.
+    </p>
+    <ul class="features">
+      <li>Web profesional de una sola página</li>
+      <li>Diseño limpio y moderno</li>
+      <li>Optimizada para móvil</li>
+      <li>Entrega rápida</li>
+      <li>Web 100% tuya</li>
     </ul>
-    <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z" target="_blank">Contratar</a>
+    <a class="btn" href="https://wa.me/15027942412?text=Hola%2C%20me%20interesa%20el%20Plan%20Z%20de%20ZenSite" target="_blank">
+      Contactar
+    </a>
   </div>
 
   <!-- PLAN Z+ -->
-  <div class="plan featured">
-    <h2>Plan Z+</h2>
-    <div class="price">$380</div>
-    <ul>
-      <li>✔ Web multi-sección</li>
-      <li>✔ Diseño premium</li>
-      <li>✔ Optimización de velocidad</li>
-      <li>✔ Base SEO incluida</li>
+  <div class="plan popular">
+    <div class="badge">Más elegido</div>
+    <h2>Z+</h2>
+    <div class="price">$380 <span>USD</span></div>
+    <p class="desc">
+      Para negocios que quieren verse sólidos, confiables y bien posicionados.
+    </p>
+    <ul class="features">
+      <li>Web multipágina</li>
+      <li>Diseño premium personalizado</li>
+      <li>Animaciones suaves</li>
+      <li>Optimización de velocidad</li>
+      <li>Estructura pensada para vender</li>
     </ul>
-    <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%2B" target="_blank">Contratar</a>
+    <a class="btn" href="https://wa.me/15027942412?text=Hola%2C%20me%20interesa%20el%20Plan%20Z%2B%20de%20ZenSite" target="_blank">
+      Contactar
+    </a>
   </div>
 
-  <!-- PLAN PREMIUM -->
+  <!-- PLAN Z PREMIUM -->
   <div class="plan">
     <h2>Z Premium</h2>
-    <div class="price">$620</div>
-    <ul>
-      <li>✔ Web avanzada o tienda online</li>
-      <li>✔ Carrito de compras</li>
-      <li>✔ Diseño personalizado</li>
-      <li>✔ Estructura escalable</li>
+    <div class="price">$620 <span>USD</span></div>
+    <p class="desc">
+      La opción completa para marcas que quieren destacar de verdad.
+    </p>
+    <ul class="features">
+      <li>Diseño a medida tipo app</li>
+      <li>Efectos avanzados y transiciones</li>
+      <li>Estructura profesional completa</li>
+      <li>Preparada para escalar</li>
+      <li>Soporte prioritario</li>
     </ul>
-    <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Premium" target="_blank">Contratar</a>
+    <a class="btn" href="https://wa.me/15027942412?text=Hola%2C%20me%20interesa%20el%20Plan%20Z%20Premium%20de%20ZenSite" target="_blank">
+      Contactar
+    </a>
   </div>
 
-</section>
+</div>
 
 </main>
 
-<a class="whatsapp"
-   href="https://wa.me/15027942412?text=Hola,%20quiero%20información%20sobre%20los%20planes"
-   target="_blank"
-   rel="noopener">💬</a>
+<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
 
 </body>
 </html>
