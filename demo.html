@@ -123,6 +123,30 @@ main{
 .arrow.left{left:18px}
 .arrow.right{right:18px}
 
+/* REVIEWS */
+.reviews{
+  margin-top:40px;
+  width:90%;
+  max-width:700px;
+  overflow:hidden;
+}
+.review-track{
+  display:flex;
+  width:400%;
+  transition:transform .6s ease;
+}
+.review{
+  width:100%;
+  flex-shrink:0;
+  text-align:center;
+  opacity:.95;
+}
+.review strong{
+  display:block;
+  margin-top:10px;
+  color:#00cfff;
+}
+
 /* WHATSAPP */
 .whatsapp{
   position:fixed;
@@ -170,6 +194,15 @@ main{
   <button class="arrow right" onclick="next()">›</button>
 </div>
 
+<div class="reviews">
+  <div class="review-track" id="reviews">
+    <div class="review">⭐⭐⭐⭐⭐<br>“Esto parece una app.”<strong>— Carlos M.</strong></div>
+    <div class="review">⭐⭐⭐⭐⭐<br>“Se siente caro.”<strong>— Andrea R.</strong></div>
+    <div class="review">⭐⭐⭐⭐⭐<br>“Nada genérico.”<strong>— Luis G.</strong></div>
+    <div class="review">⭐⭐⭐⭐⭐<br>“Muy fluido.”<strong>— Miguel T.</strong></div>
+  </div>
+</div>
+
 </main>
 
 <a class="whatsapp" href="https://wa.me/15027942412">💬</a>
@@ -177,9 +210,11 @@ main{
 <script>
 let index=0;
 const slides=document.getElementById("slides");
+const reviews=document.getElementById("reviews");
 
 function update(){
   slides.style.transform=`translateX(-${index*100}%)`;
+  reviews.style.transform=`translateX(-${index*100}%)`;
 }
 
 function next(){
