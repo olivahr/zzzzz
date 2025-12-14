@@ -13,69 +13,119 @@ body{
   color:#fff;
 }
 
+/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:16px 20px;
+  padding:18px 26px;
 }
+header strong{font-size:18px}
 nav a{
   color:#fff;
   text-decoration:none;
-  margin-left:14px;
-  font-weight:700;
+  margin-left:18px;
+  font-weight:600;
+  opacity:.85;
 }
+nav a:hover{opacity:1}
 
+/* TITLES */
 main{
-  padding:90px 16px 80px;
+  padding:100px 16px 80px;
   max-width:1200px;
   margin:auto;
   text-align:center;
 }
-
 h1{
-  font-size:clamp(34px,6vw,58px);
-  margin-bottom:16px;
+  font-size:clamp(34px,6vw,60px);
+  margin-bottom:12px;
 }
 p{
-  opacity:.9;
+  opacity:.85;
   margin-bottom:50px;
+  font-size:18px;
 }
 
-/* DEMOS */
-.demos{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
+/* SLIDER */
+.slider-wrapper{
+  position:relative;
+  overflow:hidden;
 }
 
-.demo{
+.slider{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:10px;
+}
+.slider::-webkit-scrollbar{display:none}
+
+.slide{
+  min-width:300px;
+  max-width:300px;
   background:#111;
   border-radius:22px;
-  padding:20px;
+  padding:14px;
 }
 
-/* SVG PREVIEW */
-.demo svg{
+.slide img{
   width:100%;
-  height:auto;
-  border-radius:14px;
-  box-shadow:0 20px 40px rgba(0,0,0,.8);
+  border-radius:16px;
+  display:block;
+}
+
+/* ARROWS */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid #00cfff;
+  background:rgba(0,0,0,.6);
+  color:#00cfff;
+  font-size:22px;
+  cursor:pointer;
+  z-index:10;
+}
+.arrow.left{left:10px}
+.arrow.right{right:10px}
+
+/* REVIEWS */
+.reviews{
+  margin-top:90px;
+  display:grid;
+  gap:22px;
+}
+.review{
+  background:#111;
+  padding:26px;
+  border-radius:20px;
+  text-align:left;
+}
+.review span{
+  display:block;
+  margin-top:10px;
+  font-weight:700;
+  opacity:.85;
 }
 
 /* WHATSAPP */
 .whatsapp{
   position:fixed;
-  bottom:16px;
-  right:16px;
-  width:56px;
-  height:56px;
+  bottom:22px;
+  right:22px;
+  width:58px;
+  height:58px;
   background:#25D366;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:28px;
+  font-size:30px;
   color:#fff;
   text-decoration:none;
 }
@@ -98,64 +148,35 @@ p{
 <h1>Trabajos y demostraciones</h1>
 <p>Ejemplos reales del estilo de webs que creamos.</p>
 
-<section class="demos">
+<div class="slider-wrapper">
+  <button class="arrow left" onclick="moveSlider(-1)">‹</button>
+  <button class="arrow right" onclick="moveSlider(1)">›</button>
 
-  <!-- DEMO 1 -->
-  <div class="demo">
-    <svg viewBox="0 0 800 500">
-      <rect width="800" height="500" rx="24" fill="#0b0b0b"/>
-      <rect x="60" y="50" width="680" height="80" rx="14" fill="#00cfff"/>
-      <rect x="60" y="160" width="680" height="260" rx="18" fill="#111"/>
-      <text x="400" y="310" fill="#00cfff" font-size="40" text-anchor="middle">Landing Page</text>
-    </svg>
+  <div class="slider" id="slider">
+    <div class="slide"><img src="demo1.jpg" alt="Demo 1"></div>
+    <div class="slide"><img src="demo2.jpg" alt="Demo 2"></div>
+    <div class="slide"><img src="demo3.jpg" alt="Demo 3"></div>
+    <div class="slide"><img src="demo4.jpg" alt="Demo 4"></div>
+    <div class="slide"><img src="demo5.jpg" alt="Demo 5"></div>
   </div>
+</div>
 
-  <!-- DEMO 2 -->
-  <div class="demo">
-    <svg viewBox="0 0 800 500">
-      <rect width="800" height="500" rx="24" fill="#0b0b0b"/>
-      <rect x="60" y="50" width="300" height="360" rx="18" fill="#111"/>
-      <rect x="420" y="50" width="320" height="360" rx="18" fill="#111"/>
-      <text x="400" y="460" fill="#00cfff" font-size="34" text-anchor="middle">Web Corporativa</text>
-    </svg>
-  </div>
-
-  <!-- DEMO 3 -->
-  <div class="demo">
-    <svg viewBox="0 0 800 500">
-      <rect width="800" height="500" rx="24" fill="#0b0b0b"/>
-      <rect x="60" y="50" width="680" height="90" rx="14" fill="#111"/>
-      <rect x="60" y="170" width="680" height="250" rx="18" fill="#111"/>
-      <text x="400" y="305" fill="#00cfff" font-size="38" text-anchor="middle">Barbería / Local</text>
-    </svg>
-  </div>
-
-  <!-- DEMO 4 -->
-  <div class="demo">
-    <svg viewBox="0 0 800 500">
-      <rect width="800" height="500" rx="24" fill="#0b0b0b"/>
-      <rect x="60" y="50" width="200" height="360" rx="18" fill="#111"/>
-      <rect x="300" y="50" width="440" height="360" rx="18" fill="#111"/>
-      <text x="400" y="460" fill="#00cfff" font-size="34" text-anchor="middle">Servicios Profesionales</text>
-    </svg>
-  </div>
-
-  <!-- DEMO 5 -->
-  <div class="demo">
-    <svg viewBox="0 0 800 500">
-      <rect width="800" height="500" rx="24" fill="#0b0b0b"/>
-      <rect x="60" y="60" width="200" height="200" rx="18" fill="#111"/>
-      <rect x="300" y="60" width="200" height="200" rx="18" fill="#111"/>
-      <rect x="540" y="60" width="200" height="200" rx="18" fill="#111"/>
-      <text x="400" y="430" fill="#00cfff" font-size="34" text-anchor="middle">Tienda Online</text>
-    </svg>
-  </div>
-
+<section class="reviews">
+  <div class="review">⭐⭐⭐⭐⭐ “La web se ve limpia y profesional.” <span>— Carlos M.</span></div>
+  <div class="review">⭐⭐⭐⭐⭐ “Ahora mi negocio sí da confianza.” <span>— Andrea R.</span></div>
+  <div class="review">⭐⭐⭐⭐⭐ “Funciona perfecto en el celular.” <span>— Luis G.</span></div>
 </section>
 
 </main>
 
 <a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
+
+<script>
+function moveSlider(dir){
+  const slider=document.getElementById('slider');
+  slider.scrollBy({left:dir*320,behavior:'smooth'});
+}
+</script>
 
 </body>
 </html>
