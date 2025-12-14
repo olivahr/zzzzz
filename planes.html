@@ -3,22 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenSite | Planes</title>
+<title>ZenSite | Pricing</title>
+
+<!-- PREMIUM FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
 :root{
-  --bg:#05070c;
-  --card:#11131a;
-  --line:rgba(255,255,255,.08);
   --accent:#00cfff;
+  --glass:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.12);
 }
 
+*{margin:0;padding:0;box-sizing:border-box}
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
-  background:var(--bg);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#05070c;
   color:#fff;
+  overflow-x:hidden;
 }
 
 /* BACKGROUND */
@@ -27,164 +30,179 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 80%,rgba(140,90,255,.18),transparent 40%);
+    radial-gradient(circle at 15% 20%,rgba(0,200,255,.18),transparent 45%),
+    radial-gradient(circle at 85% 70%,rgba(140,90,255,.18),transparent 45%),
+    #05070c;
+  z-index:-2;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  backdrop-filter:blur(90px);
   z-index:-1;
 }
 
 /* HEADER */
 header{
-  position:sticky;
+  position:fixed;
   top:0;
-  z-index:1000;
+  width:100%;
+  height:72px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:16px 22px;
-  background:rgba(10,12,18,.7);
+  padding:0 26px;
+  background:rgba(255,255,255,.04);
   backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--line);
-}
-
-.logo{
-  font-weight:700;
-  font-size:20px;
-  letter-spacing:.4px;
+  border-bottom:1px solid var(--border);
+  z-index:1000;
 }
 
 nav{
   display:flex;
-  align-items:center;
-  gap:18px;
+  gap:22px;
 }
-
 nav a{
-  text-decoration:none;
   color:#fff;
+  text-decoration:none;
+  font-weight:600;
   opacity:.85;
-  font-weight:500;
-  font-size:14px;
 }
 
-/* LANGUAGE */
+/* LANG */
 .lang{
   display:flex;
-  gap:10px;
-  margin-left:10px;
+  gap:12px;
+  font-weight:700;
 }
-
-.lang button{
-  background:none;
-  border:none;
-  color:#fff;
-  opacity:.6;
-  font-weight:600;
+.lang span{
   cursor:pointer;
-  font-size:13px;
+  opacity:.4;
 }
-
-.lang button.active{
+.lang .active{
   opacity:1;
   color:var(--accent);
 }
 
 /* MAIN */
 main{
-  max-width:1200px;
-  margin:auto;
-  padding:80px 20px;
+  padding:120px 0 90px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 /* TITLE */
 h1{
-  text-align:center;
-  font-size:40px;
+  font-size:44px;
   font-weight:800;
-  letter-spacing:-.6px;
-  margin-bottom:10px;
-}
-
-.subtitle{
+  margin-bottom:14px;
   text-align:center;
+}
+.subtitle{
   opacity:.7;
-  font-size:16px;
   margin-bottom:60px;
+  text-align:center;
+  max-width:520px;
 }
 
 /* PLANS */
 .plans{
+  width:92%;
+  max-width:1050px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
 }
 
 .plan{
-  background:linear-gradient(180deg,#121520,#0b0d14);
-  border:1px solid var(--line);
-  border-radius:26px;
-  padding:34px 28px;
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:36px 30px;
   text-align:center;
+  backdrop-filter:blur(22px);
+  box-shadow:0 40px 120px rgba(0,0,0,.85);
+  transition:.4s ease;
 }
-
-.plan.featured{
-  border-color:var(--accent);
-  box-shadow:0 0 0 1px rgba(0,200,255,.3),0 30px 80px rgba(0,0,0,.9);
+.plan:hover{
+  transform:translateY(-8px) scale(1.02);
+  border-color:rgba(0,200,255,.4);
 }
 
 .plan h2{
   font-size:22px;
   font-weight:700;
-  margin-bottom:12px;
 }
 
 .price{
-  font-size:52px;
+  font-size:54px;
   font-weight:800;
-  letter-spacing:-1px;
+  margin:12px 0;
 }
-
 .price span{
-  font-size:14px;
+  font-size:15px;
   opacity:.6;
+  margin-left:6px;
 }
 
 .desc{
-  margin:18px 0 26px;
-  opacity:.8;
-  font-size:14px;
-}
-
-.features{
-  list-style:none;
-  text-align:left;
+  opacity:.75;
   margin-bottom:26px;
-}
-
-.features li{
-  margin-bottom:10px;
-  opacity:.9;
-}
-
-.features li::before{
-  content:"✓ ";
-  color:var(--accent);
-}
-
-.btn{
-  display:inline-block;
-  width:100%;
-  padding:14px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#00cfff,#4da6ff);
-  color:#000;
-  font-weight:700;
-  text-decoration:none;
   font-size:15px;
 }
 
-/* MOBILE FIX */
+ul{
+  list-style:none;
+  text-align:left;
+  margin-bottom:30px;
+}
+ul li{
+  margin-bottom:11px;
+  font-size:15px;
+}
+ul li::before{
+  content:"✓ ";
+  color:var(--accent);
+  font-weight:800;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:15px;
+  border-radius:999px;
+  border:none;
+  background:linear-gradient(135deg,#00cfff,#3aa0ff);
+  color:#000;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s ease;
+}
+button:hover{filter:brightness(1.1)}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:62px;
+  height:62px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  color:#fff;
+  text-decoration:none;
+  z-index:1000;
+}
+
+/* MOBILE */
 @media(max-width:600px){
-  nav{display:none}
   h1{font-size:32px}
 }
 </style>
@@ -193,100 +211,110 @@ h1{
 <body>
 
 <header>
-  <div class="logo">ZenSite</div>
-
+  <strong>ZenSite</strong>
   <nav>
     <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
     <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
-    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
+    <a href="planes.html" data-es="Planes" data-en="Pricing">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
-
   <div class="lang">
-    <button id="esBtn" class="active">ES</button>
-    <button id="enBtn">EN</button>
+    <span id="es">ES</span>
+    <span id="en">EN</span>
   </div>
 </header>
 
 <main>
-  <h1 id="title">Planes y precios</h1>
-  <p class="subtitle" id="subtitle">
-    Precios claros. Sin mensualidades. La web es 100% tuya.
+  <h1 data-es="Planes y precios" data-en="Pricing Plans">Planes y precios</h1>
+  <p class="subtitle"
+     data-es="Pagas una sola vez. Diseño premium. La web es 100% tuya."
+     data-en="One-time payment. Premium design. You own the website.">
+     Pagas una sola vez. Diseño premium. La web es 100% tuya.
   </p>
 
-  <section class="plans">
+  <div class="plans">
 
     <div class="plan">
       <h2>Plan Z</h2>
       <div class="price">$190 <span>USD</span></div>
-      <p class="desc">Ideal para empezar con presencia profesional.</p>
-      <ul class="features">
-        <li>Landing page</li>
-        <li>Diseño moderno</li>
-        <li>Optimizada móvil</li>
-        <li>Botón WhatsApp</li>
+      <p class="desc" data-es="Landing profesional enfocada en convertir."
+         data-en="Professional landing page focused on conversion.">
+         Landing profesional enfocada en convertir.
+      </p>
+      <ul>
+        <li data-es="Diseño limpio y moderno" data-en="Clean modern design">Diseño limpio y moderno</li>
+        <li data-es="Optimizada para móvil" data-en="Mobile optimized">Optimizada para móvil</li>
+        <li data-es="Botón de contacto directo" data-en="Direct contact button">Botón de contacto directo</li>
       </ul>
-      <a class="btn" href="#">Contactar</a>
+      <button onclick="contactar('Plan Z','$190 USD')"
+        data-es="Contactar" data-en="Contact">Contactar</button>
     </div>
 
-    <div class="plan featured">
+    <div class="plan">
       <h2>Plan Z+</h2>
       <div class="price">$380 <span>USD</span></div>
-      <p class="desc">Para negocios que quieren verse grandes.</p>
-      <ul class="features">
-        <li>Web multi-sección</li>
-        <li>Diseño premium</li>
-        <li>Optimización velocidad</li>
-        <li>Base SEO</li>
+      <p class="desc" data-es="Web multi-sección con imagen premium."
+         data-en="Multi-section website with premium image.">
+         Web multi-sección con imagen premium.
+      </p>
+      <ul>
+        <li data-es="Diseño premium tipo app" data-en="App-style premium design">Diseño premium tipo app</li>
+        <li data-es="SEO base incluido" data-en="SEO included">SEO base incluido</li>
+        <li data-es="Carga ultra rápida" data-en="Ultra fast load">Carga ultra rápida</li>
       </ul>
-      <a class="btn" href="#">Contactar</a>
+      <button onclick="contactar('Plan Z+','$380 USD')"
+        data-es="Contactar" data-en="Contact">Contactar</button>
     </div>
 
     <div class="plan">
       <h2>Z Premium</h2>
       <div class="price">$620 <span>USD</span></div>
-      <p class="desc">Diseño tipo app para marcas que quieren destacar.</p>
-      <ul class="features">
-        <li>Diseño a medida</li>
-        <li>Efectos avanzados</li>
-        <li>Estructura completa</li>
-        <li>Soporte prioritario</li>
+      <p class="desc" data-es="Diseño tipo app para marcas que quieren destacar."
+         data-en="App-style design for brands that want to stand out.">
+         Diseño tipo app para marcas que quieren destacar.
+      </p>
+      <ul>
+        <li data-es="Diseño totalmente a medida" data-en="Fully custom design">Diseño totalmente a medida</li>
+        <li data-es="Efectos avanzados iOS" data-en="Advanced iOS effects">Efectos avanzados iOS</li>
+        <li data-es="Soporte prioritario" data-en="Priority support">Soporte prioritario</li>
       </ul>
-      <a class="btn" href="#">Contactar</a>
+      <button onclick="contactar('Z Premium','$620 USD')"
+        data-es="Contactar" data-en="Contact">Contactar</button>
     </div>
 
-  </section>
+  </div>
 </main>
 
-<script>
-const esBtn=document.getElementById("esBtn");
-const enBtn=document.getElementById("enBtn");
+<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
 
-const texts={
-  es:{
-    title:"Planes y precios",
-    subtitle:"Precios claros. Sin mensualidades. La web es 100% tuya."
-  },
-  en:{
-    title:"Plans & Pricing",
-    subtitle:"Clear pricing. No monthly fees. The website is 100% yours."
-  }
-};
+<script>
+/* LANGUAGE SYSTEM (REMEMBERS) */
+const esBtn=document.getElementById("es");
+const enBtn=document.getElementById("en");
 
 function setLang(lang){
-  document.getElementById("title").innerText=texts[lang].title;
-  document.getElementById("subtitle").innerText=texts[lang].subtitle;
-
   document.querySelectorAll("[data-es]").forEach(el=>{
-    el.innerText=el.dataset[lang];
+    el.textContent=el.getAttribute("data-"+lang);
   });
-
   esBtn.classList.toggle("active",lang==="es");
   enBtn.classList.toggle("active",lang==="en");
+  localStorage.setItem("lang",lang);
 }
+
+const savedLang=localStorage.getItem("lang")||"es";
+setLang(savedLang);
 
 esBtn.onclick=()=>setLang("es");
 enBtn.onclick=()=>setLang("en");
+
+/* WHATSAPP MESSAGE */
+function contactar(plan,precio){
+  const msg=`Hola 👋
+Estoy interesado en el *${plan}*.
+Precio: ${precio}.
+Quisiera más información.`;
+  window.open("https://wa.me/15027942412?text="+encodeURIComponent(msg),"_blank");
+}
 </script>
 
 </body>
