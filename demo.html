@@ -11,17 +11,17 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
-/* SYSTEM BACKGROUND */
+/* BACKGROUND */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 15% 20%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 75%,rgba(140,90,255,.18),transparent 40%),
+    radial-gradient(circle at 20% 25%,rgba(0,200,255,.2),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(140,90,255,.2),transparent 40%),
     #05070c;
   z-index:-2;
 }
@@ -58,87 +58,49 @@ nav a{
   font-weight:600;
   opacity:.85;
 }
-nav a:hover{opacity:1}
-
-/* LANG */
-.lang-switch{
-  display:flex;
-  gap:8px;
-}
-.lang-switch button{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.18);
-  color:#fff;
-  padding:6px 12px;
-  border-radius:10px;
-  cursor:pointer;
-}
 
 /* MAIN */
 main{
-  max-width:1300px;
-  margin:140px auto 120px;
-  padding:0 20px;
-}
-
-/* TITLE PANEL */
-.title-panel{
-  background:linear-gradient(
-    180deg,
-    rgba(255,255,255,.14),
-    rgba(255,255,255,.04)
-  );
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:32px;
-  padding:60px;
-  backdrop-filter:blur(26px);
-  box-shadow:0 40px 120px rgba(0,0,0,.85);
-  margin-bottom:90px;
-}
-.title-panel h1{
-  font-size:clamp(42px,6vw,76px);
-  margin-bottom:18px;
-}
-.title-panel p{
-  font-size:20px;
-  max-width:760px;
-  opacity:.95;
-}
-
-/* DEMO SLIDER */
-.demo-system{
-  position:relative;
-  margin-bottom:120px;
-}
-.demo-track{
+  margin-top:100px;
+  height:calc(100vh - 100px);
   display:flex;
-  gap:34px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;
-  padding-bottom:20px;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 }
-.demo-card{
-  min-width:300px;
-  scroll-snap-align:center;
-  background:linear-gradient(
-    180deg,
-    rgba(255,255,255,.18),
-    rgba(255,255,255,.05)
-  );
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:30px;
-  padding:18px;
-  backdrop-filter:blur(22px);
-  box-shadow:0 30px 80px rgba(0,0,0,.7);
-  transition:.6s cubic-bezier(.16,1,.3,1);
+
+/* SLIDER SYSTEM */
+.slider-system{
+  position:relative;
+  width:90%;
+  max-width:900px;
+  height:520px;
+  overflow:hidden;
+  border-radius:32px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(20px);
+  box-shadow:0 40px 120px rgba(0,0,0,.9);
 }
-.demo-card:hover{
-  transform:translateY(-16px) scale(1.03);
+
+.slides{
+  display:flex;
+  width:500%;
+  height:100%;
+  transition:transform .7s cubic-bezier(.16,1,.3,1);
 }
-.demo-card img{
+
+.slide{
   width:100%;
-  border-radius:20px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.slide img{
+  width:92%;
+  border-radius:24px;
+  box-shadow:0 30px 80px rgba(0,0,0,.8);
 }
 
 /* ARROWS */
@@ -146,53 +108,42 @@ main{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:52px;
-  height:52px;
+  width:56px;
+  height:56px;
   border-radius:50%;
-  background:rgba(255,255,255,.14);
+  background:rgba(255,255,255,.12);
   border:1px solid rgba(255,255,255,.25);
   color:#fff;
-  font-size:26px;
+  font-size:28px;
   cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.arrow.left{left:-10px}
-.arrow.right{right:-10px}
+.arrow.left{left:18px}
+.arrow.right{right:18px}
 
-/* REVIEWS SYSTEM */
-.reviews-system{
-  background:linear-gradient(
-    180deg,
-    rgba(255,255,255,.12),
-    rgba(255,255,255,.03)
-  );
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:36px;
-  padding:60px;
-  backdrop-filter:blur(26px);
-  box-shadow:0 40px 120px rgba(0,0,0,.8);
+/* REVIEWS */
+.reviews{
+  margin-top:40px;
+  width:90%;
+  max-width:700px;
+  overflow:hidden;
 }
-.reviews-system h2{
-  font-size:34px;
-  margin-bottom:36px;
-}
-
 .review-track{
   display:flex;
-  gap:26px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
+  width:400%;
+  transition:transform .6s ease;
 }
 .review{
-  min-width:320px;
-  scroll-snap-align:center;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:26px;
-  padding:30px;
+  width:100%;
+  flex-shrink:0;
+  text-align:center;
+  opacity:.95;
 }
 .review strong{
   display:block;
-  margin-top:14px;
+  margin-top:10px;
   color:#00cfff;
 }
 
@@ -211,7 +162,6 @@ main{
   font-size:30px;
   color:#fff;
   text-decoration:none;
-  z-index:2000;
 }
 </style>
 </head>
@@ -225,73 +175,59 @@ main{
     <a href="demo.html">Demos</a>
     <a href="planes.html">Planes</a>
     <a href="nosotros.html">Sistema</a>
-
-    <div class="lang-switch">
-      <button onclick="setLang('es')">ES</button>
-      <button onclick="setLang('en')">EN</button>
-    </div>
   </nav>
 </header>
 
 <main>
 
-<section class="title-panel">
-  <h1 data-es="Demo System" data-en="Demo System">Demo System</h1>
-  <p data-es="Explora ejemplos reales como si navegaras un sistema digital premium."
-     data-en="Explore real examples as if you were navigating a premium digital system.">
-  </p>
-</section>
+<div class="slider-system">
+  <button class="arrow left" onclick="prev()">‹</button>
 
-<section class="demo-system">
-  <button class="arrow left" onclick="moveDemo(-1)">‹</button>
-
-  <div class="demo-track" id="demoTrack">
-    <div class="demo-card"><img src="demo1.jpg"></div>
-    <div class="demo-card"><img src="demo2.jpg"></div>
-    <div class="demo-card"><img src="demo3.jpg"></div>
-    <div class="demo-card"><img src="demo4.jpg"></div>
-    <div class="demo-card"><img src="demo5.jpg"></div>
+  <div class="slides" id="slides">
+    <div class="slide"><img src="demo1.jpg"></div>
+    <div class="slide"><img src="demo2.jpg"></div>
+    <div class="slide"><img src="demo3.jpg"></div>
+    <div class="slide"><img src="demo4.jpg"></div>
+    <div class="slide"><img src="demo5.jpg"></div>
   </div>
 
-  <button class="arrow right" onclick="moveDemo(1)">›</button>
-</section>
+  <button class="arrow right" onclick="next()">›</button>
+</div>
 
-<section class="reviews-system">
-  <h2 data-es="Feedback del sistema" data-en="System feedback">Feedback del sistema</h2>
-
-  <div class="review-track" id="reviewTrack">
-    <div class="review">⭐⭐⭐⭐⭐<br>“Esto se siente como una app.”<strong>— Carlos M.</strong></div>
-    <div class="review">⭐⭐⭐⭐⭐<br>“No parece una web común.”<strong>— Andrea R.</strong></div>
-    <div class="review">⭐⭐⭐⭐⭐<br>“Se ve caro y serio.”<strong>— Luis G.</strong></div>
-    <div class="review">⭐⭐⭐⭐⭐<br>“Carga rápido y fluido.”<strong>— Miguel T.</strong></div>
+<div class="reviews">
+  <div class="review-track" id="reviews">
+    <div class="review">⭐⭐⭐⭐⭐<br>“Esto parece una app.”<strong>— Carlos M.</strong></div>
+    <div class="review">⭐⭐⭐⭐⭐<br>“Se siente caro.”<strong>— Andrea R.</strong></div>
+    <div class="review">⭐⭐⭐⭐⭐<br>“Nada genérico.”<strong>— Luis G.</strong></div>
+    <div class="review">⭐⭐⭐⭐⭐<br>“Muy fluido.”<strong>— Miguel T.</strong></div>
   </div>
-</section>
+</div>
 
 </main>
 
-<a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
+<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
 
 <script>
-const demo=document.getElementById("demoTrack");
-function moveDemo(dir){
-  demo.scrollBy({left:dir*340,behavior:"smooth"});
+let index=0;
+const slides=document.getElementById("slides");
+const reviews=document.getElementById("reviews");
+
+function update(){
+  slides.style.transform=`translateX(-${index*100}%)`;
+  reviews.style.transform=`translateX(-${index*100}%)`;
 }
 
-// AUTO SLIDE REVIEWS
-setInterval(()=>{
-  document.getElementById("reviewTrack")
-    .scrollBy({left:340,behavior:"smooth"});
-},3500);
-
-// LANG
-function setLang(lang){
-  document.querySelectorAll("[data-es]").forEach(el=>{
-    el.innerText = el.getAttribute("data-" + lang);
-  });
-  localStorage.setItem("lang", lang);
+function next(){
+  index=(index+1)%5;
+  update();
 }
-const savedLang=localStorage.getItem("lang");
-if(savedLang){setLang(savedLang);}
+function prev(){
+  index=(index-1+5)%5;
+  update();
+}
+
+// AUTO SLIDE
+setInterval(next,4500);
 </script>
 
 </body>
