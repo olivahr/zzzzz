@@ -8,51 +8,53 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
   font-family:Segoe UI,Arial,sans-serif;
-  background:#0b0e14;
+  background:#000;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== FONDO ===== */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:url('background.jpg') center/cover no-repeat;
-  z-index:-2;
+/* ===== BACKGROUND DESKTOP ===== */
+@media(min-width:769px){
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url('background.jpg') center/cover no-repeat;
+    z-index:-2;
+  }
 }
+
+/* ===== OVERLAY ===== */
 body::after{
   content:"";
   position:fixed;
   inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,.9));
+  background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.9));
   z-index:-1;
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER (ARREGLADO) ===== */
 header{
-  position:sticky;
+  position:fixed;
   top:0;
-  z-index:1000;
+  width:100%;
+  height:64px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:16px 30px;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(10px);
+  justify-content:center;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  z-index:3000;
 }
 
-header strong{
-  font-size:20px;
-  letter-spacing:.5px;
-}
-
+/* MENU */
 nav{
   display:flex;
-  align-items:center;
-  gap:22px;
+  gap:36px;
 }
 
 nav a{
@@ -63,95 +65,84 @@ nav a{
 }
 nav a:hover{opacity:1}
 
-/* ===== LANG SWITCH ===== */
-.lang-switch{
+/* LANG */
+.lang{
+  position:absolute;
+  right:20px;
   display:flex;
-  gap:8px;
-  margin-left:10px;
+  gap:10px;
 }
-.lang-switch button{
+.lang button{
   background:transparent;
-  border:1px solid rgba(255,255,255,.3);
+  border:1px solid rgba(255,255,255,.25);
   color:#fff;
-  padding:4px 10px;
-  border-radius:8px;
-  cursor:pointer;
+  padding:6px 12px;
+  border-radius:10px;
   font-weight:600;
-  font-size:13px;
+  cursor:pointer;
 }
-.lang-switch button:hover{
-  background:#00cfff;
-  color:#000;
+.lang button:hover{
+  background:rgba(255,255,255,.15);
 }
 
 /* ===== HERO ===== */
 .hero{
-  min-height:92vh;
+  min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:40px 20px;
+  padding:120px 20px 40px;
+  perspective:1200px;
 }
 
 .hero-inner{
-  max-width:900px;
-  animation:float 7s ease-in-out infinite;
+  transform-style:preserve-3d;
+  animation:float3d 8s ease-in-out infinite;
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-16px)}
+@keyframes float3d{
+  0%{transform:rotateX(0) rotateY(0) translateY(0)}
+  50%{transform:rotateX(6deg) rotateY(-6deg) translateY(-18px)}
+  100%{transform:rotateX(0) rotateY(0) translateY(0)}
 }
 
 .hero h1{
-  font-size:clamp(46px,7vw,90px);
-  margin-bottom:20px;
-  text-shadow:
-    0 0 30px rgba(0,200,255,.6),
-    0 0 60px rgba(0,200,255,.35);
+  font-size:clamp(42px,7vw,88px);
+  text-shadow:0 0 30px rgba(0,200,255,.6);
+  transform:translateZ(60px);
 }
 
 .hero p{
+  max-width:760px;
+  margin:24px auto;
   font-size:20px;
   line-height:1.6;
   opacity:.95;
-  margin-bottom:40px;
+  transform:translateZ(40px);
 }
 
-/* ===== LAPTOP ===== */
+/* LAPTOP */
 .laptop{
+  margin:40px auto 0;
   max-width:520px;
-  margin:0 auto;
+  transform:translateZ(120px);
 }
 .laptop img{
   width:100%;
   border-radius:18px;
-  box-shadow:0 40px 90px rgba(0,0,0,.8);
+  box-shadow:0 40px 80px rgba(0,0,0,.8);
 }
 
-/* ===== WHATSAPP ===== */
-.whatsapp{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  width:60px;
-  height:60px;
-  background:#25D366;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  color:#fff;
-  text-decoration:none;
-  z-index:3000;
-}
-
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media(max-width:768px){
-  nav{gap:14px}
-  .hero p{font-size:18px}
+  .hero-inner{
+    animation:floatMobile 6s ease-in-out infinite;
+  }
+  @keyframes floatMobile{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+  }
 }
 </style>
 </head>
@@ -159,48 +150,44 @@ nav a:hover{opacity:1}
 <body>
 
 <header>
-  <strong>ZenSite</strong>
   <nav>
-    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
-    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
-    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
-    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
-
-    <div class="lang-switch">
-      <button onclick="setLang('es')">ES</button>
-      <button onclick="setLang('en')">EN</button>
-    </div>
+    <a href="index.html">Inicio</a>
+    <a href="demo.html">Demos</a>
+    <a href="planes.html">Planes</a>
+    <a href="nosotros.html">Nosotros</a>
   </nav>
+  <div class="lang">
+    <button onclick="setLang('es')">ES</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
 </header>
 
 <section class="hero">
   <div class="hero-inner">
-    <h1 data-es="ZenSite" data-en="ZenSite">ZenSite</h1>
-
-    <p
-      data-es="Diseñamos webs profesionales pensadas para verse grandes, transmitir confianza y convertir visitas en clientes."
-      data-en="We design professional websites built to look premium, build trust, and convert visitors into clients.">
+    <h1>ZenSite</h1>
+    <p>
+      Diseñamos experiencias web profesionales enfocadas en generar confianza,
+      posicionar tu marca y convertir visitas en clientes reales.
     </p>
-
     <div class="laptop">
-      <img src="background.jpg" alt="ZenSite website preview">
+      <img src="background.jpg" alt="ZenSite Web">
     </div>
   </div>
 </section>
 
-<a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
-
 <script>
 function setLang(lang){
-  document.querySelectorAll("[data-es]").forEach(el=>{
-    el.innerText = el.getAttribute("data-" + lang);
-  });
-  localStorage.setItem("lang", lang);
+  document.documentElement.lang = lang;
 }
 
-const savedLang = localStorage.getItem("lang");
-if(savedLang){
-  setLang(savedLang);
+/* 3D FOLLOW MOUSE (DESKTOP) */
+const hero=document.querySelector(".hero-inner");
+if(window.innerWidth>768){
+  document.addEventListener("mousemove",e=>{
+    const x=(window.innerWidth/2-e.clientX)/40;
+    const y=(window.innerHeight/2-e.clientY)/40;
+    hero.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+  });
 }
 </script>
 
