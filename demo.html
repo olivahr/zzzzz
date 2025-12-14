@@ -5,16 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZenSite | Demos</title>
 
-<meta name="description" content="Ejemplos reales de diseño web profesional creados por ZenSite.">
-
 <style>
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:Segoe UI,Arial,sans-serif;
   background:#000;
   color:#fff;
-  overflow-x:hidden;
 }
 
 /* HEADER */
@@ -24,95 +20,59 @@ header{
   align-items:center;
   padding:16px 20px;
 }
-header strong{font-weight:800}
 nav a{
   color:#fff;
   text-decoration:none;
   margin-left:16px;
   font-weight:700;
-  opacity:.85;
 }
-nav a:hover{opacity:1}
 
-/* MAIN */
-main{
-  padding:100px 18px 80px;
-  max-width:1200px;
-  margin:auto;
-  text-align:center;
-}
+/* TITLES */
 h1{
-  font-size:clamp(34px,6vw,60px);
-  margin-bottom:14px;
+  text-align:center;
+  font-size:clamp(34px,6vw,58px);
+  margin:90px 20px 10px;
 }
 p{
-  max-width:760px;
-  margin:0 auto 40px;
-  font-size:18px;
+  text-align:center;
   opacity:.9;
+  margin-bottom:40px;
 }
 
-/* DEMOS */
-.demos{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
-  margin-bottom:120px;
+/* SLIDER */
+.slider{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  padding:20px;
+  scroll-snap-type:x mandatory;
 }
+.slider::-webkit-scrollbar{display:none}
+
 .demo{
+  flex:0 0 85%;
+  max-width:360px;
   background:#111;
-  border-radius:22px;
+  border-radius:20px;
+  scroll-snap-align:center;
   overflow:hidden;
-  transition:.3s;
-}
-.demo:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 28px rgba(0,200,255,.35);
 }
 .demo img{
   width:100%;
+  height:auto;
   display:block;
 }
 
-/* REVIEWS SLIDER */
-.reviews{
-  max-width:820px;
-  margin:0 auto;
-}
-.reviews h2{
-  font-size:32px;
-  margin-bottom:30px;
-}
-.review-box{
-  position:relative;
-  height:150px;
-}
-.review{
-  position:absolute;
-  inset:0;
-  background:rgba(255,255,255,.06);
-  padding:30px;
-  border-radius:22px;
-  opacity:0;
-  transform:translateX(40px);
-  transition:.6s;
-}
-.review.active{
-  opacity:1;
-  transform:translateX(0);
-}
-.review span{
-  display:block;
-  margin-top:12px;
-  font-weight:700;
-  opacity:.9;
+/* DESKTOP */
+@media(min-width:900px){
+  .demo{flex:0 0 320px}
 }
 
 /* WHATSAPP */
 .whatsapp{
   position:fixed;
-  bottom:16px;
-  right:16px;
+  bottom:18px;
+  right:18px;
   width:56px;
   height:56px;
   background:#25D366;
@@ -123,7 +83,6 @@ p{
   font-size:28px;
   color:#fff;
   text-decoration:none;
-  z-index:50;
 }
 </style>
 </head>
@@ -134,71 +93,23 @@ p{
   <strong>ZenSite</strong>
   <nav>
     <a href="index.html">Inicio</a>
-    <a href="demo.html">Demos</a>
     <a href="planes.html">Planes</a>
     <a href="nosotros.html">Nosotros</a>
   </nav>
 </header>
 
-<main>
+<h1>Trabajos y demostraciones</h1>
+<p>Desliza para ver todos los demos reales.</p>
 
-<h1>Demos reales</h1>
-<p>
-Ejemplos de webs profesionales diseñadas para verse claras,
-modernas y confiables en cualquier dispositivo.
-</p>
+<div class="slider">
+  <div class="demo"><img src="./demo1.jpg"></div>
+  <div class="demo"><img src="./demo2.jpg"></div>
+  <div class="demo"><img src="./demo3.jpg"></div>
+  <div class="demo"><img src="./demo4.jpg"></div>
+  <div class="demo"><img src="./demo5.jpg"></div>
+</div>
 
-<section class="demos">
-  <div class="demo"><img src="demo1.jpg" alt="Demo 1"></div>
-  <div class="demo"><img src="demo2.jpg" alt="Demo 2"></div>
-  <div class="demo"><img src="demo3.jpg" alt="Demo 3"></div>
-  <div class="demo"><img src="demo4.jpg" alt="Demo 4"></div>
-  <div class="demo"><img src="demo5.jpg" alt="Demo 5"></div>
-</section>
-
-<!-- REVIEWS -->
-<section class="reviews">
-  <h2>Lo que dicen nuestros clientes</h2>
-  <div class="review-box">
-    <div class="review active">
-      ⭐⭐⭐⭐⭐ “La web se ve seria y profesional. Ahora confían más en mi negocio.”
-      <span>— Carlos M.</span>
-    </div>
-    <div class="review">
-      ⭐⭐⭐⭐⭐ “En el celular se ve perfecta, eso era clave para mí.”
-      <span>— Andrea R.</span>
-    </div>
-    <div class="review">
-      ⭐⭐⭐⭐⭐ “No parece plantilla, se siente hecha a medida.”
-      <span>— Luis G.</span>
-    </div>
-    <div class="review">
-      ⭐⭐⭐⭐⭐ “Diseño claro, rápido y sin complicaciones.”
-      <span>— Miguel T.</span>
-    </div>
-    <div class="review">
-      ⭐⭐⭐⭐⭐ “Desde que tengo la web nueva, me escriben más clientes.”
-      <span>— Daniela P.</span>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<a class="whatsapp"
-   href="https://wa.me/15027942412?text=Hola,%20vi%20los%20demos%20de%20ZenSite%20y%20quiero%20una%20web"
-   target="_blank"
-   rel="noopener">💬</a>
-
-<script>
-const reviews=document.querySelectorAll('.review');
-let i=0;
-setInterval(()=>{
-  reviews[i].classList.remove('active');
-  i=(i+1)%reviews.length;
-  reviews[i].classList.add('active');
-},4000);
-</script>
+<a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
 
 </body>
 </html>
