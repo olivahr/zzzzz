@@ -11,6 +11,7 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
+  overflow-x:hidden;
 }
 
 /* BACKGROUND */
@@ -19,8 +20,8 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 25%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(140,90,255,.18),transparent 40%),
+    radial-gradient(circle at 20% 25%,rgba(0,200,255,.25),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(140,90,255,.25),transparent 40%),
     #05070c;
   z-index:-2;
 }
@@ -38,35 +39,35 @@ header{
   top:0;
   width:100%;
   height:64px;
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
+  display:flex;
   align-items:center;
-  padding:0 20px;
+  padding:0 18px;
   background:rgba(255,255,255,.04);
-  backdrop-filter:blur(16px);
+  backdrop-filter:blur(18px);
   border-bottom:1px solid rgba(255,255,255,.08);
   z-index:1000;
 }
 
-/* MENU CENTER */
-.nav-center{
+nav{
   display:flex;
-  gap:26px;
+  gap:22px;
 }
-.nav-center a{
+
+nav a{
   color:#fff;
   text-decoration:none;
   font-weight:600;
   opacity:.85;
 }
-.nav-center a:hover{opacity:1}
 
-/* LANG SWITCH RIGHT */
+nav a:hover{opacity:1}
+
 .lang{
-  justify-self:end;
+  margin-left:auto;
   display:flex;
-  gap:10px;
+  gap:8px;
 }
+
 .lang button{
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.25);
@@ -76,6 +77,7 @@ header{
   font-weight:600;
   cursor:pointer;
 }
+
 .lang button.active{
   background:#00cfff;
   color:#000;
@@ -83,37 +85,55 @@ header{
 
 /* HERO */
 main{
+  margin-top:64px;
   min-height:100vh;
-  padding-top:120px;
   display:flex;
-  flex-direction:column;
   align-items:center;
+  justify-content:center;
+}
+
+.hero{
+  max-width:900px;
   text-align:center;
+  padding:60px 20px;
 }
 
-h1{
-  font-size:42px;
-  margin-bottom:18px;
+.hero h1{
+  font-size:clamp(38px,8vw,68px);
+  font-weight:800;
+  letter-spacing:-1px;
+  margin-bottom:20px;
+  animation:floatText 6s ease-in-out infinite;
 }
-p{
-  max-width:720px;
-  font-size:18px;
-  line-height:1.6;
+
+.hero p{
+  font-size:clamp(16px,4vw,20px);
   opacity:.9;
+  line-height:1.6;
 }
 
-/* HERO IMAGE */
-.hero-img{
+/* IMAGE */
+.device{
   margin-top:50px;
-  width:90%;
-  max-width:700px;
-  opacity:.85;
+  animation:floatImg 7s ease-in-out infinite;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-  h1{font-size:34px}
-  .nav-center{gap:18px}
+.device img{
+  width:100%;
+  max-width:620px;
+  border-radius:28px;
+  box-shadow:0 40px 120px rgba(0,0,0,.9);
+}
+
+/* ANIMATIONS */
+@keyframes floatText{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+
+@keyframes floatImg{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(10px)}
 }
 </style>
 </head>
@@ -121,9 +141,7 @@ p{
 <body>
 
 <header>
-  <div></div>
-
-  <nav class="nav-center">
+  <nav>
     <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
     <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
     <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
@@ -137,40 +155,38 @@ p{
 </header>
 
 <main>
-  <h1 id="title">ZenSite</h1>
-  <p id="desc">
-    Diseñamos experiencias web profesionales enfocadas en generar confianza,
-    posicionar tu marca y convertir visitas en clientes reales.
-  </p>
+  <section class="hero">
+    <h1 data-es="ZenSite" data-en="ZenSite">ZenSite</h1>
+    <p data-es="Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales."
+       data-en="We design professional web experiences focused on building trust, positioning your brand, and converting visitors into real clients.">
+      Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales.
+    </p>
 
-  <img src="background.jpg" class="hero-img" alt="ZenSite demo">
+    <div class="device">
+      <img src="background.jpg" alt="ZenSite preview">
+    </div>
+  </section>
 </main>
 
 <script>
 const esBtn=document.getElementById("esBtn");
 const enBtn=document.getElementById("enBtn");
-const title=document.getElementById("title");
-const desc=document.getElementById("desc");
-const links=document.querySelectorAll("[data-es]");
+const texts=document.querySelectorAll("[data-es]");
 
 function setLang(lang){
-  if(lang==="es"){
-    title.innerText="ZenSite";
-    desc.innerText="Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales.";
-    links.forEach(l=>l.innerText=l.dataset.es);
-    esBtn.classList.add("active");
-    enBtn.classList.remove("active");
-  }else{
-    title.innerText="ZenSite";
-    desc.innerText="We design professional web experiences focused on building trust, positioning your brand, and converting visitors into real clients.";
-    links.forEach(l=>l.innerText=l.dataset.en);
-    enBtn.classList.add("active");
-    esBtn.classList.remove("active");
-  }
+  texts.forEach(el=>{
+    el.textContent=el.dataset[lang];
+  });
+  esBtn.classList.toggle("active",lang==="es");
+  enBtn.classList.toggle("active",lang==="en");
+  localStorage.setItem("lang",lang);
 }
 
 esBtn.onclick=()=>setLang("es");
 enBtn.onclick=()=>setLang("en");
+
+const saved=localStorage.getItem("lang")||"es";
+setLang(saved);
 </script>
 
 </body>
