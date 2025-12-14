@@ -14,7 +14,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== ATMOS BACKGROUND ===== */
+/* BACKGROUND */
 body::before{
   content:"";
   position:fixed;
@@ -33,7 +33,7 @@ body::after{
   z-index:-1;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
   position:fixed;
   top:0;
@@ -47,12 +47,7 @@ header{
   border-bottom:1px solid rgba(255,255,255,.08);
   z-index:1000;
 }
-
-nav{
-  display:flex;
-  gap:18px;
-}
-
+nav{display:flex;gap:18px}
 nav a{
   color:#fff;
   text-decoration:none;
@@ -80,16 +75,16 @@ nav a:hover{opacity:1}
   color:#000;
 }
 
-/* ===== MAIN ===== */
+/* MAIN */
 main{
   margin-top:100px;
-  padding:40px 16px 120px;
+  padding:40px 16px 140px;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 .section{
   max-width:1100px;
-  margin:0 auto 90px;
+  margin:0 auto 100px;
   text-align:center;
   opacity:0;
   transform:translateY(30px);
@@ -99,15 +94,14 @@ main{
   opacity:1;
   transform:translateY(0);
 }
-
 .section h1{
   font-size:42px;
   margin-bottom:18px;
   text-shadow:0 0 30px rgba(0,200,255,.25);
 }
 .section h2{
-  font-size:28px;
-  margin-bottom:12px;
+  font-size:30px;
+  margin-bottom:16px;
 }
 .section p{
   opacity:.85;
@@ -116,47 +110,42 @@ main{
   margin:0 auto;
 }
 
-/* ===== CARDS ===== */
+/* CARDS */
 .grid{
   display:grid;
   gap:26px;
   margin-top:48px;
 }
-
 .card{
   background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
   border-radius:28px;
   padding:34px;
   box-shadow:0 40px 120px rgba(0,0,0,.9);
   border:1px solid rgba(255,255,255,.12);
-  transition:transform .5s ease, box-shadow .5s ease;
+  transition:.5s ease;
 }
 .card:hover{
   transform:translateY(-8px);
   box-shadow:0 0 40px rgba(0,200,255,.25);
 }
-
 .card h3{
   font-size:22px;
   margin-bottom:10px;
 }
 
-/* ===== TIMELINE ===== */
+/* TIMELINE */
 .timeline{
   max-width:900px;
   margin:60px auto 0;
   display:grid;
   gap:34px;
 }
-
 .step{
   padding:28px;
   border-radius:26px;
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.1);
-  box-shadow:0 30px 80px rgba(0,0,0,.8);
 }
-
 .step span{
   color:#00cfff;
   font-weight:700;
@@ -179,7 +168,6 @@ main{
     <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
-
   <div class="lang">
     <button id="es" class="active">ES</button>
     <button id="en">EN</button>
@@ -190,24 +178,22 @@ main{
 
 <section class="section">
   <h1 data-es="No hacemos páginas. Construimos sistemas."
-      data-en="We don’t build pages. We build systems.">
-  </h1>
-  <p data-es="ZenSite crea experiencias digitales que se sienten sólidas, premium y confiables desde el primer segundo."
-     data-en="ZenSite creates digital experiences that feel solid, premium and trustworthy from the first second.">
-  </p>
+      data-en="We don’t build pages. We build systems."></h1>
+  <p data-es="ZenSite crea experiencias digitales sólidas, premium y confiables desde el primer segundo."
+     data-en="ZenSite creates solid, premium and trustworthy digital experiences from the first second."></p>
 </section>
 
 <section class="section">
   <div class="grid">
     <div class="card">
       <h3 data-es="Diseño tipo app" data-en="App-like design"></h3>
-      <p data-es="Fluidez, orden y estética inspirada en sistemas como iOS."
-         data-en="Fluid, structured and iOS-inspired interfaces."></p>
+      <p data-es="Interfaces fluidas inspiradas en iOS."
+         data-en="Fluid interfaces inspired by iOS."></p>
     </div>
     <div class="card">
       <h3 data-es="Arquitectura estratégica" data-en="Strategic architecture"></h3>
-      <p data-es="Cada sección existe para convencer y convertir."
-         data-en="Every section exists to convince and convert."></p>
+      <p data-es="Cada sección tiene un propósito claro."
+         data-en="Every section has a clear purpose."></p>
     </div>
     <div class="card">
       <h3 data-es="Percepción premium" data-en="Premium perception"></h3>
@@ -222,18 +208,40 @@ main{
   <div class="timeline">
     <div class="step">
       <span data-es="ANÁLISIS" data-en="ANALYSIS"></span>
-      <p data-es="Estudiamos tu marca y mercado."
-         data-en="We study your brand and market."></p>
+      <p data-es="Estudiamos tu marca y objetivos."
+         data-en="We study your brand and goals."></p>
     </div>
     <div class="step">
       <span data-es="ESTRUCTURA" data-en="STRUCTURE"></span>
-      <p data-es="Diseñamos una base sólida y escalable."
-         data-en="We design a solid and scalable base."></p>
+      <p data-es="Creamos una base sólida."
+         data-en="We create a solid foundation."></p>
     </div>
     <div class="step">
       <span data-es="EXPERIENCIA" data-en="EXPERIENCE"></span>
-      <p data-es="Creamos una interfaz que impone respeto."
-         data-en="We create an interface that commands respect."></p>
+      <p data-es="Diseño que impone respeto."
+         data-en="Design that commands respect."></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GARANTÍAS ===== -->
+<section class="section">
+  <h2 data-es="Nuestras garantías" data-en="Our guarantees"></h2>
+  <div class="grid">
+    <div class="card">
+      <h3 data-es="100% tuyo" data-en="100% yours"></h3>
+      <p data-es="La web es completamente tuya. Sin mensualidades."
+         data-en="The website is fully yours. No monthly fees."></p>
+    </div>
+    <div class="card">
+      <h3 data-es="Aprobación final" data-en="Final approval"></h3>
+      <p data-es="No se entrega nada sin tu visto bueno."
+         data-en="Nothing is delivered without your approval."></p>
+    </div>
+    <div class="card">
+      <h3 data-es="Soporte real" data-en="Real support"></h3>
+      <p data-es="Te acompañamos después de la entrega."
+         data-en="We support you after delivery."></p>
     </div>
   </div>
 </section>
@@ -241,7 +249,6 @@ main{
 </main>
 
 <script>
-/* ===== LANGUAGE ===== */
 const esBtn=document.getElementById("es");
 const enBtn=document.getElementById("en");
 const texts=document.querySelectorAll("[data-es]");
@@ -256,7 +263,6 @@ esBtn.onclick=()=>setLang("es");
 enBtn.onclick=()=>setLang("en");
 setLang(localStorage.getItem("lang")||"es");
 
-/* ===== SCROLL ANIMATION ===== */
 const sections=document.querySelectorAll(".section");
 const obs=new IntersectionObserver(e=>{
   e.forEach(s=>s.isIntersecting&&s.target.classList.add("show"));
