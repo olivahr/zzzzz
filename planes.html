@@ -9,9 +9,19 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "SF Pro Text",
+    Inter,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   background:#0b0f17;
   color:#fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
 /* HEADER */
@@ -34,9 +44,32 @@ nav a{
   color:#fff;
   text-decoration:none;
   font-weight:600;
+  letter-spacing:.2px;
   opacity:.85;
 }
 nav a:hover{opacity:1}
+
+/* LANGUAGE SWITCH */
+#lang-switch{
+  position:fixed;
+  top:18px;
+  right:18px;
+  z-index:200;
+  font-size:13px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  opacity:.85;
+}
+#lang-switch button{
+  background:none;
+  border:none;
+  color:#fff;
+  cursor:pointer;
+  font-weight:600;
+}
+#lang-switch button:hover{opacity:1}
 
 /* MAIN */
 main{
@@ -48,45 +81,42 @@ main{
 
 h1{
   font-size:clamp(32px,6vw,56px);
+  font-weight:700;
+  letter-spacing:-0.5px;
   margin-bottom:14px;
 }
+
 .subtitle{
   max-width:720px;
   margin:0 auto 60px;
-  opacity:.85;
-  line-height:1.6;
+  font-size:17px;
+  opacity:.82;
+  line-height:1.7;
 }
 
-/* PLANS GRID */
+/* PLANS */
 .plans{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:28px;
 }
 
-/* CARD */
 .plan{
-  background:linear-gradient(
-    180deg,
-    rgba(255,255,255,.06),
-    rgba(255,255,255,.02)
-  );
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
   border:1px solid rgba(255,255,255,.12);
   border-radius:26px;
-  padding:36px 28px 40px;
-  position:relative;
-  backdrop-filter:blur(16px);
+  padding:38px 30px 42px;
+  backdrop-filter:blur(18px);
   transition:.35s ease;
+  position:relative;
 }
 .plan:hover{
   transform:translateY(-10px);
   box-shadow:0 40px 90px rgba(0,0,0,.7);
 }
 
-/* HIGHLIGHT */
 .plan.popular{
   border-color:#00cfff;
-  box-shadow:0 0 0 1px rgba(0,200,255,.35);
 }
 .badge{
   position:absolute;
@@ -95,41 +125,42 @@ h1{
   transform:translateX(-50%);
   background:#00cfff;
   color:#000;
-  font-weight:700;
-  font-size:13px;
+  font-size:12px;
+  font-weight:600;
   padding:6px 14px;
   border-radius:999px;
 }
 
-/* TEXT */
 .plan h2{
-  font-size:26px;
-  margin-bottom:8px;
-}
-.price{
-  font-size:46px;
-  font-weight:800;
-  margin:16px 0;
-}
-.price span{
-  font-size:16px;
-  opacity:.7;
-}
-.desc{
-  opacity:.85;
-  line-height:1.6;
-  margin-bottom:22px;
+  font-size:24px;
+  font-weight:600;
 }
 
-/* FEATURES */
+.price{
+  font-size:48px;
+  font-weight:700;
+  margin:18px 0 10px;
+}
+.price span{
+  font-size:15px;
+  opacity:.7;
+}
+
+.desc{
+  font-size:15.5px;
+  opacity:.85;
+  line-height:1.7;
+  margin-bottom:26px;
+}
+
 .features{
   text-align:left;
-  margin-bottom:30px;
+  margin-bottom:32px;
 }
 .features li{
   list-style:none;
   margin-bottom:12px;
-  opacity:.9;
+  font-size:14.5px;
 }
 .features li::before{
   content:"✔";
@@ -137,22 +168,18 @@ h1{
   color:#00cfff;
 }
 
-/* BUTTON */
 .btn{
   display:inline-block;
-  padding:14px 26px;
+  padding:14px 28px;
   border-radius:999px;
   background:#00cfff;
   color:#000;
-  font-weight:700;
+  font-weight:600;
   text-decoration:none;
   transition:.25s ease;
 }
-.btn:hover{
-  transform:scale(1.05);
-}
+.btn:hover{transform:scale(1.05)}
 
-/* WHATSAPP FLOAT */
 .whatsapp{
   position:fixed;
   bottom:20px;
@@ -183,72 +210,76 @@ h1{
   </nav>
 </header>
 
+<div id="lang-switch">
+  <button onclick="setLang('es')">ES</button>
+  <span>|</span>
+  <button onclick="setLang('en')">EN</button>
+</div>
+
 <main>
 
-<h1>Planes</h1>
-<p class="subtitle">
-Elige el plan que mejor se adapte a tu negocio.
-Sin pagos mensuales, sin letras pequeñas, sin complicaciones.
+<h1 data-es="Planes" data-en="Plans">Planes</h1>
+<p class="subtitle"
+data-es="Elige el plan que mejor se adapte a tu negocio. Sin pagos mensuales ni letras pequeñas."
+data-en="Choose the plan that best fits your business. No monthly fees, no hidden costs.">
+Elige el plan que mejor se adapte a tu negocio. Sin pagos mensuales ni letras pequeñas.
 </p>
 
 <div class="plans">
 
-  <!-- PLAN Z -->
+  <!-- Z -->
   <div class="plan">
     <h2>Z</h2>
     <div class="price">$190 <span>USD</span></div>
-    <p class="desc">
-      Ideal para empezar con una presencia profesional clara y directa.
+    <p class="desc"
+      data-es="Presencia profesional clara y directa."
+      data-en="Clean and professional online presence.">
+      Presencia profesional clara y directa.
     </p>
     <ul class="features">
-      <li>Web profesional de una sola página</li>
-      <li>Diseño limpio y moderno</li>
-      <li>Optimizada para móvil</li>
-      <li>Entrega rápida</li>
-      <li>Web 100% tuya</li>
+      <li data-es="Web de una sola página" data-en="Single-page website">Web de una sola página</li>
+      <li data-es="Diseño moderno" data-en="Modern design">Diseño moderno</li>
+      <li data-es="Optimizada para móvil" data-en="Mobile optimized">Optimizada para móvil</li>
+      <li data-es="Web 100% tuya" data-en="100% yours">Web 100% tuya</li>
     </ul>
-    <a class="btn" href="https://wa.me/15027942412?text=Hola%2C%20me%20interesa%20el%20Plan%20Z%20de%20ZenSite" target="_blank">
-      Contactar
-    </a>
+    <a class="btn" href="https://wa.me/15027942412">Contactar</a>
   </div>
 
-  <!-- PLAN Z+ -->
+  <!-- Z+ -->
   <div class="plan popular">
-    <div class="badge">Más elegido</div>
+    <div class="badge">Popular</div>
     <h2>Z+</h2>
     <div class="price">$380 <span>USD</span></div>
-    <p class="desc">
-      Para negocios que quieren verse sólidos, confiables y bien posicionados.
+    <p class="desc"
+      data-es="Imagen sólida y estructura pensada para vender."
+      data-en="Solid brand image built to convert visitors.">
+      Imagen sólida y estructura pensada para vender.
     </p>
     <ul class="features">
-      <li>Web multipágina</li>
-      <li>Diseño premium personalizado</li>
-      <li>Animaciones suaves</li>
-      <li>Optimización de velocidad</li>
-      <li>Estructura pensada para vender</li>
+      <li data-es="Web multipágina" data-en="Multi-page website">Web multipágina</li>
+      <li data-es="Diseño premium" data-en="Premium design">Diseño premium</li>
+      <li data-es="Animaciones suaves" data-en="Smooth animations">Animaciones suaves</li>
+      <li data-es="Optimización de velocidad" data-en="Speed optimized">Optimización de velocidad</li>
     </ul>
-    <a class="btn" href="https://wa.me/15027942412?text=Hola%2C%20me%20interesa%20el%20Plan%20Z%2B%20de%20ZenSite" target="_blank">
-      Contactar
-    </a>
+    <a class="btn" href="https://wa.me/15027942412">Contactar</a>
   </div>
 
-  <!-- PLAN Z PREMIUM -->
+  <!-- Z PREMIUM -->
   <div class="plan">
     <h2>Z Premium</h2>
     <div class="price">$620 <span>USD</span></div>
-    <p class="desc">
-      La opción completa para marcas que quieren destacar de verdad.
+    <p class="desc"
+      data-es="Diseño tipo app para marcas que quieren destacar."
+      data-en="App-style experience for brands that want to stand out.">
+      Diseño tipo app para marcas que quieren destacar.
     </p>
     <ul class="features">
-      <li>Diseño a medida tipo app</li>
-      <li>Efectos avanzados y transiciones</li>
-      <li>Estructura profesional completa</li>
-      <li>Preparada para escalar</li>
-      <li>Soporte prioritario</li>
+      <li data-es="Diseño a medida" data-en="Custom design">Diseño a medida</li>
+      <li data-es="Efectos avanzados" data-en="Advanced effects">Efectos avanzados</li>
+      <li data-es="Estructura completa" data-en="Full professional structure">Estructura completa</li>
+      <li data-es="Soporte prioritario" data-en="Priority support">Soporte prioritario</li>
     </ul>
-    <a class="btn" href="https://wa.me/15027942412?text=Hola%2C%20me%20interesa%20el%20Plan%20Z%20Premium%20de%20ZenSite" target="_blank">
-      Contactar
-    </a>
+    <a class="btn" href="https://wa.me/15027942412">Contactar</a>
   </div>
 
 </div>
@@ -256,6 +287,14 @@ Sin pagos mensuales, sin letras pequeñas, sin complicaciones.
 </main>
 
 <a class="whatsapp" href="https://wa.me/15027942412">💬</a>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll("[data-es]").forEach(el=>{
+    el.textContent = el.getAttribute("data-" + lang);
+  });
+}
+</script>
 
 </body>
 </html>
