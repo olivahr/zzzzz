@@ -13,7 +13,6 @@ body{
   color:#fff;
 }
 
-/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
@@ -23,56 +22,52 @@ header{
 nav a{
   color:#fff;
   text-decoration:none;
-  margin-left:16px;
+  margin-left:14px;
   font-weight:700;
 }
 
-/* TITLES */
-h1{
+main{
+  padding:90px 16px 80px;
+  max-width:1200px;
+  margin:auto;
   text-align:center;
+}
+
+h1{
   font-size:clamp(34px,6vw,58px);
-  margin:90px 20px 10px;
+  margin-bottom:16px;
 }
 p{
-  text-align:center;
   opacity:.9;
-  margin-bottom:40px;
+  margin-bottom:50px;
 }
 
-/* SLIDER */
-.slider{
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  padding:20px;
-  scroll-snap-type:x mandatory;
+/* DEMOS */
+.demos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
 }
-.slider::-webkit-scrollbar{display:none}
 
 .demo{
-  flex:0 0 85%;
-  max-width:360px;
   background:#111;
-  border-radius:20px;
-  scroll-snap-align:center;
-  overflow:hidden;
-}
-.demo img{
-  width:100%;
-  height:auto;
-  display:block;
+  border-radius:22px;
+  padding:20px;
 }
 
-/* DESKTOP */
-@media(min-width:900px){
-  .demo{flex:0 0 320px}
+/* SVG PREVIEW */
+.demo svg{
+  width:100%;
+  height:auto;
+  border-radius:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,.8);
 }
 
 /* WHATSAPP */
 .whatsapp{
   position:fixed;
-  bottom:18px;
-  right:18px;
+  bottom:16px;
+  right:16px;
   width:56px;
   height:56px;
   background:#25D366;
@@ -98,20 +93,69 @@ p{
   </nav>
 </header>
 
-<h1>Trabajos y demostraciones</h1>
-<p>Desliza para ver todos los demos reales.</p>
+<main>
 
-<div class="slider">
-  <div class="demo"><img src="./demo1.jpg"></div>
-  <div class="demo"><img src="./demo2.jpg"></div>
-  <img src="https://raw.githubusercontent.com/olivahr/zzzzz/main/demo3.jpg">
-<img src="https://raw.githubusercontent.com/olivahr/zzzzz/main/demo4.jpg">
- <div class="demo"><img src="./demo5.jpg"></div>
-</div>
+<h1>Trabajos y demostraciones</h1>
+<p>Ejemplos reales del estilo de webs que creamos.</p>
+
+<section class="demos">
+
+  <!-- DEMO 1 -->
+  <div class="demo">
+    <svg viewBox="0 0 800 500">
+      <rect width="800" height="500" rx="24" fill="#0b0b0b"/>
+      <rect x="60" y="50" width="680" height="80" rx="14" fill="#00cfff"/>
+      <rect x="60" y="160" width="680" height="260" rx="18" fill="#111"/>
+      <text x="400" y="310" fill="#00cfff" font-size="40" text-anchor="middle">Landing Page</text>
+    </svg>
+  </div>
+
+  <!-- DEMO 2 -->
+  <div class="demo">
+    <svg viewBox="0 0 800 500">
+      <rect width="800" height="500" rx="24" fill="#0b0b0b"/>
+      <rect x="60" y="50" width="300" height="360" rx="18" fill="#111"/>
+      <rect x="420" y="50" width="320" height="360" rx="18" fill="#111"/>
+      <text x="400" y="460" fill="#00cfff" font-size="34" text-anchor="middle">Web Corporativa</text>
+    </svg>
+  </div>
+
+  <!-- DEMO 3 -->
+  <div class="demo">
+    <svg viewBox="0 0 800 500">
+      <rect width="800" height="500" rx="24" fill="#0b0b0b"/>
+      <rect x="60" y="50" width="680" height="90" rx="14" fill="#111"/>
+      <rect x="60" y="170" width="680" height="250" rx="18" fill="#111"/>
+      <text x="400" y="305" fill="#00cfff" font-size="38" text-anchor="middle">Barbería / Local</text>
+    </svg>
+  </div>
+
+  <!-- DEMO 4 -->
+  <div class="demo">
+    <svg viewBox="0 0 800 500">
+      <rect width="800" height="500" rx="24" fill="#0b0b0b"/>
+      <rect x="60" y="50" width="200" height="360" rx="18" fill="#111"/>
+      <rect x="300" y="50" width="440" height="360" rx="18" fill="#111"/>
+      <text x="400" y="460" fill="#00cfff" font-size="34" text-anchor="middle">Servicios Profesionales</text>
+    </svg>
+  </div>
+
+  <!-- DEMO 5 -->
+  <div class="demo">
+    <svg viewBox="0 0 800 500">
+      <rect width="800" height="500" rx="24" fill="#0b0b0b"/>
+      <rect x="60" y="60" width="200" height="200" rx="18" fill="#111"/>
+      <rect x="300" y="60" width="200" height="200" rx="18" fill="#111"/>
+      <rect x="540" y="60" width="200" height="200" rx="18" fill="#111"/>
+      <text x="400" y="430" fill="#00cfff" font-size="34" text-anchor="middle">Tienda Online</text>
+    </svg>
+  </div>
+
+</section>
+
+</main>
 
 <a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
 
 </body>
 </html>
-
-
