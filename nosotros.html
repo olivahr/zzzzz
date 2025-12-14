@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZenSite | Nosotros</title>
+
+<meta name="description" content="Conoce quiénes somos en ZenSite, cómo trabajamos y las garantías que ofrecemos en cada proyecto web.">
+
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:Segoe UI,Arial,sans-serif;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 20px;
+}
+header strong{
+  font-weight:800;
+  font-size:18px;
+}
+nav{
+  display:flex;
+  gap:14px;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  opacity:.85;
+}
+nav a:hover{opacity:1}
+
+/* MAIN */
+main{
+  padding:100px 18px 90px;
+  max-width:1000px;
+  margin:auto;
+}
+h1{
+  font-size:clamp(36px,6vw,60px);
+  margin-bottom:20px;
+  text-align:center;
+}
+p{
+  font-size:18px;
+  line-height:1.7;
+  opacity:.95;
+  margin-bottom:28px;
+}
+
+/* SECTIONS */
+.section{
+  margin-top:80px;
+}
+.section h2{
+  font-size:30px;
+  margin-bottom:22px;
+  text-align:center;
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+  margin-top:30px;
+}
+.card{
+  background:rgba(255,255,255,.06);
+  padding:28px;
+  border-radius:22px;
+}
+.card h3{
+  margin-bottom:10px;
+  font-size:20px;
+}
+
+/* GUARANTEE */
+.guarantee{
+  background:rgba(0,200,255,.08);
+  border:1px solid rgba(0,200,255,.4);
+  padding:36px;
+  border-radius:26px;
+  margin-top:40px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:16px;
+  right:16px;
+  width:56px;
+  height:56px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  color:#fff;
+  text-decoration:none;
+  z-index:50;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <strong>ZenSite</strong>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="demo.html">Demos</a>
+    <a href="planes.html">Planes</a>
+    <a href="nosotros.html">Nosotros</a>
+  </nav>
+</header>
+
+<main>
+
+<h1>Sobre ZenSite</h1>
+
+<p>
+ZenSite nace con una idea clara: crear webs que no solo se vean bien,
+sino que transmitan seriedad, confianza y profesionalismo desde el primer segundo.
+Diseñamos pensando en cómo el cliente percibe tu negocio.
+</p>
+
+<p>
+No trabajamos con plantillas genéricas ni soluciones rápidas.
+Cada proyecto se estructura para que tu marca se vea sólida,
+clara y preparada para competir.
+</p>
+
+<section class="section">
+  <h2>¿Quiénes somos?</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Diseño con intención</h3>
+      Creamos interfaces limpias y modernas enfocadas en generar confianza real.
+    </div>
+    <div class="card">
+      <h3>Enfoque profesional</h3>
+      Pensamos como negocio, no solo como diseñadores.
+    </div>
+    <div class="card">
+      <h3>Comunicación directa</h3>
+      Trato claro, sin rodeos ni procesos innecesarios.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Beneficios de trabajar con nosotros</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Imagen sólida</h3>
+      Tu web transmite seriedad y confianza desde el primer vistazo.
+    </div>
+    <div class="card">
+      <h3>Adaptada a todos</h3>
+      Funciona perfecta en celular, tablet y computadora.
+    </div>
+    <div class="card">
+      <h3>Propiedad total</h3>
+      La web es 100% tuya, sin pagos mensuales ocultos.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Nuestras garantías</h2>
+  <div class="guarantee">
+    <p>✔ Ajustes incluidos hasta que el resultado te represente</p>
+    <p>✔ Web optimizada para velocidad y rendimiento</p>
+    <p>✔ Soporte humano y comunicación directa</p>
+    <p>✔ Transparencia total en el proceso</p>
+  </div>
+</section>
+
+</main>
+
+<a class="whatsapp"
+   href="https://wa.me/15027942412?text=Hola,%20quiero%20trabajar%20con%20ZenSite"
+   target="_blank"
+   rel="noopener">💬</a>
+
+</body>
+</html>

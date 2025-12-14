@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZenSite | Planes</title>
+
+<meta name="description" content="Planes de diseño web profesional con precios claros y sin pagos ocultos.">
+
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:Segoe UI,Arial,sans-serif;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 20px;
+}
+header strong{
+  font-weight:800;
+  font-size:18px;
+}
+nav{
+  display:flex;
+  gap:14px;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  opacity:.85;
+}
+nav a:hover{opacity:1}
+
+/* MAIN */
+main{
+  padding:100px 18px 90px;
+  max-width:1200px;
+  margin:auto;
+  text-align:center;
+}
+h1{
+  font-size:clamp(36px,6vw,62px);
+  margin-bottom:14px;
+}
+.subtitle{
+  max-width:760px;
+  margin:0 auto 70px;
+  font-size:18px;
+  opacity:.9;
+}
+
+/* PLANS */
+.plans{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+.plan{
+  background:rgba(255,255,255,.06);
+  padding:36px 30px;
+  border-radius:26px;
+  transition:.35s;
+}
+.plan:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px rgba(0,200,255,.4);
+}
+.plan h2{
+  font-size:26px;
+  margin-bottom:10px;
+}
+.price{
+  font-size:44px;
+  font-weight:900;
+  color:#00cfff;
+  margin:14px 0 20px;
+}
+.plan ul{
+  list-style:none;
+  text-align:left;
+  margin-bottom:28px;
+}
+.plan li{
+  margin:10px 0;
+  opacity:.95;
+}
+
+/* BUTTON */
+.plan a{
+  display:inline-block;
+  padding:14px 40px;
+  border-radius:40px;
+  background:#00cfff;
+  color:#000;
+  font-weight:900;
+  text-decoration:none;
+}
+
+/* HIGHLIGHT */
+.plan.featured{
+  border:1px solid rgba(0,200,255,.6);
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:16px;
+  right:16px;
+  width:56px;
+  height:56px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  color:#fff;
+  text-decoration:none;
+  z-index:50;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <strong>ZenSite</strong>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="demo.html">Demos</a>
+    <a href="planes.html">Planes</a>
+    <a href="nosotros.html">Nosotros</a>
+  </nav>
+</header>
+
+<main>
+
+<h1>Planes y precios</h1>
+<p class="subtitle">
+Precios claros, sin mensualidades ocultas.
+Pagas una sola vez y la web es 100% tuya.
+</p>
+
+<section class="plans">
+
+  <!-- PLAN Z -->
+  <div class="plan">
+    <h2>Plan Z</h2>
+    <div class="price">$190</div>
+    <ul>
+      <li>✔ Landing page profesional</li>
+      <li>✔ Diseño moderno y limpio</li>
+      <li>✔ Optimizada para celular</li>
+      <li>✔ Botón de contacto</li>
+    </ul>
+    <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z" target="_blank">Contratar</a>
+  </div>
+
+  <!-- PLAN Z+ -->
+  <div class="plan featured">
+    <h2>Plan Z+</h2>
+    <div class="price">$380</div>
+    <ul>
+      <li>✔ Web multi-sección</li>
+      <li>✔ Diseño premium</li>
+      <li>✔ Optimización de velocidad</li>
+      <li>✔ Base SEO incluida</li>
+    </ul>
+    <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%2B" target="_blank">Contratar</a>
+  </div>
+
+  <!-- PLAN PREMIUM -->
+  <div class="plan">
+    <h2>Z Premium</h2>
+    <div class="price">$620</div>
+    <ul>
+      <li>✔ Web avanzada o tienda online</li>
+      <li>✔ Carrito de compras</li>
+      <li>✔ Diseño personalizado</li>
+      <li>✔ Estructura escalable</li>
+    </ul>
+    <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Premium" target="_blank">Contratar</a>
+  </div>
+
+</section>
+
+</main>
+
+<a class="whatsapp"
+   href="https://wa.me/15027942412?text=Hola,%20quiero%20información%20sobre%20los%20planes"
+   target="_blank"
+   rel="noopener">💬</a>
+
+</body>
+</html>
