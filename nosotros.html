@@ -3,114 +3,169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenSite | Nosotros</title>
-
-<meta name="description" content="Conoce quiénes somos en ZenSite, cómo trabajamos y las garantías que ofrecemos en cada proyecto web.">
+<title>Nosotros | ZenSite</title>
 
 <style>
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
-  font-family:Segoe UI,Arial,sans-serif;
-  background:#000;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#05070c;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* HEADER */
+/* ===== ATMOS BACKGROUND ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(0,200,255,.18),transparent 45%),
+    radial-gradient(circle at 85% 80%,rgba(140,90,255,.22),transparent 45%),
+    #05070c;
+  z-index:-2;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  backdrop-filter:blur(90px);
+  z-index:-1;
+}
+
+/* ===== HEADER ===== */
 header{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:64px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:16px 20px;
+  padding:0 16px;
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  z-index:1000;
 }
-header strong{
-  font-weight:800;
-  font-size:18px;
-}
+
 nav{
   display:flex;
-  gap:14px;
+  gap:18px;
 }
+
 nav a{
   color:#fff;
   text-decoration:none;
-  font-weight:700;
+  font-weight:600;
   opacity:.85;
 }
 nav a:hover{opacity:1}
 
-/* MAIN */
-main{
-  padding:100px 18px 90px;
-  max-width:1000px;
-  margin:auto;
+.lang{
+  margin-left:auto;
+  display:flex;
+  gap:8px;
 }
-h1{
-  font-size:clamp(36px,6vw,60px);
-  margin-bottom:20px;
-  text-align:center;
+.lang button{
+  padding:6px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
 }
-p{
-  font-size:18px;
-  line-height:1.7;
-  opacity:.95;
-  margin-bottom:28px;
+.lang button.active{
+  background:#00cfff;
+  color:#000;
 }
 
-/* SECTIONS */
+/* ===== MAIN ===== */
+main{
+  margin-top:100px;
+  padding:40px 16px 120px;
+}
+
+/* ===== SECTIONS ===== */
 .section{
-  margin-top:80px;
+  max-width:1100px;
+  margin:0 auto 90px;
+  text-align:center;
+  opacity:0;
+  transform:translateY(30px);
+  transition:all .9s cubic-bezier(.16,1,.3,1);
+}
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section h1{
+  font-size:42px;
+  margin-bottom:18px;
+  text-shadow:0 0 30px rgba(0,200,255,.25);
 }
 .section h2{
-  font-size:30px;
-  margin-bottom:22px;
-  text-align:center;
-}
-
-/* CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:24px;
-  margin-top:30px;
-}
-.card{
-  background:rgba(255,255,255,.06);
-  padding:28px;
-  border-radius:22px;
-}
-.card h3{
-  margin-bottom:10px;
-  font-size:20px;
-}
-
-/* GUARANTEE */
-.guarantee{
-  background:rgba(0,200,255,.08);
-  border:1px solid rgba(0,200,255,.4);
-  padding:36px;
-  border-radius:26px;
-  margin-top:40px;
-}
-
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  bottom:16px;
-  right:16px;
-  width:56px;
-  height:56px;
-  background:#25D366;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   font-size:28px;
-  color:#fff;
-  text-decoration:none;
-  z-index:50;
+  margin-bottom:12px;
+}
+.section p{
+  opacity:.85;
+  line-height:1.7;
+  max-width:820px;
+  margin:0 auto;
+}
+
+/* ===== CARDS ===== */
+.grid{
+  display:grid;
+  gap:26px;
+  margin-top:48px;
+}
+
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  border-radius:28px;
+  padding:34px;
+  box-shadow:0 40px 120px rgba(0,0,0,.9);
+  border:1px solid rgba(255,255,255,.12);
+  transition:transform .5s ease, box-shadow .5s ease;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 40px rgba(0,200,255,.25);
+}
+
+.card h3{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+/* ===== TIMELINE ===== */
+.timeline{
+  max-width:900px;
+  margin:60px auto 0;
+  display:grid;
+  gap:34px;
+}
+
+.step{
+  padding:28px;
+  border-radius:26px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 30px 80px rgba(0,0,0,.8);
+}
+
+.step span{
+  color:#00cfff;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+/* DESKTOP */
+@media(min-width:900px){
+  .grid{grid-template-columns:repeat(3,1fr)}
 }
 </style>
 </head>
@@ -118,83 +173,96 @@ p{
 <body>
 
 <header>
-  <strong>ZenSite</strong>
   <nav>
-    <a href="index.html">Inicio</a>
-    <a href="demo.html">Demos</a>
-    <a href="planes.html">Planes</a>
-    <a href="nosotros.html">Nosotros</a>
+    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
+    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
+    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
+
+  <div class="lang">
+    <button id="es" class="active">ES</button>
+    <button id="en">EN</button>
+  </div>
 </header>
 
 <main>
 
-<h1>Sobre ZenSite</h1>
-
-<p>
-ZenSite nace con una idea clara: crear webs que no solo se vean bien,
-sino que transmitan seriedad, confianza y profesionalismo desde el primer segundo.
-Diseñamos pensando en cómo el cliente percibe tu negocio.
-</p>
-
-<p>
-No trabajamos con plantillas genéricas ni soluciones rápidas.
-Cada proyecto se estructura para que tu marca se vea sólida,
-clara y preparada para competir.
-</p>
+<section class="section">
+  <h1 data-es="No hacemos páginas. Construimos sistemas."
+      data-en="We don’t build pages. We build systems.">
+  </h1>
+  <p data-es="ZenSite crea experiencias digitales que se sienten sólidas, premium y confiables desde el primer segundo."
+     data-en="ZenSite creates digital experiences that feel solid, premium and trustworthy from the first second.">
+  </p>
+</section>
 
 <section class="section">
-  <h2>¿Quiénes somos?</h2>
-  <div class="cards">
+  <div class="grid">
     <div class="card">
-      <h3>Diseño con intención</h3>
-      Creamos interfaces limpias y modernas enfocadas en generar confianza real.
+      <h3 data-es="Diseño tipo app" data-en="App-like design"></h3>
+      <p data-es="Fluidez, orden y estética inspirada en sistemas como iOS."
+         data-en="Fluid, structured and iOS-inspired interfaces."></p>
     </div>
     <div class="card">
-      <h3>Enfoque profesional</h3>
-      Pensamos como negocio, no solo como diseñadores.
+      <h3 data-es="Arquitectura estratégica" data-en="Strategic architecture"></h3>
+      <p data-es="Cada sección existe para convencer y convertir."
+         data-en="Every section exists to convince and convert."></p>
     </div>
     <div class="card">
-      <h3>Comunicación directa</h3>
-      Trato claro, sin rodeos ni procesos innecesarios.
+      <h3 data-es="Percepción premium" data-en="Premium perception"></h3>
+      <p data-es="Nada genérico. Nada improvisado."
+         data-en="Nothing generic. Nothing improvised."></p>
     </div>
   </div>
 </section>
 
 <section class="section">
-  <h2>Beneficios de trabajar con nosotros</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Imagen sólida</h3>
-      Tu web transmite seriedad y confianza desde el primer vistazo.
+  <h2 data-es="Nuestro proceso" data-en="Our process"></h2>
+  <div class="timeline">
+    <div class="step">
+      <span data-es="ANÁLISIS" data-en="ANALYSIS"></span>
+      <p data-es="Estudiamos tu marca y mercado."
+         data-en="We study your brand and market."></p>
     </div>
-    <div class="card">
-      <h3>Adaptada a todos</h3>
-      Funciona perfecta en celular, tablet y computadora.
+    <div class="step">
+      <span data-es="ESTRUCTURA" data-en="STRUCTURE"></span>
+      <p data-es="Diseñamos una base sólida y escalable."
+         data-en="We design a solid and scalable base."></p>
     </div>
-    <div class="card">
-      <h3>Propiedad total</h3>
-      La web es 100% tuya, sin pagos mensuales ocultos.
+    <div class="step">
+      <span data-es="EXPERIENCIA" data-en="EXPERIENCE"></span>
+      <p data-es="Creamos una interfaz que impone respeto."
+         data-en="We create an interface that commands respect."></p>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Nuestras garantías</h2>
-  <div class="guarantee">
-    <p>✔ Ajustes incluidos hasta que el resultado te represente</p>
-    <p>✔ Web optimizada para velocidad y rendimiento</p>
-    <p>✔ Soporte humano y comunicación directa</p>
-    <p>✔ Transparencia total en el proceso</p>
   </div>
 </section>
 
 </main>
 
-<a class="whatsapp"
-   href="https://wa.me/15027942412?text=Hola,%20quiero%20trabajar%20con%20ZenSite"
-   target="_blank"
-   rel="noopener">💬</a>
+<script>
+/* ===== LANGUAGE ===== */
+const esBtn=document.getElementById("es");
+const enBtn=document.getElementById("en");
+const texts=document.querySelectorAll("[data-es]");
+
+function setLang(lang){
+  texts.forEach(el=>el.textContent=el.dataset[lang]);
+  esBtn.classList.toggle("active",lang==="es");
+  enBtn.classList.toggle("active",lang==="en");
+  localStorage.setItem("lang",lang);
+}
+esBtn.onclick=()=>setLang("es");
+enBtn.onclick=()=>setLang("en");
+setLang(localStorage.getItem("lang")||"es");
+
+/* ===== SCROLL ANIMATION ===== */
+const sections=document.querySelectorAll(".section");
+const obs=new IntersectionObserver(e=>{
+  e.forEach(s=>s.isIntersecting&&s.target.classList.add("show"));
+},{threshold:.2});
+sections.forEach(s=>obs.observe(s));
+</script>
 
 </body>
 </html>
