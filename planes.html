@@ -3,66 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenSite | Pricing</title>
-
-<!-- PREMIUM FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>ZenSite | Planes</title>
 
 <style>
-:root{
-  --accent:#00cfff;
-  --glass:rgba(255,255,255,.06);
-  --border:rgba(255,255,255,.12);
-}
-
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
-  overflow-x:hidden;
 }
 
-/* BACKGROUND */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 15% 20%,rgba(0,200,255,.18),transparent 45%),
-    radial-gradient(circle at 85% 70%,rgba(140,90,255,.18),transparent 45%),
-    #05070c;
-  z-index:-2;
-}
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  backdrop-filter:blur(90px);
-  z-index:-1;
-}
-
-/* HEADER */
+/* ===== HEADER ===== */
 header{
   position:fixed;
   top:0;
   width:100%;
-  height:72px;
+  height:64px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding:0 26px;
-  background:rgba(255,255,255,.04);
+  padding:0 16px;
+  background:rgba(255,255,255,.05);
   backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid rgba(255,255,255,.08);
   z-index:1000;
 }
 
+/* LOGO */
+.logo{
+  font-weight:800;
+  font-size:18px;
+  margin-right:20px;
+}
+
+/* MENU */
 nav{
   display:flex;
-  gap:22px;
+  gap:18px;
 }
+
 nav a{
   color:#fff;
   text-decoration:none;
@@ -70,140 +48,100 @@ nav a{
   opacity:.85;
 }
 
-/* LANG */
+nav a:hover{opacity:1}
+
+/* LANG SWITCH */
 .lang{
+  margin-left:auto;
   display:flex;
-  gap:12px;
-  font-weight:700;
+  gap:8px;
 }
-.lang span{
+
+.lang button{
+  padding:6px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  font-weight:600;
   cursor:pointer;
-  opacity:.4;
-}
-.lang .active{
-  opacity:1;
-  color:var(--accent);
 }
 
-/* MAIN */
+.lang button.active{
+  background:#00cfff;
+  color:#000;
+}
+
+/* ===== CONTENT ===== */
 main{
-  padding:120px 0 90px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  margin-top:90px;
+  padding:40px 16px;
 }
 
-/* TITLE */
 h1{
-  font-size:44px;
-  font-weight:800;
-  margin-bottom:14px;
   text-align:center;
+  font-size:36px;
+  margin-bottom:10px;
 }
+
 .subtitle{
-  opacity:.7;
-  margin-bottom:60px;
   text-align:center;
-  max-width:520px;
+  opacity:.8;
+  margin-bottom:50px;
 }
 
 /* PLANS */
 .plans{
-  width:92%;
-  max-width:1050px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:28px;
+  gap:24px;
+  max-width:1000px;
+  margin:auto;
 }
 
 .plan{
-  background:var(--glass);
-  border:1px solid var(--border);
-  border-radius:30px;
-  padding:36px 30px;
-  text-align:center;
-  backdrop-filter:blur(22px);
-  box-shadow:0 40px 120px rgba(0,0,0,.85);
-  transition:.4s ease;
-}
-.plan:hover{
-  transform:translateY(-8px) scale(1.02);
-  border-color:rgba(0,200,255,.4);
+  background:rgba(255,255,255,.06);
+  border-radius:26px;
+  padding:36px 28px;
+  box-shadow:0 30px 100px rgba(0,0,0,.9);
 }
 
 .plan h2{
-  font-size:22px;
-  font-weight:700;
+  font-size:24px;
+  margin-bottom:10px;
 }
 
 .price{
-  font-size:54px;
+  font-size:48px;
   font-weight:800;
-  margin:12px 0;
-}
-.price span{
-  font-size:15px;
-  opacity:.6;
-  margin-left:6px;
+  margin:10px 0;
 }
 
-.desc{
-  opacity:.75;
-  margin-bottom:26px;
-  font-size:15px;
-}
-
-ul{
+.plan ul{
   list-style:none;
-  text-align:left;
-  margin-bottom:30px;
-}
-ul li{
-  margin-bottom:11px;
-  font-size:15px;
-}
-ul li::before{
-  content:"✓ ";
-  color:var(--accent);
-  font-weight:800;
+  margin:20px 0;
 }
 
-/* BUTTON */
-button{
+.plan li{
+  margin-bottom:10px;
+  opacity:.9;
+}
+
+.plan button{
   width:100%;
-  padding:15px;
-  border-radius:999px;
+  padding:16px;
   border:none;
-  background:linear-gradient(135deg,#00cfff,#3aa0ff);
-  color:#000;
+  border-radius:20px;
+  background:#00cfff;
   font-weight:800;
   font-size:16px;
   cursor:pointer;
-  transition:.3s ease;
-}
-button:hover{filter:brightness(1.1)}
-
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  width:62px;
-  height:62px;
-  background:#25D366;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  color:#fff;
-  text-decoration:none;
-  z-index:1000;
 }
 
-/* MOBILE */
-@media(max-width:600px){
-  h1{font-size:32px}
+/* DESKTOP */
+@media(min-width:900px){
+  .plans{
+    grid-template-columns:repeat(3,1fr);
+  }
 }
 </style>
 </head>
@@ -211,109 +149,86 @@ button:hover{filter:brightness(1.1)}
 <body>
 
 <header>
-  <strong>ZenSite</strong>
+  <div class="logo">ZenSite</div>
+
   <nav>
     <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
     <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
-    <a href="planes.html" data-es="Planes" data-en="Pricing">Planes</a>
+    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
+
   <div class="lang">
-    <span id="es">ES</span>
-    <span id="en">EN</span>
+    <button id="es" class="active">ES</button>
+    <button id="en">EN</button>
   </div>
 </header>
 
 <main>
-  <h1 data-es="Planes y precios" data-en="Pricing Plans">Planes y precios</h1>
+  <h1 data-es="Planes y precios" data-en="Plans & Pricing">Planes y precios</h1>
   <p class="subtitle"
-     data-es="Pagas una sola vez. Diseño premium. La web es 100% tuya."
-     data-en="One-time payment. Premium design. You own the website.">
-     Pagas una sola vez. Diseño premium. La web es 100% tuya.
+     data-es="Pagas una sola vez. La web es 100% tuya."
+     data-en="One-time payment. The website is 100% yours.">
+     Pagas una sola vez. La web es 100% tuya.
   </p>
 
   <div class="plans">
-
     <div class="plan">
       <h2>Plan Z</h2>
-      <div class="price">$190 <span>USD</span></div>
-      <p class="desc" data-es="Landing profesional enfocada en convertir."
-         data-en="Professional landing page focused on conversion.">
-         Landing profesional enfocada en convertir.
-      </p>
+      <div class="price">$190</div>
       <ul>
-        <li data-es="Diseño limpio y moderno" data-en="Clean modern design">Diseño limpio y moderno</li>
-        <li data-es="Optimizada para móvil" data-en="Mobile optimized">Optimizada para móvil</li>
-        <li data-es="Botón de contacto directo" data-en="Direct contact button">Botón de contacto directo</li>
+        <li>✔ Landing profesional</li>
+        <li>✔ Optimizada para móvil</li>
+        <li>✔ Botón de contacto</li>
       </ul>
-      <button onclick="contactar('Plan Z','$190 USD')"
-        data-es="Contactar" data-en="Contact">Contactar</button>
+      <button onclick="contact('Plan Z - $190')">Contactar</button>
     </div>
 
     <div class="plan">
       <h2>Plan Z+</h2>
-      <div class="price">$380 <span>USD</span></div>
-      <p class="desc" data-es="Web multi-sección con imagen premium."
-         data-en="Multi-section website with premium image.">
-         Web multi-sección con imagen premium.
-      </p>
+      <div class="price">$380</div>
       <ul>
-        <li data-es="Diseño premium tipo app" data-en="App-style premium design">Diseño premium tipo app</li>
-        <li data-es="SEO base incluido" data-en="SEO included">SEO base incluido</li>
-        <li data-es="Carga ultra rápida" data-en="Ultra fast load">Carga ultra rápida</li>
+        <li>✔ Web multi-sección</li>
+        <li>✔ Diseño premium</li>
+        <li>✔ SEO base</li>
       </ul>
-      <button onclick="contactar('Plan Z+','$380 USD')"
-        data-es="Contactar" data-en="Contact">Contactar</button>
+      <button onclick="contact('Plan Z+ - $380')">Contactar</button>
     </div>
 
     <div class="plan">
       <h2>Z Premium</h2>
-      <div class="price">$620 <span>USD</span></div>
-      <p class="desc" data-es="Diseño tipo app para marcas que quieren destacar."
-         data-en="App-style design for brands that want to stand out.">
-         Diseño tipo app para marcas que quieren destacar.
-      </p>
+      <div class="price">$620</div>
       <ul>
-        <li data-es="Diseño totalmente a medida" data-en="Fully custom design">Diseño totalmente a medida</li>
-        <li data-es="Efectos avanzados iOS" data-en="Advanced iOS effects">Efectos avanzados iOS</li>
-        <li data-es="Soporte prioritario" data-en="Priority support">Soporte prioritario</li>
+        <li>✔ Diseño tipo app</li>
+        <li>✔ Efectos avanzados</li>
+        <li>✔ Soporte prioritario</li>
       </ul>
-      <button onclick="contactar('Z Premium','$620 USD')"
-        data-es="Contactar" data-en="Contact">Contactar</button>
+      <button onclick="contact('Z Premium - $620')">Contactar</button>
     </div>
-
   </div>
 </main>
 
-<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
-
 <script>
-/* LANGUAGE SYSTEM (REMEMBERS) */
 const esBtn=document.getElementById("es");
 const enBtn=document.getElementById("en");
+const texts=document.querySelectorAll("[data-es]");
 
 function setLang(lang){
-  document.querySelectorAll("[data-es]").forEach(el=>{
-    el.textContent=el.getAttribute("data-"+lang);
-  });
+  texts.forEach(el=>el.textContent=el.dataset[lang]);
   esBtn.classList.toggle("active",lang==="es");
   enBtn.classList.toggle("active",lang==="en");
   localStorage.setItem("lang",lang);
 }
 
-const savedLang=localStorage.getItem("lang")||"es";
-setLang(savedLang);
-
 esBtn.onclick=()=>setLang("es");
 enBtn.onclick=()=>setLang("en");
+setLang(localStorage.getItem("lang")||"es");
 
-/* WHATSAPP MESSAGE */
-function contactar(plan,precio){
-  const msg=`Hola 👋
-Estoy interesado en el *${plan}*.
-Precio: ${precio}.
-Quisiera más información.`;
-  window.open("https://wa.me/15027942412?text="+encodeURIComponent(msg),"_blank");
+function contact(plan){
+  window.open(
+    `https://wa.me/15027942412?text=Hola,%20quiero%20el%20${encodeURIComponent(plan)}`,
+    "_blank"
+  );
 }
 </script>
 
