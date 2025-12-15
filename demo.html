@@ -3,25 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demos | ZenSite</title>
+<title>ZenSite | Demos</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* ===== BACKGROUND ===== */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(120,90,255,.2),transparent 45%),
+    radial-gradient(circle at 20% 20%,rgba(0,200,255,.15),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(140,90,255,.18),transparent 45%),
     #05070c;
   z-index:-2;
 }
@@ -33,20 +35,21 @@ body::after{
   z-index:-1;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
   position:fixed;
   top:0;
-  left:0;
   width:100%;
   z-index:1000;
   display:flex;
+  justify-content:space-between;
   align-items:center;
   padding:16px 26px;
   background:rgba(255,255,255,.04);
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
+
 .nav{
   display:flex;
   gap:28px;
@@ -57,19 +60,22 @@ header{
   font-weight:600;
   opacity:.85;
 }
+.nav a:hover{opacity:1}
+
+/* ===== LANG ===== */
 .lang{
-  margin-left:auto;
   display:flex;
-  gap:8px;
+  gap:6px;
 }
 .lang button{
   padding:4px 10px;
-  font-size:10px;
+  font-size:11px;
   border-radius:14px;
   border:1px solid rgba(255,255,255,.25);
   background:transparent;
   color:#fff;
-  font-weight:700;
+  font-weight:600;
+  cursor:pointer;
 }
 .lang .active{
   background:#00cfff;
@@ -77,79 +83,103 @@ header{
   border-color:#00cfff;
 }
 
-/* MAIN */
+/* ===== MAIN ===== */
 main{
-  margin-top:130px;
-  padding:40px 20px 120px;
-  max-width:1100px;
-  margin:auto;
+  margin-top:120px;
+  padding:40px 20px 100px;
+  max-width:1200px;
+  margin-left:auto;
+  margin-right:auto;
   text-align:center;
 }
 
-/* HERO */
+/* ===== TITLE ===== */
 h1{
-  font-size:clamp(42px,6vw,72px);
-  margin-bottom:16px;
-  font-weight:900;
+  font-size:clamp(38px,6vw,64px);
+  margin-bottom:18px;
 }
-.hero-text{
-  font-size:20px;
-  opacity:.85;
-  max-width:640px;
+.subtitle{
+  max-width:760px;
   margin:0 auto 60px;
+  font-size:18px;
+  opacity:.9;
 }
 
-/* DEMOS */
-.demos{
-  display:grid;
-  gap:50px;
-}
-.demo-card{
-  background:rgba(255,255,255,.05);
-  border-radius:28px;
-  padding:24px;
-  box-shadow:0 40px 120px rgba(0,0,0,.8);
-}
-.demo-card img{
+/* ===== SLIDER ===== */
+.slider{
+  position:relative;
   width:100%;
-  border-radius:20px;
-  margin-bottom:18px;
-}
-.demo-card h3{
-  font-size:26px;
-  margin-bottom:6px;
-}
-.demo-card p{
-  opacity:.8;
-  margin-bottom:18px;
-}
-.demo-card a{
-  display:inline-block;
-  padding:12px 26px;
-  border-radius:22px;
-  background:#00cfff;
-  color:#000;
-  font-weight:700;
-  text-decoration:none;
+  max-width:980px;
+  margin:auto;
+  overflow:hidden;
+  border-radius:28px;
+  background:rgba(255,255,255,.05);
+  box-shadow:0 40px 120px rgba(0,0,0,.9);
 }
 
-/* CTA */
-.cta{
-  margin-top:90px;
+.slides{
+  display:flex;
+  transition:transform .6s cubic-bezier(.16,1,.3,1);
 }
-.cta h2{
-  font-size:34px;
-  margin-bottom:14px;
+
+.slide{
+  min-width:100%;
+  padding:26px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.cta a{
-  display:inline-block;
-  margin-top:20px;
-  padding:14px 34px;
-  border-radius:26px;
-  background:#00cfff;
-  color:#000;
-  font-weight:800;
+
+.slide img{
+  width:100%;
+  border-radius:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.85);
+}
+
+/* ===== ARROWS ===== */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  font-size:26px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  backdrop-filter:blur(10px);
+}
+.arrow:hover{background:rgba(255,255,255,.2)}
+.arrow.left{left:18px}
+.arrow.right{right:18px}
+
+/* ===== WHATSAPP ===== */
+.whatsapp{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:60px;
+  height:60px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  color:#fff;
   text-decoration:none;
+  z-index:2000;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .arrow{width:44px;height:44px;font-size:22px}
+  .slide{padding:16px}
 }
 </style>
 </head>
@@ -158,51 +188,85 @@ h1{
 
 <header>
   <nav class="nav">
-    <a href="index.html">Inicio</a>
-    <a href="demo.html">Demos</a>
-    <a href="planes.html">Planes</a>
-    <a href="nosotros.html">Nosotros</a>
+    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
+    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
+    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
+
   <div class="lang">
-    <button class="active">ES</button>
-    <button>EN</button>
+    <button id="esBtn" class="active">ES</button>
+    <button id="enBtn">EN</button>
   </div>
 </header>
 
 <main>
-  <h1>Demos reales</h1>
-  <div class="hero-text">
-    Así se ve una web pensada para vender, no para decorar.
+  <h1 data-es="Demostraciones reales" data-en="Real demonstrations">
+    Demostraciones reales
+  </h1>
+
+  <div class="subtitle"
+       data-es="Ejemplos del nivel de diseño y calidad que entregamos en cada proyecto."
+       data-en="Examples of the design level and quality we deliver in every project.">
+    Ejemplos del nivel de diseño y calidad que entregamos en cada proyecto.
   </div>
 
-  <section class="demos">
-    <div class="demo-card">
-      <img src="demo1.jpg" alt="Demo corporativo">
-      <h3>Web corporativa</h3>
-      <p>Presencia profesional clara, moderna y confiable.</p>
-      <a href="#">Ver demo</a>
+  <div class="slider">
+    <button class="arrow left" onclick="prev()">‹</button>
+
+    <div class="slides" id="slides">
+      <div class="slide"><img src="demo1.jpg" alt=""></div>
+      <div class="slide"><img src="demo2.jpg" alt=""></div>
+      <div class="slide"><img src="demo3.jpg" alt=""></div>
+      <div class="slide"><img src="demo4.jpg" alt=""></div>
+      <div class="slide"><img src="demo5.jpg" alt=""></div>
     </div>
 
-    <div class="demo-card">
-      <img src="demo2.jpg" alt="Landing">
-      <h3>Landing de conversión</h3>
-      <p>Diseñada para captar clientes desde el primer vistazo.</p>
-      <a href="#">Ver demo</a>
-    </div>
-
-    <div class="demo-card">
-      <img src="demo3.jpg" alt="App">
-      <h3>Sistema / App web</h3>
-      <p>Experiencia tipo plataforma, no plantilla.</p>
-      <a href="#">Ver demo</a>
-    </div>
-  </section>
-
-  <div class="cta">
-    <h2>¿Quieres algo así para tu negocio?</h2>
-    <a href="planes.html">Ver planes</a>
+    <button class="arrow right" onclick="next()">›</button>
   </div>
 </main>
+
+<a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
+
+<script>
+/* ===== SLIDER ===== */
+let index=0;
+const slides=document.getElementById("slides");
+const total=5;
+
+function update(){
+  slides.style.transform=translateX(-${index*100}%);
+}
+function next(){
+  index=(index+1)%total;
+  update();
+}
+function prev(){
+  index=(index-1+total)%total;
+  update();
+}
+
+/* ===== TRANSLATION ===== */
+const esBtn=document.getElementById("esBtn");
+const enBtn=document.getElementById("enBtn");
+
+function setLang(lang){
+  document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
+    el.textContent=el.dataset[lang];
+  });
+}
+
+esBtn.onclick=()=>{
+  esBtn.classList.add("active");
+  enBtn.classList.remove("active");
+  setLang("es");
+};
+enBtn.onclick=()=>{
+  enBtn.classList.add("active");
+  esBtn.classList.remove("active");
+  setLang("en");
+};
+</script>
 
 </body>
 </html>
