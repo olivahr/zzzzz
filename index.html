@@ -5,12 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZenSite</title>
 
+<!-- PREMIUM FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background:#05070c;
   color:#fff;
   overflow-x:hidden;
@@ -50,7 +55,7 @@ header{
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* MENU LEFT */
+/* MENU */
 .nav{
   display:flex;
   gap:28px;
@@ -62,7 +67,7 @@ header{
   opacity:.85;
 }
 
-/* LANG RIGHT */
+/* LANG */
 .lang{
   position:fixed;
   top:16px;
@@ -89,56 +94,67 @@ header{
 
 /* MAIN */
 main{
-  margin-top:140px;
+  margin-top:150px;
   padding:40px 20px 200px;
   max-width:1100px;
-  margin-left:auto;
-  margin-right:auto;
+  margin:auto;
   text-align:center;
 }
 
-/* TITLE */
+/* TITLE — MÁS AGRESIVO */
 h1{
-  font-size:clamp(42px,6vw,74px);
-  margin-bottom:26px;
-  margin-top:20px;
+  font-family:'Space Grotesk', sans-serif;
+  font-size:clamp(50px,7vw,92px);
+  font-weight:800;
+  letter-spacing:-1.2px;
+  margin-bottom:18px;
 }
 h1::after{
   content:"";
   display:block;
-  margin:14px auto 0;
-  width:160px;
+  margin:16px auto 0;
+  width:180px;
   height:6px;
   background:#00cfff;
-  filter:blur(18px);
+  filter:blur(20px);
   animation:neon 3s ease-in-out infinite;
 }
 @keyframes neon{
-  0%,100%{opacity:.6}
+  0%,100%{opacity:.55}
   50%{opacity:1}
 }
 
-/* TEXT */
-p{
-  font-size:clamp(17px,2.5vw,21px);
+/* COPY */
+.copy{
+  max-width:920px;
+  margin:0 auto 52px;
+}
+.copy .lead{
+  font-size:clamp(20px,2.8vw,26px);
+  font-weight:600;
+  line-height:1.5;
+  letter-spacing:-0.3px;
+  margin-bottom:14px;
+}
+.copy .sub{
+  font-size:clamp(17px,2.3vw,21px);
+  font-weight:500;
+  opacity:.9;
   line-height:1.65;
-  opacity:.92;
-  max-width:880px;
-  margin:0 auto 50px;
 }
 
 /* PREVIEW */
 .preview{
   margin-top:40px;
-  border-radius:30px;
+  border-radius:34px;
   background:rgba(255,255,255,.05);
-  padding:20px;
-  box-shadow:0 50px 140px rgba(0,0,0,.9);
+  padding:22px;
+  box-shadow:0 60px 160px rgba(0,0,0,.9);
   animation:floatLaptop 6s ease-in-out infinite;
 }
 .preview img{
   width:100%;
-  border-radius:22px;
+  border-radius:26px;
 }
 @keyframes floatLaptop{
   0%,100%{transform:translateY(0)}
@@ -150,7 +166,7 @@ p{
   margin:60px auto 0;
   display:inline-block;
   padding:10px 18px;
-  border-radius:20px;
+  border-radius:22px;
   background:rgba(0,200,255,.18);
   border:1px solid rgba(0,200,255,.35);
   font-weight:600;
@@ -171,8 +187,6 @@ footer{
   font-size:13px;
   opacity:.6;
 }
-
-/* PREMIUM TAP SOUND (NO MP3) */
 </style>
 </head>
 
@@ -195,17 +209,25 @@ footer{
 <main>
   <h1>ZenSite</h1>
 
-  <p id="desc"
-     data-es="Creamos experiencias digitales de alto nivel que transmiten confianza, elevan tu marca y convierten visitas en clientes reales. ¿Quieres llevar tu negocio al siguiente nivel? Llegaste al lugar correcto."
-     data-en="We create high-level digital experiences that build trust, elevate your brand, and turn visits into real clients. Want to take your business to the next level? You’re in the right place.">
-    Creamos experiencias digitales de alto nivel que transmiten confianza, elevan tu marca y convierten visitas en clientes reales. ¿Quieres llevar tu negocio al siguiente nivel? Llegaste al lugar correcto.
-  </p>
+  <div class="copy">
+    <div class="lead"
+      data-es="¿Quieres llevar tu negocio al siguiente nivel?"
+      data-en="Want to take your business to the next level?">
+      ¿Quieres llevar tu negocio al siguiente nivel?
+    </div>
+
+    <div class="sub"
+      data-es="Creamos experiencias digitales de alto nivel que transmiten confianza, elevan tu marca y convierten visitas en clientes reales. Llegaste al lugar correcto."
+      data-en="We create high-level digital experiences that build trust, elevate your brand, and turn visits into real clients. You’re in the right place.">
+      Creamos experiencias digitales de alto nivel que transmiten confianza, elevan tu marca y convierten visitas en clientes reales. Llegaste al lugar correcto.
+    </div>
+  </div>
 
   <div class="preview">
     <img src="background.jpg" alt="ZenSite preview">
   </div>
 
-  <div class="offer" id="offer"
+  <div class="offer"
        data-es="🎁 15% OFF · Diciembre"
        data-en="🎁 15% OFF · December">
     🎁 15% OFF · Diciembre
@@ -217,46 +239,33 @@ footer{
 </footer>
 
 <script>
-/* PREMIUM TAP SOUND (APPLE-LIKE) */
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+/* PREMIUM TAP SOUND */
+const ctx=new (window.AudioContext||window.webkitAudioContext)();
 function playTap(){
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  osc.type = "sine";
-  osc.frequency.value = 880;
-  gain.gain.value = 0.05;
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-  osc.start();
-  osc.stop(audioCtx.currentTime + 0.04);
+  const o=ctx.createOscillator();
+  const g=ctx.createGain();
+  o.type="sine";
+  o.frequency.value=880;
+  g.gain.value=0.04;
+  o.connect(g);
+  g.connect(ctx.destination);
+  o.start();
+  o.stop(ctx.currentTime+0.04);
 }
-
-/* CLICK SOUND */
-document.querySelectorAll("a, button").forEach(el=>{
-  el.addEventListener("click", playTap);
+document.querySelectorAll("a,button").forEach(el=>{
+  el.addEventListener("click",playTap);
 });
 
 /* TRANSLATION */
 const esBtn=document.getElementById("esBtn");
 const enBtn=document.getElementById("enBtn");
-
 function setLang(lang){
   document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
-    el.textContent = el.dataset[lang];
+    el.textContent=el.dataset[lang];
   });
 }
-
-esBtn.onclick=()=>{
-  esBtn.classList.add("active");
-  enBtn.classList.remove("active");
-  setLang("es");
-};
-
-enBtn.onclick=()=>{
-  enBtn.classList.add("active");
-  esBtn.classList.remove("active");
-  setLang("en");
-};
+esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es")};
+enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en")};
 </script>
 
 </body>
