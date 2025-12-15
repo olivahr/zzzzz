@@ -7,6 +7,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
@@ -15,7 +16,7 @@ body{
   overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* ===== BACKGROUND ===== */
 body::before{
   content:"";
   position:fixed;
@@ -34,7 +35,7 @@ body::after{
   z-index:-1;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
   position:fixed;
   top:0;
@@ -42,34 +43,42 @@ header{
   z-index:1000;
   display:flex;
   align-items:center;
-  padding:16px 24px;
+  padding:16px 26px;
   background:rgba(255,255,255,.04);
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 
+/* MENU */
 .nav{
   display:flex;
-  gap:24px;
+  gap:28px;
 }
 .nav a{
   color:#fff;
   text-decoration:none;
   font-weight:600;
   opacity:.85;
+  transition:.25s;
+}
+.nav a:hover{
+  opacity:1;
+  transform:translateY(-2px);
 }
 
+/* LANG */
 .lang{
   margin-left:auto;
   display:flex;
-  gap:10px;
+  gap:6px;
 }
 .lang button{
-  padding:6px 14px;
-  border-radius:20px;
+  padding:4px 10px;
+  border-radius:14px;
   border:1px solid rgba(255,255,255,.25);
   background:transparent;
   color:#fff;
+  font-size:12px;
   font-weight:600;
   cursor:pointer;
 }
@@ -79,24 +88,23 @@ header{
   border-color:#00cfff;
 }
 
-/* MAIN */
+/* ===== MAIN ===== */
 main{
   margin-top:120px;
-  padding:40px 20px 120px;
+  padding:40px 20px 140px;
   max-width:1100px;
   margin-inline:auto;
   text-align:center;
-  position:relative;
 }
 
 /* TITLE */
 h1{
-  font-size:clamp(40px,6vw,72px);
-  margin-bottom:24px;
+  font-size:clamp(42px,6vw,74px);
+  margin-bottom:28px;
   position:relative;
 }
 
-/* NEON UNDER TITLE */
+/* NEON */
 h1::after{
   content:"";
   position:absolute;
@@ -107,22 +115,20 @@ h1::after{
   height:6px;
   background:#00cfff;
   filter:blur(18px);
-  opacity:.9;
   animation:neon 3s ease-in-out infinite;
 }
-
 @keyframes neon{
   0%,100%{opacity:.6}
   50%{opacity:1}
 }
 
+/* TEXT */
 p{
   font-size:clamp(17px,2.5vw,21px);
-  line-height:1.6;
+  line-height:1.65;
   opacity:.92;
   max-width:860px;
-  margin:0 auto 40px;
-  letter-spacing:.2px;
+  margin:0 auto 44px;
 }
 
 /* PREVIEW */
@@ -133,19 +139,18 @@ p{
   padding:20px;
   box-shadow:0 50px 140px rgba(0,0,0,.9);
   animation:floatLaptop 6s ease-in-out infinite;
+  transition:transform .15s ease;
 }
 .preview img{
   width:100%;
   border-radius:22px;
-  display:block;
 }
-
 @keyframes floatLaptop{
   0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
+  50%{transform:translateY(-14px)}
 }
 
-/* OFFER BOTTOM LEFT */
+/* OFFER */
 .offer{
   position:fixed;
   bottom:26px;
@@ -156,14 +161,9 @@ p{
   border:1px solid rgba(0,200,255,.35);
   font-weight:600;
   font-size:14px;
-  display:flex;
-  align-items:center;
-  gap:8px;
   backdrop-filter:blur(14px);
   animation:floatOffer 4s ease-in-out infinite;
-  z-index:999;
 }
-
 @keyframes floatOffer{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-6px)}
@@ -184,7 +184,6 @@ p{
   font-size:30px;
   color:#fff;
   text-decoration:none;
-  z-index:999;
 }
 </style>
 </head>
@@ -206,18 +205,17 @@ p{
 </header>
 
 <main>
+  <h1>ZenSite</h1>
 
-  <h1 id="title">ZenSite</h1>
-
-  <p id="desc">
-    Diseñamos experiencias web profesionales enfocadas en generar confianza,
-    posicionar tu marca y convertir visitas en clientes reales.
+  <p id="desc"
+     data-es="Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales."
+     data-en="We design professional web experiences focused on building trust, positioning your brand, and turning visits into real clients.">
+    Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales.
   </p>
 
-  <div class="preview">
+  <div class="preview" id="preview">
     <img src="background.jpg" alt="ZenSite preview">
   </div>
-
 </main>
 
 <div class="offer" id="offer">🎁 15% OFF · Diciembre</div>
@@ -225,23 +223,45 @@ p{
 <a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
 
 <script>
+/* ===== AUDIO ===== */
+const tap = new Audio("tap.mp3"); tap.volume = 0.25;
+const cta = new Audio("cta.mp3"); cta.volume = 0.35;
+const hover = new Audio("hover.mp3"); hover.volume = 0.15;
+
+function play(sound){
+  sound.currentTime=0;
+  sound.play().catch(()=>{});
+  if(navigator.vibrate) navigator.vibrate(10);
+}
+
+/* MENU & BUTTONS */
+document.querySelectorAll("a, button").forEach(el=>{
+  el.addEventListener("click",()=>play(el.classList.contains("cta")?cta:tap));
+  el.addEventListener("mouseenter",()=>play(hover));
+});
+
+/* LANG */
 const esBtn=document.getElementById("esBtn");
 const enBtn=document.getElementById("enBtn");
 const offer=document.getElementById("offer");
 
-enBtn.onclick=()=>{
-  esBtn.classList.remove("active");
-  enBtn.classList.add("active");
-  document.querySelectorAll("[data-en]").forEach(el=>el.textContent=el.dataset.en);
-  offer.textContent="🎁 15% OFF · December";
-};
+function setLang(lang){
+  document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
+    el.textContent = el.dataset[lang];
+  });
+  offer.textContent = lang==="en" ? "🎁 15% OFF · December" : "🎁 15% OFF · Diciembre";
+}
 
-esBtn.onclick=()=>{
-  enBtn.classList.remove("active");
-  esBtn.classList.add("active");
-  document.querySelectorAll("[data-es]").forEach(el=>el.textContent=el.dataset.es);
-  offer.textContent="🎁 15% OFF · Diciembre";
-};
+esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");};
+enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");};
+
+/* PARALLAX */
+const preview=document.getElementById("preview");
+document.addEventListener("mousemove",e=>{
+  const x=(window.innerWidth/2-e.clientX)/50;
+  const y=(window.innerHeight/2-e.clientY)/50;
+  preview.style.transform=translate(${x}px,${y}px);
+});
 </script>
 
 </body>
