@@ -9,7 +9,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
   overflow-x:hidden;
@@ -21,8 +21,8 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%,rgba(0,200,255,.15),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(120,90,255,.18),transparent 45%),
+    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(120,90,255,.2),transparent 45%),
     #05070c;
   z-index:-2;
 }
@@ -41,7 +41,6 @@ header{
   width:100%;
   z-index:1000;
   display:flex;
-  justify-content:space-between;
   align-items:center;
   padding:16px 24px;
   background:rgba(255,255,255,.04);
@@ -49,11 +48,11 @@ header{
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.nav-left{
+.nav{
   display:flex;
-  gap:22px;
+  gap:24px;
 }
-.nav-left a{
+.nav a{
   color:#fff;
   text-decoration:none;
   font-weight:600;
@@ -61,6 +60,7 @@ header{
 }
 
 .lang{
+  margin-left:auto;
   display:flex;
   gap:10px;
 }
@@ -81,33 +81,75 @@ header{
 
 /* MAIN */
 main{
-  margin-top:110px;
-  padding:40px 20px 100px;
+  margin-top:120px;
+  padding:40px 20px 120px;
   max-width:1100px;
   margin-inline:auto;
   text-align:center;
+  position:relative;
 }
 
+/* TITLE */
 h1{
-  font-size:clamp(38px,6vw,68px);
-  margin-bottom:20px;
+  font-size:clamp(40px,6vw,72px);
+  margin-bottom:24px;
+  position:relative;
+}
+
+/* NEON UNDER TITLE */
+h1::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-14px;
+  transform:translateX(-50%);
+  width:160px;
+  height:6px;
+  background:#00cfff;
+  filter:blur(18px);
+  opacity:.9;
+  animation:neon 3s ease-in-out infinite;
+}
+
+@keyframes neon{
+  0%,100%{opacity:.6}
+  50%{opacity:1}
 }
 
 p{
-  font-size:clamp(17px,2.5vw,20px);
+  font-size:clamp(17px,2.5vw,21px);
   line-height:1.6;
-  opacity:.9;
-  max-width:820px;
-  margin:0 auto 30px;
+  opacity:.92;
+  max-width:860px;
+  margin:0 auto 40px;
+  letter-spacing:.2px;
 }
 
-/* FLOATING OFFER */
+/* PREVIEW */
+.preview{
+  margin-top:40px;
+  border-radius:30px;
+  background:rgba(255,255,255,.05);
+  padding:20px;
+  box-shadow:0 50px 140px rgba(0,0,0,.9);
+  animation:floatLaptop 6s ease-in-out infinite;
+}
+.preview img{
+  width:100%;
+  border-radius:22px;
+  display:block;
+}
+
+@keyframes floatLaptop{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+/* OFFER BOTTOM LEFT */
 .offer{
-  position:absolute;
-  top:55%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  margin-left:220px;
+  position:fixed;
+  bottom:26px;
+  left:26px;
   padding:10px 16px;
   border-radius:20px;
   background:rgba(0,200,255,.18);
@@ -117,42 +159,21 @@ p{
   display:flex;
   align-items:center;
   gap:8px;
-  backdrop-filter:blur(12px);
-  animation:float 4s ease-in-out infinite;
+  backdrop-filter:blur(14px);
+  animation:floatOffer 4s ease-in-out infinite;
+  z-index:999;
 }
 
-@keyframes float{
-  0%{transform:translate(-50%, -50%) translateY(0)}
-  50%{transform:translate(-50%, -50%) translateY(-8px)}
-  100%{transform:translate(-50%, -50%) translateY(0)}
-}
-
-/* PREVIEW */
-.preview{
-  margin-top:60px;
-  border-radius:28px;
-  background:rgba(255,255,255,.05);
-  padding:20px;
-  box-shadow:0 40px 120px rgba(0,0,0,.9);
-}
-.preview img{
-  width:100%;
-  border-radius:20px;
-  display:block;
-}
-
-/* EXTRA */
-.extra{
-  margin-top:40px;
-  font-size:16px;
-  opacity:.75;
+@keyframes floatOffer{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
 }
 
 /* WHATSAPP */
 .whatsapp{
   position:fixed;
-  bottom:22px;
-  right:22px;
+  bottom:26px;
+  right:26px;
   width:62px;
   height:62px;
   background:#25D366;
@@ -171,12 +192,12 @@ p{
 <body>
 
 <header>
-  <div class="nav-left">
+  <nav class="nav">
     <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
     <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
     <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
-  </div>
+  </nav>
 
   <div class="lang">
     <button id="esBtn" class="active">ES</button>
@@ -193,36 +214,29 @@ p{
     posicionar tu marca y convertir visitas en clientes reales.
   </p>
 
-  <!-- OFFER FLOAT -->
-  <div class="offer" id="offer">
-    🎁 15% OFF · Diciembre
-  </div>
-
   <div class="preview">
     <img src="background.jpg" alt="ZenSite preview">
   </div>
 
-  <div class="extra" id="extra">
-    Webs creadas a medida, sin plantillas genéricas ni soluciones rápidas.
-  </div>
-
 </main>
+
+<div class="offer" id="offer">🎁 15% OFF · Diciembre</div>
 
 <a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
 
 <script>
-const esBtn = document.getElementById("esBtn");
-const enBtn = document.getElementById("enBtn");
-const offer = document.getElementById("offer");
+const esBtn=document.getElementById("esBtn");
+const enBtn=document.getElementById("enBtn");
+const offer=document.getElementById("offer");
 
-enBtn.onclick = () => {
+enBtn.onclick=()=>{
   esBtn.classList.remove("active");
   enBtn.classList.add("active");
   document.querySelectorAll("[data-en]").forEach(el=>el.textContent=el.dataset.en);
   offer.textContent="🎁 15% OFF · December";
 };
 
-esBtn.onclick = () => {
+esBtn.onclick=()=>{
   enBtn.classList.remove("active");
   esBtn.classList.add("active");
   document.querySelectorAll("[data-es]").forEach(el=>el.textContent=el.dataset.es);
