@@ -1,9 +1,19 @@
-<section class="zensite-plans" aria-label="ZenSite Plans">
+<!-- ===== FIX GLOBAL (quita blanco y asegura fondo oscuro) ===== -->
+<style>
+html, body{
+  margin:0;
+  padding:0;
+  background:#050505;
+  color:#fff;
+}
+</style>
+
+<section class="zensite-plans" aria-label="Planes ZenSite">
 
   <!-- ES / EN -->
-  <div class="plans-lang">
-    <span class="active" data-lang="en">EN</span>
-    <span data-lang="es">ES</span>
+  <div class="plans-lang" aria-label="Language toggle">
+    <span class="active" data-lang="en" role="button" tabindex="0">EN</span>
+    <span data-lang="es" role="button" tabindex="0">ES</span>
   </div>
 
   <!-- HEADER -->
@@ -26,45 +36,60 @@
     <article class="plan plan-z" data-plan="ZenSite Z">
       <span class="plan-level">Z</span>
       <h3>ZenSite Z</h3>
-      <p class="plan-description">
+
+      <p class="plan-description"
+         data-es="Base sólida para negocios que necesitan verse profesionales desde el primer día."
+         data-en="Solid foundation for businesses that need to look professional from day one.">
         Solid foundation for businesses that need to look professional from day one.
       </p>
+
       <ul class="plan-features">
-        <li>Custom web design</li>
-        <li>Fully responsive</li>
-        <li>Optimized structure</li>
+        <li data-es="Diseño web personalizado" data-en="Custom web design">Custom web design</li>
+        <li data-es="Responsive total" data-en="Fully responsive">Fully responsive</li>
+        <li data-es="Estructura optimizada" data-en="Optimized structure">Optimized structure</li>
       </ul>
-      <div class="plan-cta">Choose Z</div>
+
+      <div class="plan-cta" data-es="Elegir Z" data-en="Choose Z">Choose Z</div>
     </article>
 
     <!-- Z+ -->
     <article class="plan plan-zplus" data-plan="ZenSite Z+">
       <span class="plan-level">Z+</span>
       <h3>ZenSite Z+</h3>
-      <p class="plan-description">
+
+      <p class="plan-description"
+         data-es="Más impacto visual, animaciones avanzadas y mayor conversión."
+         data-en="More visual impact, advanced animations and higher conversion.">
         More visual impact, advanced animations and higher conversion.
       </p>
+
       <ul class="plan-features">
-        <li>Premium animations</li>
-        <li>Optimized SEO</li>
-        <li>Advanced UI</li>
+        <li data-es="Animaciones premium" data-en="Premium animations">Premium animations</li>
+        <li data-es="SEO optimizado" data-en="Optimized SEO">Optimized SEO</li>
+        <li data-es="UI avanzada" data-en="Advanced UI">Advanced UI</li>
       </ul>
-      <div class="plan-cta">Choose Z+</div>
+
+      <div class="plan-cta" data-es="Elegir Z+" data-en="Choose Z+">Choose Z+</div>
     </article>
 
     <!-- Z PREMIUM -->
     <article class="plan plan-zpremium" data-plan="ZenSite Z Premium">
       <span class="plan-level">Z PREMIUM</span>
       <h3>ZenSite Z Premium</h3>
-      <p class="plan-description">
+
+      <p class="plan-description"
+         data-es="Autoridad digital total, diseño de alto nivel y rendimiento extremo."
+         data-en="Full digital authority, high-end design and extreme performance.">
         Full digital authority, high-end design and extreme performance.
       </p>
+
       <ul class="plan-features">
-        <li>Professional UX/UI</li>
-        <li>Extreme speed</li>
-        <li>Full optimization</li>
+        <li data-es="UX/UI profesional" data-en="Professional UX/UI">Professional UX/UI</li>
+        <li data-es="Velocidad extrema" data-en="Extreme speed">Extreme speed</li>
+        <li data-es="Optimización total" data-en="Full optimization">Full optimization</li>
       </ul>
-      <div class="plan-cta">Choose Premium</div>
+
+      <div class="plan-cta" data-es="Elegir Premium" data-en="Choose Premium">Choose Premium</div>
     </article>
 
   </div>
@@ -73,7 +98,10 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Orbitron:wght@600;700;800&display=swap');
 
+/* SECTION */
 .zensite-plans{
+  position:relative;
+  min-height:100vh;              /* <- elimina “blanco” si tu página es corta */
   padding:110px 6%;
   background:
     radial-gradient(700px 400px at 15% 10%, rgba(0,255,150,.08), transparent 65%),
@@ -81,38 +109,52 @@
     radial-gradient(700px 400px at 50% 90%, rgba(255,200,0,.10), transparent 65%),
     #050505;
   color:#fff;
-  font-family:'Montserrat',sans-serif;
-  position:relative;
+  font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overflow:hidden;
 }
 
+/* LANG */
 .plans-lang{
   position:absolute;
-  top:20px;
-  right:24px;
+  top:18px;
+  right:22px;
+  display:flex;
+  gap:10px;
   font-size:11px;
   font-weight:900;
   letter-spacing:1.5px;
+  user-select:none;
 }
-.plans-lang span{margin-left:10px;cursor:pointer;opacity:.5}
+.plans-lang span{
+  cursor:pointer;
+  opacity:.5;
+  transition:opacity .2s ease;
+}
 .plans-lang span.active{opacity:1}
 
 /* HEADER */
 .plans-header{
   max-width:900px;
-  margin-bottom:70px;
+  margin:0 auto 70px;
 }
 .plans-header h2{
   font-size:clamp(38px,5vw,60px);
   font-weight:900;
+  line-height:1.08;
+  text-shadow:0 2px 12px rgba(0,0,0,.45);
 }
 .plans-header strong{
   background:linear-gradient(90deg,#fff,#aaa);
   -webkit-background-clip:text;
+  background-clip:text;
   color:transparent;
 }
 .plans-header p{
   margin-top:14px;
   opacity:.85;
+  line-height:1.7;
+  max-width:650px;
+  text-shadow:0 1px 10px rgba(0,0,0,.35);
 }
 
 /* GRID */
@@ -120,25 +162,27 @@
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:36px;
-  perspective:1600px;
+  max-width:1200px;
+  margin:0 auto;
 }
 
 /* CARD */
 .plan{
   position:relative;
-  padding:70px 34px 44px;
+  padding:70px 34px 40px;
   border-radius:28px;
   background:linear-gradient(180deg,rgba(20,20,20,.85),rgba(20,20,20,.65));
   border:1px solid rgba(255,255,255,.12);
   backdrop-filter:blur(18px);
-  transition:.6s ease;
   cursor:pointer;
+  transition:transform .35s ease, box-shadow .35s ease;
 }
 .plan:hover{
-  transform:translateY(-18px) scale(1.05);
-  box-shadow:0 40px 120px rgba(0,0,0,.9);
+  transform:translateY(-14px) scale(1.04);
+  box-shadow:0 35px 120px rgba(0,0,0,.85);
 }
 
+/* glow */
 .plan::after{
   content:"";
   position:absolute;
@@ -148,48 +192,61 @@
   height:260px;
   border-radius:50%;
   filter:blur(50px);
-  opacity:.35;
+  opacity:.33;
+  pointer-events:none;
 }
-
 .plan-z::after{background:#6dff6d}
 .plan-zplus::after{background:#00c8ff}
 .plan-zpremium::after{background:gold}
 
+/* level */
 .plan-level{
   position:absolute;
   top:22px;
   right:22px;
-  font-family:'Orbitron',sans-serif;
+  font-family:'Orbitron', system-ui, sans-serif;
+  font-weight:800;
   letter-spacing:3px;
+  text-shadow:0 2px 12px rgba(0,0,0,.45);
 }
+.plan-z .plan-level{color:#6dff6d}
+.plan-zplus .plan-level{color:#00c8ff}
+.plan-zpremium .plan-level{color:gold}
 
+/* titles + text */
 .plan h3{
-  font-family:'Orbitron',sans-serif;
+  font-family:'Orbitron', system-ui, sans-serif;
   font-size:28px;
-  margin-bottom:16px;
+  margin:0 0 14px;
+  text-shadow:0 2px 12px rgba(0,0,0,.45);
 }
-
 .plan-description{
   font-size:15px;
-  opacity:.9;
-  margin-bottom:26px;
+  line-height:1.7;
+  opacity:.92;
+  margin:0 0 22px;
+  text-shadow:0 1px 10px rgba(0,0,0,.30);
 }
 
+/* features */
 .plan-features{
   list-style:none;
-  margin-bottom:30px;
+  margin:0 0 26px;
+  padding:0;
 }
 .plan-features li{
   padding:8px 0;
   border-bottom:1px solid rgba(255,255,255,.08);
+  opacity:.92;
 }
+.plan-features li:last-child{border-bottom:none}
 
-/* CTA DARK */
+/* CTA (NO blanco) */
 .plan-cta{
   text-align:center;
-  padding:16px;
-  border-radius:16px;
-  background:linear-gradient(180deg,#111,#000);
+  padding:14px 16px;
+  border-radius:14px;
+  background:linear-gradient(180deg,#101010,#000);
   border:1px solid rgba(255,255,255,.18);
   font-weight:900;
   letter-spacing:1px;
@@ -197,19 +254,43 @@
 
 /* MOBILE */
 @media(max-width:600px){
-  .plan{padding:60px 26px}
+  .zensite-plans{padding:95px 6%}
+  .plan{padding:58px 24px 34px}
   .plan h3{font-size:24px}
 }
 </style>
 
 <script>
-const phone = "15027942412";
+document.addEventListener("DOMContentLoaded", () => {
+  const phone = "15027942412";
+  const root = document.querySelector(".zensite-plans");
+  if (!root) return;
 
-document.querySelectorAll(".plan").forEach(card=>{
-  card.onclick = ()=>{
-    const plan = card.dataset.plan;
-    const msg = encodeURIComponent("Hello, I'm interested in the " + plan + " plan.");
-    window.open(https://wa.me/${phone}?text=${msg}, "_blank");
-  };
+  // WhatsApp click (card + CTA)
+  root.querySelectorAll(".plan").forEach(card => {
+    card.addEventListener("click", () => {
+      const plan = card.dataset.plan || "ZenSite";
+      const msg = encodeURIComponent("Hello, I'm interested in the " + plan + " plan.");
+      window.open(https://wa.me/${phone}?text=${msg}, "_blank");
+    });
+  });
+
+  // Translate ES/EN
+  const toggles = root.querySelectorAll(".plans-lang span");
+  const translatables = root.querySelectorAll("[data-es]");
+
+  function setLang(lang){
+    toggles.forEach(t => t.classList.toggle("active", t.dataset.lang === lang));
+    translatables.forEach(el => { el.textContent = el.dataset[lang]; });
+  }
+
+  toggles.forEach(t => {
+    t.addEventListener("click", () => setLang(t.dataset.lang));
+    t.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") setLang(t.dataset.lang);
+    });
+  });
+
+  setLang("en");
 });
 </script>
