@@ -34,7 +34,7 @@ body{
   justify-content:space-between;
   padding:18px 22px;
   z-index:10;
-  background:linear-gradient(to bottom,rgba(0,0,0,.6),transparent);
+  background:linear-gradient(to bottom,rgba(0,0,0,.65),transparent);
 }
 .topbar a{
   color:#fff;
@@ -60,6 +60,13 @@ body{
 .header{
   max-width:900px;
   margin-bottom:90px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.header.show{
+  opacity:1;
+  transform:translateY(0);
 }
 .header h1{
   font-size:clamp(42px,6vw,70px);
@@ -82,6 +89,7 @@ body{
 
 /* ===== CARD BASE ===== */
 .plan{
+  position:relative;
   background:rgba(18,18,18,.78);
   border:1px solid rgba(255,255,255,.14);
   border-radius:28px;
@@ -91,14 +99,10 @@ body{
   opacity:0;
   transform:translateY(60px);
 }
-
-/* ===== SCROLL ANIMATION ===== */
 .plan.show{
   opacity:1;
   transform:translateY(0);
 }
-
-/* ===== HOVER ===== */
 .plan:hover{
   transform:translateY(-10px) scale(1.01);
   box-shadow:0 30px 80px rgba(0,0,0,.6);
@@ -144,7 +148,7 @@ body{
   color:#000;
 }
 
-/* ===== Z+ DESTACADO ===== */
+/* ===== FEATURED Z+ ===== */
 .featured{
   border:2px solid rgba(0,255,170,.6);
   box-shadow:0 0 40px rgba(0,255,170,.25);
@@ -152,8 +156,8 @@ body{
 }
 .badge{
   position:absolute;
-  top:18px;
-  right:18px;
+  top:16px;
+  right:16px;
   background:linear-gradient(90deg,#00ffae,#00c6ff);
   color:#000;
   font-weight:900;
@@ -176,13 +180,23 @@ body{
   bottom:22px;
   right:22px;
   background:#111;
-  padding:14px 18px;
+  padding:14px 18px 14px 16px;
   border-radius:14px;
   font-weight:800;
   opacity:0;
   transform:translateY(10px);
   transition:.4s;
   z-index:99;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+#bubble button{
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
   cursor:pointer;
 }
 </style>
@@ -209,11 +223,10 @@ body{
 
   <div class="plans">
 
-    <!-- Z -->
     <div class="plan">
       <span>Z</span>
       <h2>Z</h2>
-      <p>Home page profesional diseñada para presentar tu negocio, generar confianza y empezar a convertir.</p>
+      <p>Home page profesional diseñada para presentar tu negocio y empezar a convertir.</p>
       <ul>
         <li>Home page personalizada</li>
         <li>Diseño moderno</li>
@@ -222,12 +235,11 @@ body{
       <button data-plan="Z">Contactar</button>
     </div>
 
-    <!-- Z+ (MAS VENDIDO) -->
     <div class="plan featured">
       <div class="badge">Más vendido</div>
       <span>Z+</span>
       <h2>Z+</h2>
-      <p>Web de 3 a 5 páginas enfocada en posicionar tu marca y convertir visitas en clientes reales.</p>
+      <p>Web de 3 a 5 páginas enfocada en posicionar tu marca y generar confianza.</p>
       <ul>
         <li>Web multipágina</li>
         <li>Animaciones premium</li>
@@ -236,11 +248,10 @@ body{
       <button data-plan="Z+">Contactar</button>
     </div>
 
-    <!-- Z PREMIUM -->
     <div class="plan">
       <span>Z PREMIUM</span>
       <h2>Z Premium</h2>
-      <p>Tienda online completa con carrito, pagos e inventario lista para escalar tu negocio.</p>
+      <p>Tienda online completa con carrito, pagos e inventario lista para escalar.</p>
       <ul>
         <li>E-commerce completo</li>
         <li>Pagos y carrito</li>
@@ -258,7 +269,10 @@ body{
 
 </section>
 
-<div id="bubble">¿Listo para elegir tu plan?</div>
+<div id="bubble">
+  ¿Listo para elegir tu plan?
+  <button onclick="document.getElementById('bubble').style.display='none'">×</button>
+</div>
 
 <script>
 const phone="15027942412";
@@ -281,6 +295,11 @@ function setLang(lang){
 buttons.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 setLang("es");
 
+/* Header animation */
+window.addEventListener("load",()=>{
+  document.querySelector(".header").classList.add("show");
+});
+
 /* Scroll animation */
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
@@ -294,7 +313,6 @@ setTimeout(()=>{
   const b=document.getElementById("bubble");
   b.style.opacity=1;
   b.style.transform="translateY(0)";
-  b.onclick=()=>b.style.display="none";
 },4500);
 </script>
 
