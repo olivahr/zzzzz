@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ZenSite</title>
-
-<!-- ===== GOOGLE ANALYTICS (REEMPLAZA G-XXXXXXX) ===== -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-XXXXXXX');
-</script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 
+:root{
+  --bg:#05070c;
+  --glass:rgba(255,255,255,.05);
+  --glass2:rgba(255,255,255,.04);
+  --line:rgba(255,255,255,.08);
+  --text:rgba(255,255,255,.92);
+  --muted:rgba(255,255,255,.78);
+  --accent:#00cfff;
+}
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter","Segoe UI",sans-serif;
-  background:#05070c;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  background:var(--bg);
   color:#fff;
   overflow-x:hidden;
 }
@@ -32,7 +33,7 @@ body::before{
   inset:0;
   background:
     radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(120,90,255,.22),transparent 45%),
+    radial-gradient(circle at 80% 70%,rgba(120,90,255,.2),transparent 45%),
     #05070c;
   z-index:-2;
 }
@@ -41,68 +42,92 @@ body::after{
   position:fixed;
   inset:0;
   backdrop-filter:blur(90px);
+  -webkit-backdrop-filter:blur(90px);
   z-index:-1;
 }
 
 /* HEADER */
 header{
   position:fixed;
-  top:0;left:0;
+  top:0; left:0;
   width:100%;
   z-index:1000;
-  padding:18px 26px;
-  background:rgba(255,255,255,.04);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 18px;
+  background:var(--glass2);
   backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
 }
+
+/* MENU LEFT */
 .nav{
   display:flex;
-  gap:28px;
+  gap:22px;
+  align-items:center;
+  flex-wrap:nowrap;
+  overflow:hidden;
 }
 .nav a{
   color:#fff;
   text-decoration:none;
-  font-weight:600;
-  opacity:.85;
+  font-weight:700;
+  opacity:.86;
+  letter-spacing:.2px;
+  font-size:15px;
+  padding:8px 4px;
+  border-radius:10px;
+  transition:opacity .2s ease, transform .2s ease;
 }
+.nav a:active{transform:scale(.98)}
+.nav a:hover{opacity:1}
 
-/* LANG */
+/* LANG RIGHT (inside header, not fixed, so it never overlaps) */
 .lang{
-  position:fixed;
-  top:18px;
-  right:18px;
   display:flex;
-  gap:6px;
+  gap:8px;
+  align-items:center;
+  margin-left:10px;
+  flex:0 0 auto;
 }
 .lang button{
-  padding:4px 9px;
-  font-size:11px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.25);
-  background:transparent;
+  padding:6px 12px;
+  font-size:12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.20);
+  background:rgba(255,255,255,.05);
   color:#fff;
-  font-weight:700;
+  font-weight:800;
   cursor:pointer;
+  line-height:1;
+  transition:transform .18s ease, background .18s ease, border-color .18s ease;
 }
+.lang button:active{transform:scale(.96)}
 .lang .active{
-  background:#00cfff;
-  color:#000;
+  background:var(--accent);
+  color:#001018;
+  border-color:var(--accent);
 }
 
 /* MAIN */
 main{
-  margin-top:140px;
-  padding:40px 20px 160px;
+  /* IMPORTANTE: separa del header */
+  padding:110px 18px 40px;
   max-width:1100px;
-  margin:auto;
+  margin:0 auto;
   text-align:center;
 }
 
-/* TITLE */
+/* TITLE (premium, not exaggerated) */
 h1{
-  font-size:clamp(44px,6vw,78px);
-  margin-bottom:24px;
+  font-size:clamp(42px,6.2vw,76px);
+  margin:12px 0 18px;
+  letter-spacing:-.7px;
+  line-height:1.05;
   position:relative;
+  text-shadow:0 20px 60px rgba(0,0,0,.55);
 }
 h1::after{
   content:"";
@@ -110,105 +135,99 @@ h1::after{
   left:50%;
   bottom:-14px;
   transform:translateX(-50%);
-  width:180px;
-  height:6px;
-  background:#00cfff;
+  width:170px;
+  height:7px;
+  background:var(--accent);
   filter:blur(18px);
   animation:neon 3s ease-in-out infinite;
 }
 @keyframes neon{
-  0%,100%{opacity:.6}
+  0%,100%{opacity:.55}
   50%{opacity:1}
 }
 
-/* COPY */
+/* TEXT */
 p{
-  font-size:clamp(18px,2.6vw,22px);
+  font-size:clamp(18px,2.7vw,22px);
   line-height:1.65;
-  opacity:.95;
-  max-width:880px;
-  margin:0 auto 48px;
+  color:var(--text);
+  max-width:900px;
+  margin:0 auto 26px;
 }
 
-/* PREVIEW */
+/* PREVIEW (laptop float) */
+.previewWrap{
+  margin-top:12px;
+  display:flex;
+  justify-content:center;
+}
 .preview{
-  margin-top:30px;
-  border-radius:30px;
-  background:rgba(255,255,255,.05);
-  padding:20px;
-  box-shadow:0 50px 140px rgba(0,0,0,.9);
+  width:min(980px, 100%);
+  border-radius:34px;
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+  padding:18px;
+  box-shadow:0 50px 140px rgba(0,0,0,.88);
   animation:floatLaptop 6s ease-in-out infinite;
 }
 .preview img{
   width:100%;
-  border-radius:22px;
+  height:auto;
+  display:block;
+  border-radius:26px;
 }
 @keyframes floatLaptop{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-12px)}
 }
 
-/* OFFER FLOAT */
+/* FOOTER (must be real bottom) */
+footer{
+  max-width:1100px;
+  margin:22px auto 26px;
+  padding:0 18px;
+  text-align:center;
+  color:rgba(255,255,255,.55);
+  font-size:13px;
+}
+
+/* OFFER (must float between laptop and footer — not fixed) */
+.offerDock{
+  max-width:1100px;
+  margin:18px auto 0;
+  padding:0 18px;
+  display:flex;
+  justify-content:flex-start;
+}
 .offer{
-  position:fixed;
-  left:26px;
-  bottom:120px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
   padding:10px 16px;
-  border-radius:20px;
-  background:rgba(0,200,255,.18);
+  border-radius:999px;
+  background:rgba(0,200,255,.16);
   border:1px solid rgba(0,200,255,.35);
-  font-weight:700;
+  font-weight:800;
   font-size:14px;
+  color:#eafcff;
   backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
   animation:floatOffer 4s ease-in-out infinite;
+  box-shadow:0 18px 60px rgba(0,0,0,.35);
+  user-select:none;
+}
+.offer span{
+  opacity:.95;
 }
 @keyframes floatOffer{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-6px)}
 }
 
-/* POPUP */
-.popup{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:3000;
-}
-.popup-box{
-  background:#0b0f1a;
-  border-radius:26px;
-  padding:34px 30px;
-  max-width:380px;
-  text-align:center;
-  box-shadow:0 40px 120px rgba(0,0,0,.9);
-}
-.popup-box h3{
-  font-size:22px;
-  margin-bottom:14px;
-}
-.popup-box p{
-  font-size:16px;
-  margin-bottom:22px;
-}
-.popup-box button{
-  padding:14px 22px;
-  border:none;
-  border-radius:18px;
-  background:#00cfff;
-  color:#000;
-  font-weight:800;
-  cursor:pointer;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:50px 20px 30px;
-  opacity:.5;
-  font-size:13px;
+/* MOBILE TUNING */
+@media (max-width:420px){
+  .nav{gap:16px}
+  .nav a{font-size:14px}
+  .lang button{padding:6px 10px}
 }
 </style>
 </head>
@@ -222,73 +241,120 @@ footer{
     <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
+
+  <div class="lang">
+    <button id="esBtn" class="active">ES</button>
+    <button id="enBtn">EN</button>
+  </div>
 </header>
 
-<div class="lang">
-  <button id="esBtn" class="active">ES</button>
-  <button id="enBtn">EN</button>
-</div>
-
 <main>
-  <h1>ZenSite</h1>
+  <!-- SUBE UN POCO pero sin esconder -->
+  <h1 id="brand"
+      data-es="ZenSite"
+      data-en="ZenSite">ZenSite</h1>
 
-  <p id="copy"
-     data-es="Si tu web no transmite confianza en los primeros 5 segundos, tu cliente se va. En ZenSite creamos experiencias digitales que hacen que te tomen en serio desde el primer vistazo."
-     data-en="If your website doesn’t build trust in the first 5 seconds, your client leaves. At ZenSite we build digital experiences that make people take you seriously from the first glance.">
-    Si tu web no transmite confianza en los primeros 5 segundos, tu cliente se va. En ZenSite creamos experiencias digitales que hacen que te tomen en serio desde el primer vistazo.
+  <p id="desc"
+     data-es="Si quieres llevar tu negocio al siguiente nivel, llegaste al lugar correcto. En ZenSite creamos experiencias digitales premium que transmiten confianza, elevan tu marca y convierten visitas en clientes reales."
+     data-en="If you want to take your business to the next level, you’re in the right place. At ZenSite we craft premium digital experiences that build trust, elevate your brand, and turn visits into real customers.">
+    Si quieres llevar tu negocio al siguiente nivel, llegaste al lugar correcto. En ZenSite creamos experiencias digitales premium que transmiten confianza, elevan tu marca y convierten visitas en clientes reales.
   </p>
 
-  <div class="preview">
-    <img src="background.jpg" alt="ZenSite preview">
+  <div class="previewWrap">
+    <div class="preview">
+      <!-- IMPORTANTE: esta imagen tiene que existir -->
+      <img src="background.jpg" alt="ZenSite preview" />
+    </div>
+  </div>
+
+  <!-- OFERTA entre la laptop y el footer (NO tapa nada) -->
+  <div class="offerDock">
+    <div class="offer" id="offer"
+      data-es="🎁 15% OFF · Diciembre"
+      data-en="🎁 15% OFF · December">
+      <span>🎁</span><span>15% OFF · Diciembre</span>
+    </div>
   </div>
 </main>
 
-<div class="offer"
-     data-es="🎁 15% OFF · Diciembre"
-     data-en="🎁 15% OFF · December">
-  🎁 15% OFF · Diciembre
-</div>
-
-<footer>
-  © 2025 ZenSite. Todos los derechos reservados.
+<footer id="footerText"
+  data-es="© <span id='year'></span> ZenSite. Todos los derechos reservados."
+  data-en="© <span id='year'></span> ZenSite. All rights reserved.">
+  © <span id="year"></span> ZenSite. Todos los derechos reservados.
 </footer>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-  <div class="popup-box">
-    <h3 id="popupTitle">🎁 15% OFF</h3>
-    <p id="popupText">Plan Z+ es el más contratado este mes.</p>
-    <button onclick="goWhatsapp()">Hablar por WhatsApp</button>
-  </div>
-</div>
-
 <script>
-/* TRANSLATION */
-const esBtn=document.getElementById("esBtn");
-const enBtn=document.getElementById("enBtn");
+/* ====== YEAR ====== */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* ====== TRANSLATION (works for menu + title + text + offer + footer) ====== */
+const esBtn = document.getElementById("esBtn");
+const enBtn = document.getElementById("enBtn");
+
 function setLang(lang){
   document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
-    el.textContent = el.dataset[lang];
+    // allow footer to keep <span id="year">
+    if(el.id === "footerText"){
+      el.innerHTML = el.getAttribute("data-"+lang);
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }else{
+      el.textContent = el.getAttribute("data-"+lang);
+    }
   });
-}
-esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");};
-enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");};
-
-/* POPUP LOGIC */
-if(!localStorage.getItem("popupSeen")){
-  setTimeout(()=>{
-    document.getElementById("popup").style.display="flex";
-    localStorage.setItem("popupSeen","yes");
-  },8000);
-}
-function goWhatsapp(){
-  gtag('event','popup_whatsapp');
-  window.open("https://wa.me/15027942412","_blank");
+  localStorage.setItem("zLang", lang);
 }
 
-/* EVENTS */
-document.querySelectorAll("a").forEach(a=>{
-  a.addEventListener("click",()=>gtag('event','menu_click',{label:a.textContent}));
+(function initLang(){
+  const saved = localStorage.getItem("zLang");
+  if(saved === "en"){
+    enBtn.classList.add("active");
+    esBtn.classList.remove("active");
+    setLang("en");
+  }else{
+    esBtn.classList.add("active");
+    enBtn.classList.remove("active");
+    setLang("es");
+  }
+})();
+
+esBtn.addEventListener("click", ()=>{
+  esBtn.classList.add("active");
+  enBtn.classList.remove("active");
+  setLang("es");
+});
+
+enBtn.addEventListener("click", ()=>{
+  enBtn.classList.add("active");
+  esBtn.classList.remove("active");
+  setLang("en");
+});
+
+/* ====== PREMIUM TAP SOUND (NO tap.mp3 REQUIRED) ======
+   Si NO existe tap.mp3, igual suena con WebAudio (beep clean).
+*/
+let audioCtx;
+function appleTap(){
+  try{
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = "sine";
+    o.frequency.value = 440;
+    g.gain.value = 0.0001;
+    o.connect(g);
+    g.connect(audioCtx.destination);
+    o.start();
+
+    const t = audioCtx.currentTime;
+    g.gain.exponentialRampToValueAtTime(0.12, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.08);
+    o.stop(t + 0.09);
+  }catch(e){}
+  if(navigator.vibrate) navigator.vibrate(8);
+}
+
+document.querySelectorAll("a,button").forEach(el=>{
+  el.addEventListener("click", appleTap, {passive:true});
 });
 </script>
 
