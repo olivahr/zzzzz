@@ -20,8 +20,8 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(120,90,255,.2),transparent 45%),
+    radial-gradient(circle at 20% 20%,rgba(0,200,255,.16),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(120,90,255,.18),transparent 45%),
     #05070c;
   z-index:-2;
 }
@@ -46,86 +46,102 @@ header{
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
-.nav{display:flex;gap:28px}
-.nav a{color:#fff;text-decoration:none;font-weight:600;opacity:.85}
-.lang{margin-left:auto;display:flex;gap:6px}
+.nav{
+  display:flex;
+  gap:28px;
+}
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  opacity:.85;
+  white-space:nowrap;
+}
+
+/* LANG */
+.lang{
+  margin-left:auto;
+  display:flex;
+  gap:6px;
+}
 .lang button{
-  padding:4px 10px;
+  padding:3px 8px;
   font-size:10px;
+  letter-spacing:.12em;
   border-radius:14px;
   border:1px solid rgba(255,255,255,.25);
   background:transparent;
   color:#fff;
   font-weight:800;
+  cursor:pointer;
 }
-.lang .active{background:#00cfff;color:#000}
+.lang .active{
+  background:#00cfff;
+  color:#000;
+}
 
 /* MAIN */
 main{
-  margin-top:130px;
+  margin-top:160px; /* 👈 baja el título, no choca con el menú */
   padding:40px 20px 120px;
   max-width:1200px;
-  margin:auto;
+  margin-left:auto;
+  margin-right:auto;
   text-align:center;
 }
 
 /* TITLE */
 h1{
-  font-size:clamp(48px,6vw,84px);
+  font-size:clamp(46px,6vw,80px);
   font-weight:900;
   letter-spacing:-0.05em;
+  margin-bottom:18px;
 }
 .subtitle{
-  margin-top:16px;
   font-size:20px;
+  line-height:1.6;
   opacity:.9;
-  max-width:760px;
-  margin-left:auto;
-  margin-right:auto;
+  max-width:820px;
+  margin:0 auto 90px;
+  font-weight:500;
 }
 
 /* PLANS GRID */
 .plans{
-  margin-top:90px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:40px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:44px;
   perspective:1200px;
 }
 
-/* CARD BASE */
+/* CARD */
 .plan{
   position:relative;
   background:rgba(255,255,255,.06);
-  border-radius:28px;
-  padding:40px 32px 44px;
+  border-radius:30px;
+  padding:42px 34px 46px;
   backdrop-filter:blur(18px);
-  box-shadow:0 40px 120px rgba(0,0,0,.8);
-  transform:translateY(60px);
-  opacity:0;
+  box-shadow:0 40px 120px rgba(0,0,0,.85);
   animation:enter .9s ease forwards, float 7s ease-in-out infinite;
+  transform:translateY(40px);
+  opacity:0;
 }
-
-/* ENTRANCE */
 @keyframes enter{
   to{transform:translateY(0);opacity:1}
 }
-
-/* FLOAT */
 @keyframes float{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-8px)}
 }
-
-/* HOVER */
 .plan:hover{
-  transform:translateY(-14px) rotateX(1deg);
+  transform:translateY(-14px);
   box-shadow:0 70px 160px rgba(0,0,0,.95);
 }
 
 /* FEATURED */
 .plan.featured{
   outline:2px solid #00cfff;
+  background:linear-gradient(180deg,rgba(0,200,255,.14),rgba(255,255,255,.06));
   animation:enter .9s ease forwards, floatBig 6s ease-in-out infinite;
 }
 @keyframes floatBig{
@@ -141,35 +157,67 @@ h1{
   color:#000;
   font-size:11px;
   font-weight:900;
-  padding:6px 14px;
+  padding:6px 16px;
   border-radius:20px;
+  letter-spacing:.08em;
 }
 
-/* TEXT */
-.plan h2{font-size:26px}
-.price{font-size:46px;font-weight:900;margin:18px 0}
-.price span{font-size:16px;opacity:.6}
+/* PLAN TEXT */
+.plan h2{
+  font-size:28px;
+  margin-bottom:6px;
+}
+.plan p{
+  font-size:15.5px;
+  line-height:1.55;
+  opacity:.85;
+  margin-bottom:18px;
+}
+.price{
+  font-size:46px;
+  font-weight:900;
+  margin:18px 0 10px;
+}
+.price span{
+  font-size:16px;
+  opacity:.6;
+}
 
-ul{list-style:none;text-align:left;margin:26px 0 34px}
-ul li{margin-bottom:14px;font-size:16px;opacity:.92}
-ul li::before{content:"✔";color:#00cfff;margin-right:10px}
+/* LIST */
+ul{
+  list-style:none;
+  text-align:left;
+  margin:26px 0 36px;
+}
+ul li{
+  margin-bottom:14px;
+  font-size:16px;
+  opacity:.92;
+}
+ul li::before{
+  content:"✔";
+  color:#00cfff;
+  margin-right:10px;
+}
 
 /* CTA */
 .plan a{
   display:inline-block;
-  padding:14px 28px;
+  padding:14px 30px;
   border-radius:26px;
   background:#00cfff;
   color:#000;
   font-weight:800;
   text-decoration:none;
+  letter-spacing:.03em;
 }
 
 /* FOOTER */
 footer{
-  margin-top:120px;
+  margin-top:130px;
   font-size:12px;
   opacity:.55;
+  letter-spacing:.08em;
 }
 </style>
 </head>
@@ -178,64 +226,106 @@ footer{
 
 <header>
   <nav class="nav">
-    <a href="index.html">Inicio</a>
-    <a href="demo.html">Demos</a>
-    <a href="planes.html">Planes</a>
-    <a href="nosotros.html">Nosotros</a>
+    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
+    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
+    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
   <div class="lang">
-    <button class="active">ES</button>
-    <button>EN</button>
+    <button id="esBtn" class="active">ES</button>
+    <button id="enBtn">EN</button>
   </div>
 </header>
 
 <main>
-  <h1>Planes ZenSite</h1>
-  <p class="subtitle">
-    No es una web. Es la base digital desde donde tu negocio crece.
+  <h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
+
+  <p class="subtitle"
+     data-es="Aquí eliges el nivel de presencia digital que tu negocio necesita para verse serio, generar confianza y empezar a vender con intención."
+     data-en="Choose the level of digital presence your business needs to look serious, build trust, and start converting with intention.">
+     Aquí eliges el nivel de presencia digital que tu negocio necesita para verse serio, generar confianza y empezar a vender con intención.
   </p>
 
   <section class="plans">
+
+    <!-- Z -->
     <div class="plan">
       <h2>Z</h2>
+      <p data-es="Ideal para empezar con una imagen profesional clara y funcional."
+         data-en="Perfect to start with a clean, professional online presence.">
+         Ideal para empezar con una imagen profesional clara y funcional.
+      </p>
       <div class="price">$200 <span>USD</span></div>
       <ul>
-        <li>Landing page profesional</li>
-        <li>Diseño responsive</li>
-        <li>Imagen seria y clara</li>
-        <li>Entrega rápida</li>
+        <li data-es="Landing page enfocada en conversión" data-en="Conversion-focused landing page"></li>
+        <li data-es="Diseño responsive (móvil y desktop)" data-en="Responsive design (mobile & desktop)"></li>
+        <li data-es="Carga rápida y estructura limpia" data-en="Fast loading & clean structure"></li>
+        <li data-es="Imagen seria para tu negocio" data-en="Serious business image"></li>
       </ul>
-      <a href="https://wa.me/15027942412?text=Quiero%20el%20Plan%20Z%20de%20$200">Contactar</a>
+      <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%20de%20$200">Contactar</a>
     </div>
 
+    <!-- Z+ -->
     <div class="plan featured">
       <div class="badge">MÁS VENDIDO</div>
       <h2>Z+</h2>
+      <p data-es="La opción más equilibrada para negocios que quieren verse grandes y confiables."
+         data-en="The most balanced option for businesses that want to look solid and trustworthy.">
+         La opción más equilibrada para negocios que quieren verse grandes y confiables.
+      </p>
       <div class="price">$480 <span>USD</span></div>
       <ul>
-        <li>Web multipágina completa</li>
-        <li>Diseño premium personalizado</li>
-        <li>Estructura pensada para vender</li>
-        <li>Mayor autoridad de marca</li>
+        <li data-es="Web completa multipágina" data-en="Complete multi-page website"></li>
+        <li data-es="Diseño premium personalizado" data-en="Custom premium design"></li>
+        <li data-es="Estructura pensada para vender" data-en="Sales-oriented structure"></li>
+        <li data-es="Mayor autoridad de marca" data-en="Stronger brand authority"></li>
       </ul>
-      <a href="https://wa.me/15027942412?text=Quiero%20el%20Plan%20Z+%20de%20$480">Contactar</a>
+      <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z+%20de%20$480">Contactar</a>
     </div>
 
+    <!-- Z PREMIUM -->
     <div class="plan">
       <h2>Z Premium</h2>
+      <p data-es="Pensado para vender productos, escalar y operar como un negocio digital real."
+         data-en="Built to sell products, scale operations, and run a real digital business.">
+         Pensado para vender productos, escalar y operar como un negocio digital real.
+      </p>
       <div class="price">$720 <span>USD</span></div>
       <ul>
-        <li>Tienda online completa</li>
-        <li>Inventario y carrito</li>
-        <li>Base lista para escalar ventas</li>
-        <li>Marca digital de alto nivel</li>
+        <li data-es="Tienda online completa" data-en="Full e-commerce store"></li>
+        <li data-es="Carrito, inventario y productos" data-en="Cart, inventory & products"></li>
+        <li data-es="Base lista para escalar ventas" data-en="Scalable sales-ready foundation"></li>
+        <li data-es="Marca digital de alto nivel" data-en="High-end digital brand"></li>
       </ul>
-      <a href="https://wa.me/15027942412?text=Quiero%20el%20Plan%20Z%20Premium%20de%20$720">Contactar</a>
+      <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%20Premium%20de%20$720">Contactar</a>
     </div>
+
   </section>
 
-  <footer>© 2025 ZenSite</footer>
+  <footer>© 2025 ZenSite · Todos los derechos reservados</footer>
 </main>
+
+<script>
+const esBtn=document.getElementById("esBtn");
+const enBtn=document.getElementById("enBtn");
+
+function setLang(lang){
+  document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
+    el.textContent = el.dataset[lang];
+  });
+}
+
+esBtn.onclick=()=>{
+  esBtn.classList.add("active");
+  enBtn.classList.remove("active");
+  setLang("es");
+};
+enBtn.onclick=()=>{
+  enBtn.classList.add("active");
+  esBtn.classList.remove("active");
+  setLang("en");
+};
+</script>
 
 </body>
 </html>
