@@ -21,7 +21,7 @@ body::before{
   inset:0;
   background:
     radial-gradient(circle at 20% 25%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(140,90,255,.2),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(140,90,255,.22),transparent 40%),
     #05070c;
   z-index:-2;
 }
@@ -33,7 +33,7 @@ body::after{
   z-index:-1;
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER (MISMO QUE INDEX) ===== */
 header{
   position:fixed;
   top:0;
@@ -41,18 +41,16 @@ header{
   height:64px;
   display:flex;
   align-items:center;
-  padding:0 16px;
+  padding:0 18px;
   background:rgba(255,255,255,.05);
   backdrop-filter:blur(18px);
   border-bottom:1px solid rgba(255,255,255,.08);
   z-index:1000;
 }
-
 nav{
   display:flex;
-  gap:18px;
+  gap:20px;
 }
-
 nav a{
   color:#fff;
   text-decoration:none;
@@ -60,7 +58,6 @@ nav a{
   opacity:.85;
 }
 nav a:hover{opacity:1}
-
 .lang{
   margin-left:auto;
   display:flex;
@@ -82,20 +79,22 @@ nav a:hover{opacity:1}
 
 /* ===== MAIN ===== */
 main{
-  margin-top:90px;
-  padding:30px 16px 120px;
+  margin-top:110px;
+  padding:20px 16px 140px;
 }
 
 /* ===== TITLE ===== */
 h1{
   text-align:center;
-  font-size:38px;
-  margin-bottom:10px;
+  font-size:40px;
+  margin-bottom:14px;
 }
 .subtitle{
   text-align:center;
+  max-width:720px;
+  margin:0 auto 60px;
   opacity:.75;
-  margin-bottom:50px;
+  font-size:18px;
 }
 
 /* ===== DEMO GRID ===== */
@@ -103,32 +102,73 @@ h1{
   max-width:1200px;
   margin:auto;
   display:grid;
-  gap:28px;
+  gap:34px;
 }
-
-.demo{
-  background:rgba(255,255,255,.06);
-  border-radius:28px;
-  padding:22px;
-  box-shadow:0 40px 120px rgba(0,0,0,.9);
-  transition:transform .5s ease, box-shadow .5s ease;
-}
-.demo:hover{
-  transform:translateY(-6px);
-  box-shadow:0 0 40px rgba(0,200,255,.25);
-}
-
-.demo img{
-  width:100%;
-  border-radius:20px;
-  display:block;
-}
-
-/* DESKTOP GRID */
 @media(min-width:900px){
   .demos{
     grid-template-columns:repeat(2,1fr);
   }
+}
+
+.demo{
+  background:rgba(255,255,255,.06);
+  padding:26px;
+  border-radius:28px;
+  backdrop-filter:blur(14px);
+  box-shadow:0 40px 120px rgba(0,0,0,.9);
+  transition:transform .45s ease, box-shadow .45s ease;
+}
+.demo:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 40px rgba(0,200,255,.35);
+}
+
+.demo img{
+  width:100%;
+  display:block;
+  border-radius:22px;
+}
+
+/* ===== CTA ===== */
+.cta{
+  text-align:center;
+  margin-top:100px;
+}
+.cta a{
+  display:inline-block;
+  padding:16px 36px;
+  background:#00cfff;
+  color:#000;
+  font-weight:700;
+  border-radius:30px;
+  text-decoration:none;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  margin-top:140px;
+  padding:40px 20px;
+  text-align:center;
+  opacity:.55;
+  font-size:14px;
+}
+
+/* ===== WHATSAPP ===== */
+.whatsapp{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:62px;
+  height:62px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  color:#fff;
+  text-decoration:none;
+  z-index:999;
 }
 </style>
 </head>
@@ -142,7 +182,6 @@ h1{
     <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
-
   <div class="lang">
     <button id="es" class="active">ES</button>
     <button id="en">EN</button>
@@ -150,29 +189,44 @@ h1{
 </header>
 
 <main>
-  <h1 data-es="Demostraciones reales" data-en="Real demonstrations">
-    Demostraciones reales
+  <h1 data-es="Demostraciones reales"
+      data-en="Real demonstrations">
+      Demostraciones reales
   </h1>
+
   <p class="subtitle"
-     data-es="Ejemplos del nivel de diseño que creamos."
-     data-en="Examples of the design level we create.">
-     Ejemplos del nivel de diseño que creamos.
+     data-es="Ejemplos del nivel visual y estructural que construimos para nuestros clientes."
+     data-en="Examples of the visual and structural level we build for our clients.">
+     Ejemplos del nivel visual y estructural que construimos para nuestros clientes.
   </p>
 
   <div class="demos">
-    <!-- NO TOQUES LOS NOMBRES DE LAS IMÁGENES -->
     <div class="demo"><img src="demo1.jpg" alt="Demo 1"></div>
     <div class="demo"><img src="demo2.jpg" alt="Demo 2"></div>
     <div class="demo"><img src="demo3.jpg" alt="Demo 3"></div>
     <div class="demo"><img src="demo4.jpg" alt="Demo 4"></div>
     <div class="demo"><img src="demo5.jpg" alt="Demo 5"></div>
   </div>
+
+  <div class="cta">
+    <a href="https://wa.me/15027942412?text=Hola%20vi%20los%20demos%20y%20quiero%20una%20web%20así"
+       data-es="Quiero una web así"
+       data-en="I want a website like this">
+       Quiero una web así
+    </a>
+  </div>
 </main>
 
+<footer>
+  © 2025 ZenSite · Diseño web profesional · Pagos únicos
+</footer>
+
+<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
+
 <script>
+const texts=document.querySelectorAll("[data-es]");
 const esBtn=document.getElementById("es");
 const enBtn=document.getElementById("en");
-const texts=document.querySelectorAll("[data-es]");
 
 function setLang(lang){
   texts.forEach(el=>el.textContent=el.dataset[lang]);
