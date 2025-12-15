@@ -1,304 +1,309 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenSite | Planes</title>
+<!-- =======================
+     PLANES ZENSITE (FINAL REVISADO)
+======================= -->
+<section class="zensite-plans" aria-label="Planes ZenSite">
+
+  <!-- ES / EN -->
+  <div class="plans-lang" aria-label="Idioma">
+    <span class="active" data-lang="es" role="button" tabindex="0">ES</span>
+    <span data-lang="en" role="button" tabindex="0">EN</span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="plans-header">
+    <h2>
+      <span data-es="Planes" data-en="Plans">Planes</span>
+      <strong>ZenSite</strong>
+    </h2>
+    <p
+      data-es="Diseño agresivo, tecnología real y presencia de alto nivel."
+      data-en="Aggressive design, real technology and high-level presence.">
+      Diseño agresivo, tecnología real y presencia de alto nivel.
+    </p>
+  </header>
+
+  <!-- PLANS GRID -->
+  <div class="plans-grid">
+
+    <!-- Z -->
+    <article class="plan plan-z">
+      <span class="plan-level">Z</span>
+      <h3>ZenSite Z</h3>
+      <p class="plan-description"
+         data-es="Base sólida para negocios que necesitan verse profesionales desde el primer día."
+         data-en="Solid foundation for businesses that need to look professional from day one.">
+        Base sólida para negocios que necesitan verse profesionales desde el primer día.
+      </p>
+      <ul class="plan-features">
+        <li data-es="Diseño web personalizado" data-en="Custom web design">Diseño web personalizado</li>
+        <li data-es="Responsive total" data-en="Fully responsive">Responsive total</li>
+        <li data-es="Estructura optimizada" data-en="Optimized structure">Estructura optimizada</li>
+      </ul>
+      <button type="button" data-es="Elegir Z" data-en="Choose Z">Elegir Z</button>
+    </article>
+
+    <!-- Z+ -->
+    <article class="plan plan-zplus">
+      <span class="plan-level">Z+</span>
+      <h3>ZenSite Z+</h3>
+      <p class="plan-description"
+         data-es="Más impacto visual, animaciones avanzadas y mayor conversión."
+         data-en="More visual impact, advanced animations and higher conversion.">
+        Más impacto visual, animaciones avanzadas y mayor conversión.
+      </p>
+      <ul class="plan-features">
+        <li data-es="Animaciones premium" data-en="Premium animations">Animaciones premium</li>
+        <li data-es="SEO optimizado" data-en="Optimized SEO">SEO optimizado</li>
+        <li data-es="UI avanzada" data-en="Advanced UI">UI avanzada</li>
+      </ul>
+      <button type="button" data-es="Elegir Z+" data-en="Choose Z+">Elegir Z+</button>
+    </article>
+
+    <!-- Z PREMIUM -->
+    <article class="plan plan-zpremium">
+      <span class="plan-level">Z PREMIUM</span>
+      <h3>ZenSite Z Premium</h3>
+      <p class="plan-description"
+         data-es="Autoridad digital total, diseño de alto nivel y rendimiento extremo."
+         data-en="Full digital authority, high-end design and extreme performance.">
+        Autoridad digital total, diseño de alto nivel y rendimiento extremo.
+      </p>
+      <ul class="plan-features">
+        <li data-es="UX/UI profesional" data-en="Professional UX/UI">UX/UI profesional</li>
+        <li data-es="Velocidad extrema" data-en="Extreme speed">Velocidad extrema</li>
+        <li data-es="Optimización total" data-en="Full optimization">Optimización total</li>
+      </ul>
+      <button type="button" data-es="Elegir Premium" data-en="Choose Premium">Elegir Premium</button>
+    </article>
+
+  </div>
+</section>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+/* =======================
+   ZENSITE PLANS – AGRESIVO (REVISADO)
+   Nota: incluye Orbitron via @import para letras duras
+======================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Orbitron:wght@600;700;800&display=swap');
 
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif;
-  background:#05070c;
-  color:#fff;
-}
-
-/* BACKGROUND */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
+.zensite-plans{
+  position:relative;
+  padding:110px 6%;
   background:
-    radial-gradient(circle at 20% 20%,rgba(0,200,255,.15),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(120,90,255,.18),transparent 45%),
-    #05070c;
-  z-index:-2;
+    radial-gradient(900px 500px at 15% 10%, rgba(255,255,255,.05), transparent 60%),
+    radial-gradient(900px 500px at 85% 20%, rgba(0,200,255,.15), transparent 60%),
+    radial-gradient(900px 500px at 50% 90%, rgba(255,215,0,.12), transparent 60%);
+  color:#fff;
+  overflow:hidden;
+  font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  backdrop-filter:blur(80px);
-  z-index:-1;
+
+/* ES / EN */
+.zensite-plans .plans-lang{
+  position:absolute;
+  top:20px;
+  right:24px;
+  display:flex;
+  gap:10px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  user-select:none;
 }
+.zensite-plans .plans-lang span{
+  cursor:pointer;
+  opacity:.4;
+  transition:opacity .2s ease;
+}
+.zensite-plans .plans-lang span.active{opacity:1}
 
 /* HEADER */
-header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1000;
-  display:flex;
-  align-items:center;
-  padding:16px 26px;
-  background:rgba(255,255,255,.04);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+.zensite-plans .plans-header{
+  max-width:900px;
+  margin:0 auto 70px;
 }
-
-.nav{
-  display:flex;
-  gap:28px;
-}
-.nav a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  opacity:.85;
-}
-
-/* LANG — pequeño y a la derecha real */
-.lang{
-  margin-left:auto;
-  display:flex;
-  gap:6px;
-}
-.lang button{
-  padding:3px 7px;
-  font-size:9px;
-  letter-spacing:.12em;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.25);
-  background:transparent;
-  color:#fff;
-  font-weight:800;
-  cursor:pointer;
-}
-.lang .active{
-  background:#00cfff;
-  color:#000;
-}
-
-/* MAIN */
-main{
-  margin-top:160px;
-  padding:40px 20px 120px;
-  max-width:1200px;
-  margin:auto;
-  text-align:center;
-}
-
-/* TITLE */
-h1{
-  font-size:clamp(46px,6vw,80px);
+.zensite-plans .plans-header h2{
+  font-size:clamp(38px,5vw,60px);
   font-weight:900;
-  letter-spacing:-0.05em;
-  margin-bottom:18px;
+  line-height:1.08;
+}
+.zensite-plans .plans-header h2 strong{
+  background:linear-gradient(90deg,#fff,#9a9a9a);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.zensite-plans .plans-header p{
+  margin-top:16px;
+  font-size:16px;
+  line-height:1.7;
+  opacity:.85;
+  max-width:650px;
 }
 
-.subtitle{
-  font-size:20px;
-  line-height:1.6;
-  opacity:.9;
-  max-width:820px;
-  margin:0 auto 90px;
-}
-
-/* PLANS */
-.plans{
+/* GRID */
+.zensite-plans .plans-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:44px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:36px;
+  max-width:1200px;
+  margin:0 auto;
+  perspective:1800px;
 }
 
 /* CARD */
-.plan{
-  background:rgba(255,255,255,.06);
+.zensite-plans .plan{
+  position:relative;
+  padding:70px 34px 44px;
   border-radius:30px;
-  padding:42px 34px 46px;
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.14);
   backdrop-filter:blur(18px);
-  box-shadow:0 40px 120px rgba(0,0,0,.85);
-  transition:.4s;
+  transform:translateY(40px) rotateX(10deg);
+  opacity:0;
+  transition:all .9s cubic-bezier(.2,.8,.2,1);
+  will-change:transform, box-shadow, opacity;
 }
-.plan:hover{
-  transform:translateY(-12px);
-  box-shadow:0 70px 160px rgba(0,0,0,.95);
+.zensite-plans .plan.show{
+  transform:translateY(0) rotateX(0);
+  opacity:1;
 }
-
-.plan.featured{
-  outline:2px solid #00cfff;
-  background:linear-gradient(180deg,rgba(0,200,255,.14),rgba(255,255,255,.06));
-}
-
-.badge{
-  display:inline-block;
-  margin-bottom:18px;
-  background:#00cfff;
-  color:#000;
-  font-size:11px;
-  font-weight:900;
-  padding:6px 16px;
-  border-radius:20px;
-  letter-spacing:.08em;
+.zensite-plans .plan:hover{
+  transform:translateY(-22px) rotateX(9deg) rotateY(-9deg) scale(1.07);
+  box-shadow:0 45px 140px rgba(0,0,0,.9);
 }
 
-.plan h2{
-  font-size:28px;
-  margin-bottom:8px;
+/* GLOW */
+.zensite-plans .plan::after{
+  content:"";
+  position:absolute;
+  top:-140px;
+  right:-140px;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  filter:blur(50px);
+  opacity:.42;
+  pointer-events:none;
 }
 
-.plan p{
-  font-size:15.5px;
-  line-height:1.6;
-  opacity:.9;
-  margin-bottom:20px;
-}
-
-.price{
-  font-size:46px;
-  font-weight:900;
-  margin:18px 0 10px;
-}
-.price span{
+/* LEVEL */
+.zensite-plans .plan-level{
+  position:absolute;
+  top:22px;
+  right:22px;
+  font-family:'Orbitron', system-ui, sans-serif;
   font-size:16px;
-  opacity:.6;
-}
-
-/* LIST */
-ul{
-  list-style:none;
-  text-align:left;
-  margin:28px 0 40px;
-}
-ul li{
-  margin-bottom:14px;
-  font-size:16px;
-}
-ul li::before{
-  content:"✔";
-  color:#00cfff;
-  margin-right:10px;
-}
-
-/* CTA */
-.plan a{
-  display:inline-block;
-  padding:14px 34px;
-  border-radius:26px;
-  background:#00cfff;
-  color:#000;
   font-weight:800;
-  text-decoration:none;
+  letter-spacing:3px;
 }
 
-/* FOOTER */
-footer{
-  margin-top:120px;
-  font-size:12px;
-  opacity:.55;
+/* TEXT */
+.zensite-plans .plan h3{
+  font-family:'Orbitron', system-ui, sans-serif;
+  font-size:30px;
+  font-weight:800;
+  margin:0 0 16px;
+}
+.zensite-plans .plan-description{
+  font-size:16px;
+  line-height:1.75;
+  opacity:.88;
+  margin:0 0 28px;
+}
+
+/* FEATURES */
+.zensite-plans .plan-features{
+  list-style:none;
+  margin:0 0 34px;
+  padding:0;
+}
+.zensite-plans .plan-features li{
+  padding:9px 0;
+  font-size:14px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  opacity:.92;
+}
+.zensite-plans .plan-features li:last-child{border-bottom:none}
+
+/* BUTTON */
+.zensite-plans .plan button{
+  width:100%;
+  padding:18px;
+  border-radius:18px;
+  border:none;
+  font-weight:900;
+  background:#fff;
+  color:#000;
+  cursor:pointer;
+  transition:transform .2s ease, filter .2s ease;
+}
+.zensite-plans .plan button:hover{
+  transform:translateY(-2px);
+  filter:brightness(.9);
+}
+
+/* COLORS */
+.zensite-plans .plan-z .plan-level{color:#6dff6d}
+.zensite-plans .plan-z::after{background:#6dff6d}
+
+.zensite-plans .plan-zplus .plan-level{color:#00c8ff}
+.zensite-plans .plan-zplus::after{background:#00c8ff}
+
+.zensite-plans .plan-zpremium .plan-level{color:gold}
+.zensite-plans .plan-zpremium::after{background:gold}
+
+/* MOBILE */
+@media (max-width:600px){
+  .zensite-plans{padding:90px 6%}
+  .zensite-plans .plans-header{margin-bottom:50px}
+  .zensite-plans .plans-header h2{font-size:34px}
+  .zensite-plans .plan{padding:60px 26px 38px}
+  .zensite-plans .plan h3{font-size:26px}
+  .zensite-plans .plan-description{font-size:15px}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .zensite-plans .plan,
+  .zensite-plans .plan:hover{
+    transition:none;
+    transform:none;
+  }
 }
 </style>
-</head>
-
-<body>
-
-<header>
-  <nav class="nav">
-    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
-    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
-    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
-    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
-  </nav>
-  <div class="lang">
-    <button id="esBtn" class="active">ES</button>
-    <button id="enBtn">EN</button>
-  </div>
-</header>
-
-<main>
-
-<h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
-
-<p class="subtitle"
-data-es="Cada plan está diseñado para un tipo de negocio distinto. No vendemos webs bonitas, construimos presencia, confianza y ventas reales."
-data-en="Each plan is designed for a different business stage. We don’t sell pretty websites — we build presence, trust, and real sales.">
-Cada plan está diseñado para un tipo de negocio distinto. No vendemos webs bonitas, construimos presencia, confianza y ventas reales.
-</p>
-
-<section class="plans">
-
-<!-- Z -->
-<div class="plan">
-  <h2>Z</h2>
-  <p data-es="Para negocios que necesitan verse profesionales y captar clientes desde el primer contacto."
-     data-en="For businesses that need a professional image and client acquisition from day one.">
-  </p>
-  <div class="price">$200 <span>USD</span></div>
-  <ul>
-    <li data-es="Landing page estratégica enfocada en conversión" data-en="Conversion-focused landing page">Landing page estratégica enfocada en conversión</li>
-    <li data-es="Mensaje claro que explica qué haces y por qué elegirte" data-en="Clear message explaining what you do and why choose you">Mensaje claro que explica qué haces y por qué elegirte</li>
-    <li data-es="Diseño responsive y rápido" data-en="Fast responsive design">Diseño responsive y rápido</li>
-    <li data-es="Imagen profesional inmediata" data-en="Instant professional image">Imagen profesional inmediata</li>
-  </ul>
-  <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z">Contactar</a>
-</div>
-
-<!-- Z+ -->
-<div class="plan featured">
-  <div class="badge">MÁS VENDIDO</div>
-  <h2>Z+</h2>
-  <p data-es="Para negocios que quieren verse grandes, confiables y posicionarse como marca seria."
-     data-en="For businesses that want to look established, trustworthy, and brand-focused.">
-  </p>
-  <div class="price">$480 <span>USD</span></div>
-  <ul>
-    <li data-es="Web multipágina completa" data-en="Full multi-page website">Web multipágina completa</li>
-    <li data-es="Estructura pensada para vender y escalar" data-en="Sales-oriented scalable structure">Estructura pensada para vender y escalar</li>
-    <li data-es="Diseño premium personalizado" data-en="Custom premium design">Diseño premium personalizado</li>
-    <li data-es="Mayor autoridad y confianza de marca" data-en="Stronger brand authority">Mayor autoridad y confianza de marca</li>
-  </ul>
-  <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z+">Contactar</a>
-</div>
-
-<!-- Z PREMIUM -->
-<div class="plan">
-  <h2>Z Premium</h2>
-  <p data-es="Para negocios que venden productos, escalan y operan como empresa digital real."
-     data-en="For businesses that sell products, scale, and operate as real digital companies.">
-  </p>
-  <div class="price">$720 <span>USD</span></div>
-  <ul>
-    <li data-es="Tienda online completa con productos" data-en="Full e-commerce store">Tienda online completa con productos</li>
-    <li data-es="Carrito, inventario y estructura de ventas" data-en="Cart, inventory and sales structure">Carrito, inventario y estructura de ventas</li>
-    <li data-es="Base preparada para escalar" data-en="Scalable business foundation">Base preparada para escalar</li>
-    <li data-es="Marca digital de alto nivel" data-en="High-end digital brand">Marca digital de alto nivel</li>
-  </ul>
-  <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%20Premium">Contactar</a>
-</div>
-
-</section>
-
-<footer>© 2025 ZenSite · Todos los derechos reservados</footer>
-
-</main>
 
 <script>
-const esBtn=document.getElementById("esBtn");
-const enBtn=document.getElementById("enBtn");
+/* ==========
+   Scoped JS (solo afecta esta sección)
+========== */
+(() => {
+  const root = document.querySelector('.zensite-plans');
+  if (!root) return;
 
-function setLang(lang){
-  document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
-    el.textContent = el.dataset[lang];
+  // Reveal
+  const plans = root.querySelectorAll('.plan');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.25 });
+  plans.forEach(p => obs.observe(p));
+
+  // ES / EN
+  const toggles = root.querySelectorAll('.plans-lang span');
+  const translatables = root.querySelectorAll('[data-es]');
+
+  function setLang(lang){
+    toggles.forEach(t => t.classList.toggle('active', t.dataset.lang === lang));
+    translatables.forEach(el => { el.textContent = el.dataset[lang]; });
+  }
+
+  toggles.forEach(t => {
+    t.addEventListener('click', () => setLang(t.dataset.lang));
+    t.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') setLang(t.dataset.lang);
+    });
   });
-}
 
-setLang("es");
-
-esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");};
-enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");};
+  setLang('es');
+})();
 </script>
-
-</body>
-</html>
