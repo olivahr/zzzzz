@@ -3,43 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Planes ZenSite</title>
+<title>Plans ZenSite</title>
 
 <style>
 html,body{
   margin:0;
   padding:0;
+  height:100%;
   background:#050505;
   color:#fff;
-  font-family:Montserrat,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  font-family:Montserrat,system-ui,-apple-system,sans-serif;
+  overflow-x:hidden;
 }
 
-/* NAV */
-nav{
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  padding:18px 28px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(5,5,5,.6);
-  backdrop-filter:blur(14px);
-  z-index:999;
+/* ===== FIX iOS WHITE SPACE ===== */
+body{
+  min-height:100svh;
 }
-nav a{
-  color:#fff;
-  margin-left:18px;
-  text-decoration:none;
-  font-weight:700;
-  opacity:.85;
-}
-nav a:hover{opacity:1}
 
-/* SECTION */
+/* ===== SECTION ===== */
 .zensite-plans{
-  min-height:100vh;
-  padding:140px 6% 160px;
+  min-height:100svh;
+  padding:110px 6% 120px;
   background:
     radial-gradient(800px 500px at 50% 15%, rgba(0,150,255,.18), transparent 65%),
     radial-gradient(700px 500px at 20% 80%, rgba(0,255,150,.18), transparent 65%),
@@ -47,12 +32,15 @@ nav a:hover{opacity:1}
     #050505;
 }
 
-/* LANG */
+/* ===== LANG ===== */
 .lang{
   position:fixed;
-  top:22px;
-  right:24px;
-  z-index:1000;
+  top:20px;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:0 22px;
+  z-index:999;
 }
 .lang button{
   background:none;
@@ -60,19 +48,18 @@ nav a:hover{opacity:1}
   color:#fff;
   font-weight:900;
   font-size:16px;
-  margin-left:12px;
   opacity:.4;
   cursor:pointer;
 }
 .lang button.active{opacity:1}
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
   max-width:900px;
-  margin-bottom:120px;
+  margin-bottom:90px;
 }
 header h1{
-  font-size:clamp(42px,6vw,72px);
+  font-size:clamp(42px,6vw,70px);
   font-weight:900;
 }
 header p{
@@ -80,19 +67,19 @@ header p{
   max-width:620px;
 }
 
-/* CARDS */
+/* ===== CARDS ===== */
 .cards{
-  max-width:1200px;
+  max-width:1100px;
   margin:auto;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:40px;
+  gap:34px;
 }
 
 .plan{
-  padding:56px 38px;
-  border-radius:30px;
-  background:rgba(20,20,20,.8);
+  padding:52px 36px;
+  border-radius:28px;
+  background:rgba(20,20,20,.82);
   border:1px solid rgba(255,255,255,.14);
   backdrop-filter:blur(18px);
   text-decoration:none;
@@ -112,13 +99,13 @@ header p{
 
 .plan h3{
   margin:16px 0;
-  font-size:26px;
+  font-size:24px;
 }
 
 .plan ul{
   list-style:none;
   padding:0;
-  margin:24px 0;
+  margin:22px 0;
 }
 .plan li{
   padding:8px 0;
@@ -126,7 +113,7 @@ header p{
 }
 
 .cta{
-  margin-top:24px;
+  margin-top:22px;
   padding:14px;
   text-align:center;
   border-radius:14px;
@@ -135,24 +122,20 @@ header p{
   border:1px solid rgba(255,255,255,.25);
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 @media(max-width:900px){
   .cards{
     grid-template-columns:1fr;
+  }
+  .plan{
+    max-width:420px;
+    margin:auto;
   }
 }
 </style>
 </head>
 
 <body>
-
-<nav>
-  <strong>ZenSite</strong>
-  <div>
-    <a href="index.html">Inicio</a>
-    <a href="demo.html">Demo</a>
-  </div>
-</nav>
 
 <div class="lang">
   <button data-lang="es" class="active">ES</button>
@@ -162,33 +145,29 @@ header p{
 <section class="zensite-plans">
 
 <header>
-  <h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
+  <h1 data-es="Plans ZenSite" data-en="ZenSite Plans">Plans ZenSite</h1>
   <p
-    data-es="Soluciones web profesionales diseñadas para posicionar tu negocio, generar confianza y vender desde el primer día."
-    data-en="Professional web solutions designed to position your business, build trust and sell from day one.">
+    data-es="Diseño agresivo, tecnología real y presencia de alto nivel."
+    data-en="Aggressive design, real technology and high-level presence.">
   </p>
 </header>
 
 <div class="cards">
 
-<a class="plan"
-href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20ZenSite%20Z"
-target="_blank">
+<a class="plan" href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20ZenSite%20Z" target="_blank">
 <span>Z</span>
 <h3>ZenSite Z</h3>
-<p data-es="Presencia profesional sólida para negocios que quieren verse serios desde el inicio."
-   data-en="Solid professional presence for businesses that want to look serious from day one."></p>
+<p data-es="Base sólida para negocios que necesitan verse profesionales desde el primer día."
+   data-en="Solid foundation for businesses that need to look professional from day one."></p>
 <ul>
 <li data-es="Diseño web personalizado" data-en="Custom web design"></li>
 <li data-es="Totalmente responsive" data-en="Fully responsive"></li>
-<li data-es="Optimización básica" data-en="Basic optimization"></li>
+<li data-es="Estructura optimizada" data-en="Optimized structure"></li>
 </ul>
 <div class="cta" data-es="Contactar" data-en="Contact"></div>
 </a>
 
-<a class="plan"
-href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20ZenSite%20Z+"
-target="_blank">
+<a class="plan" href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20ZenSite%20Z+" target="_blank">
 <span>Z+</span>
 <h3>ZenSite Z+</h3>
 <p data-es="Más impacto visual, animaciones avanzadas y mayor conversión."
@@ -201,12 +180,10 @@ target="_blank">
 <div class="cta" data-es="Contactar" data-en="Contact"></div>
 </a>
 
-<a class="plan"
-href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20ZenSite%20Premium"
-target="_blank">
+<a class="plan" href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20ZenSite%20Premium" target="_blank">
 <span>Z PREMIUM</span>
-<h3>ZenSite Premium</h3>
-<p data-es="Autoridad digital total, diseño de alto nivel y máximo rendimiento."
+<h3>ZenSite Z Premium</h3>
+<p data-es="Autoridad digital total, diseño de alto nivel y rendimiento extremo."
    data-en="Full digital authority, high-end design and extreme performance."></p>
 <ul>
 <li data-es="UX/UI profesional" data-en="Professional UX/UI"></li>
