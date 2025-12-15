@@ -16,7 +16,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ===== */
+/* BACKGROUND */
 body::before{
   content:"";
   position:fixed;
@@ -35,10 +35,11 @@ body::after{
   z-index:-1;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
   position:fixed;
   top:0;
+  left:0;
   width:100%;
   z-index:1000;
   display:flex;
@@ -49,7 +50,7 @@ header{
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* MENU */
+/* MENU LEFT */
 .nav{
   display:flex;
   gap:28px;
@@ -59,26 +60,24 @@ header{
   text-decoration:none;
   font-weight:600;
   opacity:.85;
-  transition:.25s;
-}
-.nav a:hover{
-  opacity:1;
-  transform:translateY(-2px);
 }
 
-/* LANG */
+/* LANG FIXED RIGHT */
 .lang{
-  margin-left:auto;
+  position:fixed;
+  top:18px;
+  right:18px;
   display:flex;
   gap:6px;
+  z-index:2000;
 }
 .lang button{
-  padding:4px 10px;
-  border-radius:14px;
+  padding:3px 8px;
+  font-size:11px;
+  border-radius:12px;
   border:1px solid rgba(255,255,255,.25);
   background:transparent;
   color:#fff;
-  font-size:12px;
   font-weight:600;
   cursor:pointer;
 }
@@ -88,12 +87,12 @@ header{
   border-color:#00cfff;
 }
 
-/* ===== MAIN ===== */
+/* MAIN */
 main{
   margin-top:120px;
   padding:40px 20px 140px;
   max-width:1100px;
-  margin-inline:auto;
+  margin:auto;
   text-align:center;
 }
 
@@ -103,8 +102,6 @@ h1{
   margin-bottom:28px;
   position:relative;
 }
-
-/* NEON */
 h1::after{
   content:"";
   position:absolute;
@@ -139,7 +136,6 @@ p{
   padding:20px;
   box-shadow:0 50px 140px rgba(0,0,0,.9);
   animation:floatLaptop 6s ease-in-out infinite;
-  transition:transform .15s ease;
 }
 .preview img{
   width:100%;
@@ -168,23 +164,6 @@ p{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-6px)}
 }
-
-/* WHATSAPP */
-.whatsapp{
-  position:fixed;
-  bottom:26px;
-  right:26px;
-  width:62px;
-  height:62px;
-  background:#25D366;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  color:#fff;
-  text-decoration:none;
-}
 </style>
 </head>
 
@@ -197,12 +176,12 @@ p{
     <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
-
-  <div class="lang">
-    <button id="esBtn" class="active">ES</button>
-    <button id="enBtn">EN</button>
-  </div>
 </header>
+
+<div class="lang">
+  <button id="esBtn" class="active">ES</button>
+  <button id="enBtn">EN</button>
+</div>
 
 <main>
   <h1>ZenSite</h1>
@@ -213,55 +192,65 @@ p{
     Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales.
   </p>
 
-  <div class="preview" id="preview">
+  <div class="preview">
     <img src="background.jpg" alt="ZenSite preview">
   </div>
 </main>
 
-<div class="offer" id="offer">🎁 15% OFF · Diciembre</div>
-
-<a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
+<div class="offer" id="offer"
+     data-es="🎁 15% OFF · Diciembre"
+     data-en="🎁 15% OFF · December">
+  🎁 15% OFF · Diciembre
+</div>
 
 <script>
-/* ===== AUDIO ===== */
-const tap = new Audio("tap.mp3"); tap.volume = 0.25;
-const cta = new Audio("cta.mp3"); cta.volume = 0.35;
-const hover = new Audio("hover.mp3"); hover.volume = 0.15;
+/* ===== APPLE TAP SOUND (SIN MP3) ===== */
+let audioReady=false;
+let tapAudio;
 
-function play(sound){
-  sound.currentTime=0;
-  sound.play().catch(()=>{});
-  if(navigator.vibrate) navigator.vibrate(10);
+function initAudio(){
+  tapAudio = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=");
+  tapAudio.volume = 0.4;
+  audioReady=true;
 }
 
-/* MENU & BUTTONS */
+document.addEventListener("click",()=>{
+  if(!audioReady) initAudio();
+},{once:true});
+
+function playTap(){
+  if(audioReady){
+    tapAudio.currentTime=0;
+    tapAudio.play().catch(()=>{});
+    if(navigator.vibrate) navigator.vibrate(10);
+  }
+}
+
 document.querySelectorAll("a, button").forEach(el=>{
-  el.addEventListener("click",()=>play(el.classList.contains("cta")?cta:tap));
-  el.addEventListener("mouseenter",()=>play(hover));
+  el.addEventListener("click", playTap);
 });
 
-/* LANG */
+/* TRANSLATION */
 const esBtn=document.getElementById("esBtn");
 const enBtn=document.getElementById("enBtn");
-const offer=document.getElementById("offer");
 
 function setLang(lang){
   document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
     el.textContent = el.dataset[lang];
   });
-  offer.textContent = lang==="en" ? "🎁 15% OFF · December" : "🎁 15% OFF · Diciembre";
 }
 
-esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");};
-enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");};
+esBtn.onclick=()=>{
+  esBtn.classList.add("active");
+  enBtn.classList.remove("active");
+  setLang("es");
+};
 
-/* PARALLAX */
-const preview=document.getElementById("preview");
-document.addEventListener("mousemove",e=>{
-  const x=(window.innerWidth/2-e.clientX)/50;
-  const y=(window.innerHeight/2-e.clientY)/50;
-  preview.style.transform=translate(${x}px,${y}px);
-});
+enBtn.onclick=()=>{
+  enBtn.classList.add("active");
+  esBtn.classList.remove("active");
+  setLang("en");
+};
 </script>
 
 </body>
