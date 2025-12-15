@@ -3,14 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenSite | Demos</title>
+<title>Demos | ZenSite</title>
+
+<!-- ===== GOOGLE ANALYTICS (MISMO ID QUE INDEX) ===== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XXXXXXX');
+</script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter","Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
   overflow-x:hidden;
@@ -22,8 +31,8 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(120,90,255,.2),transparent 45%),
+    radial-gradient(circle at 25% 25%,rgba(0,200,255,.15),transparent 40%),
+    radial-gradient(circle at 75% 70%,rgba(120,90,255,.2),transparent 45%),
     #05070c;
   z-index:-2;
 }
@@ -38,13 +47,10 @@ body::after{
 /* HEADER */
 header{
   position:fixed;
-  top:0;
-  left:0;
+  top:0;left:0;
   width:100%;
   z-index:1000;
-  display:flex;
-  align-items:center;
-  padding:16px 26px;
+  padding:18px 26px;
   background:rgba(255,255,255,.04);
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(255,255,255,.08);
@@ -67,58 +73,114 @@ header{
   right:18px;
   display:flex;
   gap:6px;
-  z-index:2000;
 }
 .lang button{
-  padding:3px 8px;
+  padding:4px 9px;
   font-size:11px;
-  border-radius:12px;
+  border-radius:14px;
   border:1px solid rgba(255,255,255,.25);
   background:transparent;
   color:#fff;
-  font-weight:600;
+  font-weight:700;
   cursor:pointer;
 }
 .lang .active{
   background:#00cfff;
   color:#000;
-  border-color:#00cfff;
 }
 
 /* MAIN */
 main{
-  margin-top:120px;
-  padding:40px 20px 120px;
-  max-width:1100px;
-  margin-left:auto;
-  margin-right:auto;
+  margin-top:150px;
+  padding:0 20px 140px;
+  max-width:1200px;
+  margin-inline:auto;
 }
 
-/* DEMO STACK */
-.demo{
-  margin-bottom:90px;
+/* TITLE */
+h1{
+  text-align:center;
+  font-size:clamp(40px,6vw,70px);
+  margin-bottom:14px;
+}
+.subtitle{
+  text-align:center;
+  max-width:880px;
+  margin:0 auto 50px;
+  font-size:clamp(17px,2.4vw,21px);
+  opacity:.9;
+  line-height:1.6;
+}
+
+/* SLIDER */
+.slider{
+  position:relative;
+  max-width:1000px;
+  margin:0 auto;
+  overflow:hidden;
   border-radius:28px;
-  background:rgba(255,255,255,.05);
-  padding:22px;
-  box-shadow:0 50px 140px rgba(0,0,0,.85);
-  animation:floatDemo 6s ease-in-out infinite;
+  background:rgba(255,255,255,.04);
+  box-shadow:0 50px 160px rgba(0,0,0,.9);
 }
-.demo img{
+.track{
+  display:flex;
+  transition:transform .6s ease;
+}
+.slide{
+  min-width:100%;
+  padding:18px;
+}
+.slide img{
   width:100%;
+  border-radius:20px;
+  box-shadow:0 30px 90px rgba(0,0,0,.8);
+}
+
+/* ARROWS */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  font-size:26px;
+  color:#fff;
+  cursor:pointer;
+}
+.arrow.left{left:18px}
+.arrow.right{right:18px}
+
+/* CTA */
+.cta-wrap{
+  margin-top:60px;
+  text-align:center;
+}
+.cta-wrap p{
+  max-width:760px;
+  margin:0 auto 20px;
+  font-size:18px;
+  opacity:.9;
+}
+.cta{
+  padding:16px 28px;
+  border:none;
   border-radius:22px;
-  display:block;
+  background:#00cfff;
+  color:#000;
+  font-weight:900;
+  font-size:17px;
+  cursor:pointer;
 }
 
-@keyframes floatDemo{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .demo{
-    margin-bottom:60px;
-  }
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:50px 20px 30px;
+  opacity:.5;
+  font-size:13px;
 }
 </style>
 </head>
@@ -140,35 +202,74 @@ main{
 </div>
 
 <main>
-  <div class="demo"><img src="demo1.jpg" alt="Demo 1"></div>
-  <div class="demo"><img src="demo2.jpg" alt="Demo 2"></div>
-  <div class="demo"><img src="demo3.jpg" alt="Demo 3"></div>
-  <div class="demo"><img src="demo4.jpg" alt="Demo 4"></div>
-  <div class="demo"><img src="demo5.jpg" alt="Demo 5"></div>
+  <h1 data-es="Demos reales" data-en="Real demos">Demos reales</h1>
+
+  <p class="subtitle"
+     data-es="No son plantillas. Son ejemplos del nivel visual, fluidez y estructura que aplicamos en proyectos reales."
+     data-en="These are not templates. They show the visual level, flow and structure we apply to real projects.">
+  </p>
+
+  <div class="slider">
+    <button class="arrow left" onclick="prev()">‹</button>
+
+    <div class="track" id="track">
+      <div class="slide"><img src="demo1.jpg" alt="Demo 1"></div>
+      <div class="slide"><img src="demo2.jpg" alt="Demo 2"></div>
+      <div class="slide"><img src="demo3.jpg" alt="Demo 3"></div>
+      <div class="slide"><img src="demo4.jpg" alt="Demo 4"></div>
+      <div class="slide"><img src="demo5.jpg" alt="Demo 5"></div>
+    </div>
+
+    <button class="arrow right" onclick="next()">›</button>
+  </div>
+
+  <div class="cta-wrap">
+    <p data-es="Este es el nivel que la mayoría de nuestros clientes obtiene con el Plan Z+."
+       data-en="This is the level most of our clients get with the Z+ Plan.">
+    </p>
+    <button class="cta" onclick="goPlans()">Ver Plan Z+</button>
+  </div>
 </main>
+
+<footer>
+  © 2025 ZenSite. Todos los derechos reservados.
+</footer>
 
 <script>
 /* TRANSLATION */
 const esBtn=document.getElementById("esBtn");
 const enBtn=document.getElementById("enBtn");
-
 function setLang(lang){
   document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
-    el.textContent=el.dataset[lang];
+    el.textContent = el.dataset[lang];
   });
 }
+esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");};
+enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");};
 
-esBtn.onclick=()=>{
-  esBtn.classList.add("active");
-  enBtn.classList.remove("active");
-  setLang("es");
-};
+/* SLIDER */
+let index=0;
+const track=document.getElementById("track");
+const total=5;
 
-enBtn.onclick=()=>{
-  enBtn.classList.add("active");
-  esBtn.classList.remove("active");
-  setLang("en");
-};
+function update(){
+  track.style.transform=translateX(-${index*100}%);
+  gtag('event','demo_view',{demo:index+1});
+}
+function next(){
+  index=(index+1)%total;
+  update();
+}
+function prev(){
+  index=(index-1+total)%total;
+  update();
+}
+
+/* CTA */
+function goPlans(){
+  gtag('event','cta_demo_to_plans');
+  window.location.href="planes.html";
+}
 </script>
 
 </body>
