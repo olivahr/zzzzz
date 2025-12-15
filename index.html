@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenSite</title>
+<title>ZenSite | Webs que venden</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:#05070c;
@@ -14,14 +15,14 @@ body{
   overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* ===== BACKGROUND ===== */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 25%,rgba(0,200,255,.25),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(140,90,255,.25),transparent 40%),
+    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(140,90,255,.22),transparent 40%),
     #05070c;
   z-index:-2;
 }
@@ -33,7 +34,7 @@ body::after{
   z-index:-1;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
   position:fixed;
   top:0;
@@ -42,98 +43,163 @@ header{
   display:flex;
   align-items:center;
   padding:0 18px;
-  background:rgba(255,255,255,.04);
+  background:rgba(255,255,255,.05);
   backdrop-filter:blur(18px);
   border-bottom:1px solid rgba(255,255,255,.08);
   z-index:1000;
 }
-
 nav{
   display:flex;
-  gap:22px;
+  gap:20px;
 }
-
 nav a{
   color:#fff;
   text-decoration:none;
   font-weight:600;
   opacity:.85;
 }
-
 nav a:hover{opacity:1}
-
 .lang{
   margin-left:auto;
   display:flex;
   gap:8px;
 }
-
 .lang button{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.25);
-  color:#fff;
   padding:6px 14px;
   border-radius:14px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
   font-weight:600;
   cursor:pointer;
 }
-
 .lang button.active{
   background:#00cfff;
   color:#000;
 }
 
-/* HERO */
-main{
-  margin-top:64px;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
+/* ===== HERO ===== */
 .hero{
-  max-width:900px;
+  min-height:100vh;
+  padding-top:120px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   text-align:center;
-  padding:60px 20px;
 }
-
+.hero-inner{
+  animation:float 7s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-16px)}
+}
 .hero h1{
-  font-size:clamp(38px,8vw,68px);
-  font-weight:800;
-  letter-spacing:-1px;
+  font-size:clamp(46px,8vw,96px);
   margin-bottom:20px;
-  animation:floatText 6s ease-in-out infinite;
+  text-shadow:0 0 40px rgba(0,200,255,.6);
 }
-
 .hero p{
-  font-size:clamp(16px,4vw,20px);
+  max-width:780px;
+  font-size:20px;
   opacity:.9;
   line-height:1.6;
 }
-
-/* IMAGE */
-.device{
+.laptop{
   margin-top:50px;
-  animation:floatImg 7s ease-in-out infinite;
+  max-width:520px;
 }
-
-.device img{
+.laptop img{
   width:100%;
-  max-width:620px;
-  border-radius:28px;
-  box-shadow:0 40px 120px rgba(0,0,0,.9);
+  border-radius:18px;
+  box-shadow:0 40px 90px rgba(0,0,0,.9);
 }
 
-/* ANIMATIONS */
-@keyframes floatText{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
+/* ===== SECTIONS ===== */
+.section{
+  max-width:1100px;
+  margin:auto;
+  padding:120px 20px;
+}
+.section h2{
+  font-size:36px;
+  margin-bottom:24px;
+}
+.section p{
+  max-width:780px;
+  opacity:.85;
+  line-height:1.7;
 }
 
-@keyframes floatImg{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(10px)}
+/* ===== STATEMENT ===== */
+.statement{
+  text-align:center;
+  font-size:28px;
+  font-weight:600;
+  opacity:.9;
+}
+
+/* ===== GRID ===== */
+.grid{
+  margin-top:50px;
+  display:grid;
+  gap:28px;
+}
+@media(min-width:900px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+}
+.card{
+  background:rgba(255,255,255,.06);
+  padding:34px;
+  border-radius:26px;
+  backdrop-filter:blur(14px);
+  transition:.4s;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 40px rgba(0,200,255,.35);
+}
+
+/* ===== CTA ===== */
+.cta{
+  text-align:center;
+  margin-top:80px;
+}
+.cta a{
+  display:inline-block;
+  padding:16px 36px;
+  background:#00cfff;
+  color:#000;
+  font-weight:700;
+  border-radius:30px;
+  text-decoration:none;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  margin-top:140px;
+  padding:40px 20px;
+  text-align:center;
+  opacity:.55;
+  font-size:14px;
+}
+
+/* ===== WHATSAPP ===== */
+.whatsapp{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:62px;
+  height:62px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  color:#fff;
+  text-decoration:none;
+  z-index:999;
 }
 </style>
 </head>
@@ -147,46 +213,84 @@ main{
     <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
-
   <div class="lang">
-    <button id="esBtn" class="active">ES</button>
-    <button id="enBtn">EN</button>
+    <button id="es" class="active">ES</button>
+    <button id="en">EN</button>
   </div>
 </header>
 
-<main>
-  <section class="hero">
-    <h1 data-es="ZenSite" data-en="ZenSite">ZenSite</h1>
-    <p data-es="Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales."
-       data-en="We design professional web experiences focused on building trust, positioning your brand, and converting visitors into real clients.">
-      Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales.
+<section class="hero">
+  <div class="hero-inner">
+    <h1>ZenSite</h1>
+    <p data-es="Diseñamos experiencias web que elevan tu marca y convierten visitas en clientes reales."
+       data-en="We design web experiences that elevate your brand and turn visitors into real clients.">
+       Diseñamos experiencias web que elevan tu marca y convierten visitas en clientes reales.
     </p>
-
-    <div class="device">
-      <img src="background.jpg" alt="ZenSite preview">
+    <div class="laptop">
+      <img src="background.jpg" alt="ZenSite Web">
     </div>
-  </section>
-</main>
+  </div>
+</section>
+
+<section class="section">
+  <div class="statement"
+       data-es="Webs que no parecen plantillas. Diseñadas para posicionarte."
+       data-en="Websites that don’t look like templates. Designed to position your brand.">
+    Webs que no parecen plantillas. Diseñadas para posicionarte.
+  </div>
+</section>
+
+<section class="section">
+  <h2 data-es="Qué construimos" data-en="What we build">Qué construimos</h2>
+  <div class="grid">
+    <div class="card" data-es="Webs corporativas serias" data-en="Serious corporate websites">
+      Webs corporativas serias
+    </div>
+    <div class="card" data-es="Landing pages que convierten" data-en="High-converting landing pages">
+      Landing pages que convierten
+    </div>
+    <div class="card" data-es="Tiendas online premium" data-en="Premium online stores">
+      Tiendas online premium
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 data-es="El resultado" data-en="The result">El resultado</h2>
+  <p data-es="Más confianza, mejor percepción de marca y más mensajes de clientes que sí valoran tu negocio."
+     data-en="More trust, stronger brand perception, and more messages from clients who value your business.">
+     Más confianza, mejor percepción de marca y más mensajes de clientes que sí valoran tu negocio.
+  </p>
+
+  <div class="cta">
+    <a href="https://wa.me/15027942412?text=Hola%20quiero%20una%20web%20profesional"
+       data-es="Hablar por WhatsApp"
+       data-en="Talk on WhatsApp">
+       Hablar por WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2025 ZenSite · Webs profesionales · Pagos únicos · Soporte directo
+</footer>
+
+<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
 
 <script>
-const esBtn=document.getElementById("esBtn");
-const enBtn=document.getElementById("enBtn");
 const texts=document.querySelectorAll("[data-es]");
+const esBtn=document.getElementById("es");
+const enBtn=document.getElementById("en");
 
 function setLang(lang){
-  texts.forEach(el=>{
-    el.textContent=el.dataset[lang];
-  });
+  texts.forEach(el=>el.textContent=el.dataset[lang]);
   esBtn.classList.toggle("active",lang==="es");
   enBtn.classList.toggle("active",lang==="en");
   localStorage.setItem("lang",lang);
 }
-
 esBtn.onclick=()=>setLang("es");
 enBtn.onclick=()=>setLang("en");
-
-const saved=localStorage.getItem("lang")||"es";
-setLang(saved);
+setLang(localStorage.getItem("lang")||"es");
 </script>
 
 </body>
