@@ -1,267 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planes ZenSite</title>
+
 <style>
-/* ===== RESET + FONDO GLOBAL ===== */
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #050505;
-  color: #fff;
-  font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+html,body{
+  margin:0;
+  padding:0;
+  background:#050505;
+  color:#fff;
+  font-family:Montserrat,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
-/* ===== SECTION ===== */
-.zensite-plans {
-  min-height: 100vh;
-  padding: 140px 6% 160px;
-  position: relative;
+/* NAV */
+nav{
+  position:fixed;
+  top:0;left:0;
+  width:100%;
+  padding:18px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(5,5,5,.6);
+  backdrop-filter:blur(14px);
+  z-index:999;
+}
+nav a{
+  color:#fff;
+  margin-left:18px;
+  text-decoration:none;
+  font-weight:700;
+  opacity:.85;
+}
+nav a:hover{opacity:1}
+
+/* SECTION */
+.zensite-plans{
+  min-height:100vh;
+  padding:140px 6% 160px;
   background:
     radial-gradient(800px 500px at 50% 15%, rgba(0,150,255,.18), transparent 65%),
     radial-gradient(700px 500px at 20% 80%, rgba(0,255,150,.18), transparent 65%),
     radial-gradient(700px 500px at 80% 85%, rgba(255,200,0,.18), transparent 65%),
     #050505;
-  overflow: hidden;
 }
 
-/* ===== BACK ===== */
-.back-btn {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 800;
-  opacity: .7;
+/* LANG */
+.lang{
+  position:fixed;
+  top:22px;
+  right:24px;
+  z-index:1000;
 }
-.back-btn:hover { opacity: 1; }
+.lang button{
+  background:none;
+  border:none;
+  color:#fff;
+  font-weight:900;
+  font-size:16px;
+  margin-left:12px;
+  opacity:.4;
+  cursor:pointer;
+}
+.lang button.active{opacity:1}
 
-/* ===== LANG ===== */
-.plans-lang {
-  position: absolute;
-  top: 24px;
-  right: 24px;
+/* HEADER */
+header{
+  max-width:900px;
+  margin-bottom:120px;
 }
-.plans-lang button {
-  background: none;
-  border: none;
-  color: #fff;
-  font-weight: 900;
-  font-size: 18px;
-  margin-left: 14px;
-  opacity: .5;
-  cursor: pointer;
+header h1{
+  font-size:clamp(42px,6vw,72px);
+  font-weight:900;
 }
-.plans-lang button.active { opacity: 1; }
-
-/* ===== HEADER ===== */
-.plans-header {
-  max-width: 900px;
-  margin-bottom: 120px;
-}
-.plans-header h2 {
-  font-size: clamp(44px, 6vw, 72px);
-  font-weight: 900;
-}
-.plans-header strong {
-  background: linear-gradient(90deg,#fff,#aaa);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-.plans-header p {
-  margin-top: 14px;
-  opacity: .85;
-  max-width: 620px;
+header p{
+  opacity:.85;
+  max-width:620px;
 }
 
-/* ===== TRIANGLE LAYOUT ===== */
-.plans-triangle {
-  position: relative;
-  width: 100%;
-  max-width: 1200px;
-  height: 700px;
-  margin: 0 auto;
+/* CARDS */
+.cards{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
 }
 
-/* ===== CARD BASE ===== */
-.plan {
-  position: absolute;
-  width: 360px;
-  padding: 60px 38px;
-  border-radius: 30px;
-  background: rgba(20,20,20,.78);
-  border: 1px solid rgba(255,255,255,.14);
-  backdrop-filter: blur(18px);
-  cursor: pointer;
+.plan{
+  padding:56px 38px;
+  border-radius:30px;
+  background:rgba(20,20,20,.8);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(18px);
+  text-decoration:none;
+  color:#fff;
+  transition:.35s;
+}
+.plan:hover{
+  transform:translateY(-10px);
+  border-color:rgba(255,255,255,.35);
 }
 
-.plan h3 {
-  margin: 14px 0;
-  font-family: 'Orbitron', sans-serif;
+.plan span{
+  letter-spacing:3px;
+  opacity:.7;
+  font-weight:800;
 }
 
-.plan p {
-  opacity: .9;
-  line-height: 1.6;
+.plan h3{
+  margin:16px 0;
+  font-size:26px;
 }
 
-.plan ul {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0;
+.plan ul{
+  list-style:none;
+  padding:0;
+  margin:24px 0;
 }
-.plan ul li {
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-
-.plan-level {
-  font-family: 'Orbitron', sans-serif;
-  letter-spacing: 3px;
-  opacity: .85;
+.plan li{
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* ===== CTA ===== */
-.plan-cta {
-  margin-top: 26px;
-  text-align: center;
-  padding: 14px;
-  border-radius: 14px;
-  background: #000;
-  border: 1px solid rgba(255,255,255,.2);
-  font-weight: 900;
+.cta{
+  margin-top:24px;
+  padding:14px;
+  text-align:center;
+  border-radius:14px;
+  background:#000;
+  font-weight:900;
+  border:1px solid rgba(255,255,255,.25);
 }
 
-/* ===== POSITIONS (TRIANGLE REAL) ===== */
-.plan-zplus {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%) scale(1.12);
-}
-
-.plan-z {
-  bottom: 0;
-  left: 0;
-}
-
-.plan-zpremium {
-  bottom: 0;
-  right: 0;
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 900px) {
-  .plans-triangle {
-    height: auto;
-  }
-  .plan {
-    position: relative;
-    width: 100%;
-    margin-bottom: 40px;
-    transform: none !important;
+/* MOBILE */
+@media(max-width:900px){
+  .cards{
+    grid-template-columns:1fr;
   }
 }
 </style>
+</head>
 
-<section class="zensite-plans" id="plans">
+<body>
 
-  <a href="#home" class="back-btn">← Inicio</a>
-
-  <div class="plans-lang">
-    <button class="active" data-lang="en">EN</button>
-    <button data-lang="es">ES</button>
+<nav>
+  <strong>ZenSite</strong>
+  <div>
+    <a href="index.html">Inicio</a>
+    <a href="demo.html">Demo</a>
   </div>
+</nav>
 
-  <header class="plans-header">
-    <h2>
-      <span data-en="Plans" data-es="Planes">Plans</span>
-      <strong>ZenSite</strong>
-    </h2>
-    <p
-      data-en="Aggressive design, real technology and high-level presence."
-      data-es="Diseño agresivo, tecnología real y presencia de alto nivel.">
-      Aggressive design, real technology and high-level presence.
-    </p>
-  </header>
+<div class="lang">
+  <button data-lang="es" class="active">ES</button>
+  <button data-lang="en">EN</button>
+</div>
 
-  <div class="plans-triangle">
+<section class="zensite-plans">
 
-    <!-- Z+ -->
-    <article class="plan plan-zplus" data-plan="ZenSite Z+">
-      <span class="plan-level">Z+</span>
-      <h3>ZenSite Z+</h3>
-      <p data-en="More visual impact, advanced animations and higher conversion."
-         data-es="Más impacto visual, animaciones avanzadas y mayor conversión.">
-        More visual impact, advanced animations and higher conversion.
-      </p>
-      <ul>
-        <li data-en="Premium animations" data-es="Animaciones premium">Premium animations</li>
-        <li data-en="Optimized SEO" data-es="SEO optimizado">Optimized SEO</li>
-        <li data-en="Advanced UI" data-es="UI avanzada">Advanced UI</li>
-      </ul>
-      <div class="plan-cta" data-en="Contact" data-es="Contactar">Contact</div>
-    </article>
+<header>
+  <h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
+  <p
+    data-es="Soluciones web profesionales diseñadas para posicionar tu negocio, generar confianza y vender desde el primer día."
+    data-en="Professional web solutions designed to position your business, build trust and sell from day one.">
+  </p>
+</header>
 
-    <!-- Z -->
-    <article class="plan plan-z" data-plan="ZenSite Z">
-      <span class="plan-level">Z</span>
-      <h3>ZenSite Z</h3>
-      <p data-en="Solid foundation for businesses that need to look professional from day one."
-         data-es="Base sólida para negocios que necesitan verse profesionales desde el primer día.">
-        Solid foundation for businesses that need to look professional from day one.
-      </p>
-      <ul>
-        <li data-en="Custom web design" data-es="Diseño web personalizado">Custom web design</li>
-        <li data-en="Fully responsive" data-es="Totalmente responsive">Fully responsive</li>
-        <li data-en="Optimized structure" data-es="Estructura optimizada">Optimized structure</li>
-      </ul>
-      <div class="plan-cta" data-en="Contact" data-es="Contactar">Contact</div>
-    </article>
+<div class="cards">
 
-    <!-- PREMIUM -->
-    <article class="plan plan-zpremium" data-plan="ZenSite Z Premium">
-      <span class="plan-level">Z PREMIUM</span>
-      <h3>ZenSite Z Premium</h3>
-      <p data-en="Full digital authority, high-end design and extreme performance."
-         data-es="Autoridad digital total, diseño de alto nivel y rendimiento extremo.">
-        Full digital authority, high-end design and extreme performance.
-      </p>
-      <ul>
-        <li data-en="Professional UX/UI" data-es="UX/UI profesional">Professional UX/UI</li>
-        <li data-en="Extreme speed" data-es="Velocidad extrema">Extreme speed</li>
-        <li data-en="Full optimization" data-es="Optimización total">Full optimization</li>
-      </ul>
-      <div class="plan-cta" data-en="Contact" data-es="Contactar">Contact</div>
-    </article>
+<a class="plan"
+href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20ZenSite%20Z"
+target="_blank">
+<span>Z</span>
+<h3>ZenSite Z</h3>
+<p data-es="Presencia profesional sólida para negocios que quieren verse serios desde el inicio."
+   data-en="Solid professional presence for businesses that want to look serious from day one."></p>
+<ul>
+<li data-es="Diseño web personalizado" data-en="Custom web design"></li>
+<li data-es="Totalmente responsive" data-en="Fully responsive"></li>
+<li data-es="Optimización básica" data-en="Basic optimization"></li>
+</ul>
+<div class="cta" data-es="Contactar" data-en="Contact"></div>
+</a>
 
-  </div>
+<a class="plan"
+href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20ZenSite%20Z+"
+target="_blank">
+<span>Z+</span>
+<h3>ZenSite Z+</h3>
+<p data-es="Más impacto visual, animaciones avanzadas y mayor conversión."
+   data-en="More visual impact, advanced animations and higher conversion."></p>
+<ul>
+<li data-es="Animaciones premium" data-en="Premium animations"></li>
+<li data-es="SEO optimizado" data-en="Optimized SEO"></li>
+<li data-es="UI avanzada" data-en="Advanced UI"></li>
+</ul>
+<div class="cta" data-es="Contactar" data-en="Contact"></div>
+</a>
+
+<a class="plan"
+href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20ZenSite%20Premium"
+target="_blank">
+<span>Z PREMIUM</span>
+<h3>ZenSite Premium</h3>
+<p data-es="Autoridad digital total, diseño de alto nivel y máximo rendimiento."
+   data-en="Full digital authority, high-end design and extreme performance."></p>
+<ul>
+<li data-es="UX/UI profesional" data-en="Professional UX/UI"></li>
+<li data-es="Velocidad extrema" data-en="Extreme speed"></li>
+<li data-es="Optimización total" data-en="Full optimization"></li>
+</ul>
+<div class="cta" data-es="Contactar" data-en="Contact"></div>
+</a>
+
+</div>
 </section>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const phone = "15027942412";
-
-  // WhatsApp
-  document.querySelectorAll(".plan").forEach(card => {
-    card.addEventListener("click", () => {
-      const plan = card.dataset.plan;
-      const msg = encodeURIComponent(
-        "Hola, estoy interesado en el plan " + plan
-      );
-      window.open(https://wa.me/${phone}?text=${msg}, "_blank");
-    });
-  });
-
-  // Traducción interna
-  const buttons = document.querySelectorAll(".plans-lang button");
-  const texts = document.querySelectorAll("[data-en]");
-
-  function setLang(lang) {
-    buttons.forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
-    texts.forEach(el => el.textContent = el.dataset[lang]);
-  }
-
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => setLang(btn.dataset.lang));
-  });
-
-  setLang("en");
-});
+const buttons=document.querySelectorAll('.lang button');
+const texts=document.querySelectorAll('[data-es]');
+function setLang(lang){
+  buttons.forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  texts.forEach(t=>t.textContent=t.dataset[lang]);
+}
+buttons.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+setLang('es');
 </script>
+
+</body>
+</html>
