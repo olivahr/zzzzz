@@ -62,7 +62,7 @@ header{
   opacity:.85;
 }
 
-/* LANG FIXED RIGHT */
+/* LANG RIGHT */
 .lang{
   position:fixed;
   top:18px;
@@ -89,8 +89,8 @@ header{
 
 /* MAIN */
 main{
-  margin-top:120px;
-  padding:40px 20px 140px;
+  margin-top:140px;
+  padding:40px 20px 120px;
   max-width:1100px;
   margin:auto;
   text-align:center;
@@ -99,14 +99,15 @@ main{
 /* TITLE */
 h1{
   font-size:clamp(42px,6vw,74px);
-  margin-bottom:28px;
+  margin-bottom:30px;
+  margin-top:20px;
   position:relative;
 }
 h1::after{
   content:"";
   position:absolute;
   left:50%;
-  bottom:-14px;
+  bottom:-16px;
   transform:translateX(-50%);
   width:160px;
   height:6px;
@@ -124,8 +125,8 @@ p{
   font-size:clamp(17px,2.5vw,21px);
   line-height:1.65;
   opacity:.92;
-  max-width:860px;
-  margin:0 auto 44px;
+  max-width:900px;
+  margin:0 auto 50px;
 }
 
 /* PREVIEW */
@@ -164,6 +165,14 @@ p{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-6px)}
 }
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px 20px;
+  font-size:13px;
+  opacity:.5;
+}
 </style>
 </head>
 
@@ -187,9 +196,9 @@ p{
   <h1>ZenSite</h1>
 
   <p id="desc"
-     data-es="Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales."
-     data-en="We design professional web experiences focused on building trust, positioning your brand, and turning visits into real clients.">
-    Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales.
+     data-es="Creamos experiencias digitales de alto nivel que transmiten confianza, elevan tu marca y convierten visitas en clientes reales."
+     data-en="We create high-end digital experiences that build trust, elevate your brand, and turn visits into real clients.">
+    Creamos experiencias digitales de alto nivel que transmiten confianza, elevan tu marca y convierten visitas en clientes reales.
   </p>
 
   <div class="preview">
@@ -197,27 +206,29 @@ p{
   </div>
 </main>
 
-<div class="offer" id="offer"
+<footer>
+  © <span id="year"></span> ZenSite. Todos los derechos reservados.
+</footer>
+
+<div class="offer"
      data-es="🎁 15% OFF · Diciembre"
      data-en="🎁 15% OFF · December">
   🎁 15% OFF · Diciembre
 </div>
 
 <script>
-/* ===== APPLE TAP SOUND (SIN MP3) ===== */
+/* YEAR */
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* SOUND */
 let audioReady=false;
 let tapAudio;
-
 function initAudio(){
-  tapAudio = new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=");
-  tapAudio.volume = 0.4;
+  tapAudio=new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=");
+  tapAudio.volume=0.4;
   audioReady=true;
 }
-
-document.addEventListener("click",()=>{
-  if(!audioReady) initAudio();
-},{once:true});
-
+document.addEventListener("click",()=>{if(!audioReady) initAudio();},{once:true});
 function playTap(){
   if(audioReady){
     tapAudio.currentTime=0;
@@ -225,32 +236,18 @@ function playTap(){
     if(navigator.vibrate) navigator.vibrate(10);
   }
 }
-
-document.querySelectorAll("a, button").forEach(el=>{
-  el.addEventListener("click", playTap);
+document.querySelectorAll("a,button").forEach(el=>{
+  el.addEventListener("click",playTap);
 });
 
 /* TRANSLATION */
-const esBtn=document.getElementById("esBtn");
-const enBtn=document.getElementById("enBtn");
-
 function setLang(lang){
   document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
-    el.textContent = el.dataset[lang];
+    el.textContent=el.dataset[lang];
   });
 }
-
-esBtn.onclick=()=>{
-  esBtn.classList.add("active");
-  enBtn.classList.remove("active");
-  setLang("es");
-};
-
-enBtn.onclick=()=>{
-  enBtn.classList.add("active");
-  esBtn.classList.remove("active");
-  setLang("en");
-};
+esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");};
+enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");};
 </script>
 
 </body>
