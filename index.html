@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZenSite</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 
-:root{
-  --bg:#05070c;
-  --glass:rgba(255,255,255,.05);
-  --glass2:rgba(255,255,255,.04);
-  --line:rgba(255,255,255,.08);
-  --text:rgba(255,255,255,.92);
-  --muted:rgba(255,255,255,.78);
-  --accent:#00cfff;
-}
-
 body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
-  background:var(--bg);
+  background:#05070c;
   color:#fff;
   overflow-x:hidden;
 }
@@ -42,192 +32,123 @@ body::after{
   position:fixed;
   inset:0;
   backdrop-filter:blur(90px);
-  -webkit-backdrop-filter:blur(90px);
   z-index:-1;
 }
 
 /* HEADER */
 header{
   position:fixed;
-  top:0; left:0;
+  top:0;
+  left:0;
   width:100%;
   z-index:1000;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  padding:14px 18px;
-  background:var(--glass2);
+  padding:16px 26px;
+  background:rgba(255,255,255,.04);
   backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--line);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* MENU LEFT */
+/* MENU */
 .nav{
   display:flex;
-  gap:22px;
-  align-items:center;
-  flex-wrap:nowrap;
-  overflow:hidden;
+  gap:28px;
 }
 .nav a{
   color:#fff;
   text-decoration:none;
-  font-weight:700;
-  opacity:.86;
-  letter-spacing:.2px;
-  font-size:15px;
-  padding:8px 4px;
-  border-radius:10px;
-  transition:opacity .2s ease, transform .2s ease;
+  font-weight:600;
+  opacity:.85;
+  white-space:nowrap;
 }
-.nav a:active{transform:scale(.98)}
-.nav a:hover{opacity:1}
 
-/* LANG RIGHT (inside header, not fixed, so it never overlaps) */
+/* LANG */
 .lang{
+  margin-left:auto;
   display:flex;
-  gap:8px;
-  align-items:center;
-  margin-left:10px;
-  flex:0 0 auto;
+  gap:6px;
 }
 .lang button{
-  padding:6px 12px;
-  font-size:12px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.20);
-  background:rgba(255,255,255,.05);
+  padding:4px 10px;
+  font-size:11px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.25);
+  background:transparent;
   color:#fff;
-  font-weight:800;
+  font-weight:600;
   cursor:pointer;
-  line-height:1;
-  transition:transform .18s ease, background .18s ease, border-color .18s ease;
 }
-.lang button:active{transform:scale(.96)}
 .lang .active{
-  background:var(--accent);
-  color:#001018;
-  border-color:var(--accent);
+  background:#00cfff;
+  color:#000;
+  border-color:#00cfff;
 }
 
 /* MAIN */
 main{
-  /* IMPORTANTE: separa del header */
-  padding:110px 18px 40px;
+  margin-top:120px;
+  padding:40px 20px 120px;
   max-width:1100px;
-  margin:0 auto;
+  margin-left:auto;
+  margin-right:auto;
   text-align:center;
 }
 
-/* TITLE (premium, not exaggerated) */
+/* TITLE */
 h1{
-  font-size:clamp(42px,6.2vw,76px);
-  margin:12px 0 18px;
-  letter-spacing:-.7px;
-  line-height:1.05;
-  position:relative;
-  text-shadow:0 20px 60px rgba(0,0,0,.55);
-}
-h1::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  bottom:-14px;
-  transform:translateX(-50%);
-  width:170px;
-  height:7px;
-  background:var(--accent);
-  filter:blur(18px);
-  animation:neon 3s ease-in-out infinite;
-}
-@keyframes neon{
-  0%,100%{opacity:.55}
-  50%{opacity:1}
+  font-size:clamp(44px,6vw,76px);
+  margin-bottom:22px;
+  letter-spacing:-0.02em;
 }
 
-/* TEXT */
-p{
-  font-size:clamp(18px,2.7vw,22px);
-  line-height:1.65;
-  color:var(--text);
-  max-width:900px;
-  margin:0 auto 26px;
+/* DESCRIPTION */
+#desc{
+  font-size:clamp(18px,2.4vw,22px);
+  line-height:1.6;
+  opacity:.92;
+  max-width:760px;
+  margin:0 auto 50px;
 }
 
-/* PREVIEW (laptop float) */
-.previewWrap{
-  margin-top:12px;
-  display:flex;
-  justify-content:center;
-}
+/* PREVIEW */
 .preview{
-  width:min(980px, 100%);
-  border-radius:34px;
-  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-  padding:18px;
-  box-shadow:0 50px 140px rgba(0,0,0,.88);
+  margin-top:10px;
+  border-radius:30px;
+  background:rgba(255,255,255,.05);
+  padding:20px;
+  box-shadow:0 40px 120px rgba(0,0,0,.9);
   animation:floatLaptop 6s ease-in-out infinite;
 }
 .preview img{
   width:100%;
-  height:auto;
-  display:block;
-  border-radius:26px;
+  border-radius:22px;
 }
 @keyframes floatLaptop{
   0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
+  50%{transform:translateY(-10px)}
 }
 
-/* FOOTER (must be real bottom) */
-footer{
-  max-width:1100px;
-  margin:22px auto 26px;
-  padding:0 18px;
-  text-align:center;
-  color:rgba(255,255,255,.55);
-  font-size:13px;
-}
-
-/* OFFER (must float between laptop and footer — not fixed) */
-.offerDock{
-  max-width:1100px;
-  margin:18px auto 0;
-  padding:0 18px;
-  display:flex;
-  justify-content:flex-start;
-}
+/* OFFER */
 .offer{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 16px;
-  border-radius:999px;
-  background:rgba(0,200,255,.16);
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  margin-top:22px;
+  padding:10px 18px;
+  border-radius:22px;
+  background:rgba(0,200,255,.18);
   border:1px solid rgba(0,200,255,.35);
-  font-weight:800;
+  font-weight:600;
   font-size:14px;
-  color:#eafcff;
   backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  animation:floatOffer 4s ease-in-out infinite;
-  box-shadow:0 18px 60px rgba(0,0,0,.35);
-  user-select:none;
-}
-.offer span{
-  opacity:.95;
-}
-@keyframes floatOffer{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
 }
 
-/* MOBILE TUNING */
-@media (max-width:420px){
-  .nav{gap:16px}
-  .nav a{font-size:14px}
-  .lang button{padding:6px 10px}
+/* FOOTER */
+footer{
+  margin-top:90px;
+  font-size:13px;
+  opacity:.55;
 }
 </style>
 </head>
@@ -249,113 +170,50 @@ footer{
 </header>
 
 <main>
-  <!-- SUBE UN POCO pero sin esconder -->
-  <h1 id="brand"
-      data-es="ZenSite"
-      data-en="ZenSite">ZenSite</h1>
+  <h1>ZenSite</h1>
 
   <p id="desc"
-     data-es="Si quieres llevar tu negocio al siguiente nivel, llegaste al lugar correcto. En ZenSite creamos experiencias digitales premium que transmiten confianza, elevan tu marca y convierten visitas en clientes reales."
-     data-en="If you want to take your business to the next level, you’re in the right place. At ZenSite we craft premium digital experiences that build trust, elevate your brand, and turn visits into real customers.">
-    Si quieres llevar tu negocio al siguiente nivel, llegaste al lugar correcto. En ZenSite creamos experiencias digitales premium que transmiten confianza, elevan tu marca y convierten visitas en clientes reales.
+     data-es="¿Quieres llevar tu negocio al siguiente nivel? Llegaste al lugar correcto."
+     data-en="Want to take your business to the next level? You’re in the right place.">
+    ¿Quieres llevar tu negocio al siguiente nivel? Llegaste al lugar correcto.
   </p>
 
-  <div class="previewWrap">
-    <div class="preview">
-      <!-- IMPORTANTE: esta imagen tiene que existir -->
-      <img src="background.jpg" alt="ZenSite preview" />
-    </div>
+  <div class="preview">
+    <img src="background.jpg" alt="ZenSite preview">
   </div>
 
-  <!-- OFERTA entre la laptop y el footer (NO tapa nada) -->
-  <div class="offerDock">
-    <div class="offer" id="offer"
-      data-es="🎁 15% OFF · Diciembre"
-      data-en="🎁 15% OFF · December">
-      <span>🎁</span><span>15% OFF · Diciembre</span>
-    </div>
+  <div class="offer"
+       data-es="🎁 15% OFF · Diciembre"
+       data-en="🎁 15% OFF · December">
+    🎁 15% OFF · Diciembre
   </div>
+
+  <footer>
+    © 2025 ZenSite. Todos los derechos reservados.
+  </footer>
 </main>
 
-<footer id="footerText"
-  data-es="© <span id='year'></span> ZenSite. Todos los derechos reservados."
-  data-en="© <span id='year'></span> ZenSite. All rights reserved.">
-  © <span id="year"></span> ZenSite. Todos los derechos reservados.
-</footer>
-
 <script>
-/* ====== YEAR ====== */
-document.getElementById("year").textContent = new Date().getFullYear();
-
-/* ====== TRANSLATION (works for menu + title + text + offer + footer) ====== */
-const esBtn = document.getElementById("esBtn");
-const enBtn = document.getElementById("enBtn");
+const esBtn=document.getElementById("esBtn");
+const enBtn=document.getElementById("enBtn");
 
 function setLang(lang){
   document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
-    // allow footer to keep <span id="year">
-    if(el.id === "footerText"){
-      el.innerHTML = el.getAttribute("data-"+lang);
-      document.getElementById("year").textContent = new Date().getFullYear();
-    }else{
-      el.textContent = el.getAttribute("data-"+lang);
-    }
+    el.textContent = el.dataset[lang];
   });
-  localStorage.setItem("zLang", lang);
 }
 
-(function initLang(){
-  const saved = localStorage.getItem("zLang");
-  if(saved === "en"){
-    enBtn.classList.add("active");
-    esBtn.classList.remove("active");
-    setLang("en");
-  }else{
-    esBtn.classList.add("active");
-    enBtn.classList.remove("active");
-    setLang("es");
-  }
-})();
-
-esBtn.addEventListener("click", ()=>{
+esBtn.onclick=()=>{
   esBtn.classList.add("active");
   enBtn.classList.remove("active");
   setLang("es");
-});
+};
 
-enBtn.addEventListener("click", ()=>{
+enBtn.onclick=()=>{
   enBtn.classList.add("active");
   esBtn.classList.remove("active");
   setLang("en");
-});
-
-/* ====== PREMIUM TAP SOUND (NO tap.mp3 REQUIRED) ======
-   Si NO existe tap.mp3, igual suena con WebAudio (beep clean).
-*/
-let audioCtx;
-function appleTap(){
-  try{
-    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-    const o = audioCtx.createOscillator();
-    const g = audioCtx.createGain();
-    o.type = "sine";
-    o.frequency.value = 440;
-    g.gain.value = 0.0001;
-    o.connect(g);
-    g.connect(audioCtx.destination);
-    o.start();
-
-    const t = audioCtx.currentTime;
-    g.gain.exponentialRampToValueAtTime(0.12, t + 0.01);
-    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.08);
-    o.stop(t + 0.09);
-  }catch(e){}
-  if(navigator.vibrate) navigator.vibrate(8);
-}
-
-document.querySelectorAll("a,button").forEach(el=>{
-  el.addEventListener("click", appleTap, {passive:true});
-});
+};
 </script>
 
 </body>
