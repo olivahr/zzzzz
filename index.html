@@ -10,7 +10,7 @@
 html{scroll-behavior:smooth}
 
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
   overflow-x:hidden;
@@ -67,16 +67,19 @@ header{
 .lang{
   margin-left:auto;
   display:flex;
-  gap:6px;
+  gap:8px;
+  position:relative;
+  right:-12px;
 }
 .lang button{
   padding:4px 10px;
-  font-size:11px;
+  font-size:10.5px;
+  letter-spacing:.06em;
   border-radius:14px;
   border:1px solid rgba(255,255,255,.25);
   background:transparent;
   color:#fff;
-  font-weight:600;
+  font-weight:700;
   cursor:pointer;
 }
 .lang .active{
@@ -87,7 +90,7 @@ header{
 
 /* MAIN */
 main{
-  margin-top:120px;
+  margin-top:130px;
   padding:40px 20px 120px;
   max-width:1100px;
   margin-left:auto;
@@ -95,25 +98,27 @@ main{
   text-align:center;
 }
 
-/* TITLE */
+/* TITLE – PREMIUM */
 h1{
-  font-size:clamp(44px,6vw,76px);
+  font-size:clamp(48px,6vw,84px);
   margin-bottom:22px;
-  letter-spacing:-0.02em;
+  letter-spacing:-0.045em;
+  font-weight:900;
 }
 
-/* DESCRIPTION */
+/* SUBTITLE – CLEAN & EXPENSIVE */
 #desc{
-  font-size:clamp(18px,2.4vw,22px);
+  font-size:clamp(19px,2.4vw,23px);
   line-height:1.6;
-  opacity:.92;
-  max-width:760px;
-  margin:0 auto 50px;
+  opacity:.9;
+  max-width:680px;
+  margin:0 auto 56px;
+  font-weight:500;
 }
 
 /* PREVIEW */
 .preview{
-  margin-top:10px;
+  margin-top:6px;
   border-radius:30px;
   background:rgba(255,255,255,.05);
   padding:20px;
@@ -134,7 +139,7 @@ h1{
   position:absolute;
   left:50%;
   transform:translateX(-50%);
-  margin-top:22px;
+  margin-top:26px;
   padding:10px 18px;
   border-radius:22px;
   background:rgba(0,200,255,.18);
