@@ -3,199 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Planes | ZenSite</title>
+<title>ZenSite | Planes</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ===== */
+/* BACKGROUND */
 body::before{
   content:"";
-  position:fixed;
-  inset:0;
+  position:fixed; inset:0;
   background:
-    radial-gradient(circle at 20% 25%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(140,90,255,.22),transparent 40%),
+    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(120,90,255,.2),transparent 45%),
     #05070c;
   z-index:-2;
 }
 body::after{
   content:"";
-  position:fixed;
-  inset:0;
+  position:fixed; inset:0;
   backdrop-filter:blur(90px);
   z-index:-1;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
-  position:fixed;
-  top:0;
-  width:100%;
-  height:64px;
-  display:flex;
-  align-items:center;
-  padding:0 18px;
-  background:rgba(255,255,255,.05);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  position:fixed; top:0; left:0; width:100%;
   z-index:1000;
+  display:flex; align-items:center;
+  padding:16px 26px;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
-nav{display:flex;gap:20px}
-nav a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  opacity:.85;
+.nav{display:flex; gap:28px}
+.nav a{
+  color:#fff; text-decoration:none; font-weight:600; opacity:.85
 }
-nav a:hover{opacity:1}
+.nav a:hover{opacity:1}
+
+/* LANG */
 .lang{
-  margin-left:auto;
-  display:flex;
-  gap:8px;
+  position:fixed; top:18px; right:18px;
+  display:flex; gap:6px; z-index:2000;
 }
 .lang button{
-  padding:6px 14px;
-  border-radius:14px;
-  background:rgba(255,255,255,.1);
+  padding:3px 8px; font-size:11px; border-radius:12px;
   border:1px solid rgba(255,255,255,.25);
-  color:#fff;
-  font-weight:600;
-  cursor:pointer;
+  background:transparent; color:#fff; font-weight:600; cursor:pointer;
 }
-.lang button.active{background:#00cfff;color:#000}
+.lang .active{background:#00cfff; color:#000; border-color:#00cfff}
 
-/* ===== MAIN ===== */
+/* MAIN */
 main{
-  margin-top:110px;
-  padding:20px 16px 160px;
+  margin-top:120px;
+  padding:40px 20px 160px;
+  max-width:1100px; margin:auto; text-align:center;
 }
 
-/* ===== TITLES ===== */
-h1{
-  text-align:center;
-  font-size:40px;
-  margin-bottom:14px;
-}
+/* TITLES */
+h1{font-size:clamp(38px,6vw,64px); margin-bottom:18px}
 .subtitle{
-  text-align:center;
-  max-width:760px;
-  margin:0 auto 70px;
-  opacity:.75;
-  font-size:18px;
+  font-size:18px; opacity:.9; max-width:860px;
+  margin:0 auto 80px; line-height:1.6
 }
 
-/* ===== PLANS ===== */
+/* PLANS */
 .plans{
-  max-width:1200px;
-  margin:auto;
   display:grid;
-  gap:34px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:36px;
 }
-@media(min-width:900px){
-  .plans{grid-template-columns:repeat(3,1fr)}
-}
-
 .plan{
   background:rgba(255,255,255,.06);
-  border-radius:30px;
-  padding:34px;
+  border-radius:30px; padding:42px 34px;
   backdrop-filter:blur(16px);
-  box-shadow:0 40px 120px rgba(0,0,0,.9);
-  transition:.45s ease;
-  position:relative;
+  box-shadow:0 40px 140px rgba(0,0,0,.85);
+  transition:.45s cubic-bezier(.16,1,.3,1);
 }
 .plan:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 40px rgba(0,200,255,.35);
+  transform:translateY(-18px);
+  box-shadow:0 70px 180px rgba(0,0,0,.95);
 }
-
-.plan.featured{
-  border:2px solid #00cfff;
-  box-shadow:0 0 60px rgba(0,200,255,.45);
-  transform:scale(1.04);
-}
-
-.badge{
-  position:absolute;
-  top:-14px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#00cfff;
-  color:#000;
-  padding:6px 18px;
-  border-radius:20px;
-  font-weight:700;
-  font-size:13px;
-}
-
-.plan h3{font-size:26px;margin-bottom:12px}
-.price{font-size:44px;font-weight:800;margin:18px 0}
-.price span{font-size:16px;opacity:.6}
-
+.plan h2{font-size:26px; margin-bottom:6px}
+.plan small{display:block; opacity:.75; margin-bottom:18px}
+.price{font-size:42px; font-weight:800; margin:20px 0; color:#00cfff}
 .features{
-  margin-top:22px;
-  display:grid;
-  gap:12px;
-  opacity:.9;
+  text-align:left; margin:30px 0 44px; line-height:1.75; opacity:.95
 }
-
-.plan a{
-  margin-top:26px;
-  display:inline-block;
-  width:100%;
-  text-align:center;
-  padding:16px 0;
-  background:#00cfff;
-  color:#000;
-  font-weight:800;
-  border-radius:30px;
-  text-decoration:none;
+.btn{
+  display:inline-block; padding:14px 32px; border-radius:30px;
+  background:#00cfff; color:#000; text-decoration:none; font-weight:700;
 }
+.btn:hover{opacity:.85}
 
-/* ===== GUARANTEE ===== */
-.guarantee{
-  max-width:900px;
-  margin:120px auto 0;
-  background:rgba(255,255,255,.06);
-  border-radius:30px;
-  padding:40px;
-  text-align:center;
+/* COMPARISON */
+.compare{
+  margin:90px auto 0; max-width:1000px;
+  background:rgba(255,255,255,.05);
+  border-radius:28px; padding:28px;
+  backdrop-filter:blur(14px);
+  box-shadow:0 40px 140px rgba(0,0,0,.85);
 }
-.guarantee h2{font-size:30px;margin-bottom:20px}
-.guarantee p{opacity:.85;line-height:1.7}
-
-/* ===== FOOTER ===== */
-footer{
-  margin-top:140px;
-  padding:40px 20px;
-  text-align:center;
-  opacity:.55;
-  font-size:14px;
+.compare h3{font-size:28px; margin-bottom:18px}
+.table{
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:14px;
+  text-align:left;
 }
+.cell{
+  padding:14px; border-radius:14px;
+  background:rgba(255,255,255,.04)
+}
+.head{font-weight:700; text-align:center}
+.yes{color:#8dffb2}
+.no{opacity:.45}
 
-/* ===== WHATSAPP ===== */
-.whatsapp{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  width:62px;
-  height:62px;
-  background:#25D366;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  color:#fff;
-  text-decoration:none;
-  z-index:999;
+/* CTA FINAL */
+.cta{
+  margin:90px auto 0; max-width:900px;
+  background:linear-gradient(135deg,rgba(0,200,255,.18),rgba(120,90,255,.18));
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:32px; padding:44px 28px;
+  backdrop-filter:blur(18px);
+}
+.cta h3{font-size:32px; margin-bottom:14px}
+.cta p{opacity:.95; margin-bottom:26px}
+.cta .btn{font-size:16px}
+
+/* MOBILE */
+@media(max-width:768px){
+  .price{font-size:36px}
+  .table{grid-template-columns:1fr; gap:10px}
+  .head{text-align:left}
 }
 </style>
 </head>
@@ -203,157 +149,127 @@ footer{
 <body>
 
 <header>
-  <nav>
+  <nav class="nav">
     <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
     <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
     <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
-  <div class="lang">
-    <button id="es" class="active">ES</button>
-    <button id="en">EN</button>
-  </div>
 </header>
 
-<main>
-  <h1 data-es="Planes claros. Resultados reales."
-      data-en="Clear plans. Real results.">
-      Planes claros. Resultados reales.
-  </h1>
-
-  <p class="subtitle"
-     data-es="Pagos únicos. Diseño profesional. Sin mensualidades."
-     data-en="One-time payments. Professional design. No monthly fees.">
-     Pagos únicos. Diseño profesional. Sin mensualidades.
-  </p>
-
-  <div class="plans">
-
-    <div class="plan">
-      <h3>Z</h3>
-      <div class="price">$190 <span>USD</span></div>
-      <div class="features">
-        <div>✔ Web profesional básica</div>
-        <div>✔ Diseño responsive</div>
-        <div>✔ Secciones esenciales</div>
-      </div>
-      <a href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20Z%20($190)">
-        <span data-es="Elegir plan" data-en="Choose plan">Elegir plan</span>
-      </a>
-    </div>
-
-    <div class="plan featured">
-      <div class="badge" data-es="Recomendado" data-en="Recommended">Recomendado</div>
-      <h3>Z+</h3>
-      <div class="price">$380 <span>USD</span></div>
-      <div class="features">
-        <div>✔ Diseño premium</div>
-        <div>✔ Animaciones tipo app</div>
-        <div>✔ Optimizada para convertir</div>
-      </div>
-      <a href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20Z+%20($380)">
-        <span data-es="Elegir plan" data-en="Choose plan">Elegir plan</span>
-      </a>
-    </div>
-
-    <div class="plan">
-      <h3>Z Premium</h3>
-      <div class="price">$620 <span>USD</span></div>
-      <div class="features">
-        <div>✔ Diseño exclusivo</div>
-        <div>✔ Experiencia tipo sistema</div>
-        <div>✔ Soporte prioritario</div>
-      </div>
-      <a href="https://wa.me/15027942412?text=Hola%20quiero%20el%20plan%20Z%20Premium%20($620)">
-        <span data-es="Elegir plan" data-en="Choose plan">Elegir plan</span>
-      </a>
-    </div>
-
-  </div>
-
-  <div class="guarantee">
-    <h2 data-es="Nuestra garantía" data-en="Our guarantee">Nuestra garantía</h2>
-    <p data-es="Tu web es 100% tuya. Sin pagos mensuales. Ajustamos hasta que quedes conforme."
-       data-en="Your website is 100% yours. No monthly fees. We adjust until you're satisfied.">
-       Tu web es 100% tuya. Sin pagos mensuales. Ajustamos hasta que quedes conforme.
-    </p>
-  </div>
-</main>
-
-<footer>
-  © 2025 ZenSite · Webs profesionales · Pagos únicos
-</footer>
-
-<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
-
-<!-- CTA INTELIGENTE -->
-<div id="smartCta" style="
-position:fixed;
-bottom:100px;
-right:24px;
-max-width:280px;
-background:rgba(20,20,28,.95);
-backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.15);
-border-radius:22px;
-padding:18px;
-box-shadow:0 30px 80px rgba(0,0,0,.8);
-display:none;
-z-index:9999;
-">
-  <div style="font-weight:700;margin-bottom:6px">
-    ¿Listo para una web seria?
-  </div>
-  <div style="font-size:14px;opacity:.8;margin-bottom:14px">
-    Te ayudo a elegir el plan ideal.
-  </div>
-  <a href="https://wa.me/15027942412?text=Hola%20estoy%20viendo%20los%20planes%20y%20quiero%20ayuda"
-     style="
-     display:block;
-     text-align:center;
-     padding:12px;
-     background:#00cfff;
-     color:#000;
-     font-weight:800;
-     border-radius:18px;
-     text-decoration:none;">
-     Hablar ahora
-  </a>
-  <div onclick="closeCta()" style="
-  position:absolute;
-  top:8px;
-  right:12px;
-  font-size:18px;
-  cursor:pointer;
-  opacity:.6;">×</div>
+<div class="lang">
+  <button id="esBtn" class="active">ES</button>
+  <button id="enBtn">EN</button>
 </div>
 
+<main>
+
+<h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
+<p class="subtitle"
+   data-es="No vendemos páginas genéricas. Creamos sistemas web profesionales diseñados para generar confianza, vender y escalar negocios."
+   data-en="We don’t sell generic websites. We build professional web systems designed to build trust, sell, and scale businesses.">
+</p>
+
+<div class="plans">
+
+<!-- Z -->
+<div class="plan">
+  <h2>Z</h2>
+  <small data-es="Presencia profesional" data-en="Professional presence"></small>
+  <div class="price">$200</div>
+  <div class="features"
+       data-es="• Landing page profesional<br>• Diseño moderno y limpio<br>• Optimizada para celular<br>• Carga rápida<br>• Web 100% tuya sin mensualidades"
+       data-en="• Professional landing page<br>• Clean modern design<br>• Mobile optimized<br>• Fast loading<br>• 100% owned website, no monthly fees">
+  </div>
+  <a class="btn" target="_blank"
+     href="https://wa.me/15027942412?text=Hola%2C%20quiero%20el%20plan%20Z%20de%20%24200"
+     data-es="Contactar" data-en="Contact">Contactar</a>
+</div>
+
+<!-- Z+ -->
+<div class="plan">
+  <h2>Z+</h2>
+  <small data-es="Marca que convierte" data-en="Brand that converts"></small>
+  <div class="price">$480</div>
+  <div class="features"
+       data-es="• Web completa multi-sección<br>• Branding visual premium<br>• Animaciones suaves<br>• Optimización avanzada<br>• Experiencia coherente en todos los dispositivos"
+       data-en="• Full multi-section website<br>• Premium visual branding<br>• Smooth animations<br>• Advanced optimization<br>• Consistent experience across devices">
+  </div>
+  <a class="btn" target="_blank"
+     href="https://wa.me/15027942412?text=Hola%2C%20quiero%20el%20plan%20Z%2B%20de%20%24480"
+     data-es="Contactar" data-en="Contact">Contactar</a>
+</div>
+
+<!-- Z PREMIUM -->
+<div class="plan">
+  <h2>Z Premium</h2>
+  <small data-es="Sistema completo de ventas" data-en="Complete sales system"></small>
+  <div class="price">$720</div>
+  <div class="features"
+       data-es="• Tienda online completa con carrito de compras<br>• Gestión de productos e inventario<br>• Sistema web tipo app, fluido y moderno<br>• Diseño exclusivo creado a medida<br>• Optimización total para ventas y crecimiento<br>• Soporte prioritario y ajustes incluidos"
+       data-en="• Full online store with shopping cart<br>• Product and inventory management<br>• App-like web system, smooth and modern<br>• Fully custom exclusive design<br>• Optimized for sales and scalability<br>• Priority support and revisions included">
+  </div>
+  <a class="btn" target="_blank"
+     href="https://wa.me/15027942412?text=Hola%2C%20quiero%20el%20plan%20Z%20Premium%20de%20%24720%20con%20tienda%20online"
+     data-es="Crear mi tienda online" data-en="Build my online store">
+     Crear mi tienda online
+  </a>
+</div>
+
+</div>
+
+<!-- COMPARISON -->
+<div class="compare">
+  <h3 data-es="Comparación rápida" data-en="Quick comparison"></h3>
+  <div class="table">
+    <div class="cell head" data-es="Características" data-en="Features"></div>
+    <div class="cell head">Z</div>
+    <div class="cell head">Z+</div>
+    <div class="cell head">Z Premium</div>
+
+    <div class="cell" data-es="Diseño profesional" data-en="Professional design"></div>
+    <div class="cell yes">✔</div><div class="cell yes">✔</div><div class="cell yes">✔</div>
+
+    <div class="cell" data-es="Multi-secciones" data-en="Multi-sections"></div>
+    <div class="cell no">—</div><div class="cell yes">✔</div><div class="cell yes">✔</div>
+
+    <div class="cell" data-es="Animaciones premium" data-en="Premium animations"></div>
+    <div class="cell no">—</div><div class="cell yes">✔</div><div class="cell yes">✔</div>
+
+    <div class="cell" data-es="Tienda / Carrito / Inventario" data-en="Store / Cart / Inventory"></div>
+    <div class="cell no">—</div><div class="cell no">—</div><div class="cell yes">✔</div>
+
+    <div class="cell" data-es="Diseño exclusivo a medida" data-en="Fully custom design"></div>
+    <div class="cell no">—</div><div class="cell no">—</div><div class="cell yes">✔</div>
+
+    <div class="cell" data-es="Soporte prioritario" data-en="Priority support"></div>
+    <div class="cell no">—</div><div class="cell no">—</div><div class="cell yes">✔</div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta">
+  <h3 data-es="¿Listo para llevar tu negocio al siguiente nivel?"
+      data-en="Ready to take your business to the next level?"></h3>
+  <p data-es="Elige el plan que se adapte a tu objetivo y contáctanos. Te guiamos paso a paso."
+     data-en="Choose the plan that fits your goal and contact us. We guide you step by step."></p>
+  <a class="btn" target="_blank"
+     href="https://wa.me/15027942412?text=Hola%2C%20quiero%20asesor%C3%ADa%20para%20elegir%20un%20plan%20ZenSite"
+     data-es="Hablar ahora" data-en="Chat now">Hablar ahora</a>
+</div>
+
+</main>
+
 <script>
-const texts=document.querySelectorAll("[data-es]");
-const esBtn=document.getElementById("es");
-const enBtn=document.getElementById("en");
-
+const esBtn=document.getElementById("esBtn");
+const enBtn=document.getElementById("enBtn");
 function setLang(lang){
-  texts.forEach(el=>el.textContent=el.dataset[lang]);
-  esBtn.classList.toggle("active",lang==="es");
-  enBtn.classList.toggle("active",lang==="en");
-  localStorage.setItem("lang",lang);
+  document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
+    el.innerHTML = el.dataset[lang];
+  });
 }
-esBtn.onclick=()=>setLang("es");
-enBtn.onclick=()=>setLang("en");
-setLang(localStorage.getItem("lang")||"es");
-
-/* CTA inteligente */
-const cta=document.getElementById("smartCta");
-function showCta(){
-  if(!localStorage.getItem("ctaSeen")){
-    cta.style.display="block";
-    localStorage.setItem("ctaSeen","yes");
-  }
-}
-function closeCta(){cta.style.display="none";}
-setTimeout(showCta,6000);
-window.addEventListener("scroll",()=>{if(window.scrollY>350)showCta();});
+esBtn.onclick=()=>{esBtn.classList.add("active"); enBtn.classList.remove("active"); setLang("es");};
+enBtn.onclick=()=>{esBtn.classList.remove("active"); enBtn.classList.add("active"); setLang("en");};
 </script>
 
 </body>
