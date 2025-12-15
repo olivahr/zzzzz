@@ -7,21 +7,23 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter","Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ===== */
+/* BACKGROUND */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 25%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(140,90,255,.22),transparent 40%),
+    radial-gradient(circle at 25% 20%,rgba(0,200,255,.16),transparent 40%),
+    radial-gradient(circle at 75% 75%,rgba(120,90,255,.22),transparent 45%),
     #05070c;
   z-index:-2;
 }
@@ -33,159 +35,128 @@ body::after{
   z-index:-1;
 }
 
-/* ===== HEADER (IGUAL AL RESTO) ===== */
+/* HEADER */
 header{
   position:fixed;
-  top:0;
+  top:0;left:0;
   width:100%;
-  height:64px;
-  display:flex;
-  align-items:center;
-  padding:0 18px;
-  background:rgba(255,255,255,.05);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.08);
   z-index:1000;
+  padding:18px 26px;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
-nav{display:flex;gap:20px}
-nav a{
+.nav{
+  display:flex;
+  gap:28px;
+}
+.nav a{
   color:#fff;
   text-decoration:none;
   font-weight:600;
   opacity:.85;
 }
-nav a:hover{opacity:1}
+
+/* LANG */
 .lang{
-  margin-left:auto;
+  position:fixed;
+  top:18px;
+  right:18px;
   display:flex;
-  gap:8px;
+  gap:6px;
 }
 .lang button{
-  padding:6px 14px;
+  padding:4px 9px;
+  font-size:11px;
   border-radius:14px;
-  background:rgba(255,255,255,.1);
   border:1px solid rgba(255,255,255,.25);
+  background:transparent;
   color:#fff;
-  font-weight:600;
+  font-weight:700;
   cursor:pointer;
 }
-.lang button.active{background:#00cfff;color:#000}
-
-/* ===== MAIN ===== */
-main{
-  margin-top:110px;
-  padding:20px 16px 160px;
-  max-width:1100px;
-  margin-left:auto;
-  margin-right:auto;
+.lang .active{
+  background:#00cfff;
+  color:#000;
 }
 
-/* ===== TITLES ===== */
+/* MAIN */
+main{
+  margin-top:150px;
+  padding:0 20px 140px;
+  max-width:1100px;
+  margin-inline:auto;
+}
+
+/* TITLES */
 h1{
-  font-size:42px;
-  margin-bottom:18px;
+  text-align:center;
+  font-size:clamp(40px,6vw,70px);
+  margin-bottom:20px;
 }
 .subtitle{
-  max-width:760px;
-  opacity:.8;
-  line-height:1.7;
-  margin-bottom:80px;
+  text-align:center;
+  max-width:880px;
+  margin:0 auto 80px;
+  font-size:clamp(17px,2.4vw,21px);
+  opacity:.92;
+  line-height:1.6;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 .section{
-  margin-bottom:120px;
+  margin-bottom:90px;
 }
 .section h2{
   font-size:32px;
   margin-bottom:20px;
 }
 .section p{
-  max-width:780px;
-  opacity:.85;
+  max-width:900px;
   line-height:1.7;
+  font-size:18px;
+  opacity:.92;
 }
 
-/* ===== GRID ===== */
+/* GRID */
 .grid{
   display:grid;
-  gap:30px;
-}
-@media(min-width:900px){
-  .grid{grid-template-columns:repeat(3,1fr)}
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
+  margin-top:40px;
 }
 .card{
-  background:rgba(255,255,255,.06);
-  padding:34px;
-  border-radius:28px;
-  backdrop-filter:blur(14px);
-  transition:.45s ease;
+  padding:28px;
+  border-radius:26px;
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(18px);
+  box-shadow:0 40px 120px rgba(0,0,0,.8);
 }
-.card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 40px rgba(0,200,255,.35);
-}
-
-/* ===== GUARANTEE ===== */
-.guarantee{
-  background:rgba(255,255,255,.06);
-  border-radius:32px;
-  padding:50px;
-}
-.guarantee h2{
-  font-size:34px;
-  margin-bottom:24px;
-}
-.guarantee ul{
-  list-style:none;
-  display:grid;
-  gap:14px;
-  opacity:.9;
-}
-.guarantee li{
-  display:flex;
-  gap:10px;
+.card strong{
+  display:block;
+  margin-bottom:12px;
+  font-size:18px;
 }
 
-/* ===== CTA ===== */
-.cta{
-  margin-top:80px;
-}
-.cta a{
-  display:inline-block;
-  padding:16px 36px;
-  background:#00cfff;
-  color:#000;
-  font-weight:800;
+/* GUARANTEES */
+.guarantees{
+  margin-top:60px;
+  padding:36px;
   border-radius:30px;
-  text-decoration:none;
+  background:rgba(0,200,255,.12);
+  border:1px solid rgba(0,200,255,.35);
+}
+.guarantees h3{
+  margin-bottom:18px;
+  font-size:26px;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
-  margin-top:140px;
-  padding:40px 20px;
   text-align:center;
-  opacity:.55;
-  font-size:14px;
-}
-
-/* ===== WHATSAPP ===== */
-.whatsapp{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  width:62px;
-  height:62px;
-  background:#25D366;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:30px;
-  color:#fff;
-  text-decoration:none;
-  z-index:999;
+  padding:50px 20px 30px;
+  opacity:.5;
+  font-size:13px;
 }
 </style>
 </head>
@@ -193,120 +164,81 @@ footer{
 <body>
 
 <header>
-  <nav>
+  <nav class="nav">
     <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
     <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
     <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
-  <div class="lang">
-    <button id="es" class="active">ES</button>
-    <button id="en">EN</button>
-  </div>
 </header>
+
+<div class="lang">
+  <button id="esBtn" class="active">ES</button>
+  <button id="enBtn">EN</button>
+</div>
 
 <main>
 
-  <!-- HERO -->
-  <section class="section">
-    <h1 data-es="Somos ZenSite"
-        data-en="We are ZenSite">
-        Somos ZenSite
-    </h1>
+  <h1 data-es="Quiénes somos" data-en="Who we are">Quiénes somos</h1>
 
-    <p class="subtitle"
-       data-es="Creamos webs con mentalidad de producto, no como simples páginas. Diseñamos experiencias que posicionan marcas y generan confianza real."
-       data-en="We build websites with a product mindset, not as simple pages. We design experiences that position brands and build real trust.">
-       Creamos webs con mentalidad de producto, no como simples páginas. Diseñamos experiencias que posicionan marcas y generan confianza real.
+  <p class="subtitle"
+     data-es="ZenSite no es un constructor de páginas. Somos un sistema de diseño enfocado en resultados, percepción premium y conversión real."
+     data-en="ZenSite is not a website builder. We are a design system focused on results, premium perception and real conversion.">
+  </p>
+
+  <!-- FILOSOFIA -->
+  <section class="section">
+    <h2 data-es="Nuestra filosofía" data-en="Our philosophy">Nuestra filosofía</h2>
+    <p data-es="Creemos que una web no debe verse bonita solamente. Debe transmitir confianza, posicionar tu marca y hacer que el cliente actúe. Cada detalle tiene una razón."
+       data-en="We believe a website should not only look good. It must build trust, position your brand and make the visitor take action. Every detail has a reason.">
     </p>
   </section>
 
-  <!-- QUE NOS DIFERENCIA -->
+  <!-- DIFERENCIA -->
   <section class="section">
-    <h2 data-es="Qué nos diferencia"
-        data-en="What sets us apart">
-        Qué nos diferencia
-    </h2>
+    <h2 data-es="Qué nos hace diferentes" data-en="What makes us different">Qué nos hace diferentes</h2>
 
     <div class="grid">
-      <div class="card"
-           data-es="Diseño con intención. Cada decisión tiene un porqué."
-           data-en="Design with intention. Every decision has a purpose.">
-        Diseño con intención. Cada decisión tiene un porqué.
+      <div class="card">
+        <strong>Diseño estratégico</strong>
+        <p>Todo se construye para vender, no para decorar.</p>
       </div>
-
-      <div class="card"
-           data-es="Experiencia tipo sistema, no plantillas genéricas."
-           data-en="System-like experience, not generic templates.">
-        Experiencia tipo sistema, no plantillas genéricas.
+      <div class="card">
+        <strong>Sistema escalable</strong>
+        <p>Tu web puede crecer sin rehacerla desde cero.</p>
       </div>
-
-      <div class="card"
-           data-es="Comunicación directa, clara y sin rodeos."
-           data-en="Direct, clear communication without runarounds.">
-        Comunicación directa, clara y sin rodeos.
+      <div class="card">
+        <strong>Percepción premium</strong>
+        <p>Tu negocio se ve serio, confiable y profesional.</p>
       </div>
     </div>
-  </section>
-
-  <!-- PARA QUIEN ES -->
-  <section class="section">
-    <h2 data-es="Para quién es ZenSite"
-        data-en="Who ZenSite is for">
-        Para quién es ZenSite
-    </h2>
-
-    <p data-es="Trabajamos con negocios y marcas que entienden que su web es parte clave de su imagen y crecimiento."
-       data-en="We work with businesses and brands that understand their website is a key part of their image and growth.">
-       Trabajamos con negocios y marcas que entienden que su web es parte clave de su imagen y crecimiento.
-    </p>
   </section>
 
   <!-- GARANTIAS -->
-  <section class="section guarantee">
-    <h2 data-es="Nuestras garantías"
-        data-en="Our guarantees">
-        Nuestras garantías
-    </h2>
-
-    <ul>
-      <li>✔ <span data-es="Tu web es 100% tuya" data-en="Your website is 100% yours">Tu web es 100% tuya</span></li>
-      <li>✔ <span data-es="Sin pagos mensuales ocultos" data-en="No hidden monthly fees">Sin pagos mensuales ocultos</span></li>
-      <li>✔ <span data-es="Ajustamos hasta que estés conforme" data-en="We adjust until you're satisfied">Ajustamos hasta que estés conforme</span></li>
-      <li>✔ <span data-es="Soporte real y comunicación directa" data-en="Real support and direct communication">Soporte real y comunicación directa</span></li>
-    </ul>
-
-    <div class="cta">
-      <a href="https://wa.me/15027942412?text=Hola%20quiero%20hablar%20sobre%20una%20web%20con%20ZenSite"
-         data-es="Hablar con nosotros"
-         data-en="Talk with us">
-         Hablar con nosotros
-      </a>
-    </div>
+  <section class="guarantees">
+    <h3 data-es="Nuestras garantías" data-en="Our guarantees">Nuestras garantías</h3>
+    <p data-es="• Diseño entregado exactamente como se presenta<br>• Optimización para móvil y velocidad<br>• Comunicación clara y directa durante todo el proceso<br>• Soporte inicial después de la entrega"
+       data-en="• Design delivered exactly as presented<br>• Mobile and speed optimization<br>• Clear communication throughout the process<br>• Initial post-delivery support">
+    </p>
   </section>
 
 </main>
 
 <footer>
-  © 2025 ZenSite · Webs profesionales · Pagos únicos
+  © 2025 ZenSite. Todos los derechos reservados.
 </footer>
 
-<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
-
 <script>
-const texts=document.querySelectorAll("[data-es]");
-const esBtn=document.getElementById("es");
-const enBtn=document.getElementById("en");
-
+/* TRANSLATION */
+const esBtn=document.getElementById("esBtn");
+const enBtn=document.getElementById("enBtn");
 function setLang(lang){
-  texts.forEach(el=>el.textContent=el.dataset[lang]);
-  esBtn.classList.toggle("active",lang==="es");
-  enBtn.classList.toggle("active",lang==="en");
-  localStorage.setItem("lang",lang);
+  document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
+    el.textContent = el.dataset[lang];
+  });
 }
-esBtn.onclick=()=>setLang("es");
-enBtn.onclick=()=>setLang("en");
-setLang(localStorage.getItem("lang")||"es");
+esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");};
+enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");};
 </script>
 
 </body>
