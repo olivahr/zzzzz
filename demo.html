@@ -62,7 +62,7 @@ nav a{
 }
 nav a:hover{opacity:1}
 
-/* LANG SMALL RIGHT */
+/* LANG */
 .lang{
   display:flex;
   gap:6px;
@@ -119,7 +119,7 @@ h1{
 .slide{display:none}
 .slide.active{display:block}
 
-/* DEMO FRAME (FIX REAL) */
+/* DEMO FRAME */
 .demo-frame{
   width:100%;
   height:520px;
@@ -199,14 +199,11 @@ footer{
   </div>
 
   <div class="slider">
-
     <div class="slide active"><div class="demo-frame"><img src="demo1.jpg"></div></div>
     <div class="slide"><div class="demo-frame"><img src="demo2.jpg"></div></div>
     <div class="slide"><div class="demo-frame"><img src="demo3.jpg"></div></div>
     <div class="slide"><div class="demo-frame"><img src="demo4.jpg"></div></div>
     <div class="slide"><div class="demo-frame"><img src="demo5.jpg"></div></div>
-    <div class="slide"><div class="demo-frame"><img src="demo6.jpg"></div></div>
-
   </div>
 
   <div class="controls">
@@ -220,8 +217,8 @@ footer{
 </main>
 
 <script>
-let index = 0;
-const slides = document.querySelectorAll(".slide");
+let index=0;
+const slides=document.querySelectorAll(".slide");
 let autoSlide;
 
 /* SHOW */
@@ -232,22 +229,22 @@ function show(i){
 
 /* NEXT / PREV */
 function next(){
-  index = (index + 1) % slides.length;
+  index=(index+1)%slides.length;
   show(index);
   resetAuto();
 }
 function prev(){
-  index = (index - 1 + slides.length) % slides.length;
+  index=(index-1+slides.length)%slides.length;
   show(index);
   resetAuto();
 }
 
-/* AUTO SLIDE */
+/* AUTO */
 function startAuto(){
-  autoSlide = setInterval(()=>{
-    index = (index + 1) % slides.length;
+  autoSlide=setInterval(()=>{
+    index=(index+1)%slides.length;
     show(index);
-  }, 5000);
+  },5000);
 }
 function resetAuto(){
   clearInterval(autoSlide);
@@ -255,25 +252,20 @@ function resetAuto(){
 }
 startAuto();
 
-/* SWIPE MOBILE */
-let startX = 0;
-const slider = document.querySelector(".slider");
-
-slider.addEventListener("touchstart", e=>{
-  startX = e.touches[0].clientX;
-},{passive:true});
-
-slider.addEventListener("touchend", e=>{
-  let endX = e.changedTouches[0].clientX;
-  let diff = startX - endX;
-  if(diff > 50) next();
-  if(diff < -50) prev();
+/* SWIPE */
+let startX=0;
+const slider=document.querySelector(".slider");
+slider.addEventListener("touchstart",e=>{startX=e.touches[0].clientX},{passive:true});
+slider.addEventListener("touchend",e=>{
+  let diff=startX-e.changedTouches[0].clientX;
+  if(diff>50)next();
+  if(diff<-50)prev();
 });
 
 /* LANG */
 function setLang(l){
   document.querySelectorAll("[data-"+l+"]").forEach(e=>{
-    e.textContent = e.dataset[l];
+    e.textContent=e.dataset[l];
   });
 }
 esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es")};
