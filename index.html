@@ -6,219 +6,225 @@
 <title>ZenSite</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#050505;
+  --card:#111;
+  --txt:#fff;
+  --muted:#b5b5b5;
+  --accent:#00ff9c;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background:#050505;
-  color:#fff;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:
+    radial-gradient(900px 500px at 50% 10%,rgba(0,140,255,.25),transparent 60%),
+    radial-gradient(700px 500px at 20% 85%,rgba(0,255,150,.25),transparent 65%),
+    #050505;
+  color:var(--txt);
   overflow-x:hidden;
 }
 
-/* ===== HEADER ===== */
-header{
+/* ===== NAV ===== */
+nav{
   position:fixed;
   top:0;left:0;
   width:100%;
-  padding:18px 7%;
+  padding:18px 6%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(14px);
-  z-index:1000;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,.35);
+  z-index:999;
 }
-.logo{
-  font-weight:900;
-  font-size:22px;
-  letter-spacing:.5px;
-}
-nav a{
-  color:#fff;
+.nav-left a{
+  margin-right:18px;
   text-decoration:none;
-  font-weight:700;
-  margin-left:20px;
-  opacity:.85;
+  color:#fff;
+  font-weight:600;
+  opacity:.8;
 }
-nav a:hover{opacity:1}
+.nav-left a:hover{opacity:1}
+.nav-right span{
+  cursor:pointer;
+  margin-left:14px;
+  font-weight:900;
+  opacity:.5;
+}
+.nav-right span.active{opacity:1}
 
 /* ===== HERO ===== */
 .hero{
   min-height:100vh;
-  padding:160px 7% 120px;
-  background:
-    radial-gradient(900px 500px at 50% 10%, rgba(0,140,255,.22), transparent 65%),
-    radial-gradient(700px 500px at 80% 85%, rgba(0,255,170,.18), transparent 65%),
-    #050505;
-  animation:fadeUp .9s ease;
+  padding:160px 6% 120px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:60px;
 }
 .hero h1{
-  font-size:clamp(44px,8vw,82px);
-  font-weight:900;
+  font-size:clamp(42px,6vw,84px);
   line-height:1.05;
 }
 .hero p{
-  margin-top:18px;
-  max-width:620px;
+  margin-top:22px;
   font-size:18px;
-  opacity:.88;
+  color:var(--muted);
+  max-width:520px;
 }
 
-/* ===== BUTTONS ===== */
-.actions{
-  margin-top:46px;
+/* ===== LAPTOP ===== */
+.laptop-wrap{
+  position:relative;
   display:flex;
-  gap:18px;
-  flex-wrap:wrap;
+  justify-content:center;
 }
-.btn{
-  padding:16px 34px;
-  border-radius:14px;
-  font-weight:900;
-  font-size:16px;
-  cursor:pointer;
-  border:1px solid rgba(255,255,255,.2);
+.laptop{
+  width:100%;
+  max-width:520px;
+  animation:float 6s ease-in-out infinite;
 }
-.btn.primary{
-  background:#fff;
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
+}
+
+/* ===== BADGE ===== */
+.badge{
+  position:absolute;
+  bottom:-20px;
+  right:10%;
+  background:linear-gradient(135deg,#00ff9c,#00c4ff);
   color:#000;
-  border:none;
+  padding:14px 22px;
+  border-radius:999px;
+  font-weight:900;
+  box-shadow:0 0 40px rgba(0,255,200,.5);
+  animation:pulse 2.5s infinite;
 }
-.btn.ghost{
-  background:transparent;
-  color:#fff;
-}
-
-/* ===== WHY ===== */
-.why{
-  padding:120px 7%;
-}
-.why h2{
-  font-size:42px;
-  margin-bottom:40px;
-}
-.why-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:26px;
-}
-.why-box{
-  background:rgba(20,20,20,.75);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:22px;
-  padding:28px;
-}
-.why-box strong{
-  display:block;
-  margin-bottom:10px;
-  font-size:18px;
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
 }
 
-/* ===== CTA ===== */
-.final{
-  padding:120px 7%;
+/* ===== SLOGAN ===== */
+.slogan{
   text-align:center;
+  padding:140px 6% 160px;
 }
-.final h2{
-  font-size:42px;
-  margin-bottom:20px;
+.slogan h2{
+  font-size:clamp(40px,6vw,72px);
 }
-.final p{
-  opacity:.85;
-  margin-bottom:34px;
+.slogan p{
+  margin-top:18px;
+  font-size:18px;
+  color:var(--muted);
+}
+
+/* ===== FOOTER ===== */
+footer{
+  padding:40px 6%;
+  text-align:center;
+  opacity:.6;
+  font-size:14px;
 }
 
 /* ===== WHATSAPP ===== */
 .whatsapp{
   position:fixed;
-  bottom:24px;
-  right:24px;
-  width:60px;
-  height:60px;
+  right:20px;
+  bottom:20px;
+  width:58px;
+  height:58px;
   background:#25d366;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
+  font-size:28px;
   color:#fff;
   text-decoration:none;
+  box-shadow:0 0 30px rgba(37,211,102,.7);
   z-index:999;
 }
 
-/* ===== ANIM ===== */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:none}
-}
-
 /* ===== MOBILE ===== */
-@media(max-width:768px){
-  nav{display:none}
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .hero p{margin-inline:auto}
+  .badge{right:50%;transform:translateX(50%)}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">ZenSite</div>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="demo.html">Demo</a>
-    <a href="planes.html">Planes</a>
-  </nav>
-</header>
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+    <a href="demo.html" data-es="Demo" data-en="Demo">Demo</a>
+    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
+    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
+  </div>
+  <div class="nav-right">
+    <span class="active" data-lang="es">ES</span>
+    <span data-lang="en">EN</span>
+  </div>
+</nav>
 
+<!-- HERO -->
 <section class="hero">
-  <h1>
-    Lleva tu negocio<br>
-    al siguiente nivel
-  </h1>
+  <div>
+    <h1 data-es="ZenSite lleva tu negocio al siguiente nivel"
+        data-en="ZenSite takes your business to the next level">
+      ZenSite lleva tu negocio al siguiente nivel
+    </h1>
+    <p data-es="Tu web es tu primera impresión. Haz que cuente desde el primer segundo."
+       data-en="Your website is your first impression. Make it count from the first second.">
+      Tu web es tu primera impresión. Haz que cuente desde el primer segundo.
+    </p>
+  </div>
 
-  <p>
-    Diseñamos webs modernas, rápidas y pensadas para convertir.
-    No es solo diseño, es presencia digital real.
+  <div class="laptop-wrap">
+    <img src="background.jpg" alt="ZenSite demo" class="laptop">
+    <div class="badge">⚡ 15% OFF</div>
+  </div>
+</section>
+
+<!-- SLOGAN -->
+<section class="slogan">
+  <h2 data-es="Diseño que vende. Tecnología real."
+      data-en="Design that sells. Real technology.">
+    Diseño que vende. Tecnología real.
+  </h2>
+  <p data-es="No hacemos webs genéricas. Creamos presencia digital que genera confianza."
+     data-en="We don’t build generic websites. We create digital presence that builds trust.">
+    No hacemos webs genéricas. Creamos presencia digital que genera confianza.
   </p>
-
-  <div class="actions">
-    <button class="btn primary" onclick="goPlans()">Ver planes</button>
-    <button class="btn ghost" onclick="goWhats()">Hablar por WhatsApp</button>
-  </div>
 </section>
 
-<section class="why">
-  <h2>¿Por qué ZenSite?</h2>
-  <div class="why-grid">
-    <div class="why-box">
-      <strong>Diseño que vende</strong>
-      No hacemos webs genéricas. Cada proyecto está pensado para convertir visitas en clientes.
-    </div>
-    <div class="why-box">
-      <strong>Rápidas y optimizadas</strong>
-      Carga inmediata, estructura limpia y experiencia fluida en móvil y laptop.
-    </div>
-    <div class="why-box">
-      <strong>Hechas para crecer</strong>
-      Tu web lista para escalar: más páginas, tienda, pagos, inventario o lo que necesites.
-    </div>
-  </div>
-</section>
+<!-- FOOTER -->
+<footer>
+  © 2025 ZenSite · Todos los derechos reservados
+</footer>
 
-<section class="final">
-  <h2>Tu web es tu primera impresión</h2>
-  <p>Haz que cuente desde el primer segundo.</p>
-  <button class="btn primary" onclick="goPlans()">Elegir plan</button>
-</section>
-
-<a class="whatsapp" href="https://wa.me/15027942412" target="_blank">🟢</a>
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
 
 <script>
-function goPlans(){
-  window.location.href="planes.html";
+const langBtns=document.querySelectorAll('[data-lang]');
+const texts=document.querySelectorAll('[data-es]');
+function setLang(l){
+  texts.forEach(t=>t.textContent=t.dataset[l]);
+  langBtns.forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
 }
-function goWhats(){
-  window.open("https://wa.me/15027942412?text=Hola,%20quiero%20mi%20web%20con%20ZenSite","_blank");
-}
+langBtns.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 </script>
 
 </body>
