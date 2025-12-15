@@ -1,21 +1,21 @@
-<section class="zensite-plans" aria-label="Planes ZenSite">
+<section class="zensite-plans" aria-label="ZenSite Plans">
 
   <!-- ES / EN -->
   <div class="plans-lang">
-    <span class="active" data-lang="es">ES</span>
-    <span data-lang="en">EN</span>
+    <span class="active" data-lang="en">EN</span>
+    <span data-lang="es">ES</span>
   </div>
 
   <!-- HEADER -->
   <header class="plans-header">
     <h2>
-      <span data-es="Planes" data-en="Plans">Planes</span>
+      <span data-es="Planes" data-en="Plans">Plans</span>
       <strong>ZenSite</strong>
     </h2>
     <p
       data-es="Diseño agresivo, tecnología real y presencia de alto nivel."
       data-en="Aggressive design, real technology and high-level presence.">
-      Diseño agresivo, tecnología real y presencia de alto nivel.
+      Aggressive design, real technology and high-level presence.
     </p>
   </header>
 
@@ -23,54 +23,48 @@
   <div class="plans-grid">
 
     <!-- Z -->
-    <article class="plan plan-z">
+    <article class="plan plan-z" data-plan="ZenSite Z">
       <span class="plan-level">Z</span>
       <h3>ZenSite Z</h3>
-      <p class="plan-description"
-         data-es="Base sólida para negocios que necesitan verse profesionales desde el primer día."
-         data-en="Solid foundation for businesses that need to look professional from day one.">
-        Base sólida para negocios que necesitan verse profesionales desde el primer día.
+      <p class="plan-description">
+        Solid foundation for businesses that need to look professional from day one.
       </p>
       <ul class="plan-features">
-        <li data-es="Diseño web personalizado" data-en="Custom web design">Diseño web personalizado</li>
-        <li data-es="Responsive total" data-en="Fully responsive">Responsive total</li>
-        <li data-es="Estructura optimizada" data-en="Optimized structure">Estructura optimizada</li>
+        <li>Custom web design</li>
+        <li>Fully responsive</li>
+        <li>Optimized structure</li>
       </ul>
-      <button data-es="Elegir Z" data-en="Choose Z">Elegir Z</button>
+      <div class="plan-cta">Choose Z</div>
     </article>
 
     <!-- Z+ -->
-    <article class="plan plan-zplus">
+    <article class="plan plan-zplus" data-plan="ZenSite Z+">
       <span class="plan-level">Z+</span>
       <h3>ZenSite Z+</h3>
-      <p class="plan-description"
-         data-es="Más impacto visual, animaciones avanzadas y mayor conversión."
-         data-en="More visual impact, advanced animations and higher conversion.">
-        Más impacto visual, animaciones avanzadas y mayor conversión.
+      <p class="plan-description">
+        More visual impact, advanced animations and higher conversion.
       </p>
       <ul class="plan-features">
-        <li data-es="Animaciones premium" data-en="Premium animations">Animaciones premium</li>
-        <li data-es="SEO optimizado" data-en="Optimized SEO">SEO optimizado</li>
-        <li data-es="UI avanzada" data-en="Advanced UI">UI avanzada</li>
+        <li>Premium animations</li>
+        <li>Optimized SEO</li>
+        <li>Advanced UI</li>
       </ul>
-      <button data-es="Elegir Z+" data-en="Choose Z+">Elegir Z+</button>
+      <div class="plan-cta">Choose Z+</div>
     </article>
 
     <!-- Z PREMIUM -->
-    <article class="plan plan-zpremium">
+    <article class="plan plan-zpremium" data-plan="ZenSite Z Premium">
       <span class="plan-level">Z PREMIUM</span>
       <h3>ZenSite Z Premium</h3>
-      <p class="plan-description"
-         data-es="Autoridad digital total, diseño de alto nivel y rendimiento extremo."
-         data-en="Full digital authority, high-end design and extreme performance.">
-        Autoridad digital total, diseño de alto nivel y rendimiento extremo.
+      <p class="plan-description">
+        Full digital authority, high-end design and extreme performance.
       </p>
       <ul class="plan-features">
-        <li data-es="UX/UI profesional" data-en="Professional UX/UI">UX/UI profesional</li>
-        <li data-es="Velocidad extrema" data-en="Extreme speed">Velocidad extrema</li>
-        <li data-es="Optimización total" data-en="Full optimization">Optimización total</li>
+        <li>Professional UX/UI</li>
+        <li>Extreme speed</li>
+        <li>Full optimization</li>
       </ul>
-      <button data-es="Elegir Premium" data-en="Choose Premium">Elegir Premium</button>
+      <div class="plan-cta">Choose Premium</div>
     </article>
 
   </div>
@@ -79,208 +73,143 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Orbitron:wght@600;700;800&display=swap');
 
-/* ===== BASE ===== */
 .zensite-plans{
-  position:relative;
   padding:110px 6%;
   background:
-    radial-gradient(700px 400px at 15% 10%, rgba(255,255,255,.035), transparent 65%),
-    radial-gradient(700px 400px at 85% 20%, rgba(0,200,255,.07), transparent 65%),
-    radial-gradient(700px 400px at 50% 90%, rgba(255,215,0,.06), transparent 65%);
-  background-color:#050505;
+    radial-gradient(700px 400px at 15% 10%, rgba(0,255,150,.08), transparent 65%),
+    radial-gradient(700px 400px at 85% 20%, rgba(0,150,255,.10), transparent 65%),
+    radial-gradient(700px 400px at 50% 90%, rgba(255,200,0,.10), transparent 65%),
+    #050505;
   color:#fff;
-  overflow:hidden;
-  font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family:'Montserrat',sans-serif;
+  position:relative;
 }
 
-/* ===== ES / EN ===== */
 .plans-lang{
   position:absolute;
   top:20px;
   right:24px;
-  display:flex;
-  gap:10px;
   font-size:11px;
   font-weight:900;
   letter-spacing:1.5px;
 }
-.plans-lang span{
-  cursor:pointer;
-  opacity:.45;
-}
+.plans-lang span{margin-left:10px;cursor:pointer;opacity:.5}
 .plans-lang span.active{opacity:1}
 
-/* ===== HEADER ===== */
+/* HEADER */
 .plans-header{
   max-width:900px;
-  margin:0 auto 70px;
+  margin-bottom:70px;
 }
 .plans-header h2{
   font-size:clamp(38px,5vw,60px);
   font-weight:900;
-  line-height:1.08;
-  text-shadow:0 2px 12px rgba(0,0,0,.35);
 }
-.plans-header h2 strong{
-  background:linear-gradient(90deg,#fff,#9a9a9a);
+.plans-header strong{
+  background:linear-gradient(90deg,#fff,#aaa);
   -webkit-background-clip:text;
-  background-clip:text;
   color:transparent;
 }
 .plans-header p{
-  margin-top:16px;
-  font-size:16px;
-  line-height:1.7;
+  margin-top:14px;
   opacity:.85;
-  max-width:650px;
-  text-shadow:0 1px 8px rgba(0,0,0,.25);
 }
 
-/* ===== GRID ===== */
+/* GRID */
 .plans-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:36px;
-  max-width:1200px;
-  margin:0 auto;
-  perspective:1800px;
+  perspective:1600px;
 }
 
-/* ===== CARD ===== */
+/* CARD */
 .plan{
   position:relative;
   padding:70px 34px 44px;
-  border-radius:30px;
-  background:linear-gradient(180deg,rgba(20,20,20,.78),rgba(20,20,20,.55));
-  border:1px solid rgba(255,255,255,.14);
-  backdrop-filter:blur(16px);
-  transform:translateY(40px) rotateX(10deg);
-  opacity:0;
-  transition:all .9s cubic-bezier(.2,.8,.2,1);
-}
-.plan.show{
-  transform:translateY(0) rotateX(0);
-  opacity:1;
+  border-radius:28px;
+  background:linear-gradient(180deg,rgba(20,20,20,.85),rgba(20,20,20,.65));
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(18px);
+  transition:.6s ease;
+  cursor:pointer;
 }
 .plan:hover{
-  transform:translateY(-22px) rotateX(9deg) rotateY(-9deg) scale(1.07);
-  box-shadow:0 45px 140px rgba(0,0,0,.9);
+  transform:translateY(-18px) scale(1.05);
+  box-shadow:0 40px 120px rgba(0,0,0,.9);
 }
 
-/* GLOW */
 .plan::after{
   content:"";
   position:absolute;
-  top:-140px;
-  right:-140px;
-  width:300px;
-  height:300px;
+  top:-120px;
+  right:-120px;
+  width:260px;
+  height:260px;
   border-radius:50%;
   filter:blur(50px);
-  opacity:.4;
-  pointer-events:none;
+  opacity:.35;
 }
 
-/* LEVEL */
+.plan-z::after{background:#6dff6d}
+.plan-zplus::after{background:#00c8ff}
+.plan-zpremium::after{background:gold}
+
 .plan-level{
   position:absolute;
   top:22px;
   right:22px;
-  font-family:'Orbitron', system-ui, sans-serif;
-  font-size:16px;
-  font-weight:800;
+  font-family:'Orbitron',sans-serif;
   letter-spacing:3px;
-  text-shadow:0 2px 12px rgba(0,0,0,.35);
 }
 
-/* TEXT */
 .plan h3{
-  font-family:'Orbitron', system-ui, sans-serif;
-  font-size:30px;
-  font-weight:800;
-  margin:0 0 16px;
-  text-shadow:0 2px 12px rgba(0,0,0,.35);
-}
-.plan-description{
-  font-size:16px;
-  line-height:1.75;
-  opacity:.9;
-  margin:0 0 28px;
-  text-shadow:0 1px 8px rgba(0,0,0,.25);
+  font-family:'Orbitron',sans-serif;
+  font-size:28px;
+  margin-bottom:16px;
 }
 
-/* FEATURES */
+.plan-description{
+  font-size:15px;
+  opacity:.9;
+  margin-bottom:26px;
+}
+
 .plan-features{
   list-style:none;
-  margin:0 0 34px;
-  padding:0;
+  margin-bottom:30px;
 }
 .plan-features li{
-  padding:9px 0;
-  font-size:14px;
-  border-bottom:1px solid rgba(255,255,255,.1);
-  opacity:.95;
-  text-shadow:0 1px 6px rgba(0,0,0,.25);
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* BUTTON */
-.plan button{
-  width:100%;
-  padding:18px;
-  border-radius:18px;
-  border:none;
+/* CTA DARK */
+.plan-cta{
+  text-align:center;
+  padding:16px;
+  border-radius:16px;
+  background:linear-gradient(180deg,#111,#000);
+  border:1px solid rgba(255,255,255,.18);
   font-weight:900;
-  background:#fff;
-  color:#000;
-  cursor:pointer;
+  letter-spacing:1px;
 }
-
-/* COLORS */
-.plan-z .plan-level{color:#6dff6d}
-.plan-z::after{background:#6dff6d}
-
-.plan-zplus .plan-level{color:#00c8ff}
-.plan-zplus::after{background:#00c8ff}
-
-.plan-zpremium .plan-level{color:gold}
-.plan-zpremium::after{background:gold}
 
 /* MOBILE */
 @media(max-width:600px){
-  .plans-header h2{font-size:34px}
-  .plan{padding:60px 26px 38px}
-  .plan h3{font-size:26px}
-  .plan-description{font-size:15px}
-}
-
-/* iOS SAFARI FIX */
-@supports (-webkit-touch-callout: none){
-  .zensite-plans{background-color:#050505}
+  .plan{padding:60px 26px}
+  .plan h3{font-size:24px}
 }
 </style>
 
 <script>
-(() => {
-  const root=document.querySelector('.zensite-plans');
-  if(!root)return;
+const phone = "15027942412";
 
-  /* Reveal */
-  const plans=root.querySelectorAll('.plan');
-  const obs=new IntersectionObserver(e=>{
-    e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')});
-  },{threshold:.25});
-  plans.forEach(p=>obs.observe(p));
-
-  /* ES / EN */
-  const toggles=root.querySelectorAll('.plans-lang span');
-  const texts=root.querySelectorAll('[data-es]');
-  toggles.forEach(btn=>{
-    btn.onclick=()=>{
-      toggles.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const lang=btn.dataset.lang;
-      texts.forEach(el=>el.textContent=el.dataset[lang]);
-    };
-  });
-})();
+document.querySelectorAll(".plan").forEach(card=>{
+  card.onclick = ()=>{
+    const plan = card.dataset.plan;
+    const msg = encodeURIComponent("Hello, I'm interested in the " + plan + " plan.");
+    window.open(https://wa.me/${phone}?text=${msg}, "_blank");
+  };
+});
 </script>
