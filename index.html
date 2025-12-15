@@ -15,7 +15,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ===== */
+/* BACKGROUND */
 body::before{
   content:"";
   position:fixed;
@@ -34,15 +34,15 @@ body::after{
   z-index:-1;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
   position:fixed;
   top:0;
   width:100%;
   z-index:1000;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   padding:16px 24px;
   background:rgba(255,255,255,.04);
   backdrop-filter:blur(16px);
@@ -53,7 +53,6 @@ header{
   display:flex;
   gap:22px;
 }
-
 .nav-left a{
   color:#fff;
   text-decoration:none;
@@ -65,7 +64,6 @@ header{
   display:flex;
   gap:10px;
 }
-
 .lang button{
   padding:6px 14px;
   border-radius:20px;
@@ -81,7 +79,7 @@ header{
   border-color:#00cfff;
 }
 
-/* ===== HERO ===== */
+/* MAIN */
 main{
   margin-top:110px;
   padding:40px 20px 80px;
@@ -93,18 +91,17 @@ main{
 h1{
   font-size:clamp(38px,6vw,68px);
   margin-bottom:20px;
-  letter-spacing:-1px;
 }
 
 p{
   font-size:clamp(17px,2.5vw,20px);
   line-height:1.6;
   opacity:.9;
-  max-width:800px;
+  max-width:820px;
   margin:0 auto 40px;
 }
 
-/* ===== PROMO ===== */
+/* PROMO */
 .promo{
   display:inline-flex;
   align-items:center;
@@ -113,26 +110,32 @@ p{
   border-radius:30px;
   background:rgba(0,200,255,.15);
   border:1px solid rgba(0,200,255,.35);
-  margin-bottom:30px;
+  margin-bottom:28px;
   font-weight:600;
 }
 
-/* ===== PREVIEW ===== */
+/* PREVIEW */
 .preview{
-  margin-top:50px;
+  margin-top:40px;
   border-radius:28px;
   background:rgba(255,255,255,.05);
   padding:20px;
   box-shadow:0 40px 120px rgba(0,0,0,.9);
 }
-
 .preview img{
   width:100%;
   border-radius:20px;
   display:block;
 }
 
-/* ===== WHATSAPP ===== */
+/* EXTRA TEXT */
+.extra{
+  margin-top:40px;
+  font-size:16px;
+  opacity:.75;
+}
+
+/* WHATSAPP */
 .whatsapp{
   position:fixed;
   bottom:22px;
@@ -156,39 +159,78 @@ p{
 
 <header>
   <div class="nav-left">
-    <a href="index.html">Inicio</a>
-    <a href="demo.html">Demos</a>
-    <a href="planes.html">Planes</a>
-    <a href="nosotros.html">Nosotros</a>
+    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
+    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
+    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
+    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </div>
 
   <div class="lang">
-    <button class="active">ES</button>
-    <button>EN</button>
+    <button id="esBtn" class="active">ES</button>
+    <button id="enBtn">EN</button>
   </div>
 </header>
 
 <main>
 
-  <div class="promo">
-    🎁 <span>15% OFF — Diciembre</span>
+  <div class="promo" id="promo">
+    🎁 15% OFF — Diciembre
   </div>
 
-  <h1>ZenSite</h1>
+  <h1 id="title">ZenSite</h1>
 
-  <p>
+  <p id="desc">
     Diseñamos experiencias web profesionales enfocadas en generar confianza,
     posicionar tu marca y convertir visitas en clientes reales.
   </p>
 
   <div class="preview">
-    <!-- ESTA IMAGEN EXISTE EN TU REPO -->
     <img src="background.jpg" alt="ZenSite preview">
+  </div>
+
+  <div class="extra" id="extra">
+    Webs creadas a medida, sin plantillas genéricas ni soluciones rápidas.
   </div>
 
 </main>
 
 <a class="whatsapp" href="https://wa.me/15027942412" target="_blank">💬</a>
+
+<script>
+const esBtn = document.getElementById("esBtn");
+const enBtn = document.getElementById("enBtn");
+
+const title = document.getElementById("title");
+const desc = document.getElementById("desc");
+const promo = document.getElementById("promo");
+const extra = document.getElementById("extra");
+
+enBtn.onclick = () => {
+  esBtn.classList.remove("active");
+  enBtn.classList.add("active");
+
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.textContent = el.dataset.en;
+  });
+
+  promo.textContent = "🎁 15% OFF — December";
+  desc.textContent = "We design professional web experiences focused on building trust, positioning your brand, and converting visits into real clients.";
+  extra.textContent = "Custom-built websites. No generic templates. No shortcuts.";
+};
+
+esBtn.onclick = () => {
+  enBtn.classList.remove("active");
+  esBtn.classList.add("active");
+
+  document.querySelectorAll("[data-es]").forEach(el=>{
+    el.textContent = el.dataset.es;
+  });
+
+  promo.textContent = "🎁 15% OFF — Diciembre";
+  desc.textContent = "Diseñamos experiencias web profesionales enfocadas en generar confianza, posicionar tu marca y convertir visitas en clientes reales.";
+  extra.textContent = "Webs creadas a medida, sin plantillas genéricas ni soluciones rápidas.";
+};
+</script>
 
 </body>
 </html>
