@@ -13,161 +13,140 @@
 }
 
 body{
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background:#050505;
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(900px 500px at 50% 10%, rgba(0,120,255,.25), transparent 60%),
+    radial-gradient(800px 600px at 20% 80%, rgba(0,255,150,.2), transparent 65%),
+    #050505;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== HEADER ===== */
-header{
+/* ===== TOP BAR ===== */
+.topbar{
   position:fixed;
   top:0;
+  left:0;
   width:100%;
   padding:18px 6%;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   background:rgba(0,0,0,.45);
   backdrop-filter:blur(14px);
   z-index:1000;
 }
 
-nav a{
-  margin-right:18px;
-  text-decoration:none;
-  color:#fff;
-  font-weight:700;
-  opacity:.85;
-}
-nav a:hover{opacity:1}
-
+/* IDIOMA */
 .lang button{
   background:none;
   border:none;
   color:#fff;
-  font-weight:900;
-  margin-left:10px;
+  font-weight:800;
+  margin-right:14px;
   opacity:.6;
   cursor:pointer;
 }
-.lang .active{opacity:1}
+.lang button.active{
+  opacity:1;
+}
+
+/* MENU */
+.menu a{
+  margin-left:26px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:800;
+  opacity:.85;
+}
+.menu a:hover{
+  opacity:1;
+}
 
 /* ===== HERO ===== */
 .hero{
   min-height:100vh;
   padding:160px 6% 120px;
-  background:
-    radial-gradient(900px 500px at 50% 0%, rgba(0,140,255,.22), transparent 65%),
-    radial-gradient(700px 500px at 20% 85%, rgba(0,255,170,.22), transparent 65%),
-    #050505;
 }
 
 .hero h1{
-  font-size:clamp(46px,8vw,76px);
+  font-size:clamp(42px,7vw,86px);
   font-weight:900;
   line-height:1.05;
-  max-width:860px;
-  text-shadow:
-    0 6px 30px rgba(0,0,0,.7),
-    0 2px 12px rgba(0,0,0,.6);
+  text-shadow:0 20px 40px rgba(0,0,0,.6);
 }
 
 .hero h1 span{
-  background:linear-gradient(90deg,#ffffff,#bfc7cf);
-  -webkit-background-clip:text;
-  color:transparent;
+  color:#bbb;
 }
 
 .hero p{
-  margin-top:26px;
-  max-width:680px;
-  font-size:18px;
-  line-height:1.6;
-  opacity:.92;
-  text-shadow:0 2px 10px rgba(0,0,0,.6);
+  margin-top:28px;
+  max-width:640px;
+  font-size:clamp(16px,2.2vw,20px);
+  opacity:.9;
 }
 
+.hero p strong{
+  font-weight:900;
+}
+
+/* CTA */
 .cta{
-  margin-top:46px;
+  margin-top:44px;
 }
 
 .cta a{
   display:inline-block;
-  padding:18px 48px;
+  padding:20px 42px;
   border-radius:18px;
   background:#fff;
   color:#000;
   font-weight:900;
   text-decoration:none;
-  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  font-size:18px;
+  box-shadow:0 25px 60px rgba(0,0,0,.5);
 }
 
 /* ===== LAPTOP ===== */
 .laptop{
-  margin:120px auto 0;
-  max-width:900px;
-  animation:float 6s ease-in-out infinite;
+  margin-top:120px;
+  display:flex;
+  justify-content:center;
 }
 
 .laptop img{
-  width:100%;
-  display:block;
-  filter:drop-shadow(0 40px 120px rgba(0,0,0,.85));
+  max-width:100%;
+  width:820px;
+  filter:drop-shadow(0 40px 80px rgba(0,0,0,.85));
+  transform:translateY(0);
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-14px)}
-}
-
-/* ===== OFFER ===== */
+/* ===== 15 OFF ===== */
 .offer{
-  margin:70px auto 0;
-  max-width:380px;
-  text-align:center;
-  padding:18px 28px;
-  border-radius:20px;
+  margin:80px auto 0;
+  max-width:420px;
   background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.2);
-  backdrop-filter:blur(14px);
-  animation:pulse 2.6s infinite;
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(16px);
+  border-radius:22px;
+  padding:28px;
+  text-align:center;
 }
 
 .offer strong{
-  font-size:24px;
+  font-size:26px;
 }
 
 .offer span{
-  font-size:14px;
-  opacity:.9;
-}
-
-@keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.05)}
-}
-
-/* ===== SLOGAN ===== */
-.slogan{
-  padding:140px 6% 120px;
-  text-align:center;
-}
-
-.slogan h2{
-  font-size:clamp(36px,6vw,58px);
-  font-weight:900;
-  text-shadow:0 4px 20px rgba(0,0,0,.7);
-}
-
-.slogan p{
-  margin-top:16px;
-  font-size:18px;
-  opacity:.9;
+  display:block;
+  margin-top:8px;
+  opacity:.8;
 }
 
 /* ===== FOOTER ===== */
 footer{
+  margin-top:140px;
   padding:40px 6%;
   text-align:center;
   opacity:.5;
@@ -176,79 +155,76 @@ footer{
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-  nav{display:none}
-  .hero{padding-top:140px}
+  .hero{
+    padding-top:140px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="demo.html">Demo</a>
-    <a href="nosotros.html">Nosotros</a>
-  </nav>
+<!-- TOP BAR -->
+<header class="topbar">
 
+  <!-- IZQUIERDA: IDIOMA -->
   <div class="lang">
     <button class="active" onclick="setLang('es')">ES</button>
     <button onclick="setLang('en')">EN</button>
   </div>
+
+  <!-- DERECHA: MENU -->
+  <nav class="menu">
+    <a href="demo.html">Demo</a>
+    <a href="nosotros.html">Nosotros</a>
+  </nav>
+
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <h1 id="title">
-    Lleva tu negocio<br>
-    <span>al siguiente nivel</span>
+
+  <h1 data-es="Lleva tu negocio<br>al <span>siguiente nivel</span>"
+      data-en="Take your business<br>to the <span>next level</span>">
+    Lleva tu negocio<br>al <span>siguiente nivel</span>
   </h1>
 
-  <p id="subtitle">
+  <p data-es="Diseñamos webs modernas, rápidas y pensadas para convertir. <strong>No es solo diseño, es presencia digital real.</strong>"
+     data-en="We design modern, fast websites built to convert. <strong>Not just design, real digital presence.</strong>">
     Diseñamos webs modernas, rápidas y pensadas para convertir.
     <strong>No es solo diseño, es presencia digital real.</strong>
   </p>
 
   <div class="cta">
-    <a id="plansBtn" href="planes.html">Ver planes</a>
+    <a href="planes.html" data-es="Ver planes" data-en="View plans">Ver planes</a>
   </div>
 
+  <!-- LAPTOP -->
   <div class="laptop">
-    <img src="background.jpg" alt="ZenSite preview">
+    <img src="background.jpg" alt="ZenSite demo">
   </div>
 
+  <!-- OFFER -->
   <div class="offer">
     <strong>15% OFF</strong>
     <span>Solo por 30 días</span>
   </div>
-</section>
 
-<section class="slogan">
-  <h2 id="sloganTitle">Tu web es tu primera impresión</h2>
-  <p id="sloganText">Haz que cuente desde el primer segundo.</p>
 </section>
 
 <footer>
-  © 2025 ZenSite. Todos los derechos reservados.
+  © ZenSite — Todos los derechos reservados
 </footer>
 
 <script>
 function setLang(lang){
-  document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
-  event.target.classList.add("active");
-
-  if(lang==="en"){
-    title.innerHTML = "Take your business<br><span>to the next level</span>";
-    subtitle.innerHTML = "We design modern, fast websites built to convert. <strong>This is real digital presence.</strong>";
-    plansBtn.textContent = "View plans";
-    sloganTitle.textContent = "Your website is your first impression";
-    sloganText.textContent = "Make it count from the first second.";
-  }else{
-    title.innerHTML = "Lleva tu negocio<br><span>al siguiente nivel</span>";
-    subtitle.innerHTML = "Diseñamos webs modernas, rápidas y pensadas para convertir. <strong>No es solo diseño, es presencia digital real.</strong>";
-    plansBtn.textContent = "Ver planes";
-    sloganTitle.textContent = "Tu web es tu primera impresión";
-    sloganText.textContent = "Haz que cuente desde el primer segundo.";
-  }
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    el.innerHTML = el.dataset[lang];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.classList.remove('active');
+  });
+  document.querySelector('.lang button[onclick*="'+lang+'"]').classList.add('active');
 }
 </script>
 
