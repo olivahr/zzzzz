@@ -82,11 +82,10 @@ header{
 
 /* MAIN */
 main{
-  margin-top:160px; /* 👈 baja el título, no choca con el menú */
+  margin-top:160px;
   padding:40px 20px 120px;
   max-width:1200px;
-  margin-left:auto;
-  margin-right:auto;
+  margin:auto;
   text-align:center;
 }
 
@@ -111,7 +110,6 @@ h1{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:44px;
-  perspective:1200px;
 }
 
 /* CARD */
@@ -126,27 +124,16 @@ h1{
   transform:translateY(40px);
   opacity:0;
 }
-@keyframes enter{
-  to{transform:translateY(0);opacity:1}
-}
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
-}
+@keyframes enter{to{transform:none;opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .plan:hover{
-  transform:translateY(-14px);
-  box-shadow:0 70px 160px rgba(0,0,0,.95);
+  transform:translateY(-12px);
 }
 
 /* FEATURED */
 .plan.featured{
   outline:2px solid #00cfff;
   background:linear-gradient(180deg,rgba(0,200,255,.14),rgba(255,255,255,.06));
-  animation:enter .9s ease forwards, floatBig 6s ease-in-out infinite;
-}
-@keyframes floatBig{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-14px)}
 }
 .badge{
   position:absolute;
@@ -162,21 +149,20 @@ h1{
   letter-spacing:.08em;
 }
 
-/* PLAN TEXT */
+/* TEXT */
 .plan h2{
-  font-size:28px;
-  margin-bottom:6px;
+  font-size:30px;
+  margin-bottom:8px;
 }
 .plan p{
-  font-size:15.5px;
+  font-size:16px;
   line-height:1.55;
-  opacity:.85;
-  margin-bottom:18px;
+  opacity:.9;
 }
 .price{
-  font-size:46px;
+  font-size:48px;
   font-weight:900;
-  margin:18px 0 10px;
+  margin:22px 0 12px;
 }
 .price span{
   font-size:16px;
@@ -187,12 +173,11 @@ h1{
 ul{
   list-style:none;
   text-align:left;
-  margin:26px 0 36px;
+  margin:28px 0 36px;
 }
 ul li{
   margin-bottom:14px;
   font-size:16px;
-  opacity:.92;
 }
 ul li::before{
   content:"✔";
@@ -203,18 +188,17 @@ ul li::before{
 /* CTA */
 .plan a{
   display:inline-block;
-  padding:14px 30px;
-  border-radius:26px;
+  padding:14px 34px;
+  border-radius:28px;
   background:#00cfff;
   color:#000;
-  font-weight:800;
+  font-weight:900;
   text-decoration:none;
-  letter-spacing:.03em;
 }
 
 /* FOOTER */
 footer{
-  margin-top:130px;
+  margin-top:140px;
   font-size:12px;
   opacity:.55;
   letter-spacing:.08em;
@@ -238,71 +222,66 @@ footer{
 </header>
 
 <main>
-  <h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
 
-  <p class="subtitle"
-     data-es="Aquí eliges el nivel de presencia digital que tu negocio necesita para verse serio, generar confianza y empezar a vender con intención."
-     data-en="Choose the level of digital presence your business needs to look serious, build trust, and start converting with intention.">
-     Aquí eliges el nivel de presencia digital que tu negocio necesita para verse serio, generar confianza y empezar a vender con intención.
-  </p>
+<h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
 
-  <section class="plans">
+<p class="subtitle"
+data-es="No vendemos páginas bonitas. Creamos presencia digital que transmite confianza, posiciona tu marca y convierte visitas en clientes reales."
+data-en="We don’t sell pretty pages. We build digital presence that builds trust, positions your brand, and converts visitors into real clients.">
+No vendemos páginas bonitas. Creamos presencia digital que transmite confianza, posiciona tu marca y convierte visitas en clientes reales.
+</p>
 
-    <!-- Z -->
-    <div class="plan">
-      <h2>Z</h2>
-      <p data-es="Ideal para empezar con una imagen profesional clara y funcional."
-         data-en="Perfect to start with a clean, professional online presence.">
-         Ideal para empezar con una imagen profesional clara y funcional.
-      </p>
-      <div class="price">$200 <span>USD</span></div>
-      <ul>
-        <li data-es="Landing page enfocada en conversión" data-en="Conversion-focused landing page"></li>
-        <li data-es="Diseño responsive (móvil y desktop)" data-en="Responsive design (mobile & desktop)"></li>
-        <li data-es="Carga rápida y estructura limpia" data-en="Fast loading & clean structure"></li>
-        <li data-es="Imagen seria para tu negocio" data-en="Serious business image"></li>
-      </ul>
-      <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%20de%20$200">Contactar</a>
-    </div>
+<section class="plans">
 
-    <!-- Z+ -->
-    <div class="plan featured">
-      <div class="badge">MÁS VENDIDO</div>
-      <h2>Z+</h2>
-      <p data-es="La opción más equilibrada para negocios que quieren verse grandes y confiables."
-         data-en="The most balanced option for businesses that want to look solid and trustworthy.">
-         La opción más equilibrada para negocios que quieren verse grandes y confiables.
-      </p>
-      <div class="price">$480 <span>USD</span></div>
-      <ul>
-        <li data-es="Web completa multipágina" data-en="Complete multi-page website"></li>
-        <li data-es="Diseño premium personalizado" data-en="Custom premium design"></li>
-        <li data-es="Estructura pensada para vender" data-en="Sales-oriented structure"></li>
-        <li data-es="Mayor autoridad de marca" data-en="Stronger brand authority"></li>
-      </ul>
-      <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z+%20de%20$480">Contactar</a>
-    </div>
+<!-- Z -->
+<div class="plan">
+<h2>Z</h2>
+<p data-es="Para negocios que necesitan verse profesionales y dejar de perder clientes por mala imagen."
+data-en="For businesses that need to look professional and stop losing clients due to poor image."></p>
+<div class="price">$200 <span>USD</span></div>
+<ul>
+<li data-es="Landing page estratégica enfocada en contacto" data-en="Strategic landing page focused on contact"></li>
+<li data-es="Diseño limpio y profesional" data-en="Clean professional design"></li>
+<li data-es="Optimizada para móvil y velocidad" data-en="Optimized for mobile and speed"></li>
+<li data-es="Estructura clara que explica tu servicio" data-en="Clear structure explaining your service"></li>
+</ul>
+<a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%20de%20$200">Contactar</a>
+</div>
 
-    <!-- Z PREMIUM -->
-    <div class="plan">
-      <h2>Z Premium</h2>
-      <p data-es="Pensado para vender productos, escalar y operar como un negocio digital real."
-         data-en="Built to sell products, scale operations, and run a real digital business.">
-         Pensado para vender productos, escalar y operar como un negocio digital real.
-      </p>
-      <div class="price">$720 <span>USD</span></div>
-      <ul>
-        <li data-es="Tienda online completa" data-en="Full e-commerce store"></li>
-        <li data-es="Carrito, inventario y productos" data-en="Cart, inventory & products"></li>
-        <li data-es="Base lista para escalar ventas" data-en="Scalable sales-ready foundation"></li>
-        <li data-es="Marca digital de alto nivel" data-en="High-end digital brand"></li>
-      </ul>
-      <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%20Premium%20de%20$720">Contactar</a>
-    </div>
+<!-- Z+ -->
+<div class="plan featured">
+<div class="badge" data-es="MÁS VENDIDO" data-en="BEST SELLER">MÁS VENDIDO</div>
+<h2>Z+</h2>
+<p data-es="El equilibrio perfecto entre diseño, autoridad y conversión. Ideal para negocios que quieren crecer."
+data-en="The perfect balance between design, authority, and conversion. Ideal for growing businesses."></p>
+<div class="price">$480 <span>USD</span></div>
+<ul>
+<li data-es="Web multipágina completa" data-en="Complete multi-page website"></li>
+<li data-es="Diseño premium personalizado" data-en="Custom premium design"></li>
+<li data-es="Contenido estructurado para vender" data-en="Sales-oriented content structure"></li>
+<li data-es="Mayor confianza y percepción de marca" data-en="Higher trust and brand perception"></li>
+</ul>
+<a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z+%20de%20$480">Contactar</a>
+</div>
 
-  </section>
+<!-- Z PREMIUM -->
+<div class="plan">
+<h2>Z Premium</h2>
+<p data-es="Para negocios que quieren vender online, escalar y operar como una marca digital seria."
+data-en="For businesses that want to sell online, scale, and operate as a serious digital brand."></p>
+<div class="price">$720 <span>USD</span></div>
+<ul>
+<li data-es="Tienda online completa" data-en="Full e-commerce store"></li>
+<li data-es="Carrito, productos e inventario" data-en="Cart, products & inventory"></li>
+<li data-es="Base preparada para escalar ventas" data-en="Sales-ready scalable foundation"></li>
+<li data-es="Imagen premium de alto nivel" data-en="High-end premium brand image"></li>
+</ul>
+<a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%20Premium%20de%20$720">Contactar</a>
+</div>
 
-  <footer>© 2025 ZenSite · Todos los derechos reservados</footer>
+</section>
+
+<footer>© 2025 ZenSite · Todos los derechos reservados</footer>
 </main>
 
 <script>
@@ -310,21 +289,13 @@ const esBtn=document.getElementById("esBtn");
 const enBtn=document.getElementById("enBtn");
 
 function setLang(lang){
-  document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
-    el.textContent = el.dataset[lang];
-  });
+document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
+el.textContent=el.dataset[lang];
+});
 }
 
-esBtn.onclick=()=>{
-  esBtn.classList.add("active");
-  enBtn.classList.remove("active");
-  setLang("es");
-};
-enBtn.onclick=()=>{
-  enBtn.classList.add("active");
-  esBtn.classList.remove("active");
-  setLang("en");
-};
+esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");}
+enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");}
 </script>
 
 </body>
