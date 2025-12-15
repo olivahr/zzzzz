@@ -11,6 +11,7 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
+  overflow-x:hidden;
 }
 
 /* BACKGROUND */
@@ -19,8 +20,8 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 15% 20%,rgba(0,200,255,.16),transparent 40%),
-    radial-gradient(circle at 85% 75%,rgba(120,90,255,.18),transparent 45%),
+    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(120,90,255,.2),transparent 45%),
     #05070c;
   z-index:-2;
 }
@@ -45,36 +46,19 @@ header{
   backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
-.nav{
-  display:flex;
-  gap:28px;
-}
-.nav a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  opacity:.85;
-}
-.lang{
-  margin-left:auto;
-  display:flex;
-  gap:6px;
-}
+.nav{display:flex;gap:28px}
+.nav a{color:#fff;text-decoration:none;font-weight:600;opacity:.85}
+.lang{margin-left:auto;display:flex;gap:6px}
 .lang button{
   padding:4px 10px;
   font-size:10px;
-  letter-spacing:.12em;
   border-radius:14px;
   border:1px solid rgba(255,255,255,.25);
   background:transparent;
   color:#fff;
   font-weight:800;
-  cursor:pointer;
 }
-.lang .active{
-  background:#00cfff;
-  color:#000;
-}
+.lang .active{background:#00cfff;color:#000}
 
 /* MAIN */
 main{
@@ -87,44 +71,66 @@ main{
 
 /* TITLE */
 h1{
-  font-size:clamp(46px,6vw,84px);
-  margin-bottom:16px;
+  font-size:clamp(48px,6vw,84px);
   font-weight:900;
   letter-spacing:-0.05em;
 }
 .subtitle{
+  margin-top:16px;
   font-size:20px;
   opacity:.9;
   max-width:760px;
-  margin:0 auto 80px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-/* PLANS */
+/* PLANS GRID */
 .plans{
+  margin-top:90px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:32px;
+  gap:40px;
+  perspective:1200px;
 }
 
-/* CARD */
+/* CARD BASE */
 .plan{
   position:relative;
   background:rgba(255,255,255,.06);
   border-radius:28px;
-  padding:36px 30px 42px;
+  padding:40px 32px 44px;
   backdrop-filter:blur(18px);
-  box-shadow:0 30px 90px rgba(0,0,0,.7);
-  transition:.35s ease;
+  box-shadow:0 40px 120px rgba(0,0,0,.8);
+  transform:translateY(60px);
+  opacity:0;
+  animation:enter .9s ease forwards, float 7s ease-in-out infinite;
 }
+
+/* ENTRANCE */
+@keyframes enter{
+  to{transform:translateY(0);opacity:1}
+}
+
+/* FLOAT */
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+/* HOVER */
 .plan:hover{
-  transform:translateY(-10px);
-  box-shadow:0 50px 120px rgba(0,0,0,.9);
+  transform:translateY(-14px) rotateX(1deg);
+  box-shadow:0 70px 160px rgba(0,0,0,.95);
 }
 
 /* FEATURED */
 .plan.featured{
   outline:2px solid #00cfff;
-  background:linear-gradient(180deg,rgba(0,200,255,.14),rgba(255,255,255,.06));
+  animation:enter .9s ease forwards, floatBig 6s ease-in-out infinite;
+}
+@keyframes floatBig{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-14px)}
 }
 .badge{
   position:absolute;
@@ -137,59 +143,33 @@ h1{
   font-weight:900;
   padding:6px 14px;
   border-radius:20px;
-  letter-spacing:.08em;
 }
 
-/* PLAN TEXT */
-.plan h2{
-  font-size:26px;
-  margin-bottom:10px;
-}
-.price{
-  font-size:44px;
-  font-weight:900;
-  margin:18px 0;
-}
-.price span{
-  font-size:16px;
-  opacity:.7;
-}
+/* TEXT */
+.plan h2{font-size:26px}
+.price{font-size:46px;font-weight:900;margin:18px 0}
+.price span{font-size:16px;opacity:.6}
 
-/* LIST */
-ul{
-  list-style:none;
-  text-align:left;
-  margin:28px 0 36px;
-}
-ul li{
-  margin-bottom:14px;
-  font-size:16px;
-  opacity:.92;
-}
-ul li::before{
-  content:"✔";
-  color:#00cfff;
-  margin-right:10px;
-}
+ul{list-style:none;text-align:left;margin:26px 0 34px}
+ul li{margin-bottom:14px;font-size:16px;opacity:.92}
+ul li::before{content:"✔";color:#00cfff;margin-right:10px}
 
 /* CTA */
 .plan a{
   display:inline-block;
-  padding:14px 26px;
+  padding:14px 28px;
   border-radius:26px;
   background:#00cfff;
   color:#000;
   font-weight:800;
   text-decoration:none;
-  letter-spacing:.03em;
 }
 
 /* FOOTER */
 footer{
-  margin-top:110px;
+  margin-top:120px;
   font-size:12px;
   opacity:.55;
-  letter-spacing:.08em;
 }
 </style>
 </head>
@@ -198,85 +178,64 @@ footer{
 
 <header>
   <nav class="nav">
-    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
-    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
-    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
-    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
+    <a href="index.html">Inicio</a>
+    <a href="demo.html">Demos</a>
+    <a href="planes.html">Planes</a>
+    <a href="nosotros.html">Nosotros</a>
   </nav>
   <div class="lang">
-    <button id="esBtn" class="active">ES</button>
-    <button id="enBtn">EN</button>
+    <button class="active">ES</button>
+    <button>EN</button>
   </div>
 </header>
 
 <main>
-  <h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
-  <p class="subtitle"
-     data-es="No vendemos páginas. Construimos presencia digital seria que genera confianza y clientes."
-     data-en="We don’t sell websites. We build serious digital presence that creates trust and converts.">
-     No vendemos páginas. Construimos presencia digital seria que genera confianza y clientes.
+  <h1>Planes ZenSite</h1>
+  <p class="subtitle">
+    No es una web. Es la base digital desde donde tu negocio crece.
   </p>
 
   <section class="plans">
-
-    <!-- Z -->
     <div class="plan">
       <h2>Z</h2>
       <div class="price">$200 <span>USD</span></div>
       <ul>
-        <li data-es="Landing page profesional" data-en="Professional landing page"></li>
-        <li data-es="Diseño responsive (móvil y desktop)" data-en="Responsive design (mobile & desktop)"></li>
-        <li data-es="Carga rápida y optimizada" data-en="Fast & optimized loading"></li>
-        <li data-es="Imagen seria para tu negocio" data-en="Serious business image"></li>
+        <li>Landing page profesional</li>
+        <li>Diseño responsive</li>
+        <li>Imagen seria y clara</li>
+        <li>Entrega rápida</li>
       </ul>
-      <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%20de%20$200">Contactar</a>
+      <a href="https://wa.me/15027942412?text=Quiero%20el%20Plan%20Z%20de%20$200">Contactar</a>
     </div>
 
-    <!-- Z+ -->
     <div class="plan featured">
       <div class="badge">MÁS VENDIDO</div>
       <h2>Z+</h2>
       <div class="price">$480 <span>USD</span></div>
       <ul>
-        <li data-es="Web completa multipágina" data-en="Complete multi-page website"></li>
-        <li data-es="Diseño premium personalizado" data-en="Custom premium design"></li>
-        <li data-es="Optimización SEO básica" data-en="Basic SEO optimization"></li>
-        <li data-es="Mayor confianza y conversión" data-en="Higher trust & conversion"></li>
+        <li>Web multipágina completa</li>
+        <li>Diseño premium personalizado</li>
+        <li>Estructura pensada para vender</li>
+        <li>Mayor autoridad de marca</li>
       </ul>
-      <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z+%20de%20$480">Contactar</a>
+      <a href="https://wa.me/15027942412?text=Quiero%20el%20Plan%20Z+%20de%20$480">Contactar</a>
     </div>
 
-    <!-- Z PREMIUM -->
     <div class="plan">
       <h2>Z Premium</h2>
       <div class="price">$720 <span>USD</span></div>
       <ul>
-        <li data-es="Tienda online completa" data-en="Full e-commerce store"></li>
-        <li data-es="Carrito, inventario y productos" data-en="Cart, inventory & products"></li>
-        <li data-es="Estructura para escalar ventas" data-en="Sales-ready scalable structure"></li>
-        <li data-es="Marca digital de alto nivel" data-en="High-end digital brand"></li>
+        <li>Tienda online completa</li>
+        <li>Inventario y carrito</li>
+        <li>Base lista para escalar ventas</li>
+        <li>Marca digital de alto nivel</li>
       </ul>
-      <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%20Premium%20de%20$720">Contactar</a>
+      <a href="https://wa.me/15027942412?text=Quiero%20el%20Plan%20Z%20Premium%20de%20$720">Contactar</a>
     </div>
-
   </section>
 
-  <footer>© 2025 ZENSITE · ALL RIGHTS RESERVED</footer>
+  <footer>© 2025 ZenSite</footer>
 </main>
-
-<script>
-const esBtn=document.getElementById("esBtn");
-const enBtn=document.getElementById("enBtn");
-
-function setLang(lang){
-  document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
-    el.textContent = el.dataset[lang];
-  });
-}
-
-esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");}
-enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");}
-</script>
 
 </body>
 </html>
