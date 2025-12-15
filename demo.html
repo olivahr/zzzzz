@@ -3,172 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demo | ZenSite</title>
+<title>ZenSite | Demos</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
-  background:#05070c;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:#050505;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* BACKGROUND */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(120,90,255,.2),transparent 45%),
-    #05070c;
-  z-index:-2;
-}
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  backdrop-filter:blur(90px);
-  z-index:-1;
-}
-
-/* HEADER */
+/* ===== HEADER ===== */
 header{
   position:fixed;
-  top:0;
+  top:0;left:0;
   width:100%;
-  height:64px;
+  padding:18px 7%;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:0 22px;
-  background:rgba(255,255,255,.04);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  align-items:center;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(12px);
   z-index:1000;
 }
-
-nav{
-  display:flex;
-  gap:24px;
-}
-nav a{
+header a{
   color:#fff;
   text-decoration:none;
-  font-weight:600;
+  font-weight:700;
+  margin-left:18px;
   opacity:.85;
 }
-nav a:hover{opacity:1}
+header a:hover{opacity:1}
+.logo{font-weight:900;font-size:20px}
 
-/* LANG */
-.lang{
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  padding:140px 7% 80px;
+  background:
+    radial-gradient(800px 500px at 50% 10%, rgba(0,150,255,.2), transparent 65%),
+    radial-gradient(700px 500px at 80% 85%, rgba(0,255,150,.2), transparent 65%),
+    #050505;
+}
+.hero h1{
+  font-size:clamp(42px,7vw,72px);
+  font-weight:900;
+}
+.hero p{
+  margin-top:14px;
+  max-width:600px;
+  opacity:.85;
+}
+
+/* ===== STATS ===== */
+.stats{
   display:flex;
-  gap:6px;
+  gap:24px;
+  margin-top:60px;
+  flex-wrap:wrap;
 }
-.lang button{
-  padding:2px 8px;
-  font-size:10px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.25);
-  background:transparent;
-  color:#fff;
-  font-weight:600;
-  cursor:pointer;
-}
-.lang .active{
-  background:#00cfff;
-  color:#000;
-  border-color:#00cfff;
-}
-
-/* MAIN */
-main{
-  padding:140px 20px 120px;
-  max-width:1100px;
-  margin:auto;
+.stat{
+  flex:1;
+  min-width:160px;
+  background:rgba(20,20,20,.7);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;
+  padding:26px;
   text-align:center;
 }
-
-/* TITLES */
-h1{
-  font-size:clamp(40px,6vw,68px);
-  margin-bottom:14px;
+.stat strong{
+  font-size:36px;
+  font-weight:900;
 }
-.subtitle{
-  font-size:clamp(15px,2.3vw,19px);
-  opacity:.9;
-  max-width:760px;
-  margin:0 auto 46px;
-  line-height:1.6;
+.stat span{
+  display:block;
+  opacity:.7;
+  margin-top:6px;
 }
 
-/* SLIDER */
+/* ===== DEMO SLIDER ===== */
+.demos{
+  padding:120px 0;
+}
+.demos h2{
+  text-align:center;
+  font-size:42px;
+  margin-bottom:60px;
+}
 .slider{
-  position:relative;
-  border-radius:28px;
-  background:rgba(255,255,255,.04);
+  display:flex;
+  gap:30px;
+  padding:0 7%;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+}
+.slide{
+  min-width:300px;
+  max-width:300px;
+  scroll-snap-align:center;
+  background:rgba(20,20,20,.75);
+  border-radius:24px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  transition:.3s;
+}
+.slide:hover{transform:scale(1.05)}
+.slide img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+.slide div{
   padding:18px;
-  box-shadow:
-    0 40px 120px rgba(0,0,0,.85),
-    inset 0 0 0 1px rgba(255,255,255,.06);
+  font-weight:700;
 }
 
-/* SLIDES */
-.slide{display:none}
-.slide.active{display:block}
+/* ===== CTA ===== */
+.cta{
+  padding:120px 7%;
+  text-align:center;
+}
+.cta h2{
+  font-size:42px;
+  margin-bottom:20px;
+}
+.cta button{
+  padding:16px 38px;
+  font-size:18px;
+  border-radius:14px;
+  border:none;
+  font-weight:900;
+  cursor:pointer;
+  background:#fff;
+}
 
-/* DEMO FRAME */
-.demo-frame{
-  width:100%;
-  height:520px;
-  border-radius:22px;
-  overflow:hidden;
-  background:#000;
-  box-shadow:
-    0 30px 90px rgba(0,0,0,.9),
-    0 0 60px rgba(0,200,255,.12);
+/* ===== WHATSAPP ===== */
+.whatsapp{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  width:60px;
+  height:60px;
+  background:#25d366;
+  border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-}
-.demo-frame img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-
-/* CONTROLS */
-.controls{
-  margin-top:22px;
-  display:flex;
-  justify-content:center;
-  gap:14px;
-}
-.controls button{
-  width:46px;
-  height:46px;
-  border-radius:50%;
-  border:none;
-  background:#00cfff;
-  color:#000;
-  font-size:20px;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 10px 30px rgba(0,200,255,.4);
+  font-size:30px;
+  color:#fff;
+  text-decoration:none;
+  z-index:999;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 @media(max-width:768px){
-  .demo-frame{height:320px}
-}
-
-/* FOOTER */
-footer{
-  margin-top:90px;
-  opacity:.45;
-  font-size:13px;
+  .stats{flex-direction:column}
+  .slider{padding-left:20px}
 }
 </style>
 </head>
@@ -176,100 +167,62 @@ footer{
 <body>
 
 <header>
+  <div class="logo">ZenSite</div>
   <nav>
-    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
-    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
-    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
-    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
+    <a href="index.html">Inicio</a>
+    <a href="demo.html">Demo</a>
+    <a href="planes.html">Planes</a>
   </nav>
-
-  <div class="lang">
-    <button id="esBtn" class="active">ES</button>
-    <button id="enBtn">EN</button>
-  </div>
 </header>
 
-<main>
-  <h1 data-es="Demo ZenSite" data-en="ZenSite Demo">Demo ZenSite</h1>
+<section class="hero">
+  <h1>Demos reales,<br>resultados reales</h1>
+  <p>Ejemplos de proyectos diseñados para convertir, generar confianza y verse profesionales desde el primer segundo.</p>
 
-  <div class="subtitle"
-    data-es="Diseño real que transmite confianza desde el primer segundo. Así se ven las experiencias que convierten visitas en clientes."
-    data-en="Real design that builds trust from the first second. This is what experiences that convert visitors into clients look like.">
-    Diseño real que transmite confianza desde el primer segundo. Así se ven las experiencias que convierten visitas en clientes.
+  <div class="stats">
+    <div class="stat"><strong id="n1">0</strong><span>Proyectos entregados</span></div>
+    <div class="stat"><strong id="n2">0</strong><span>Países</span></div>
+    <div class="stat"><strong id="n3">0%</strong><span>Satisfacción</span></div>
   </div>
+</section>
 
+<section class="demos">
+  <h2>Proyectos demo</h2>
   <div class="slider">
-    <div class="slide active"><div class="demo-frame"><img src="demo1.jpg"></div></div>
-    <div class="slide"><div class="demo-frame"><img src="demo2.jpg"></div></div>
-    <div class="slide"><div class="demo-frame"><img src="demo3.jpg"></div></div>
-    <div class="slide"><div class="demo-frame"><img src="demo4.jpg"></div></div>
-    <div class="slide"><div class="demo-frame"><img src="demo5.jpg"></div></div>
+    <div class="slide"><img src="demo1.jpg"><div>Landing Page</div></div>
+    <div class="slide"><img src="demo2.jpg"><div>Web Corporativa</div></div>
+    <div class="slide"><img src="demo3.jpg"><div>Marca Personal</div></div>
+    <div class="slide"><img src="demo4.jpg"><div>Tienda Online</div></div>
+    <div class="slide"><img src="demo5.jpg"><div>Ecommerce Premium</div></div>
   </div>
+</section>
 
-  <div class="controls">
-    <button onclick="prev()">‹</button>
-    <button onclick="next()">›</button>
-  </div>
+<section class="cta">
+  <h2>¿Listo para ver tu proyecto aquí?</h2>
+  <button onclick="goWhats()">Hablar por WhatsApp</button>
+</section>
 
-  <footer>
-    © 2025 ZenSite. Todos los derechos reservados.
-  </footer>
-</main>
+<a class="whatsapp" href="https://wa.me/15027942412" target="_blank">🟢</a>
 
 <script>
-let index=0;
-const slides=document.querySelectorAll(".slide");
-let autoSlide;
+function animate(id,target,suffix=""){
+  let n=0;
+  const el=document.getElementById(id);
+  const i=setInterval(()=>{
+    n++;
+    el.textContent=n+suffix;
+    if(n>=target)clearInterval(i);
+  },30);
+}
+setTimeout(()=>{
+  animate("n1",15);
+  animate("n2",2);
+  animate("n3",98,"%");
+},600);
 
-/* SHOW */
-function show(i){
-  slides.forEach(s=>s.classList.remove("active"));
-  slides[i].classList.add("active");
+function goWhats(){
+  window.open("https://wa.me/15027942412?text=Hola,%20quiero%20ver%20demos%20de%20ZenSite","_blank");
 }
-
-/* NEXT / PREV */
-function next(){
-  index=(index+1)%slides.length;
-  show(index);
-  resetAuto();
-}
-function prev(){
-  index=(index-1+slides.length)%slides.length;
-  show(index);
-  resetAuto();
-}
-
-/* AUTO */
-function startAuto(){
-  autoSlide=setInterval(()=>{
-    index=(index+1)%slides.length;
-    show(index);
-  },5000);
-}
-function resetAuto(){
-  clearInterval(autoSlide);
-  startAuto();
-}
-startAuto();
-
-/* SWIPE */
-let startX=0;
-const slider=document.querySelector(".slider");
-slider.addEventListener("touchstart",e=>{startX=e.touches[0].clientX},{passive:true});
-slider.addEventListener("touchend",e=>{
-  let diff=startX-e.changedTouches[0].clientX;
-  if(diff>50)next();
-  if(diff<-50)prev();
-});
-
-/* LANG */
-function setLang(l){
-  document.querySelectorAll("[data-"+l+"]").forEach(e=>{
-    e.textContent=e.dataset[l];
-  });
-}
-esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es")};
-enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en")};
 </script>
 
 </body>
