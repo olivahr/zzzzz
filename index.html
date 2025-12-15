@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZenSite | Webs que venden</title>
+<title>Nosotros | ZenSite</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:#05070c;
@@ -21,7 +20,7 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
+    radial-gradient(circle at 20% 25%,rgba(0,200,255,.18),transparent 40%),
     radial-gradient(circle at 80% 70%,rgba(140,90,255,.22),transparent 40%),
     #05070c;
   z-index:-2;
@@ -34,7 +33,7 @@ body::after{
   z-index:-1;
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER (IGUAL AL RESTO) ===== */
 header{
   position:fixed;
   top:0;
@@ -48,10 +47,7 @@ header{
   border-bottom:1px solid rgba(255,255,255,.08);
   z-index:1000;
 }
-nav{
-  display:flex;
-  gap:20px;
-}
+nav{display:flex;gap:20px}
 nav a{
   color:#fff;
   text-decoration:none;
@@ -73,57 +69,36 @@ nav a:hover{opacity:1}
   font-weight:600;
   cursor:pointer;
 }
-.lang button.active{
-  background:#00cfff;
-  color:#000;
+.lang button.active{background:#00cfff;color:#000}
+
+/* ===== MAIN ===== */
+main{
+  margin-top:110px;
+  padding:20px 16px 160px;
+  max-width:1100px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-/* ===== HERO ===== */
-.hero{
-  min-height:100vh;
-  padding-top:120px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
+/* ===== TITLES ===== */
+h1{
+  font-size:42px;
+  margin-bottom:18px;
 }
-.hero-inner{
-  animation:float 7s ease-in-out infinite;
-}
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-16px)}
-}
-.hero h1{
-  font-size:clamp(46px,8vw,96px);
-  margin-bottom:20px;
-  text-shadow:0 0 40px rgba(0,200,255,.6);
-}
-.hero p{
-  max-width:780px;
-  font-size:20px;
-  opacity:.9;
-  line-height:1.6;
-}
-.laptop{
-  margin-top:50px;
-  max-width:520px;
-}
-.laptop img{
-  width:100%;
-  border-radius:18px;
-  box-shadow:0 40px 90px rgba(0,0,0,.9);
+.subtitle{
+  max-width:760px;
+  opacity:.8;
+  line-height:1.7;
+  margin-bottom:80px;
 }
 
 /* ===== SECTIONS ===== */
 .section{
-  max-width:1100px;
-  margin:auto;
-  padding:120px 20px;
+  margin-bottom:120px;
 }
 .section h2{
-  font-size:36px;
-  margin-bottom:24px;
+  font-size:32px;
+  margin-bottom:20px;
 }
 .section p{
   max-width:780px;
@@ -131,19 +106,10 @@ nav a:hover{opacity:1}
   line-height:1.7;
 }
 
-/* ===== STATEMENT ===== */
-.statement{
-  text-align:center;
-  font-size:28px;
-  font-weight:600;
-  opacity:.9;
-}
-
 /* ===== GRID ===== */
 .grid{
-  margin-top:50px;
   display:grid;
-  gap:28px;
+  gap:30px;
 }
 @media(min-width:900px){
   .grid{grid-template-columns:repeat(3,1fr)}
@@ -151,18 +117,38 @@ nav a:hover{opacity:1}
 .card{
   background:rgba(255,255,255,.06);
   padding:34px;
-  border-radius:26px;
+  border-radius:28px;
   backdrop-filter:blur(14px);
-  transition:.4s;
+  transition:.45s ease;
 }
 .card:hover{
   transform:translateY(-8px);
   box-shadow:0 0 40px rgba(0,200,255,.35);
 }
 
+/* ===== GUARANTEE ===== */
+.guarantee{
+  background:rgba(255,255,255,.06);
+  border-radius:32px;
+  padding:50px;
+}
+.guarantee h2{
+  font-size:34px;
+  margin-bottom:24px;
+}
+.guarantee ul{
+  list-style:none;
+  display:grid;
+  gap:14px;
+  opacity:.9;
+}
+.guarantee li{
+  display:flex;
+  gap:10px;
+}
+
 /* ===== CTA ===== */
 .cta{
-  text-align:center;
   margin-top:80px;
 }
 .cta a{
@@ -170,7 +156,7 @@ nav a:hover{opacity:1}
   padding:16px 36px;
   background:#00cfff;
   color:#000;
-  font-weight:700;
+  font-weight:800;
   border-radius:30px;
   text-decoration:none;
 }
@@ -219,60 +205,90 @@ footer{
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-inner">
-    <h1>ZenSite</h1>
-    <p data-es="Diseñamos experiencias web que elevan tu marca y convierten visitas en clientes reales."
-       data-en="We design web experiences that elevate your brand and turn visitors into real clients.">
-       Diseñamos experiencias web que elevan tu marca y convierten visitas en clientes reales.
+<main>
+
+  <!-- HERO -->
+  <section class="section">
+    <h1 data-es="Somos ZenSite"
+        data-en="We are ZenSite">
+        Somos ZenSite
+    </h1>
+
+    <p class="subtitle"
+       data-es="Creamos webs con mentalidad de producto, no como simples páginas. Diseñamos experiencias que posicionan marcas y generan confianza real."
+       data-en="We build websites with a product mindset, not as simple pages. We design experiences that position brands and build real trust.">
+       Creamos webs con mentalidad de producto, no como simples páginas. Diseñamos experiencias que posicionan marcas y generan confianza real.
     </p>
-    <div class="laptop">
-      <img src="background.jpg" alt="ZenSite Web">
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="statement"
-       data-es="Webs que no parecen plantillas. Diseñadas para posicionarte."
-       data-en="Websites that don’t look like templates. Designed to position your brand.">
-    Webs que no parecen plantillas. Diseñadas para posicionarte.
-  </div>
-</section>
+  <!-- QUE NOS DIFERENCIA -->
+  <section class="section">
+    <h2 data-es="Qué nos diferencia"
+        data-en="What sets us apart">
+        Qué nos diferencia
+    </h2>
 
-<section class="section">
-  <h2 data-es="Qué construimos" data-en="What we build">Qué construimos</h2>
-  <div class="grid">
-    <div class="card" data-es="Webs corporativas serias" data-en="Serious corporate websites">
-      Webs corporativas serias
-    </div>
-    <div class="card" data-es="Landing pages que convierten" data-en="High-converting landing pages">
-      Landing pages que convierten
-    </div>
-    <div class="card" data-es="Tiendas online premium" data-en="Premium online stores">
-      Tiendas online premium
-    </div>
-  </div>
-</section>
+    <div class="grid">
+      <div class="card"
+           data-es="Diseño con intención. Cada decisión tiene un porqué."
+           data-en="Design with intention. Every decision has a purpose.">
+        Diseño con intención. Cada decisión tiene un porqué.
+      </div>
 
-<section class="section">
-  <h2 data-es="El resultado" data-en="The result">El resultado</h2>
-  <p data-es="Más confianza, mejor percepción de marca y más mensajes de clientes que sí valoran tu negocio."
-     data-en="More trust, stronger brand perception, and more messages from clients who value your business.">
-     Más confianza, mejor percepción de marca y más mensajes de clientes que sí valoran tu negocio.
-  </p>
+      <div class="card"
+           data-es="Experiencia tipo sistema, no plantillas genéricas."
+           data-en="System-like experience, not generic templates.">
+        Experiencia tipo sistema, no plantillas genéricas.
+      </div>
 
-  <div class="cta">
-    <a href="https://wa.me/15027942412?text=Hola%20quiero%20una%20web%20profesional"
-       data-es="Hablar por WhatsApp"
-       data-en="Talk on WhatsApp">
-       Hablar por WhatsApp
-    </a>
-  </div>
-</section>
+      <div class="card"
+           data-es="Comunicación directa, clara y sin rodeos."
+           data-en="Direct, clear communication without runarounds.">
+        Comunicación directa, clara y sin rodeos.
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUIEN ES -->
+  <section class="section">
+    <h2 data-es="Para quién es ZenSite"
+        data-en="Who ZenSite is for">
+        Para quién es ZenSite
+    </h2>
+
+    <p data-es="Trabajamos con negocios y marcas que entienden que su web es parte clave de su imagen y crecimiento."
+       data-en="We work with businesses and brands that understand their website is a key part of their image and growth.">
+       Trabajamos con negocios y marcas que entienden que su web es parte clave de su imagen y crecimiento.
+    </p>
+  </section>
+
+  <!-- GARANTIAS -->
+  <section class="section guarantee">
+    <h2 data-es="Nuestras garantías"
+        data-en="Our guarantees">
+        Nuestras garantías
+    </h2>
+
+    <ul>
+      <li>✔ <span data-es="Tu web es 100% tuya" data-en="Your website is 100% yours">Tu web es 100% tuya</span></li>
+      <li>✔ <span data-es="Sin pagos mensuales ocultos" data-en="No hidden monthly fees">Sin pagos mensuales ocultos</span></li>
+      <li>✔ <span data-es="Ajustamos hasta que estés conforme" data-en="We adjust until you're satisfied">Ajustamos hasta que estés conforme</span></li>
+      <li>✔ <span data-es="Soporte real y comunicación directa" data-en="Real support and direct communication">Soporte real y comunicación directa</span></li>
+    </ul>
+
+    <div class="cta">
+      <a href="https://wa.me/15027942412?text=Hola%20quiero%20hablar%20sobre%20una%20web%20con%20ZenSite"
+         data-es="Hablar con nosotros"
+         data-en="Talk with us">
+         Hablar con nosotros
+      </a>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  © 2025 ZenSite · Webs profesionales · Pagos únicos · Soporte directo
+  © 2025 ZenSite · Webs profesionales · Pagos únicos
 </footer>
 
 <a class="whatsapp" href="https://wa.me/15027942412">💬</a>
