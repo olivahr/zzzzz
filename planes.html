@@ -1,12 +1,9 @@
-<!-- =======================
-     PLANES ZENSITE (FINAL REVISADO)
-======================= -->
 <section class="zensite-plans" aria-label="Planes ZenSite">
 
   <!-- ES / EN -->
-  <div class="plans-lang" aria-label="Idioma">
-    <span class="active" data-lang="es" role="button" tabindex="0">ES</span>
-    <span data-lang="en" role="button" tabindex="0">EN</span>
+  <div class="plans-lang">
+    <span class="active" data-lang="es">ES</span>
+    <span data-lang="en">EN</span>
   </div>
 
   <!-- HEADER -->
@@ -22,7 +19,7 @@
     </p>
   </header>
 
-  <!-- PLANS GRID -->
+  <!-- GRID -->
   <div class="plans-grid">
 
     <!-- Z -->
@@ -39,7 +36,7 @@
         <li data-es="Responsive total" data-en="Fully responsive">Responsive total</li>
         <li data-es="Estructura optimizada" data-en="Optimized structure">Estructura optimizada</li>
       </ul>
-      <button type="button" data-es="Elegir Z" data-en="Choose Z">Elegir Z</button>
+      <button data-es="Elegir Z" data-en="Choose Z">Elegir Z</button>
     </article>
 
     <!-- Z+ -->
@@ -56,7 +53,7 @@
         <li data-es="SEO optimizado" data-en="Optimized SEO">SEO optimizado</li>
         <li data-es="UI avanzada" data-en="Advanced UI">UI avanzada</li>
       </ul>
-      <button type="button" data-es="Elegir Z+" data-en="Choose Z+">Elegir Z+</button>
+      <button data-es="Elegir Z+" data-en="Choose Z+">Elegir Z+</button>
     </article>
 
     <!-- Z PREMIUM -->
@@ -73,33 +70,31 @@
         <li data-es="Velocidad extrema" data-en="Extreme speed">Velocidad extrema</li>
         <li data-es="Optimización total" data-en="Full optimization">Optimización total</li>
       </ul>
-      <button type="button" data-es="Elegir Premium" data-en="Choose Premium">Elegir Premium</button>
+      <button data-es="Elegir Premium" data-en="Choose Premium">Elegir Premium</button>
     </article>
 
   </div>
 </section>
 
 <style>
-/* =======================
-   ZENSITE PLANS – AGRESIVO (REVISADO)
-   Nota: incluye Orbitron via @import para letras duras
-======================= */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Orbitron:wght@600;700;800&display=swap');
 
+/* ===== BASE ===== */
 .zensite-plans{
   position:relative;
   padding:110px 6%;
   background:
-    radial-gradient(900px 500px at 15% 10%, rgba(255,255,255,.05), transparent 60%),
-    radial-gradient(900px 500px at 85% 20%, rgba(0,200,255,.15), transparent 60%),
-    radial-gradient(900px 500px at 50% 90%, rgba(255,215,0,.12), transparent 60%);
+    radial-gradient(700px 400px at 15% 10%, rgba(255,255,255,.035), transparent 65%),
+    radial-gradient(700px 400px at 85% 20%, rgba(0,200,255,.07), transparent 65%),
+    radial-gradient(700px 400px at 50% 90%, rgba(255,215,0,.06), transparent 65%);
+  background-color:#050505;
   color:#fff;
   overflow:hidden;
   font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* ES / EN */
-.zensite-plans .plans-lang{
+/* ===== ES / EN ===== */
+.plans-lang{
   position:absolute;
   top:20px;
   right:24px;
@@ -108,41 +103,41 @@
   font-size:11px;
   font-weight:900;
   letter-spacing:1.5px;
-  user-select:none;
 }
-.zensite-plans .plans-lang span{
+.plans-lang span{
   cursor:pointer;
-  opacity:.4;
-  transition:opacity .2s ease;
+  opacity:.45;
 }
-.zensite-plans .plans-lang span.active{opacity:1}
+.plans-lang span.active{opacity:1}
 
-/* HEADER */
-.zensite-plans .plans-header{
+/* ===== HEADER ===== */
+.plans-header{
   max-width:900px;
   margin:0 auto 70px;
 }
-.zensite-plans .plans-header h2{
+.plans-header h2{
   font-size:clamp(38px,5vw,60px);
   font-weight:900;
   line-height:1.08;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
 }
-.zensite-plans .plans-header h2 strong{
+.plans-header h2 strong{
   background:linear-gradient(90deg,#fff,#9a9a9a);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
 }
-.zensite-plans .plans-header p{
+.plans-header p{
   margin-top:16px;
   font-size:16px;
   line-height:1.7;
   opacity:.85;
   max-width:650px;
+  text-shadow:0 1px 8px rgba(0,0,0,.25);
 }
 
-/* GRID */
-.zensite-plans .plans-grid{
+/* ===== GRID ===== */
+.plans-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:36px;
@@ -151,30 +146,29 @@
   perspective:1800px;
 }
 
-/* CARD */
-.zensite-plans .plan{
+/* ===== CARD ===== */
+.plan{
   position:relative;
   padding:70px 34px 44px;
   border-radius:30px;
-  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.03));
+  background:linear-gradient(180deg,rgba(20,20,20,.78),rgba(20,20,20,.55));
   border:1px solid rgba(255,255,255,.14);
-  backdrop-filter:blur(18px);
+  backdrop-filter:blur(16px);
   transform:translateY(40px) rotateX(10deg);
   opacity:0;
   transition:all .9s cubic-bezier(.2,.8,.2,1);
-  will-change:transform, box-shadow, opacity;
 }
-.zensite-plans .plan.show{
+.plan.show{
   transform:translateY(0) rotateX(0);
   opacity:1;
 }
-.zensite-plans .plan:hover{
+.plan:hover{
   transform:translateY(-22px) rotateX(9deg) rotateY(-9deg) scale(1.07);
   box-shadow:0 45px 140px rgba(0,0,0,.9);
 }
 
 /* GLOW */
-.zensite-plans .plan::after{
+.plan::after{
   content:"";
   position:absolute;
   top:-140px;
@@ -183,12 +177,12 @@
   height:300px;
   border-radius:50%;
   filter:blur(50px);
-  opacity:.42;
+  opacity:.4;
   pointer-events:none;
 }
 
 /* LEVEL */
-.zensite-plans .plan-level{
+.plan-level{
   position:absolute;
   top:22px;
   right:22px;
@@ -196,38 +190,41 @@
   font-size:16px;
   font-weight:800;
   letter-spacing:3px;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
 }
 
 /* TEXT */
-.zensite-plans .plan h3{
+.plan h3{
   font-family:'Orbitron', system-ui, sans-serif;
   font-size:30px;
   font-weight:800;
   margin:0 0 16px;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
 }
-.zensite-plans .plan-description{
+.plan-description{
   font-size:16px;
   line-height:1.75;
-  opacity:.88;
+  opacity:.9;
   margin:0 0 28px;
+  text-shadow:0 1px 8px rgba(0,0,0,.25);
 }
 
 /* FEATURES */
-.zensite-plans .plan-features{
+.plan-features{
   list-style:none;
   margin:0 0 34px;
   padding:0;
 }
-.zensite-plans .plan-features li{
+.plan-features li{
   padding:9px 0;
   font-size:14px;
-  border-bottom:1px solid rgba(255,255,255,.10);
-  opacity:.92;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  opacity:.95;
+  text-shadow:0 1px 6px rgba(0,0,0,.25);
 }
-.zensite-plans .plan-features li:last-child{border-bottom:none}
 
 /* BUTTON */
-.zensite-plans .plan button{
+.plan button{
   width:100%;
   padding:18px;
   border-radius:18px;
@@ -236,74 +233,54 @@
   background:#fff;
   color:#000;
   cursor:pointer;
-  transition:transform .2s ease, filter .2s ease;
-}
-.zensite-plans .plan button:hover{
-  transform:translateY(-2px);
-  filter:brightness(.9);
 }
 
 /* COLORS */
-.zensite-plans .plan-z .plan-level{color:#6dff6d}
-.zensite-plans .plan-z::after{background:#6dff6d}
+.plan-z .plan-level{color:#6dff6d}
+.plan-z::after{background:#6dff6d}
 
-.zensite-plans .plan-zplus .plan-level{color:#00c8ff}
-.zensite-plans .plan-zplus::after{background:#00c8ff}
+.plan-zplus .plan-level{color:#00c8ff}
+.plan-zplus::after{background:#00c8ff}
 
-.zensite-plans .plan-zpremium .plan-level{color:gold}
-.zensite-plans .plan-zpremium::after{background:gold}
+.plan-zpremium .plan-level{color:gold}
+.plan-zpremium::after{background:gold}
 
 /* MOBILE */
-@media (max-width:600px){
-  .zensite-plans{padding:90px 6%}
-  .zensite-plans .plans-header{margin-bottom:50px}
-  .zensite-plans .plans-header h2{font-size:34px}
-  .zensite-plans .plan{padding:60px 26px 38px}
-  .zensite-plans .plan h3{font-size:26px}
-  .zensite-plans .plan-description{font-size:15px}
+@media(max-width:600px){
+  .plans-header h2{font-size:34px}
+  .plan{padding:60px 26px 38px}
+  .plan h3{font-size:26px}
+  .plan-description{font-size:15px}
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .zensite-plans .plan,
-  .zensite-plans .plan:hover{
-    transition:none;
-    transform:none;
-  }
+/* iOS SAFARI FIX */
+@supports (-webkit-touch-callout: none){
+  .zensite-plans{background-color:#050505}
 }
 </style>
 
 <script>
-/* ==========
-   Scoped JS (solo afecta esta sección)
-========== */
 (() => {
-  const root = document.querySelector('.zensite-plans');
-  if (!root) return;
+  const root=document.querySelector('.zensite-plans');
+  if(!root)return;
 
-  // Reveal
-  const plans = root.querySelectorAll('.plan');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-  }, { threshold: 0.25 });
-  plans.forEach(p => obs.observe(p));
+  /* Reveal */
+  const plans=root.querySelectorAll('.plan');
+  const obs=new IntersectionObserver(e=>{
+    e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')});
+  },{threshold:.25});
+  plans.forEach(p=>obs.observe(p));
 
-  // ES / EN
-  const toggles = root.querySelectorAll('.plans-lang span');
-  const translatables = root.querySelectorAll('[data-es]');
-
-  function setLang(lang){
-    toggles.forEach(t => t.classList.toggle('active', t.dataset.lang === lang));
-    translatables.forEach(el => { el.textContent = el.dataset[lang]; });
-  }
-
-  toggles.forEach(t => {
-    t.addEventListener('click', () => setLang(t.dataset.lang));
-    t.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Enter' || ev.key === ' ') setLang(t.dataset.lang);
-    });
+  /* ES / EN */
+  const toggles=root.querySelectorAll('.plans-lang span');
+  const texts=root.querySelectorAll('[data-es]');
+  toggles.forEach(btn=>{
+    btn.onclick=()=>{
+      toggles.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const lang=btn.dataset.lang;
+      texts.forEach(el=>el.textContent=el.dataset[lang]);
+    };
   });
-
-  setLang('es');
 })();
 </script>
