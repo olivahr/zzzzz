@@ -94,25 +94,26 @@ header{
 
 /* MAIN */
 main{
-  margin-top:150px;
+  margin-top:120px; /* ⬅ SUBE TODO UN POCO */
   padding:40px 20px 200px;
   max-width:1100px;
-  margin:auto;
+  margin-left:auto;
+  margin-right:auto;
   text-align:center;
 }
 
-/* TITLE — MÁS AGRESIVO */
+/* TITLE */
 h1{
   font-family:'Space Grotesk', sans-serif;
   font-size:clamp(50px,7vw,92px);
   font-weight:800;
   letter-spacing:-1.2px;
-  margin-bottom:18px;
+  margin-bottom:14px; /* ⬅ MÁS COMPACTO */
 }
 h1::after{
   content:"";
   display:block;
-  margin:16px auto 0;
+  margin:14px auto 0;
   width:180px;
   height:6px;
   background:#00cfff;
@@ -127,30 +128,30 @@ h1::after{
 /* COPY */
 .copy{
   max-width:920px;
-  margin:0 auto 52px;
+  margin:0 auto 44px; /* ⬅ SUBE FRASE */
 }
 .copy .lead{
   font-size:clamp(20px,2.8vw,26px);
   font-weight:600;
-  line-height:1.5;
+  line-height:1.45;
   letter-spacing:-0.3px;
-  margin-bottom:14px;
+  margin-bottom:10px;
 }
 .copy .sub{
   font-size:clamp(17px,2.3vw,21px);
   font-weight:500;
   opacity:.9;
-  line-height:1.65;
+  line-height:1.6;
 }
 
 /* PREVIEW */
 .preview{
-  margin-top:40px;
+  margin-top:28px;
   border-radius:34px;
   background:rgba(255,255,255,.05);
   padding:22px;
   box-shadow:0 60px 160px rgba(0,0,0,.9);
-  animation:floatLaptop 6s ease-in-out infinite;
+  animation:floatLaptop 8s ease-in-out infinite; /* ⬅ MÁS SUAVE */
 }
 .preview img{
   width:100%;
@@ -158,12 +159,12 @@ h1::after{
 }
 @keyframes floatLaptop{
   0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-14px)}
+  50%{transform:translateY(-8px)} /* ⬅ MENOS MOVIMIENTO */
 }
 
 /* OFFER */
 .offer{
-  margin:60px auto 0;
+  margin:52px auto 0;
   display:inline-block;
   padding:10px 18px;
   border-radius:22px;
@@ -239,7 +240,7 @@ footer{
 </footer>
 
 <script>
-/* PREMIUM TAP SOUND */
+/* TAP SOUND */
 const ctx=new (window.AudioContext||window.webkitAudioContext)();
 function playTap(){
   const o=ctx.createOscillator();
