@@ -6,7 +6,6 @@
 <title>ZenSite</title>
 
 <style>
-/* ===== RESET ===== */
 *{
   margin:0;
   padding:0;
@@ -34,17 +33,11 @@ header{
   z-index:1000;
 }
 
-.logo{
-  font-weight:900;
-  font-size:20px;
-  letter-spacing:1px;
-}
-
 nav a{
-  margin:0 14px;
+  margin-right:18px;
   text-decoration:none;
   color:#fff;
-  font-weight:600;
+  font-weight:700;
   opacity:.85;
 }
 nav a:hover{opacity:1}
@@ -53,7 +46,7 @@ nav a:hover{opacity:1}
   background:none;
   border:none;
   color:#fff;
-  font-weight:800;
+  font-weight:900;
   margin-left:10px;
   opacity:.6;
   cursor:pointer;
@@ -65,29 +58,34 @@ nav a:hover{opacity:1}
   min-height:100vh;
   padding:160px 6% 120px;
   background:
-    radial-gradient(900px 500px at 50% 0%, rgba(0,140,255,.18), transparent 65%),
-    radial-gradient(700px 500px at 20% 85%, rgba(0,255,170,.18), transparent 65%),
+    radial-gradient(900px 500px at 50% 0%, rgba(0,140,255,.22), transparent 65%),
+    radial-gradient(700px 500px at 20% 85%, rgba(0,255,170,.22), transparent 65%),
     #050505;
 }
 
 .hero h1{
-  font-size:clamp(44px,8vw,74px);
+  font-size:clamp(46px,8vw,76px);
   font-weight:900;
   line-height:1.05;
-  max-width:820px;
+  max-width:860px;
+  text-shadow:
+    0 6px 30px rgba(0,0,0,.7),
+    0 2px 12px rgba(0,0,0,.6);
 }
 
 .hero h1 span{
-  background:linear-gradient(90deg,#fff,#aaa);
+  background:linear-gradient(90deg,#ffffff,#bfc7cf);
   -webkit-background-clip:text;
   color:transparent;
 }
 
 .hero p{
   margin-top:26px;
-  max-width:640px;
+  max-width:680px;
   font-size:18px;
-  opacity:.9;
+  line-height:1.6;
+  opacity:.92;
+  text-shadow:0 2px 10px rgba(0,0,0,.6);
 }
 
 .cta{
@@ -96,12 +94,13 @@ nav a:hover{opacity:1}
 
 .cta a{
   display:inline-block;
-  padding:18px 46px;
+  padding:18px 48px;
   border-radius:18px;
   background:#fff;
   color:#000;
   font-weight:900;
   text-decoration:none;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
 }
 
 /* ===== LAPTOP ===== */
@@ -114,7 +113,7 @@ nav a:hover{opacity:1}
 .laptop img{
   width:100%;
   display:block;
-  filter:drop-shadow(0 40px 120px rgba(0,0,0,.8));
+  filter:drop-shadow(0 40px 120px rgba(0,0,0,.85));
 }
 
 @keyframes float{
@@ -122,32 +121,31 @@ nav a:hover{opacity:1}
   50%{transform:translateY(-14px)}
 }
 
-/* ===== 15% OFF ===== */
+/* ===== OFFER ===== */
 .offer{
-  margin:60px auto 0;
-  max-width:360px;
+  margin:70px auto 0;
+  max-width:380px;
   text-align:center;
-  padding:18px 26px;
+  padding:18px 28px;
   border-radius:20px;
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.2);
   backdrop-filter:blur(14px);
-  animation:pulse 2.8s infinite;
+  animation:pulse 2.6s infinite;
 }
 
 .offer strong{
-  font-size:22px;
-  display:block;
+  font-size:24px;
 }
 
 .offer span{
   font-size:14px;
-  opacity:.85;
+  opacity:.9;
 }
 
 @keyframes pulse{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.04)}
+  50%{transform:scale(1.05)}
 }
 
 /* ===== SLOGAN ===== */
@@ -157,14 +155,15 @@ nav a:hover{opacity:1}
 }
 
 .slogan h2{
-  font-size:clamp(36px,6vw,56px);
+  font-size:clamp(36px,6vw,58px);
   font-weight:900;
+  text-shadow:0 4px 20px rgba(0,0,0,.7);
 }
 
 .slogan p{
   margin-top:16px;
   font-size:18px;
-  opacity:.85;
+  opacity:.9;
 }
 
 /* ===== FOOTER ===== */
@@ -186,8 +185,6 @@ footer{
 <body>
 
 <header>
-  <div class="logo">ZenSite</div>
-
   <nav>
     <a href="index.html">Inicio</a>
     <a href="demo.html">Demo</a>
@@ -195,24 +192,24 @@ footer{
   </nav>
 
   <div class="lang">
-    <button class="active">ES</button>
-    <button>EN</button>
+    <button class="active" onclick="setLang('es')">ES</button>
+    <button onclick="setLang('en')">EN</button>
   </div>
 </header>
 
 <section class="hero">
-  <h1>
+  <h1 id="title">
     Lleva tu negocio<br>
     <span>al siguiente nivel</span>
   </h1>
 
-  <p>
+  <p id="subtitle">
     Diseñamos webs modernas, rápidas y pensadas para convertir.
     <strong>No es solo diseño, es presencia digital real.</strong>
   </p>
 
   <div class="cta">
-    <a href="planes.html">Ver planes</a>
+    <a id="plansBtn" href="planes.html">Ver planes</a>
   </div>
 
   <div class="laptop">
@@ -226,13 +223,34 @@ footer{
 </section>
 
 <section class="slogan">
-  <h2>Tu web es tu primera impresión</h2>
-  <p>Haz que cuente desde el primer segundo.</p>
+  <h2 id="sloganTitle">Tu web es tu primera impresión</h2>
+  <p id="sloganText">Haz que cuente desde el primer segundo.</p>
 </section>
 
 <footer>
   © 2025 ZenSite. Todos los derechos reservados.
 </footer>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
+  event.target.classList.add("active");
+
+  if(lang==="en"){
+    title.innerHTML = "Take your business<br><span>to the next level</span>";
+    subtitle.innerHTML = "We design modern, fast websites built to convert. <strong>This is real digital presence.</strong>";
+    plansBtn.textContent = "View plans";
+    sloganTitle.textContent = "Your website is your first impression";
+    sloganText.textContent = "Make it count from the first second.";
+  }else{
+    title.innerHTML = "Lleva tu negocio<br><span>al siguiente nivel</span>";
+    subtitle.innerHTML = "Diseñamos webs modernas, rápidas y pensadas para convertir. <strong>No es solo diseño, es presencia digital real.</strong>";
+    plansBtn.textContent = "Ver planes";
+    sloganTitle.textContent = "Tu web es tu primera impresión";
+    sloganText.textContent = "Haz que cuente desde el primer segundo.";
+  }
+}
+</script>
 
 </body>
 </html>
