@@ -57,20 +57,19 @@ header{
   text-decoration:none;
   font-weight:600;
   opacity:.85;
-  white-space:nowrap;
 }
 
-/* LANG */
+/* LANG — pequeño y a la derecha real */
 .lang{
   margin-left:auto;
   display:flex;
   gap:6px;
 }
 .lang button{
-  padding:4px 9px;
-  font-size:10px;
+  padding:3px 7px;
+  font-size:9px;
   letter-spacing:.12em;
-  border-radius:14px;
+  border-radius:12px;
   border:1px solid rgba(255,255,255,.25);
   background:transparent;
   color:#fff;
@@ -87,8 +86,7 @@ main{
   margin-top:160px;
   padding:40px 20px 120px;
   max-width:1200px;
-  margin-left:auto;
-  margin-right:auto;
+  margin:auto;
   text-align:center;
 }
 
@@ -99,6 +97,7 @@ h1{
   letter-spacing:-0.05em;
   margin-bottom:18px;
 }
+
 .subtitle{
   font-size:20px;
   line-height:1.6;
@@ -149,6 +148,7 @@ h1{
   font-size:28px;
   margin-bottom:8px;
 }
+
 .plan p{
   font-size:15.5px;
   line-height:1.6;
@@ -166,6 +166,7 @@ h1{
   opacity:.6;
 }
 
+/* LIST */
 ul{
   list-style:none;
   text-align:left;
@@ -181,6 +182,7 @@ ul li::before{
   margin-right:10px;
 }
 
+/* CTA */
 .plan a{
   display:inline-block;
   padding:14px 34px;
@@ -220,55 +222,58 @@ footer{
 <h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
 
 <p class="subtitle"
-data-es="Cada plan está diseñado para un tipo de negocio distinto. Aquí no pagas por una web, pagas por presencia, confianza y ventas reales."
-data-en="Each plan is built for a different business stage. You’re not paying for a website — you’re investing in presence, trust, and real conversions.">
-Cada plan está diseñado para un tipo de negocio distinto. Aquí no pagas por una web, pagas por presencia, confianza y ventas reales.
+data-es="Cada plan está diseñado para un tipo de negocio distinto. No vendemos webs bonitas, construimos presencia, confianza y ventas reales."
+data-en="Each plan is designed for a different business stage. We don’t sell pretty websites — we build presence, trust, and real sales.">
+Cada plan está diseñado para un tipo de negocio distinto. No vendemos webs bonitas, construimos presencia, confianza y ventas reales.
 </p>
 
 <section class="plans">
 
+<!-- Z -->
 <div class="plan">
   <h2>Z</h2>
-  <p data-es="Ideal para negocios que necesitan una presencia clara, profesional y directa para captar clientes."
-     data-en="Perfect for businesses that need a clear, professional, conversion-focused presence.">
+  <p data-es="Para negocios que necesitan verse profesionales y captar clientes desde el primer contacto."
+     data-en="For businesses that need a professional image and client acquisition from day one.">
   </p>
   <div class="price">$200 <span>USD</span></div>
   <ul>
-    <li data-es="Landing page estratégica" data-en="Strategic landing page"></li>
-    <li data-es="Mensaje claro y enfocado" data-en="Clear, focused messaging"></li>
-    <li data-es="Optimizada para captar contactos" data-en="Optimized for lead capture"></li>
-    <li data-es="Imagen profesional inmediata" data-en="Instant professional image"></li>
+    <li data-es="Landing page estratégica enfocada en conversión" data-en="Conversion-focused landing page">Landing page estratégica enfocada en conversión</li>
+    <li data-es="Mensaje claro que explica qué haces y por qué elegirte" data-en="Clear message explaining what you do and why choose you">Mensaje claro que explica qué haces y por qué elegirte</li>
+    <li data-es="Diseño responsive y rápido" data-en="Fast responsive design">Diseño responsive y rápido</li>
+    <li data-es="Imagen profesional inmediata" data-en="Instant professional image">Imagen profesional inmediata</li>
   </ul>
   <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z">Contactar</a>
 </div>
 
+<!-- Z+ -->
 <div class="plan featured">
   <div class="badge">MÁS VENDIDO</div>
   <h2>Z+</h2>
-  <p data-es="Para negocios que quieren verse grandes, sólidos y generar confianza desde el primer segundo."
-     data-en="For businesses that want to look established, solid, and trustworthy from the first second.">
+  <p data-es="Para negocios que quieren verse grandes, confiables y posicionarse como marca seria."
+     data-en="For businesses that want to look established, trustworthy, and brand-focused.">
   </p>
   <div class="price">$480 <span>USD</span></div>
   <ul>
-    <li data-es="Web multipágina completa" data-en="Full multi-page website"></li>
-    <li data-es="Diseño premium personalizado" data-en="Custom premium design"></li>
-    <li data-es="Estructura pensada para vender" data-en="Sales-oriented structure"></li>
-    <li data-es="Marca con autoridad" data-en="Authoritative brand presence"></li>
+    <li data-es="Web multipágina completa" data-en="Full multi-page website">Web multipágina completa</li>
+    <li data-es="Estructura pensada para vender y escalar" data-en="Sales-oriented scalable structure">Estructura pensada para vender y escalar</li>
+    <li data-es="Diseño premium personalizado" data-en="Custom premium design">Diseño premium personalizado</li>
+    <li data-es="Mayor autoridad y confianza de marca" data-en="Stronger brand authority">Mayor autoridad y confianza de marca</li>
   </ul>
   <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z+">Contactar</a>
 </div>
 
+<!-- Z PREMIUM -->
 <div class="plan">
   <h2>Z Premium</h2>
-  <p data-es="Para negocios que venden productos, escalan y operan como una empresa digital real."
-     data-en="Built for businesses that sell products, scale operations, and run a real digital company.">
+  <p data-es="Para negocios que venden productos, escalan y operan como empresa digital real."
+     data-en="For businesses that sell products, scale, and operate as real digital companies.">
   </p>
   <div class="price">$720 <span>USD</span></div>
   <ul>
-    <li data-es="Tienda online completa" data-en="Full e-commerce store"></li>
-    <li data-es="Carrito, inventario y productos" data-en="Cart, inventory & products"></li>
-    <li data-es="Base preparada para escalar" data-en="Scalable sales-ready foundation"></li>
-    <li data-es="Marca digital de alto nivel" data-en="High-end digital brand"></li>
+    <li data-es="Tienda online completa con productos" data-en="Full e-commerce store">Tienda online completa con productos</li>
+    <li data-es="Carrito, inventario y estructura de ventas" data-en="Cart, inventory and sales structure">Carrito, inventario y estructura de ventas</li>
+    <li data-es="Base preparada para escalar" data-en="Scalable business foundation">Base preparada para escalar</li>
+    <li data-es="Marca digital de alto nivel" data-en="High-end digital brand">Marca digital de alto nivel</li>
   </ul>
   <a href="https://wa.me/15027942412?text=Hola,%20quiero%20el%20Plan%20Z%20Premium">Contactar</a>
 </div>
@@ -288,6 +293,9 @@ function setLang(lang){
     el.textContent = el.dataset[lang];
   });
 }
+
+setLang("es");
+
 esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");};
 enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");};
 </script>
