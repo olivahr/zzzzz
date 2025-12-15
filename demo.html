@@ -3,15 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demos | ZenSite</title>
+<title>ZenSite | Demos</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
   background:#05070c;
   color:#fff;
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
 /* ===== BACKGROUND ===== */
@@ -20,8 +22,8 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 20% 25%,rgba(0,200,255,.18),transparent 40%),
-    radial-gradient(circle at 80% 70%,rgba(140,90,255,.22),transparent 40%),
+    radial-gradient(circle at 20% 20%,rgba(0,200,255,.18),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(120,90,255,.2),transparent 45%),
     #05070c;
   z-index:-2;
 }
@@ -33,142 +35,127 @@ body::after{
   z-index:-1;
 }
 
-/* ===== HEADER (MISMO QUE INDEX) ===== */
+/* ===== HEADER ===== */
 header{
   position:fixed;
   top:0;
+  left:0;
   width:100%;
-  height:64px;
+  z-index:1000;
   display:flex;
   align-items:center;
-  padding:0 18px;
-  background:rgba(255,255,255,.05);
-  backdrop-filter:blur(18px);
+  padding:16px 26px;
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(255,255,255,.08);
-  z-index:1000;
 }
-nav{
+
+/* MENU LEFT */
+.nav{
   display:flex;
-  gap:20px;
+  gap:28px;
 }
-nav a{
+.nav a{
   color:#fff;
   text-decoration:none;
   font-weight:600;
   opacity:.85;
 }
-nav a:hover{opacity:1}
+
+/* LANG RIGHT */
 .lang{
-  margin-left:auto;
+  position:fixed;
+  top:18px;
+  right:18px;
   display:flex;
-  gap:8px;
+  gap:6px;
+  z-index:2000;
 }
 .lang button{
-  padding:6px 14px;
-  border-radius:14px;
-  background:rgba(255,255,255,.1);
+  padding:3px 8px;
+  font-size:11px;
+  border-radius:12px;
   border:1px solid rgba(255,255,255,.25);
+  background:transparent;
   color:#fff;
   font-weight:600;
   cursor:pointer;
 }
-.lang button.active{
+.lang .active{
   background:#00cfff;
   color:#000;
+  border-color:#00cfff;
 }
 
 /* ===== MAIN ===== */
 main{
-  margin-top:110px;
-  padding:20px 16px 140px;
-}
-
-/* ===== TITLE ===== */
-h1{
-  text-align:center;
-  font-size:40px;
-  margin-bottom:14px;
-}
-.subtitle{
-  text-align:center;
-  max-width:720px;
-  margin:0 auto 60px;
-  opacity:.75;
-  font-size:18px;
-}
-
-/* ===== DEMO GRID ===== */
-.demos{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  gap:34px;
-}
-@media(min-width:900px){
-  .demos{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-
-.demo{
-  background:rgba(255,255,255,.06);
-  padding:26px;
-  border-radius:28px;
-  backdrop-filter:blur(14px);
-  box-shadow:0 40px 120px rgba(0,0,0,.9);
-  transition:transform .45s ease, box-shadow .45s ease;
-}
-.demo:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 40px rgba(0,200,255,.35);
-}
-
-.demo img{
-  width:100%;
-  display:block;
-  border-radius:22px;
-}
-
-/* ===== CTA ===== */
-.cta{
-  text-align:center;
-  margin-top:100px;
-}
-.cta a{
-  display:inline-block;
-  padding:16px 36px;
-  background:#00cfff;
-  color:#000;
-  font-weight:700;
-  border-radius:30px;
-  text-decoration:none;
-}
-
-/* ===== FOOTER ===== */
-footer{
-  margin-top:140px;
-  padding:40px 20px;
-  text-align:center;
-  opacity:.55;
-  font-size:14px;
-}
-
-/* ===== WHATSAPP ===== */
-.whatsapp{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  width:62px;
-  height:62px;
-  background:#25D366;
-  border-radius:50%;
+  margin-top:120px;
+  height:calc(100vh - 120px);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
+}
+
+/* ===== SLIDER SYSTEM ===== */
+.slider{
+  position:relative;
+  width:90%;
+  max-width:960px;
+  aspect-ratio:16/10;
+  background:rgba(255,255,255,.06);
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 60px 160px rgba(0,0,0,.9);
+}
+
+.slides{
+  display:flex;
+  height:100%;
+  transition:transform .8s cubic-bezier(.16,1,.3,1);
+}
+
+.slide{
+  min-width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.slide img{
+  width:92%;
+  height:auto;
+  object-fit:contain;
+  border-radius:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.8);
+}
+
+/* ARROWS */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
   color:#fff;
-  text-decoration:none;
-  z-index:999;
+  font-size:26px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.25s;
+}
+.arrow:hover{background:rgba(255,255,255,.2)}
+.arrow.left{left:16px}
+.arrow.right{right:16px}
+
+/* MOBILE */
+@media(max-width:768px){
+  .slider{
+    aspect-ratio:4/3;
+  }
 }
 </style>
 </head>
@@ -176,67 +163,99 @@ footer{
 <body>
 
 <header>
-  <nav>
+  <nav class="nav">
     <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
     <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
     <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
     <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
   </nav>
-  <div class="lang">
-    <button id="es" class="active">ES</button>
-    <button id="en">EN</button>
-  </div>
 </header>
 
+<div class="lang">
+  <button id="esBtn" class="active">ES</button>
+  <button id="enBtn">EN</button>
+</div>
+
 <main>
-  <h1 data-es="Demostraciones reales"
-      data-en="Real demonstrations">
-      Demostraciones reales
-  </h1>
+  <div class="slider">
+    <button class="arrow left" onclick="prev()">‹</button>
 
-  <p class="subtitle"
-     data-es="Ejemplos del nivel visual y estructural que construimos para nuestros clientes."
-     data-en="Examples of the visual and structural level we build for our clients.">
-     Ejemplos del nivel visual y estructural que construimos para nuestros clientes.
-  </p>
+    <div class="slides" id="slides">
+      <div class="slide"><img src="demo1.jpg"></div>
+      <div class="slide"><img src="demo2.jpg"></div>
+      <div class="slide"><img src="demo3.jpg"></div>
+      <div class="slide"><img src="demo4.jpg"></div>
+      <div class="slide"><img src="demo5.jpg"></div>
+    </div>
 
-  <div class="demos">
-    <div class="demo"><img src="demo1.jpg" alt="Demo 1"></div>
-    <div class="demo"><img src="demo2.jpg" alt="Demo 2"></div>
-    <div class="demo"><img src="demo3.jpg" alt="Demo 3"></div>
-    <div class="demo"><img src="demo4.jpg" alt="Demo 4"></div>
-    <div class="demo"><img src="demo5.jpg" alt="Demo 5"></div>
-  </div>
-
-  <div class="cta">
-    <a href="https://wa.me/15027942412?text=Hola%20vi%20los%20demos%20y%20quiero%20una%20web%20así"
-       data-es="Quiero una web así"
-       data-en="I want a website like this">
-       Quiero una web así
-    </a>
+    <button class="arrow right" onclick="next()">›</button>
   </div>
 </main>
 
-<footer>
-  © 2025 ZenSite · Diseño web profesional · Pagos únicos
-</footer>
-
-<a class="whatsapp" href="https://wa.me/15027942412">💬</a>
-
 <script>
-const texts=document.querySelectorAll("[data-es]");
-const esBtn=document.getElementById("es");
-const enBtn=document.getElementById("en");
+/* ===== AUDIO PREMIUM (SIN MP3 EXTERNO) ===== */
+let ctx;
+function playTap(){
+  if(!ctx) ctx=new AudioContext();
+  const o=ctx.createOscillator();
+  const g=ctx.createGain();
+  o.type="sine";
+  o.frequency.value=880;
+  g.gain.value=0.03;
+  o.connect(g);
+  g.connect(ctx.destination);
+  o.start();
+  o.stop(ctx.currentTime+0.05);
+}
+
+/* ===== SLIDER ===== */
+let index=0;
+const slides=document.getElementById("slides");
+const total=5;
+
+function update(){
+  slides.style.transform=translateX(-${index*100}%);
+}
+
+function next(){
+  playTap();
+  index=(index+1)%total;
+  update();
+}
+function prev(){
+  playTap();
+  index=(index-1+total)%total;
+  update();
+}
+
+setInterval(next,6000);
+
+/* ===== TRANSLATION ===== */
+const esBtn=document.getElementById("esBtn");
+const enBtn=document.getElementById("enBtn");
 
 function setLang(lang){
-  texts.forEach(el=>el.textContent=el.dataset[lang]);
-  esBtn.classList.toggle("active",lang==="es");
-  enBtn.classList.toggle("active",lang==="en");
-  localStorage.setItem("lang",lang);
+  document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
+    el.textContent=el.dataset[lang];
+  });
 }
-esBtn.onclick=()=>setLang("es");
-enBtn.onclick=()=>setLang("en");
-setLang(localStorage.getItem("lang")||"es");
+
+esBtn.onclick=()=>{
+  esBtn.classList.add("active");
+  enBtn.classList.remove("active");
+  setLang("es");
+};
+
+enBtn.onclick=()=>{
+  enBtn.classList.add("active");
+  esBtn.classList.remove("active");
+  setLang("en");
+};
+
+/* CLICK SOUND MENU */
+document.querySelectorAll("a,button").forEach(el=>{
+  el.addEventListener("click",playTap);
+});
 </script>
 
 </body>
