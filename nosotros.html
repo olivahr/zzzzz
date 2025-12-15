@@ -3,242 +3,327 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nosotros | ZenSite</title>
+<title>ZenSite | Nosotros</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+:root{
+  --bg:#050505;
+  --glass:rgba(20,20,20,.85);
+  --line:rgba(255,255,255,.12);
+  --muted:rgba(255,255,255,.82);
+  --muted2:rgba(255,255,255,.55);
+  --glow:0 0 0 rgba(0,150,255,0);
+}
 
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter","Segoe UI",sans-serif;
-  background:#05070c;
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
   color:#fff;
   overflow-x:hidden;
 }
 
-/* BACKGROUND */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 25% 20%,rgba(0,200,255,.16),transparent 40%),
-    radial-gradient(circle at 75% 75%,rgba(120,90,255,.22),transparent 45%),
-    #05070c;
-  z-index:-2;
-}
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  backdrop-filter:blur(90px);
-  z-index:-1;
-}
-
-/* HEADER */
-header{
+/* ===== HEADER ===== */
+.header{
   position:fixed;
   top:0;left:0;
   width:100%;
-  z-index:1000;
-  padding:18px 26px;
-  background:rgba(255,255,255,.04);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-.nav{
+  padding:18px 22px;
   display:flex;
-  gap:28px;
+  justify-content:space-between;
+  align-items:center;
+  background:linear-gradient(to bottom, rgba(0,0,0,.85), transparent);
+  z-index:1000;
 }
-.nav a{
+.back{
   color:#fff;
   text-decoration:none;
-  font-weight:600;
+  font-size:22px;
+  font-weight:900;
   opacity:.85;
 }
-
-/* LANG */
-.lang{
-  position:fixed;
-  top:18px;
-  right:18px;
-  display:flex;
-  gap:6px;
-}
-.lang button{
-  padding:4px 9px;
-  font-size:11px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.25);
-  background:transparent;
-  color:#fff;
-  font-weight:700;
+.back:hover{opacity:1}
+.langs span{
+  margin-left:14px;
   cursor:pointer;
+  font-weight:900;
+  opacity:.5;
 }
-.lang .active{
-  background:#00cfff;
-  color:#000;
+.langs span.active{opacity:1}
+
+/* ===== HERO ===== */
+.hero{
+  padding:150px 8% 110px;
+  background:
+    radial-gradient(760px 420px at 50% 0%, rgba(0,120,255,.28), transparent 65%),
+    radial-gradient(650px 420px at 20% 85%, rgba(0,255,170,.18), transparent 65%),
+    var(--bg);
+}
+.hero h1{
+  font-size:clamp(42px,6vw,74px);
+  font-weight:950;
+  line-height:1.05;
+  text-shadow:0 26px 70px rgba(0,0,0,.9);
+}
+.hero p{
+  margin-top:22px;
+  max-width:820px;
+  font-size:18px;
+  color:var(--muted);
 }
 
-/* MAIN */
-main{
-  margin-top:150px;
-  padding:0 20px 140px;
-  max-width:1100px;
-  margin-inline:auto;
+/* ===== SECTIONS ===== */
+.section{
+  padding:110px 8%;
+}
+.section h2{
+  font-size:clamp(34px,5vw,56px);
+  font-weight:950;
+}
+.section p{
+  margin-top:18px;
+  max-width:900px;
+  font-size:17px;
+  color:var(--muted);
+  line-height:1.75;
 }
 
-/* TITLES */
-h1{
-  text-align:center;
-  font-size:clamp(40px,6vw,70px);
-  margin-bottom:20px;
+/* ===== DIVIDER ===== */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  margin:80px 0;
 }
-.subtitle{
-  text-align:center;
-  max-width:880px;
-  margin:0 auto 80px;
-  font-size:clamp(17px,2.4vw,21px);
-  opacity:.92;
+
+/* ===== CARDS ===== */
+.cards{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
+}
+.card{
+  background:var(--glass);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:36px 28px;
+  backdrop-filter:blur(16px);
+  transform:translateY(40px);
+  opacity:0;
+  transition:.8s ease;
+}
+.card.show{
+  transform:translateY(0);
+  opacity:1;
+  box-shadow:0 0 40px rgba(0,140,255,.12);
+}
+.card h3{
+  font-size:22px;
+  font-weight:950;
+}
+.card p{
+  margin-top:14px;
+  color:var(--muted2);
   line-height:1.6;
 }
 
-/* SECTIONS */
-.section{
-  margin-bottom:90px;
-}
-.section h2{
-  font-size:32px;
-  margin-bottom:20px;
-}
-.section p{
-  max-width:900px;
-  line-height:1.7;
-  font-size:18px;
-  opacity:.92;
-}
-
-/* GRID */
-.grid{
+/* ===== VALUES ===== */
+.values{
+  margin-top:70px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
-  margin-top:40px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
 }
-.card{
-  padding:28px;
-  border-radius:26px;
-  background:rgba(255,255,255,.05);
-  backdrop-filter:blur(18px);
-  box-shadow:0 40px 120px rgba(0,0,0,.8);
+.value{
+  padding:26px 22px;
+  border-left:3px solid #fff;
+  transform:translateY(40px);
+  opacity:0;
+  transition:.8s ease;
 }
-.card strong{
+.value.show{
+  transform:translateY(0);
+  opacity:1;
+}
+.value strong{
+  font-size:20px;
+  font-weight:950;
+}
+.value span{
   display:block;
-  margin-bottom:12px;
-  font-size:18px;
+  margin-top:10px;
+  color:var(--muted2);
 }
 
-/* GUARANTEES */
-.guarantees{
-  margin-top:60px;
-  padding:36px;
-  border-radius:30px;
-  background:rgba(0,200,255,.12);
-  border:1px solid rgba(0,200,255,.35);
-}
-.guarantees h3{
-  margin-bottom:18px;
-  font-size:26px;
-}
-
-/* FOOTER */
-footer{
+/* ===== GUARANTEE ===== */
+.guarantee{
+  margin-top:80px;
+  padding:60px;
+  border-radius:32px;
+  background:
+    radial-gradient(600px 300px at 50% 0%, rgba(0,150,255,.15), transparent 60%),
+    var(--glass);
+  border:1px solid var(--line);
   text-align:center;
-  padding:50px 20px 30px;
-  opacity:.5;
+}
+.guarantee h2{
+  font-size:clamp(32px,5vw,54px);
+  font-weight:950;
+}
+.guarantee p{
+  margin-top:18px;
+  max-width:900px;
+  margin-inline:auto;
+  color:var(--muted);
+}
+
+/* ===== FOOTER ===== */
+footer{
+  margin-top:140px;
+  padding:30px;
+  text-align:center;
   font-size:13px;
+  opacity:.55;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:520px){
+  .hero{padding:130px 6% 90px}
+  .section{padding:90px 6%}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <nav class="nav">
-    <a href="index.html" data-es="Inicio" data-en="Home">Inicio</a>
-    <a href="demo.html" data-es="Demos" data-en="Demos">Demos</a>
-    <a href="planes.html" data-es="Planes" data-en="Plans">Planes</a>
-    <a href="nosotros.html" data-es="Nosotros" data-en="About">Nosotros</a>
-  </nav>
+<header class="header">
+  <a href="index.html" class="back">←</a>
+  <div class="langs">
+    <span class="active" data-lang="es">ES</span>
+    <span data-lang="en">EN</span>
+  </div>
 </header>
 
-<div class="lang">
-  <button id="esBtn" class="active">ES</button>
-  <button id="enBtn">EN</button>
-</div>
+<section class="hero">
+  <h1 data-es="Construimos confianza digital"
+      data-en="We build digital trust">
+    Construimos confianza digital
+  </h1>
 
-<main>
+  <p data-es="ZenSite es un estudio enfocado en crear presencia digital sólida, clara y funcional para negocios que quieren verse serios desde el primer segundo."
+     data-en="ZenSite is a studio focused on building solid, clear and functional digital presence for businesses that want to look serious from the very first second.">
+    ZenSite es un estudio enfocado en crear presencia digital sólida, clara y funcional para negocios que quieren verse serios desde el primer segundo.
+  </p>
+</section>
 
-  <h1 data-es="Quiénes somos" data-en="Who we are">Quiénes somos</h1>
+<section class="section">
+  <h2 data-es="Nuestra forma de trabajar"
+      data-en="How we work">
+    Nuestra forma de trabajar
+  </h2>
 
-  <p class="subtitle"
-     data-es="ZenSite no es un constructor de páginas. Somos un sistema de diseño enfocado en resultados, percepción premium y conversión real."
-     data-en="ZenSite is not a website builder. We are a design system focused on results, premium perception and real conversion.">
+  <p data-es="No trabajamos por volumen. Cada proyecto se diseña con intención, estrategia y visión a largo plazo."
+     data-en="We don’t work on volume. Every project is designed with intention, strategy and long-term vision.">
+    No trabajamos por volumen. Cada proyecto se diseña con intención, estrategia y visión a largo plazo.
   </p>
 
-  <!-- FILOSOFIA -->
-  <section class="section">
-    <h2 data-es="Nuestra filosofía" data-en="Our philosophy">Nuestra filosofía</h2>
-    <p data-es="Creemos que una web no debe verse bonita solamente. Debe transmitir confianza, posicionar tu marca y hacer que el cliente actúe. Cada detalle tiene una razón."
-       data-en="We believe a website should not only look good. It must build trust, position your brand and make the visitor take action. Every detail has a reason.">
-    </p>
-  </section>
-
-  <!-- DIFERENCIA -->
-  <section class="section">
-    <h2 data-es="Qué nos hace diferentes" data-en="What makes us different">Qué nos hace diferentes</h2>
-
-    <div class="grid">
-      <div class="card">
-        <strong>Diseño estratégico</strong>
-        <p>Todo se construye para vender, no para decorar.</p>
-      </div>
-      <div class="card">
-        <strong>Sistema escalable</strong>
-        <p>Tu web puede crecer sin rehacerla desde cero.</p>
-      </div>
-      <div class="card">
-        <strong>Percepción premium</strong>
-        <p>Tu negocio se ve serio, confiable y profesional.</p>
-      </div>
+  <div class="cards">
+    <div class="card reveal">
+      <h3 data-es="Estrategia primero" data-en="Strategy first">Estrategia primero</h3>
+      <p data-es="Antes de diseñar, entendemos tu negocio, tu público y tus objetivos."
+         data-en="Before designing, we understand your business, your audience and your goals.">
+        Antes de diseñar, entendemos tu negocio, tu público y tus objetivos.
+      </p>
     </div>
-  </section>
 
-  <!-- GARANTIAS -->
-  <section class="guarantees">
-    <h3 data-es="Nuestras garantías" data-en="Our guarantees">Nuestras garantías</h3>
-    <p data-es="• Diseño entregado exactamente como se presenta<br>• Optimización para móvil y velocidad<br>• Comunicación clara y directa durante todo el proceso<br>• Soporte inicial después de la entrega"
-       data-en="• Design delivered exactly as presented<br>• Mobile and speed optimization<br>• Clear communication throughout the process<br>• Initial post-delivery support">
+    <div class="card reveal">
+      <h3 data-es="Diseño con propósito" data-en="Purpose-driven design">Diseño con propósito</h3>
+      <p data-es="Nada se coloca porque sí. Cada sección cumple una función."
+         data-en="Nothing is placed randomly. Every section has a function.">
+        Nada se coloca porque sí. Cada sección cumple una función.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <h3 data-es="Calidad sobre cantidad" data-en="Quality over quantity">Calidad sobre cantidad</h3>
+      <p data-es="Menos proyectos, mejor ejecutados."
+         data-en="Fewer projects, better executed.">
+        Menos proyectos, mejor ejecutados.
+      </p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 data-es="Principios ZenSite"
+      data-en="ZenSite principles">
+    Principios ZenSite
+  </h2>
+
+  <div class="values">
+    <div class="value reveal">
+      <strong data-es="Claridad" data-en="Clarity">Claridad</strong>
+      <span data-es="Comunicación directa, sin promesas vacías."
+            data-en="Direct communication, no empty promises.">
+        Comunicación directa, sin promesas vacías.
+      </span>
+    </div>
+
+    <div class="value reveal">
+      <strong data-es="Compromiso" data-en="Commitment">Compromiso</strong>
+      <span data-es="Tratamos cada proyecto como propio."
+            data-en="We treat every project as our own.">
+        Tratamos cada proyecto como propio.
+      </span>
+    </div>
+
+    <div class="value reveal">
+      <strong data-es="Resultado" data-en="Results">Resultado</strong>
+      <span data-es="Todo lo que hacemos tiene un objetivo claro."
+            data-en="Everything we do has a clear objective.">
+        Todo lo que hacemos tiene un objetivo claro.
+      </span>
+    </div>
+  </div>
+
+  <div class="guarantee reveal">
+    <h2 data-es="Nuestra garantía"
+        data-en="Our guarantee">
+      Nuestra garantía
+    </h2>
+    <p data-es="No entregamos proyectos a medias. Cada web se revisa, optimiza y entrega lista para representar tu negocio con nivel profesional."
+       data-en="We don’t deliver half-finished projects. Every website is reviewed, optimized and delivered ready to represent your business professionally.">
+      No entregamos proyectos a medias. Cada web se revisa, optimiza y entrega lista para representar tu negocio con nivel profesional.
     </p>
-  </section>
-
-</main>
+  </div>
+</section>
 
 <footer>
   © 2025 ZenSite. Todos los derechos reservados.
 </footer>
 
 <script>
-/* TRANSLATION */
-const esBtn=document.getElementById("esBtn");
-const enBtn=document.getElementById("enBtn");
-function setLang(lang){
-  document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
-    el.textContent = el.dataset[lang];
+/* ===== REVEAL ON SCROLL ===== */
+const reveal = document.querySelectorAll(".reveal");
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+      obs.unobserve(e.target);
+    }
   });
+},{threshold:.25});
+reveal.forEach(el=>obs.observe(el));
+
+/* ===== LANG ===== */
+const langBtns = document.querySelectorAll(".langs span");
+const texts = document.querySelectorAll("[data-es]");
+function setLang(l){
+  langBtns.forEach(b=>b.classList.toggle("active", b.dataset.lang===l));
+  texts.forEach(t=>t.textContent=t.dataset[l]);
 }
-esBtn.onclick=()=>{esBtn.classList.add("active");enBtn.classList.remove("active");setLang("es");};
-enBtn.onclick=()=>{enBtn.classList.add("active");esBtn.classList.remove("active");setLang("en");};
+langBtns.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+setLang("es");
 </script>
 
 </body>
