@@ -19,17 +19,6 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== PAGE ENTER ===== */
-.page-enter{
-  opacity:0;
-  transform:translateY(30px);
-  transition:opacity .9s ease, transform .9s ease;
-}
-.page-enter.show{
-  opacity:1;
-  transform:none;
-}
-
 /* ===== TOP BAR ===== */
 .topbar{
   position:fixed;
@@ -59,7 +48,7 @@ body{
 
 /* ===== MAIN ===== */
 .main{
-  padding:130px 20px 100px;
+  padding:130px 20px 110px;
   max-width:1200px;
   margin:auto;
   text-align:center;
@@ -67,90 +56,106 @@ body{
 
 /* ===== TITLES ===== */
 h1{
-  font-size:48px;
+  font-size:52px;
   font-weight:900;
   margin-bottom:14px;
-  letter-spacing:-0.5px;
+  letter-spacing:-0.6px;
   text-shadow:
-    0 6px 30px rgba(0,0,0,.9),
-    0 0 40px rgba(0,140,255,.25);
+    0 8px 40px rgba(0,0,0,.9),
+    0 0 60px rgba(0,140,255,.3);
 }
 
 .subtitle{
   font-size:18px;
-  opacity:.88;
-  text-shadow:0 4px 18px rgba(0,0,0,.7);
+  opacity:.9;
+  max-width:720px;
+  margin:0 auto;
+  text-shadow:0 4px 20px rgba(0,0,0,.7);
 }
 
 /* ===== PLANS GRID ===== */
 .plans{
-  margin-top:80px;
+  margin-top:90px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:36px;
+  gap:40px;
 }
 
 /* ===== PLAN CARD ===== */
 .plan{
   position:relative;
-  padding:42px 32px;
+  padding:46px 36px;
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.12);
-  border-radius:32px;
+  border-radius:34px;
   backdrop-filter:blur(18px);
-  box-shadow:0 40px 120px rgba(0,0,0,.7);
+  box-shadow:0 40px 140px rgba(0,0,0,.75);
   text-align:left;
   cursor:pointer;
-  transition:transform .35s ease, box-shadow .35s ease;
+  opacity:0;
+  transform:translateY(40px) scale(.97);
+  transition:
+    opacity .8s ease,
+    transform .8s ease,
+    box-shadow .35s ease;
+}
+
+.plan.show{
+  opacity:1;
+  transform:none;
 }
 
 .plan:hover{
-  transform:translateY(-8px) scale(1.02);
-  box-shadow:0 70px 180px rgba(0,0,0,.85);
+  transform:translateY(-10px) scale(1.025);
+  box-shadow:0 80px 200px rgba(0,0,0,.9);
 }
 
 /* ===== BEST SELLER ===== */
 .plan.best{
-  outline:2px solid rgba(0,140,255,.55);
+  outline:2px solid rgba(0,140,255,.6);
 }
 
-.plan.best.show{
-  box-shadow:
-    0 60px 180px rgba(0,0,0,.9),
-    0 0 60px rgba(0,140,255,.25);
+.plan.best::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:36px;
+  box-shadow:0 0 60px rgba(0,140,255,.25);
+  opacity:.6;
+  pointer-events:none;
 }
 
 /* ===== BADGE ===== */
 .badge{
   position:absolute;
-  top:-14px;
-  right:24px;
+  top:-16px;
+  right:26px;
   background:#fff;
   color:#000;
   font-size:12px;
   font-weight:900;
-  padding:6px 14px;
+  padding:6px 16px;
   border-radius:999px;
 }
 
 /* ===== TEXT ===== */
 .plan h2{
-  font-size:30px;
+  font-size:32px;
   font-weight:900;
   margin-bottom:6px;
-  text-shadow:0 6px 24px rgba(0,0,0,.8);
+  text-shadow:0 6px 30px rgba(0,0,0,.85);
 }
 
 .price{
-  font-size:36px;
+  font-size:38px;
   font-weight:900;
-  margin-bottom:14px;
+  margin-bottom:16px;
 }
 
 .plan p{
   font-size:16px;
   line-height:1.65;
-  opacity:.92;
+  opacity:.93;
 }
 
 .plan ul{
@@ -163,47 +168,36 @@ h1{
   opacity:.85;
 }
 
-/* ===== FINAL CTA ===== */
+/* ===== FINAL MESSAGE ===== */
 .final{
-  margin-top:110px;
-  padding:56px 36px;
-  max-width:860px;
+  margin-top:120px;
+  padding:60px 38px;
+  max-width:900px;
   margin-inline:auto;
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
   border:1px solid rgba(255,255,255,.14);
-  border-radius:34px;
+  border-radius:36px;
 }
 
 .final h3{
-  font-size:36px;
+  font-size:38px;
   font-weight:900;
   margin-bottom:16px;
-  text-shadow:0 6px 26px rgba(0,0,0,.8);
+  text-shadow:0 6px 30px rgba(0,0,0,.85);
 }
 
 .final p{
   font-size:18px;
-  opacity:.9;
+  opacity:.92;
 }
 
 /* ===== FOOTER ===== */
 footer{
-  margin-top:120px;
+  margin-top:130px;
   padding:34px 20px;
   text-align:center;
   font-size:14px;
   opacity:.45;
-}
-
-/* ===== SCROLL REVEAL ===== */
-.reveal{
-  opacity:0;
-  transform:translateY(40px) scale(.98);
-  transition:opacity .8s ease, transform .8s ease;
-}
-.reveal.show{
-  opacity:1;
-  transform:none;
 }
 </style>
 </head>
@@ -218,74 +212,74 @@ footer{
   </div>
 </div>
 
-<div class="main page-enter">
+<div class="main">
 
   <h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
 
   <p class="subtitle"
-     data-es="Soluciones claras para negocios que quieren verse profesionales."
-     data-en="Clear solutions for businesses that want to look professional.">
-    Soluciones claras para negocios que quieren verse profesionales.
+     data-es="Elige la solución que represente el nivel real de tu negocio."
+     data-en="Choose the solution that represents the real level of your business.">
+    Elige la solución que represente el nivel real de tu negocio.
   </p>
 
   <div class="plans">
 
     <!-- Z -->
-    <div class="plan reveal" data-plan="Z">
+    <div class="plan" data-plan="Z">
       <h2>Z</h2>
       <div class="price">$200</div>
-      <p data-es="Home page profesional ideal para iniciar con una presencia sólida y confiable."
-         data-en="Professional home page ideal to start with a solid and trustworthy presence.">
-        Home page profesional ideal para iniciar con una presencia sólida y confiable.
+      <p data-es="Home page profesional para empezar con una imagen clara, sólida y confiable."
+         data-en="Professional home page to start with a clear, solid and trustworthy image.">
+        Home page profesional para empezar con una imagen clara, sólida y confiable.
       </p>
       <ul>
         <li data-es="Diseño personalizado" data-en="Custom design">Diseño personalizado</li>
-        <li data-es="Totalmente responsive" data-en="Fully responsive">Totalmente responsive</li>
-        <li data-es="Optimización básica" data-en="Basic optimization">Optimización básica</li>
+        <li data-es="Responsive total" data-en="Fully responsive">Responsive total</li>
+        <li data-es="Base optimizada" data-en="Optimized base">Base optimizada</li>
       </ul>
     </div>
 
     <!-- Z+ -->
-    <div class="plan best reveal" data-plan="Z+">
+    <div class="plan best" data-plan="Z+">
       <div class="badge" data-es="Más vendido" data-en="Best seller">Más vendido</div>
       <h2>Z+</h2>
       <div class="price">$520</div>
-      <p data-es="Website personalizada de 3 a 5 páginas para negocios que buscan autoridad."
-         data-en="Custom 3 to 5 page website for businesses seeking authority.">
-        Website personalizada de 3 a 5 páginas para negocios que buscan autoridad.
+      <p data-es="Website personalizada de 3 a 5 páginas diseñada para generar autoridad y confianza."
+         data-en="Custom 3 to 5 page website designed to build authority and trust.">
+        Website personalizada de 3 a 5 páginas diseñada para generar autoridad y confianza.
       </p>
       <ul>
         <li data-es="Hasta 5 páginas" data-en="Up to 5 pages">Hasta 5 páginas</li>
         <li data-es="Estructura profesional" data-en="Professional structure">Estructura profesional</li>
-        <li data-es="Diseño enfocado en conversión" data-en="Conversion-focused design">Diseño enfocado en conversión</li>
+        <li data-es="Enfoque en conversión" data-en="Conversion-focused">Enfoque en conversión</li>
       </ul>
     </div>
 
     <!-- Z PREMIUM -->
-    <div class="plan reveal" data-plan="Z Premium">
+    <div class="plan" data-plan="Z Premium">
       <h2>Z Premium</h2>
       <div class="price">$760</div>
-      <p data-es="Tienda online completa con carrito, inventario y pasarela de pago."
-         data-en="Complete online store with cart, inventory and payment gateway.">
-        Tienda online completa con carrito, inventario y pasarela de pago.
+      <p data-es="Tienda online completa con carrito, inventario y pagos integrados."
+         data-en="Complete online store with cart, inventory and integrated payments.">
+        Tienda online completa con carrito, inventario y pagos integrados.
       </p>
       <ul>
         <li data-es="Carrito de compras" data-en="Shopping cart">Carrito de compras</li>
-        <li data-es="Gestión de inventario" data-en="Inventory management">Gestión de inventario</li>
-        <li data-es="Pagos integrados" data-en="Integrated payments">Pagos integrados</li>
+        <li data-es="Inventario" data-en="Inventory">Inventario</li>
+        <li data-es="Pasarela de pago" data-en="Payment gateway">Pasarela de pago</li>
       </ul>
     </div>
 
   </div>
 
   <div class="final">
-    <h3 data-es="Elige el plan que represente tu negocio"
-        data-en="Choose the plan that represents your business">
-      Elige el plan que represente tu negocio
+    <h3 data-es="Tu web es tu primera impresión"
+        data-en="Your website is your first impression">
+      Tu web es tu primera impresión
     </h3>
-    <p data-es="Tu web es tu primera impresión. Haz que cuente desde el primer segundo."
-       data-en="Your website is your first impression. Make it count from the first second.">
-      Tu web es tu primera impresión. Haz que cuente desde el primer segundo.
+    <p data-es="Haz que cuente desde el primer segundo."
+       data-en="Make it count from the first second.">
+      Haz que cuente desde el primer segundo.
     </p>
   </div>
 
@@ -296,31 +290,24 @@ footer{
 </footer>
 
 <script>
-/* PAGE ENTER */
-window.addEventListener("load",()=>{
-  document.querySelector(".page-enter").classList.add("show");
-});
-
-/* SCROLL REVEAL */
-const revealItems=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver(entries=>{
+/* REVEAL */
+const cards=document.querySelectorAll('.plan');
+const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add('show');
-      observer.unobserve(e.target);
+      obs.unobserve(e.target);
     }
   });
 },{threshold:0.2});
-revealItems.forEach(el=>observer.observe(el));
+cards.forEach(c=>obs.observe(c));
 
 /* WHATSAPP */
 const phone="15027942412";
-document.querySelectorAll('.plan').forEach(card=>{
+cards.forEach(card=>{
   card.addEventListener('click',()=>{
     const plan=card.dataset.plan;
-    const msg=encodeURIComponent(
-      `Hola, estoy interesado en el plan ${plan} de ZenSite.`
-    );
+    const msg=encodeURIComponent(`Hola, estoy interesado en el plan ${plan} de ZenSite.`);
     window.open(`https://wa.me/${phone}?text=${msg}`,'_blank');
   });
 });
@@ -328,9 +315,9 @@ document.querySelectorAll('.plan').forEach(card=>{
 /* LANG */
 const btns=document.querySelectorAll('.langs span');
 const texts=document.querySelectorAll('[data-es]');
-function setLang(lang){
-  btns.forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
-  texts.forEach(t=>t.textContent=t.dataset[lang]);
+function setLang(l){
+  btns.forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  texts.forEach(t=>t.textContent=t.dataset[l]);
 }
 btns.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 setLang('es');
