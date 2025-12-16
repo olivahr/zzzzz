@@ -2,202 +2,177 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Planes ZenSite</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Planes | ZenSite</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{touch-action:manipulation}
+
 body{
-  font-family:'Montserrat',system-ui,sans-serif;
-  background:#050505;
+  font-family:'Montserrat',system-ui,-apple-system,sans-serif;
+  background:
+    radial-gradient(900px 500px at 50% 10%, rgba(0,120,255,.28), transparent 60%),
+    radial-gradient(800px 600px at 20% 80%, rgba(0,255,150,.22), transparent 65%),
+    #050505;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ===== */
-.page{
-  min-height:100vh;
-  padding:120px 6% 160px;
-  background:
-    radial-gradient(900px 600px at 50% 10%, rgba(0,140,255,.18), transparent 60%),
-    radial-gradient(800px 600px at 20% 90%, rgba(0,255,170,.18), transparent 60%),
-    radial-gradient(800px 600px at 80% 90%, rgba(255,200,0,.18), transparent 60%),
-    #050505;
-}
-
-/* ===== TOP BAR ===== */
+/* TOP BAR */
 .topbar{
   position:fixed;
-  top:0;left:0;
-  width:100%;
+  top:0;left:0;width:100%;
+  padding:16px 20px;
   display:flex;
   justify-content:space-between;
-  padding:18px 22px;
-  z-index:10;
-  background:linear-gradient(to bottom,rgba(0,0,0,.65),transparent);
+  align-items:center;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(14px);
+  z-index:1000;
 }
-.topbar a{
-  color:#fff;
-  font-weight:800;
+
+.back{
+  font-size:22px;
   text-decoration:none;
-  opacity:.85;
-}
-.topbar a:hover{opacity:1}
-
-.lang button{
-  background:none;
-  border:none;
   color:#fff;
-  font-weight:900;
-  font-size:16px;
-  margin-left:10px;
-  opacity:.5;
+}
+
+.langs span{
+  margin-left:14px;
   cursor:pointer;
+  opacity:.6;
+  font-weight:800;
 }
-.lang button.active{opacity:1}
+.langs .active{opacity:1}
 
-/* ===== HEADER ===== */
-.header{
-  max-width:900px;
-  margin-bottom:90px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-}
-.header.show{
-  opacity:1;
-  transform:translateY(0);
-}
-.header h1{
-  font-size:clamp(42px,6vw,70px);
-  font-weight:900;
-}
-.header p{
-  margin-top:14px;
-  max-width:620px;
-  opacity:.85;
-}
-
-/* ===== PLANS GRID ===== */
-.plans{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:40px;
+/* MAIN */
+.main{
+  padding:130px 20px 100px;
   max-width:1200px;
   margin:auto;
+  text-align:center;
 }
 
-/* ===== CARD BASE ===== */
+/* TITLES */
+h1{
+  font-size:48px;
+  font-weight:900;
+  margin-bottom:14px;
+  letter-spacing:-0.5px;
+  text-shadow:
+    0 6px 30px rgba(0,0,0,.9),
+    0 0 40px rgba(0,140,255,.25);
+}
+
+.subtitle{
+  font-size:18px;
+  opacity:.88;
+  text-shadow:0 4px 18px rgba(0,0,0,.7);
+}
+
+/* PLANS */
+.plans{
+  margin-top:80px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:36px;
+}
+
 .plan{
   position:relative;
-  background:rgba(18,18,18,.78);
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:28px;
-  padding:46px 34px;
+  padding:42px 32px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:32px;
   backdrop-filter:blur(18px);
-  transition:.45s ease;
-  opacity:0;
-  transform:translateY(60px);
+  box-shadow:0 40px 120px rgba(0,0,0,.7);
+  text-align:left;
+  transition:transform .35s ease, box-shadow .35s ease;
 }
-.plan.show{
-  opacity:1;
-  transform:translateY(0);
-}
+
 .plan:hover{
-  transform:translateY(-10px) scale(1.01);
-  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  transform:translateY(-6px);
+  box-shadow:0 70px 180px rgba(0,0,0,.85);
 }
 
-/* ===== TEXT ===== */
-.plan span{
-  font-weight:900;
-  letter-spacing:3px;
-  opacity:.6;
-}
-.plan h2{
-  margin:12px 0 14px;
-  font-size:26px;
-}
-.plan p{
-  opacity:.88;
-  line-height:1.6;
-}
-.plan ul{
-  list-style:none;
-  margin:26px 0;
-}
-.plan ul li{
-  padding:8px 0;
-  border-bottom:1px solid rgba(255,255,255,.08);
+.plan.best{
+  outline:2px solid rgba(0,140,255,.55);
 }
 
-/* ===== CTA ===== */
-.plan button{
-  width:100%;
-  padding:14px;
-  border-radius:14px;
-  border:none;
-  background:#000;
-  color:#fff;
-  font-weight:900;
-  cursor:pointer;
-  transition:.3s;
-}
-.plan button:hover{
-  background:#fff;
-  color:#000;
-}
-
-/* ===== FEATURED Z+ ===== */
-.featured{
-  border:2px solid rgba(0,255,170,.6);
-  box-shadow:0 0 40px rgba(0,255,170,.25);
-  transform:scale(1.04);
-}
+/* BADGE */
 .badge{
   position:absolute;
-  top:16px;
-  right:16px;
-  background:linear-gradient(90deg,#00ffae,#00c6ff);
+  top:-14px;
+  right:24px;
+  background:#fff;
   color:#000;
-  font-weight:900;
-  padding:6px 12px;
-  border-radius:20px;
   font-size:12px;
-}
-
-/* ===== FINAL TEXT ===== */
-.final-text{
-  margin:90px auto 0;
-  max-width:760px;
-  font-size:clamp(18px,3vw,26px);
-  font-weight:800;
-}
-
-/* ===== BUBBLE ===== */
-#bubble{
-  position:fixed;
-  bottom:22px;
-  right:22px;
-  background:#111;
-  padding:14px 18px 14px 16px;
-  border-radius:14px;
-  font-weight:800;
-  opacity:0;
-  transform:translateY(10px);
-  transition:.4s;
-  z-index:99;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-#bubble button{
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:18px;
   font-weight:900;
-  cursor:pointer;
+  padding:6px 14px;
+  border-radius:999px;
+}
+
+/* TEXT */
+.plan h2{
+  font-size:30px;
+  font-weight:900;
+  margin-bottom:6px;
+  text-shadow:0 6px 24px rgba(0,0,0,.8);
+}
+
+.price{
+  font-size:36px;
+  font-weight:900;
+  margin-bottom:14px;
+}
+
+.plan p{
+  font-size:16px;
+  line-height:1.65;
+  opacity:.92;
+}
+
+.plan ul{
+  margin-top:22px;
+  list-style:none;
+}
+
+.plan li{
+  padding:6px 0;
+  opacity:.85;
+}
+
+/* FINAL */
+.final{
+  margin-top:110px;
+  padding:56px 36px;
+  max-width:860px;
+  margin-inline:auto;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:34px;
+}
+
+.final h3{
+  font-size:36px;
+  font-weight:900;
+  margin-bottom:16px;
+  text-shadow:0 6px 26px rgba(0,0,0,.8);
+}
+
+.final p{
+  font-size:18px;
+  opacity:.9;
+}
+
+/* FOOTER */
+footer{
+  margin-top:120px;
+  padding:34px 20px;
+  text-align:center;
+  font-size:14px;
+  opacity:.45;
 }
 </style>
 </head>
@@ -205,148 +180,105 @@ body{
 <body>
 
 <div class="topbar">
-  <a href="index.html">← Inicio</a>
-  <div class="lang">
-    <button class="active" data-lang="es">ES</button>
-    <button data-lang="en">EN</button>
+  <a href="index.html" class="back">←</a>
+  <div class="langs">
+    <span class="active" data-lang="es">ES</span>
+    <span data-lang="en">EN</span>
   </div>
 </div>
 
-<section class="page">
+<div class="main">
 
-  <div class="header">
-    <h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
-    <p data-es="Diseño agresivo, tecnología real y presencia de alto nivel."
-       data-en="Aggressive design, real technology and high-level presence.">
-    </p>
-  </div>
+  <h1 data-es="Planes ZenSite" data-en="ZenSite Plans">Planes ZenSite</h1>
+
+  <p class="subtitle"
+     data-es="Soluciones claras para negocios que quieren verse profesionales."
+     data-en="Clear solutions for businesses that want to look professional.">
+    Soluciones claras para negocios que quieren verse profesionales.
+  </p>
 
   <div class="plans">
 
+    <!-- Z -->
     <div class="plan">
-      <span>Z</span>
       <h2>Z</h2>
-      <p>Home page profesional diseñada para presentar tu negocio y empezar a convertir.</p>
+      <div class="price">$200</div>
+      <p
+        data-es="Home page profesional ideal para iniciar con una presencia sólida y confiable."
+        data-en="Professional home page ideal to start with a solid and trustworthy presence.">
+        Home page profesional ideal para iniciar con una presencia sólida y confiable.
+      </p>
       <ul>
-        <li>Home page personalizada</li>
-        <li>Diseño moderno</li>
-        <li>100% responsive</li>
+        <li data-es="Diseño personalizado" data-en="Custom design">Diseño personalizado</li>
+        <li data-es="Totalmente responsive" data-en="Fully responsive">Totalmente responsive</li>
+        <li data-es="Optimización básica" data-en="Basic optimization">Optimización básica</li>
       </ul>
-      <button data-plan="Z">Contactar</button>
     </div>
 
-    <div class="plan featured">
-      <div class="badge">Más vendido</div>
-      <span>Z+</span>
+    <!-- Z+ -->
+    <div class="plan best">
+      <div class="badge" data-es="Más vendido" data-en="Best seller">Más vendido</div>
       <h2>Z+</h2>
-      <p>Web de 3 a 5 páginas enfocada en posicionar tu marca y generar confianza.</p>
+      <div class="price">$520</div>
+      <p
+        data-es="Website personalizada de 3 a 5 páginas para negocios que buscan autoridad."
+        data-en="Custom 3 to 5 page website for businesses seeking authority.">
+        Website personalizada de 3 a 5 páginas para negocios que buscan autoridad.
+      </p>
       <ul>
-        <li>Web multipágina</li>
-        <li>Animaciones premium</li>
-        <li>SEO optimizado</li>
+        <li data-es="Hasta 5 páginas" data-en="Up to 5 pages">Hasta 5 páginas</li>
+        <li data-es="Estructura profesional" data-en="Professional structure">Estructura profesional</li>
+        <li data-es="Diseño enfocado en conversión" data-en="Conversion-focused design">Diseño enfocado en conversión</li>
       </ul>
-      <button data-plan="Z+">Contactar</button>
     </div>
 
+    <!-- Z PREMIUM -->
     <div class="plan">
-      <span>Z PREMIUM</span>
       <h2>Z Premium</h2>
-      <p>Tienda online completa con carrito, pagos e inventario lista para escalar.</p>
+      <div class="price">$760</div>
+      <p
+        data-es="Tienda online completa con carrito, inventario y pasarela de pago."
+        data-en="Complete online store with cart, inventory and payment gateway.">
+        Tienda online completa con carrito, inventario y pasarela de pago.
+      </p>
       <ul>
-        <li>E-commerce completo</li>
-        <li>Pagos y carrito</li>
-        <li>Inventario</li>
+        <li data-es="Carrito de compras" data-en="Shopping cart">Carrito de compras</li>
+        <li data-es="Gestión de inventario" data-en="Inventory management">Gestión de inventario</li>
+        <li data-es="Pagos integrados" data-en="Integrated payments">Pagos integrados</li>
       </ul>
-      <button data-plan="Z Premium">Contactar</button>
     </div>
 
   </div>
 
-  <p class="final-text">
-    No vendemos páginas.<br>
-    <strong>Construimos sistemas digitales que hacen crecer negocios.</strong>
-  </p>
+  <div class="final">
+    <h3
+      data-es="Elige el plan que represente tu negocio"
+      data-en="Choose the plan that represents your business">
+      Elige el plan que represente tu negocio
+    </h3>
+    <p
+      data-es="Tu web es tu primera impresión. Haz que cuente desde el primer segundo."
+      data-en="Your website is your first impression. Make it count from the first second.">
+      Tu web es tu primera impresión. Haz que cuente desde el primer segundo.
+    </p>
+  </div>
 
-</section>
-
-<div id="bubble">
-  ¿Listo para elegir tu plan?
-  <button onclick="document.getElementById('bubble').style.display='none'">×</button>
 </div>
 
+<footer>
+© 2025 ZenSite. Todos los derechos reservados.
+</footer>
+
 <script>
-const phone="15027942412";
-
-/* WhatsApp */
-document.querySelectorAll("button[data-plan]").forEach(btn=>{
-  btn.onclick=()=>{
-    const plan=btn.dataset.plan;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent("Hola, estoy interesado en el plan "+plan)}`,"_blank");
-  }
-});
-
-/* Idiomas */
-const buttons=document.querySelectorAll(".lang button");
-const texts=document.querySelectorAll("[data-es]");
+const btns=document.querySelectorAll('.langs span');
+const texts=document.querySelectorAll('[data-es]');
 function setLang(lang){
-  buttons.forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+  btns.forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
   texts.forEach(t=>t.textContent=t.dataset[lang]);
 }
-buttons.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
-setLang("es");
-
-/* Header animation */
-window.addEventListener("load",()=>{
-  document.querySelector(".header").classList.add("show");
-});
-
-/* Scroll animation */
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add("show");
-  });
-},{threshold:.2});
-document.querySelectorAll(".plan").forEach(p=>observer.observe(p));
-
-/* Bubble */
-setTimeout(()=>{
-  const b=document.getElementById("bubble");
-  b.style.opacity=1;
-  b.style.transform="translateY(0)";
-},4500);
-</script>
-<!-- PAGE TRANSITION -->
-<div id="page-transition"></div>
-
-<style>
-#page-transition{
-  position:fixed;
-  inset:0;
-  background:#050505;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .35s ease;
-  z-index:9999;
-}
-#page-transition.active{
-  opacity:1;
-}
-</style>
-
-<script>
-document.querySelectorAll("a[href]").forEach(link=>{
-  const url = link.getAttribute("href");
-  if(url && !url.startsWith("#") && !url.startsWith("http")){
-    link.addEventListener("click", e=>{
-      e.preventDefault();
-      const t=document.getElementById("page-transition");
-      t.classList.add("active");
-      setTimeout(()=>window.location.href=url,350);
-    });
-  }
-});
+btns.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+setLang('es');
 </script>
 
 </body>
 </html>
-
