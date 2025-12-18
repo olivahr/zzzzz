@@ -3,244 +3,1191 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Black Zen · Control Total</title>
+<title>ZenSite | Black Zen</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#040404;
-  --glass:rgba(18,18,18,.9);
+  --bg:#050505;
+  --glass:rgba(18,18,18,.86);
+  --glass2:rgba(10,10,10,.62);
   --line:rgba(255,255,255,.12);
-  --muted:rgba(255,255,255,.75);
-  --accent:#ffffff;
+  --line2:rgba(255,255,255,.08);
+  --muted:rgba(255,255,255,.78);
+  --muted2:rgba(255,255,255,.56);
+  --white:#ffffff;
+  --shadow: 0 30px 90px rgba(0,0,0,.70);
+  --r:28px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 
+html,body{background:var(--bg); color:#fff;}
 body{
   font-family:'Inter',system-ui;
   background:
-    radial-gradient(900px 400px at 50% -10%, rgba(255,255,255,.08), transparent 60%),
-    #040404;
-  color:#fff;
+    radial-gradient(900px 560px at 50% 0%, rgba(255,255,255,.07), transparent 58%),
+    radial-gradient(900px 560px at 20% 80%, rgba(0,120,255,.08), transparent 65%),
+    radial-gradient(900px 560px at 80% 80%, rgba(0,255,150,.06), transparent 65%),
+    #050505;
   overflow-x:hidden;
 }
 
-section{
-  max-width:1200px;
+h1,h2,h3{font-family:'Playfair Display',serif}
+p{font-size:18px; color:var(--muted); line-height:1.9}
+
+a{color:inherit}
+.container{
+  max-width:1160px;
   margin:auto;
-  padding:140px 8%;
+  padding:0 8%;
 }
 
-h1,h2,h3{
-  font-family:'Playfair Display',serif;
+/* ===== TOPBAR ===== */
+.topbar{
+  position:fixed;
+  top:0; left:0; width:100%;
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  z-index:1000;
+  background:linear-gradient(to bottom, rgba(0,0,0,.86), rgba(0,0,0,.34), transparent);
 }
+.top-left{
+  display:flex; align-items:center; gap:12px;
+}
+.back{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:44px; height:44px;
+  border-radius:16px;
+  border:1px solid var(--line2);
+  background:rgba(0,0,0,.28);
+  backdrop-filter: blur(14px);
+  text-decoration:none;
+  font-weight:900;
+  opacity:.92;
+  transition:.25s ease;
+}
+.back:hover{transform:translateY(-1px); opacity:1}
 
-h1{
-  font-size:clamp(46px,6vw,88px);
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid var(--line2);
+  background:rgba(0,0,0,.24);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.55);
+  font-weight:800;
+  letter-spacing:.2px;
+  color:rgba(255,255,255,.92);
+  user-select:none;
+}
+.pill small{opacity:.7; font-weight:700}
+
+.langs{display:flex; align-items:center; gap:14px;}
+.langs span{
+  cursor:pointer;
+  font-weight:900;
+  letter-spacing:.5px;
+  opacity:.45;
+  user-select:none;
+  transition:.2s ease;
+}
+.langs span.active{opacity:1}
+.langs span:hover{opacity:1}
+
+/* ===== SECTIONS ===== */
+section{
+  padding:120px 0;
+}
+.hero{
+  padding-top:140px;
   text-align:center;
 }
-
-p{
+.hero h1{
+  font-size:clamp(44px,6vw,84px);
+  line-height:1.05;
+  letter-spacing:-.6px;
+  text-shadow:0 24px 80px rgba(0,0,0,.65);
+}
+.hero .sub{
+  margin:26px auto 0;
+  max-width:900px;
   font-size:18px;
   color:var(--muted);
-  line-height:1.9;
 }
 
-/* HERO */
-.hero p{
-  max-width:900px;
-  margin:40px auto 0;
-  text-align:center;
-}
-
-/* SEPARATOR */
-.sep{
+.hero .divider{
+  width:min(760px, 92%);
   height:1px;
-  background:linear-gradient(to right, transparent, rgba(255,255,255,.25), transparent);
-  margin:120px auto;
-  max-width:600px;
+  background:linear-gradient(to right, transparent, rgba(255,255,255,.18), transparent);
+  margin:44px auto 0;
+  opacity:.9;
 }
 
-/* BLOCK */
+/* ===== BLOCK ===== */
 .block{
+  margin-top:54px;
   background:var(--glass);
   border:1px solid var(--line);
-  border-radius:34px;
-  padding:60px;
-  margin-top:80px;
-  backdrop-filter:blur(22px);
-  box-shadow:0 40px 120px rgba(0,0,0,.7);
-  animation:up 1s ease both;
+  border-radius:var(--r);
+  padding:46px;
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.block::before{
+  content:"";
+  position:absolute; inset:-2px;
+  background:radial-gradient(600px 180px at 50% 0%, rgba(255,255,255,.10), transparent 60%);
+  opacity:.9;
+  pointer-events:none;
 }
 
-@keyframes up{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:none}
+.block h2{
+  font-size:clamp(30px,4.6vw,56px);
+  margin-bottom:20px;
+}
+.block .kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(0,0,0,.26);
+  backdrop-filter: blur(14px);
+  font-weight:900;
+  letter-spacing:.25px;
+  margin-bottom:18px;
+  opacity:.95;
+}
+.kicker .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(255,255,255,.85);
+  box-shadow:0 0 22px rgba(255,255,255,.35);
 }
 
-/* COST LIST */
-.cost li{
+/* ===== LIST ===== */
+.list{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+}
+.list li{
   list-style:none;
-  padding:18px 0;
+  padding:16px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  font-size:16px;
+  color:var(--muted);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+.list li:last-child{border-bottom:none}
+.check{
+  flex:0 0 auto;
+  width:22px; height:22px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.08);
+  display:grid;
+  place-items:center;
+  margin-top:2px;
+}
+.check svg{opacity:.95}
+
+/* ===== STATUS GRID ===== */
+.status{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+.card{
+  background:rgba(0,0,0,.36);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:38px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+  position:relative;
+  overflow:hidden;
+  transition: transform .35s ease, border-color .35s ease;
+}
+.card:hover{
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,.18);
+}
+.card h3{
+  font-size:26px;
+  margin-bottom:12px;
+}
+.card p{font-size:16px; color:var(--muted)}
+
+/* ===== PRICING CALC ===== */
+.pricing-wrap{
+  margin-top:26px;
+  display:grid;
+  grid-template-columns:1.4fr .9fr;
+  gap:22px;
+}
+.prices{
+  border-radius:26px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.35);
+  backdrop-filter: blur(16px);
+  overflow:hidden;
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+}
+.prices-head{
+  padding:22px 22px;
   border-bottom:1px solid rgba(255,255,255,.08);
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  font-size:17px;
+  gap:14px;
 }
-
-.cost span{
+.prices-head strong{
+  font-family:'Playfair Display',serif;
+  font-size:22px;
+}
+.prices-head span{
+  font-size:13px;
+  opacity:.72;
   font-weight:700;
 }
 
-/* TOTAL */
-.total{
-  margin-top:40px;
-  font-size:26px;
-  text-align:right;
+.price-item{
+  padding:18px 22px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
 }
+.price-item:last-child{border-bottom:none}
 
-/* BIG PRICE */
-.big-price{
-  text-align:center;
-  margin-top:120px;
+.left{
+  display:flex; align-items:flex-start; gap:12px;
+  min-width:0;
 }
-
-.big-price .amount{
-  font-size:88px;
+.tick{
+  width:22px; height:22px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.08);
+  display:grid; place-items:center;
+  cursor:pointer;
+  flex:0 0 auto;
+  transition:.2s ease;
+}
+.tick.active{
+  background:#fff;
+  border-color:#fff;
+}
+.tick.active svg{filter:invert(1)}
+.meta{
+  min-width:0;
+}
+.meta b{
+  display:block;
+  font-size:15px;
+  letter-spacing:.2px;
+  margin-bottom:4px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.meta small{
+  display:block;
+  font-size:13px;
+  color:var(--muted2);
+  line-height:1.55;
+}
+.amount{
   font-weight:900;
-  margin-top:20px;
+  letter-spacing:-.2px;
+  opacity:.95;
+  white-space:nowrap;
 }
 
-/* CTA */
-.cta{
-  margin-top:50px;
-  text-align:center;
+/* ===== SUMMARY BOX ===== */
+.summary{
+  border-radius:26px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.35);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+  padding:22px;
+  position:sticky;
+  top:92px;
+  height:fit-content;
 }
-
-.cta a{
-  padding:24px 60px;
+.summary h3{
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  margin-bottom:10px;
+}
+.big{
+  font-size:58px;
+  font-weight:900;
+  letter-spacing:-1px;
+  margin-top:10px;
+}
+.summary .row{
+  margin-top:16px;
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  font-size:14px;
+  color:var(--muted2);
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
   border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.08);
+  font-weight:900;
+  letter-spacing:.25px;
+  margin-top:14px;
+  opacity:.95;
+}
+.badge .spark{
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(255,255,255,.9);
+  box-shadow:0 0 18px rgba(255,255,255,.35);
+}
+.mini{
+  margin-top:10px;
+  font-size:14px;
+  color:var(--muted2);
+  line-height:1.8;
+}
+
+/* ===== MEMBERSHIP ===== */
+.members{
+  margin-top:48px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.plan{
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,.35));
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+  padding:38px;
+  position:relative;
+  overflow:hidden;
+  transition: transform .35s ease, border-color .35s ease;
+}
+.plan:hover{
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.20);
+}
+
+.plan .top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+}
+.plan .title{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+}
+.plan .tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(0,0,0,.25);
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:.3px;
+  opacity:.95;
+}
+.lock{
+  width:16px; height:16px;
+  opacity:.92;
+}
+
+.plan .price{
+  margin-top:18px;
+  font-size:64px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+.plan .price small{
+  font-size:16px;
+  font-weight:800;
+  opacity:.72;
+  margin-left:8px;
+}
+.plan p{
+  margin-top:14px;
+  font-size:16px;
+  color:var(--muted);
+  line-height:1.85;
+}
+.plan ul{
+  margin-top:18px;
+}
+.plan li{
+  list-style:none;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  color:var(--muted);
+  font-size:15px;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+.plan li:last-child{border-bottom:none}
+.dot2{
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(255,255,255,.85);
+  margin-top:7px;
+  box-shadow:0 0 18px rgba(255,255,255,.30);
+}
+
+.cta{
+  margin-top:22px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:18px 22px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  letter-spacing:.2px;
+  border:1px solid rgba(255,255,255,.14);
+  transition:.25s ease;
+  cursor:pointer;
+}
+.btn.primary{
   background:#fff;
   color:#000;
-  font-weight:900;
-  text-decoration:none;
-  display:inline-block;
-  transition:.3s;
+  border-color:#fff;
+}
+.btn.primary:hover{transform:scale(1.03)}
+.btn.ghost{
+  background:rgba(255,255,255,.10);
+  backdrop-filter: blur(16px);
+}
+.btn.ghost:hover{
+  background:rgba(255,255,255,.16);
+  transform:translateY(-2px);
 }
 
-.cta a:hover{
-  transform:scale(1.08);
-}
-
-/* ZEN ACCESS */
-.access{
-  margin-top:160px;
-  padding:80px;
-  border-radius:40px;
-  background:
-    radial-gradient(400px 200px at 50% 0%, rgba(255,255,255,.12), transparent),
-    rgba(0,0,0,.75);
-  border:1px solid var(--line);
+/* ===== DISCLAIMER ===== */
+.disclaimer{
+  margin-top:56px;
   text-align:center;
+  opacity:.92;
+}
+.disclaimer h2{
+  font-size:clamp(30px,4.5vw,54px);
+}
+.disclaimer p{
+  max-width:920px;
+  margin:16px auto 0;
+  color:var(--muted);
+  font-size:16px;
 }
 
-.lock{
-  font-size:54px;
-  margin-bottom:20px;
-  animation:pulse 2.5s infinite;
-}
-
-@keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.08)}
-}
-
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
-  padding:80px 20px;
+  padding:70px 18px;
   font-size:14px;
-  opacity:.6;
+  opacity:.58;
   border-top:1px solid rgba(255,255,255,.08);
-  margin-top:160px;
+  margin-top:80px;
 }
 
+/* ===== REVEAL ===== */
+.reveal{
+  opacity:0;
+  transform: translateY(24px);
+  filter: blur(3px);
+  transition: .9s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
+  filter:none;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:980px){
+  .pricing-wrap{grid-template-columns:1fr}
+  .summary{position:relative; top:auto}
+  .members{grid-template-columns:1fr}
+  .status{grid-template-columns:1fr}
+  section{padding:96px 0}
+  .block{padding:34px}
+}
+@media(max-width:520px){
+  .topbar{height:64px}
+  .block{padding:28px}
+  p{font-size:17px}
+  .plan .price{font-size:56px}
+}
+
+/* === reduce motion respect === */
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important;}
+}
 </style>
 </head>
 
 <body>
 
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="top-left">
+    <a class="back" href="index.html" aria-label="Volver">←</a>
+    <div class="pill" id="savedPill" title="Demo">
+      <span data-es="SZ Guardados:" data-en="SZ Saved:">SZ Guardados:</span>
+      <strong id="savedCount">0</strong>
+      <small data-es="(demo)" data-en="(demo)">(demo)</small>
+    </div>
+  </div>
+
+  <div class="langs">
+    <span class="active" data-lang="es">ES</span>
+    <span data-lang="en">EN</span>
+  </div>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-  <h1>Tu web está online.<br>Eso no significa que esté ganando.</h1>
-  <p>
-    Muchas webs no fallan.<br>
-    Simplemente se quedan atrás.
-    <br><br>
-    Y cuando eso pasa, el negocio paga el precio en silencio.
-  </p>
-</section>
+  <div class="container">
+    <h1 class="reveal"
+        data-es="Tu web está online.<br><b>Eso no significa que esté en control.</b>"
+        data-en="Your website is online.<br><b>That doesn’t mean it’s under control.</b>">
+      Tu web está online.<br><b>Eso no significa que esté en control.</b>
+    </h1>
 
-<div class="sep"></div>
+    <p class="sub reveal"
+       data-es="Hoy no gana el que tiene una web. Gana el que mantiene su presencia digital alineada con el crecimiento del negocio."
+       data-en="Today, the winner isn’t the one who has a website. It’s the one who keeps their digital presence aligned with business growth.">
+      Hoy no gana el que tiene una web. Gana el que mantiene su presencia digital alineada con el crecimiento del negocio.
+    </p>
 
-<section class="block">
-  <h2>Lo que una web empieza a necesitar con el tiempo</h2>
-  <ul class="cost">
-    <li>Optimización constante de velocidad <span>$80</span></li>
-    <li>Ajustes visuales para no verse vieja <span>$60</span></li>
-    <li>Correcciones técnicas invisibles <span>$70</span></li>
-    <li>Protección y prevención de fraude <span>$90</span></li>
-    <li>Mejoras de conversión reales <span>$120</span></li>
-    <li>Adaptación cuando el negocio crece <span>$150</span></li>
-  </ul>
+    <div class="divider reveal"></div>
 
-  <div class="total">
-    Total acumulado normal: <strong>$570+</strong>
+    <div class="block reveal">
+      <div class="kicker">
+        <span class="dot"></span>
+        <span data-es="Verdad incómoda" data-en="Uncomfortable truth">Verdad incómoda</span>
+      </div>
+
+      <p data-es="Google cambia. Los dispositivos cambian. Los hábitos del cliente cambian. Las webs que no evolucionan no fallan de golpe: se quedan atrás en silencio."
+         data-en="Google changes. Devices change. Customer behavior changes. Websites that don’t evolve don’t fail overnight: they fall behind quietly.">
+        Google cambia. Los dispositivos cambian. Los hábitos del cliente cambian. Las webs que no evolucionan no fallan de golpe: se quedan atrás en silencio.
+      </p>
+    </div>
   </div>
 </section>
 
-<section class="big-price">
-  <h2>Black Zen</h2>
-  <p>
-    No es mantenimiento.<br>
-    Es control total de tu web a largo plazo.
-  </p>
+<!-- NEEDS LIST -->
+<section>
+  <div class="container">
+    <div class="block reveal">
+      <div class="kicker">
+        <span class="dot"></span>
+        <span data-es="Lo que una web seria necesita" data-en="What a serious website needs">Lo que una web seria necesita</span>
+      </div>
 
-  <div class="amount">$420</div>
-  <p>Pago único · De por vida</p>
+      <h2 class="reveal"
+          data-es="Para mantenerse activa, rápida y en ventaja"
+          data-en="To stay active, fast, and ahead">
+        Para mantenerse activa, rápida y en ventaja
+      </h2>
 
-  <div class="cta">
-    <a href="https://wa.me/XXXXXXXXXX">Activar Black Zen</a>
+      <ul class="list">
+        <li class="reveal">
+          <span class="check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span data-es="Optimización continua de velocidad y rendimiento (Core Web Vitals)"
+                data-en="Continuous speed & performance optimization (Core Web Vitals)">
+            Optimización continua de velocidad y rendimiento (Core Web Vitals)
+          </span>
+        </li>
+
+        <li class="reveal">
+          <span class="check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span data-es="Ajustes visuales estratégicos para evitar que se vea desactualizada"
+                data-en="Strategic visual updates to prevent looking outdated">
+            Ajustes visuales estratégicos para evitar que se vea desactualizada
+          </span>
+        </li>
+
+        <li class="reveal">
+          <span class="check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span data-es="Adaptación a cambios de Google, navegadores y políticas"
+                data-en="Adaptation to changes in Google, browsers, and policies">
+            Adaptación a cambios de Google, navegadores y políticas
+          </span>
+        </li>
+
+        <li class="reveal">
+          <span class="check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span data-es="Optimización móvil según nuevos dispositivos y pantallas"
+                data-en="Mobile optimization for new devices & screens">
+            Optimización móvil según nuevos dispositivos y pantallas
+          </span>
+        </li>
+
+        <li class="reveal">
+          <span class="check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span data-es="Correcciones invisibles que previenen errores futuros"
+                data-en="Invisible fixes that prevent future issues">
+            Correcciones invisibles que previenen errores futuros
+          </span>
+        </li>
+
+        <li class="reveal">
+          <span class="check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span data-es="Protección activa contra abuso, spam y comportamientos sospechosos"
+                data-en="Active protection against abuse, spam, and suspicious behavior">
+            Protección activa contra abuso, spam y comportamientos sospechosos
+          </span>
+        </li>
+
+        <li class="reveal">
+          <span class="check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span data-es="Prevención anti-fraude en formularios (bots y capturas falsas)"
+                data-en="Anti-fraud form protection (bots and fake submissions)">
+            Prevención anti-fraude en formularios (bots y capturas falsas)
+          </span>
+        </li>
+
+        <li class="reveal">
+          <span class="check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span data-es="Mejoras de conversión basadas en uso real (clics, scroll, contacto)"
+                data-en="Conversion improvements based on real usage (clicks, scroll, contact)">
+            Mejoras de conversión basadas en uso real (clics, scroll, contacto)
+          </span>
+        </li>
+
+        <li class="reveal">
+          <span class="check" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span data-es="Actualización de secciones cuando el negocio crece (servicios, fotos, ofertas)"
+                data-en="Section updates as the business grows (services, photos, offers)">
+            Actualización de secciones cuando el negocio crece (servicios, fotos, ofertas)
+          </span>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<section class="access">
-  <div class="lock">🔒</div>
-  <h2>Zen Access</h2>
-  <p>
-    Para quienes quieren estar dentro.<br>
-    Antes que los demás.
-  </p>
+<!-- STATUS -->
+<section>
+  <div class="container">
+    <div class="status">
+      <div class="card reveal">
+        <h3 data-es="Web estándar" data-en="Standard website">Web estándar</h3>
+        <p data-es="La web permanece online. No se cae. No “falla”. Pero no se optimiza, no se ajusta y no acompaña el crecimiento del negocio. Con el tiempo, pierde autoridad, impacto y ventaja competitiva."
+           data-en="The site stays online. It doesn’t crash. It doesn’t “fail.” But it isn’t optimized, updated, or aligned with business growth. Over time, it loses authority, impact, and competitive edge.">
+          La web permanece online. No se cae. No “falla”. Pero no se optimiza, no se ajusta y no acompaña el crecimiento del negocio. Con el tiempo, pierde autoridad, impacto y ventaja competitiva.
+        </p>
+      </div>
 
-  <ul class="cost">
-    <li>Acceso anticipado a nuevas herramientas</li>
-    <li>Prioridad para apps privadas</li>
-    <li>Integraciones cerradas al público</li>
-    <li>Invitaciones a proyectos piloto</li>
-  </ul>
+      <div class="card reveal">
+        <h3 data-es="Estado Black Zen" data-en="Black Zen status">Estado Black Zen</h3>
+        <p data-es="Tu web no solo funciona: se mantiene preparada. Cada ajuste necesario se ejecuta sin fricción. Cada mejora se aplica antes de que el problema exista. No reaccionas: te adelantas."
+           data-en="Your site doesn’t just work: it stays ready. Every necessary adjustment is handled smoothly. Improvements happen before problems appear. You don’t react: you stay ahead.">
+          Tu web no solo funciona: se mantiene preparada. Cada ajuste necesario se ejecuta sin fricción. Cada mejora se aplica antes de que el problema exista. No reaccionas: te adelantas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <div class="amount">$29</div>
-  <p>Entrada única + $5 mensuales para mantener el acceso</p>
+<!-- PRICING CALCULATOR -->
+<section>
+  <div class="container">
+    <div class="block reveal">
+      <div class="kicker">
+        <span class="dot"></span>
+        <span data-es="Haz cuentas (sin cuentos)" data-en="Do the math (no excuses)">Haz cuentas (sin cuentos)</span>
+      </div>
 
-  <div class="cta">
-    <a href="https://wa.me/XXXXXXXXXX">Entrar a Zen Access</a>
+      <h2 class="reveal"
+          data-es="Si pagas cada cosa por separado… esto se va rápido"
+          data-en="If you pay each item separately… this adds up fast">
+        Si pagas cada cosa por separado… esto se va rápido
+      </h2>
+
+      <p class="reveal"
+         data-es="Selecciona lo que normalmente cualquier negocio termina pidiendo. Mira el total. Y compáralo con Black Zen de por vida."
+         data-en="Select what businesses usually end up requesting. Watch the total. Then compare it with lifetime Black Zen.">
+        Selecciona lo que normalmente cualquier negocio termina pidiendo. Mira el total. Y compáralo con Black Zen de por vida.
+      </p>
+
+      <div class="pricing-wrap">
+        <div class="prices reveal" id="pricesBox">
+          <div class="prices-head">
+            <strong data-es="Servicios individuales" data-en="Individual services">Servicios individuales</strong>
+            <span data-es="Precios demo (pueden variar por proyecto)" data-en="Demo prices (may vary by project)">Precios demo (pueden variar por proyecto)</span>
+          </div>
+
+          <!-- items -->
+          <div class="price-item" data-price="120">
+            <div class="left">
+              <div class="tick" role="button" tabindex="0" aria-label="toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="meta">
+                <b data-es="Optimización de velocidad" data-en="Speed optimization">Optimización de velocidad</b>
+                <small data-es="Core Web Vitals, carga, peso de imágenes, caché"
+                       data-en="Core Web Vitals, load, image weight, caching">Core Web Vitals, carga, peso de imágenes, caché</small>
+              </div>
+            </div>
+            <div class="amount">$120</div>
+          </div>
+
+          <div class="price-item" data-price="90">
+            <div class="left">
+              <div class="tick" role="button" tabindex="0" aria-label="toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="meta">
+                <b data-es="Actualización visual premium" data-en="Premium visual refresh">Actualización visual premium</b>
+                <small data-es="Ajustes de diseño para que no se vea vieja"
+                       data-en="Design updates so it doesn’t look outdated">Ajustes de diseño para que no se vea vieja</small>
+              </div>
+            </div>
+            <div class="amount">$90</div>
+          </div>
+
+          <div class="price-item" data-price="70">
+            <div class="left">
+              <div class="tick" role="button" tabindex="0" aria-label="toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="meta">
+                <b data-es="Ajustes móviles" data-en="Mobile adjustments">Ajustes móviles</b>
+                <small data-es="Nuevos tamaños de pantalla, spacing, botones"
+                       data-en="New screens, spacing, buttons">Nuevos tamaños de pantalla, spacing, botones</small>
+              </div>
+            </div>
+            <div class="amount">$70</div>
+          </div>
+
+          <div class="price-item" data-price="85">
+            <div class="left">
+              <div class="tick" role="button" tabindex="0" aria-label="toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="meta">
+                <b data-es="Anti-spam / Anti-bots" data-en="Anti-spam / Anti-bots">Anti-spam / Anti-bots</b>
+                <small data-es="Protección en formularios y comportamiento sospechoso"
+                       data-en="Form protection and suspicious behavior controls">Protección en formularios y comportamiento sospechoso</small>
+              </div>
+            </div>
+            <div class="amount">$85</div>
+          </div>
+
+          <div class="price-item" data-price="110">
+            <div class="left">
+              <div class="tick" role="button" tabindex="0" aria-label="toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="meta">
+                <b data-es="Mejoras de conversión" data-en="Conversion improvements">Mejoras de conversión</b>
+                <small data-es="CTA, estructura, orden, microcopy, contacto"
+                       data-en="CTA, structure, flow, microcopy, contact">CTA, estructura, orden, microcopy, contacto</small>
+              </div>
+            </div>
+            <div class="amount">$110</div>
+          </div>
+
+          <div class="price-item" data-price="95">
+            <div class="left">
+              <div class="tick" role="button" tabindex="0" aria-label="toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="meta">
+                <b data-es="Actualización de contenido" data-en="Content update">Actualización de contenido</b>
+                <small data-es="Servicios, fotos, textos, secciones nuevas"
+                       data-en="Services, photos, copy, new sections">Servicios, fotos, textos, secciones nuevas</small>
+              </div>
+            </div>
+            <div class="amount">$95</div>
+          </div>
+
+          <div class="price-item" data-price="150">
+            <div class="left">
+              <div class="tick" role="button" tabindex="0" aria-label="toggle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="white" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="meta">
+                <b data-es="Integración extra" data-en="Extra integration">Integración extra</b>
+                <small data-es="Pagos, WhatsApp, automations, tracking, etc."
+                       data-en="Payments, WhatsApp, automations, tracking, etc.">Pagos, WhatsApp, automations, tracking, etc.</small>
+              </div>
+            </div>
+            <div class="amount">$150</div>
+          </div>
+
+        </div>
+
+        <aside class="summary reveal">
+          <h3 data-es="Total seleccionado" data-en="Selected total">Total seleccionado</h3>
+          <div class="big" id="total">$0</div>
+
+          <div class="badge">
+            <span class="spark"></span>
+            <span data-es="Black Zen: $420 de por vida" data-en="Black Zen: $420 lifetime">Black Zen: $420 de por vida</span>
+          </div>
+
+          <div class="mini" id="compareText"
+               data-es="Selecciona 2–4 cosas y mira cómo sube."
+               data-en="Select 2–4 items and watch it climb.">
+            Selecciona 2–4 cosas y mira cómo sube.
+          </div>
+
+          <div class="row">
+            <span data-es="Items seleccionados" data-en="Selected items">Items seleccionados</span>
+            <strong id="count">0</strong>
+          </div>
+
+          <div class="row">
+            <span data-es="Ahorro vs Black Zen" data-en="Savings vs Black Zen">Ahorro vs Black Zen</span>
+            <strong id="save">—</strong>
+          </div>
+
+          <div class="cta">
+            <a class="btn primary" id="btnBlackZen" href="https://wa.me/XXXXXXXXXX" target="_blank"
+               data-es="Activar Black Zen"
+               data-en="Activate Black Zen">
+              Activar Black Zen
+            </a>
+            <button class="btn ghost" id="reset"
+               data-es="Reiniciar"
+               data-en="Reset">
+              Reiniciar
+            </button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIPS -->
+<section>
+  <div class="container">
+    <div class="members">
+
+      <!-- BLACK ZEN -->
+      <div class="plan reveal" id="blackZenPlan">
+        <div class="top">
+          <div>
+            <div class="title" data-es="Black Zen Membership" data-en="Black Zen Membership">Black Zen Membership</div>
+            <div class="tag" data-es="Pago único · De por vida" data-en="One-time · Lifetime">Pago único · De por vida</div>
+          </div>
+          <div class="tag" title="Premium">
+            <svg class="lock" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M6.5 11h11A2.5 2.5 0 0 1 20 13.5v6A2.5 2.5 0 0 1 17.5 22h-11A2.5 2.5 0 0 1 4 19.5v-6A2.5 2.5 0 0 1 6.5 11Z" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span data-es="Estado" data-en="Status">Estado</span>
+          </div>
+        </div>
+
+        <div class="price">$420<small data-es="USD" data-en="USD">USD</small></div>
+
+        <p data-es="Tu web sigue funcionando sin esto. Pero si quieres que se mantenga en ventaja, protegida y lista para crecer… aquí es donde se activa."
+           data-en="Your site will keep working without this. But if you want it to stay ahead, protected, and ready to grow… this is where you activate it.">
+          Tu web sigue funcionando sin esto. Pero si quieres que se mantenga en ventaja, protegida y lista para crecer… aquí es donde se activa.
+        </p>
+
+        <ul>
+          <li><span class="dot2"></span><span data-es="Cambios, ajustes y mejoras sin fricción" data-en="Changes, tweaks, and improvements without friction">Cambios, ajustes y mejoras sin fricción</span></li>
+          <li><span class="dot2"></span><span data-es="Optimización de rendimiento cuando haga falta" data-en="Performance optimization when needed">Optimización de rendimiento cuando haga falta</span></li>
+          <li><span class="dot2"></span><span data-es="Protección anti-spam / anti-fraude para formularios" data-en="Anti-spam / anti-fraud protection for forms">Protección anti-spam / anti-fraude para formularios</span></li>
+          <li><span class="dot2"></span><span data-es="Actualizaciones de secciones por crecimiento del negocio" data-en="Section updates as your business grows">Actualizaciones de secciones por crecimiento del negocio</span></li>
+          <li><span class="dot2"></span><span data-es="Mejoras de conversión para vender más" data-en="Conversion improvements to sell more">Mejoras de conversión para vender más</span></li>
+        </ul>
+
+        <div class="cta">
+          <a class="btn primary" href="https://wa.me/XXXXXXXXXX" target="_blank"
+             data-es="Activar Black Zen"
+             data-en="Activate Black Zen">
+            Activar Black Zen
+          </a>
+          <a class="btn ghost" href="#prices" onclick="document.getElementById('pricesBox').scrollIntoView({behavior:'smooth',block:'start'})"
+             data-es="Ver costos por separado"
+             data-en="See individual costs">
+            Ver costos por separado
+          </a>
+        </div>
+      </div>
+
+      <!-- ZEN ACCESS -->
+      <div class="plan reveal" id="zenAccessPlan">
+        <div class="top">
+          <div>
+            <div class="title" data-es="Zen Access" data-en="Zen Access">Zen Access</div>
+            <div class="tag">
+              <svg class="lock" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6.5 11h11A2.5 2.5 0 0 1 20 13.5v6A2.5 2.5 0 0 1 17.5 22h-11A2.5 2.5 0 0 1 4 19.5v-6A2.5 2.5 0 0 1 6.5 11Z" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span data-es="Comunidad privada" data-en="Private community">Comunidad privada</span>
+            </div>
+          </div>
+
+          <div class="tag" data-es="Acceso prioritario" data-en="Priority access">Acceso prioritario</div>
+        </div>
+
+        <div class="price">$29<small data-es="inicio" data-en="start">inicio</small></div>
+
+        <p data-es="Zen Access no es soporte. No es mantenimiento. Es posición. Estás dentro antes que el público. Acceso primero a lo que viene."
+           data-en="Zen Access is not support. It’s not maintenance. It’s position. You’re inside before the public. First access to what’s coming.">
+          Zen Access no es soporte. No es mantenimiento. Es posición. Estás dentro antes que el público. Acceso primero a lo que viene.
+        </p>
+
+        <ul>
+          <li><span class="dot2"></span><span data-es="Acceso anticipado a herramientas y funciones nuevas" data-en="Early access to new tools and features">Acceso anticipado a herramientas y funciones nuevas</span></li>
+          <li><span class="dot2"></span><span data-es="Prioridad para futuras apps y sistemas privados" data-en="Priority for future apps and private systems">Prioridad para futuras apps y sistemas privados</span></li>
+          <li><span class="dot2"></span><span data-es="Integraciones exclusivas no liberadas al público" data-en="Exclusive integrations not released publicly">Integraciones exclusivas no liberadas al público</span></li>
+          <li><span class="dot2"></span><span data-es="Invitaciones cerradas a proyectos piloto" data-en="Closed invitations to pilot projects">Invitaciones cerradas a proyectos piloto</span></li>
+          <li><span class="dot2"></span><span data-es="Beneficios reservados solo para miembros activos" data-en="Benefits reserved for active members">Beneficios reservados solo para miembros activos</span></li>
+        </ul>
+
+        <p style="margin-top:14px; font-size:14px; color:var(--muted2); line-height:1.8"
+           data-es="+ $5 mensuales automáticos para mantener el acceso activo (solo para permanecer incluido dentro)."
+           data-en="+ $5 automatic monthly to keep access active (only to remain included inside).">
+          + $5 mensuales automáticos para mantener el acceso activo (solo para permanecer incluido dentro).
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="https://wa.me/XXXXXXXXXX" target="_blank"
+             data-es="Entrar a Zen Access"
+             data-en="Join Zen Access">
+            Entrar a Zen Access
+          </a>
+          <button class="btn ghost" id="saveBtn"
+             data-es="Guardar (demo)"
+             data-en="Save (demo)">
+            Guardar (demo)
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="disclaimer reveal">
+      <h2 data-es="Esto no es obligatorio." data-en="This is not mandatory.">Esto no es obligatorio.</h2>
+      <p data-es="Tu web puede seguir online sin activar nada. Pero los negocios serios no dejan su presencia digital estática. No es mantenimiento: es protección de valor."
+         data-en="Your site can stay online without activating anything. But serious businesses don’t leave their digital presence static. It’s not maintenance: it’s value protection.">
+        Tu web puede seguir online sin activar nada. Pero los negocios serios no dejan su presencia digital estática. No es mantenimiento: es protección de valor.
+      </p>
+    </div>
   </div>
 </section>
 
 <footer>
-  © 2025 ZenSite · Control web real
+  © 2025 ZenSite · Sistemas web activos
 </footer>
+
+<script>
+/* ========= REVEAL ========= */
+const revealEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.18});
+revealEls.forEach(el=>obs.observe(el));
+
+/* ========= LANG ========= */
+const langBtns = document.querySelectorAll('.langs span');
+const transEls = document.querySelectorAll('[data-es]');
+
+function setLang(l){
+  langBtns.forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+  transEls.forEach(el=>{
+    el.innerHTML = el.dataset[l]; // innerHTML porque el H1 trae <br><b>
+  });
+
+  // actualiza textos dinámicos
+  updateCompareText();
+}
+langBtns.forEach(b=>b.addEventListener('click', ()=>setLang(b.dataset.lang)));
+setLang('es');
+
+/* ========= CALCULATOR ========= */
+const items = Array.from(document.querySelectorAll('.price-item'));
+const totalEl = document.getElementById('total');
+const countEl = document.getElementById('count');
+const saveEl  = document.getElementById('save');
+const compareText = document.getElementById('compareText');
+const resetBtn = document.getElementById('reset');
+
+let selected = new Set();
+
+function money(n){
+  return "$" + n.toLocaleString("en-US");
+}
+
+function getLang(){
+  const active = document.querySelector('.langs span.active');
+  return active ? active.dataset.lang : 'es';
+}
+
+function updateCompareText(){
+  const l = getLang();
+  const total = calcTotal();
+  if(total === 0){
+    compareText.textContent = (l==='es')
+      ? "Selecciona 2–4 cosas y mira cómo sube."
+      : "Select 2–4 items and watch it climb.";
+    return;
+  }
+  if(total < 420){
+    const diff = 420 - total;
+    compareText.textContent = (l==='es')
+      ? `Te faltan ${money(diff)} para igualar Black Zen.`
+      : `You’re ${money(diff)} away from matching Black Zen.`;
+  }else{
+    const over = total - 420;
+    compareText.textContent = (l==='es')
+      ? `Ya pasaste Black Zen por ${money(over)}.`
+      : `You already passed Black Zen by ${money(over)}.`;
+  }
+}
+
+function calcTotal(){
+  let t = 0;
+  selected.forEach(idx=>{
+    t += Number(items[idx].dataset.price || 0);
+  });
+  return t;
+}
+
+function render(){
+  const total = calcTotal();
+  totalEl.textContent = money(total);
+  countEl.textContent = String(selected.size);
+
+  if(total === 0){
+    saveEl.textContent = "—";
+  }else{
+    const diff = 420 - total;
+    if(diff > 0) saveEl.textContent = money(diff);
+    else saveEl.textContent = (getLang()==='es') ? "0" : "0";
+  }
+  updateCompareText();
+}
+
+function toggleItem(i){
+  const tick = items[i].querySelector('.tick');
+  if(selected.has(i)){
+    selected.delete(i);
+    tick.classList.remove('active');
+  }else{
+    selected.add(i);
+    tick.classList.add('active');
+  }
+  render();
+}
+
+items.forEach((row, i)=>{
+  const tick = row.querySelector('.tick');
+  tick.addEventListener('click', ()=>toggleItem(i));
+  tick.addEventListener('keydown', (e)=>{
+    if(e.key === "Enter" || e.key === " "){
+      e.preventDefault();
+      toggleItem(i);
+    }
+  });
+});
+
+/* reset */
+resetBtn.addEventListener('click', ()=>{
+  selected.clear();
+  items.forEach(r=>r.querySelector('.tick').classList.remove('active'));
+  render();
+});
+
+/* ========= DEMO SAVED COUNTER ========= */
+const savedCountEl = document.getElementById('savedCount');
+const saveBtn = document.getElementById('saveBtn');
+
+function getSaved(){
+  try{
+    return Number(localStorage.getItem("z_saved") || "0");
+  }catch(e){ return 0; }
+}
+function setSaved(n){
+  try{ localStorage.setItem("z_saved", String(n)); }catch(e){}
+  savedCountEl.textContent = String(n);
+}
+setSaved(getSaved());
+
+saveBtn.addEventListener('click', ()=>{
+  const n = getSaved() + 1;
+  setSaved(n);
+  // micro feedback
+  saveBtn.style.transform = "scale(1.03)";
+  setTimeout(()=>saveBtn.style.transform="", 180);
+});
+
+/* init */
+render();
+</script>
 
 </body>
 </html>
