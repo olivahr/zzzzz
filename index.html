@@ -28,25 +28,6 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== PAGE TRANSITION ===== */
-.page-transition{
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(600px 300px at 50% 60%, rgba(255,255,255,.18), transparent 60%),
-    #050505;
-  z-index:9999;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .6s ease, backdrop-filter .6s ease;
-  backdrop-filter:blur(0px);
-}
-
-.page-transition.active{
-  opacity:1;
-  backdrop-filter:blur(22px);
-}
-
 /* ===== TOP BAR ===== */
 .topbar{
   position:fixed;
@@ -115,39 +96,22 @@ body{
 .hero .cta{
   margin-top:42px;
   display:flex;
-  gap:22px;
+  gap:26px;
   flex-wrap:wrap;
-  position:relative;
 }
 
 .hero .cta a{
-  display:inline-block;
-  padding:18px 36px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:18px 40px;
   border-radius:18px;
   font-weight:900;
   text-decoration:none;
   transition:.35s ease;
   position:relative;
-  text-align:center;
-}
 
-/* ===== VER PLANES ===== */
-.hero .cta a:first-child{
-  background:rgba(255,255,255,.92);
-  color:#000;
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.45);
-}
-
-.hero .cta a:first-child:hover{
-  transform:scale(1.05);
-  box-shadow:
-    0 18px 50px rgba(0,0,0,.65),
-    0 0 28px rgba(255,255,255,.45);
-}
-
-/* ===== SERVICIOS VIP ===== */
-.level-btn{
   background:rgba(255,255,255,.16);
   color:#fff;
   border:1px solid rgba(255,255,255,.35);
@@ -155,56 +119,35 @@ body{
   box-shadow:
     0 12px 36px rgba(0,0,0,.65),
     0 0 26px rgba(255,255,255,.25);
-  animation:vipPulse 3.5s ease-in-out infinite;
 }
 
-.level-btn small{
-  display:block;
-  font-size:12px;
-  opacity:.75;
-  font-weight:600;
-  margin-top:4px;
-}
-
-.level-btn::after{
-  content:"";
-  position:absolute;
-  inset:-3px;
-  border-radius:20px;
-  background:radial-gradient(160px 80px at 50% 120%, rgba(255,255,255,.55), transparent 70%);
-  opacity:.85;
-  pointer-events:none;
-}
-
-.level-btn:hover{
-  transform:scale(1.07);
+.hero .cta a:hover{
+  transform:scale(1.06);
   background:rgba(255,255,255,.24);
   box-shadow:
     0 22px 65px rgba(0,0,0,.85),
-    0 0 48px rgba(255,255,255,.55);
+    0 0 44px rgba(255,255,255,.45);
 }
 
-/* ===== VIP GLOW ===== */
+/* ===== VIP BUTTON ===== */
+.level-btn{
+  animation:vipPulse 3.5s ease-in-out infinite;
+}
+
+.level-btn span{
+  font-size:18px;
+}
+
+.level-btn small{
+  margin-top:4px;
+  font-size:12px;
+  letter-spacing:.25em;
+  opacity:.85;
+}
+
 @keyframes vipPulse{
-  0%,100%{box-shadow:0 12px 36px rgba(0,0,0,.65),0 0 28px rgba(255,255,255,.28)}
-  50%{box-shadow:0 18px 55px rgba(0,0,0,.85),0 0 44px rgba(255,255,255,.55)}
-}
-
-/* ===== POSICIÓN DERECHA ===== */
-.options-btn{
-  position:absolute;
-  right:0;
-  top:0;
-  transform:translateY(6px);
-}
-
-@media(max-width:768px){
-  .options-btn{
-    position:relative;
-    right:auto;
-    top:auto;
-    transform:none;
-  }
+  0%,100%{box-shadow:0 0 26px rgba(255,255,255,.35)}
+  50%{box-shadow:0 0 46px rgba(255,255,255,.65)}
 }
 
 /* ===== LAPTOP ===== */
@@ -234,6 +177,7 @@ body{
 .system-z h2{
   font-size:clamp(34px,6vw,64px);
   font-weight:900;
+  letter-spacing:-.5px;
   margin-bottom:20px;
 }
 
@@ -242,7 +186,7 @@ body{
   opacity:.9;
 }
 
-/* ===== 15 OFF ===== */
+/* ===== OFFER ===== */
 .offer{
   max-width:520px;
   margin:60px auto 0;
@@ -255,15 +199,6 @@ body{
   position:relative;
 }
 
-.offer::after{
-  content:"🎁";
-  position:absolute;
-  top:-18px;
-  right:-18px;
-  font-size:36px;
-  animation:float 3s ease-in-out infinite;
-}
-
 .offer h3{
   font-size:36px;
   font-weight:900;
@@ -272,6 +207,20 @@ body{
 .offer p{
   margin-top:10px;
   opacity:.85;
+}
+
+.offer::after{
+  content:"🎁";
+  position:absolute;
+  top:-18px;
+  right:-18px;
+  font-size:40px;
+  animation:gift 2.8s infinite;
+}
+
+@keyframes gift{
+  0%,100%{transform:rotate(0)}
+  50%{transform:rotate(12deg)}
 }
 
 /* ===== FOOTER ===== */
@@ -294,13 +243,19 @@ footer{
   opacity:1;
   transform:none;
 }
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .hero{
+    padding-top:120px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<div class="page-transition" id="pageTransition"></div>
-
+<!-- ===== TOP BAR ===== -->
 <div class="topbar">
   <div class="nav-left">
     <a href="demo.html" data-es="Demo" data-en="Demo">Demo</a>
@@ -312,6 +267,7 @@ footer{
   </div>
 </div>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
   <h1 class="reveal">
     <span data-es="Lleva tu negocio al" data-en="Take your business to the">Lleva tu negocio al</span><br>
@@ -324,15 +280,15 @@ footer{
      Diseñamos webs modernas, rápidas y pensadas para convertir.
   </p>
 
+  <!-- CTA -->
   <div class="cta reveal">
     <a href="planes.html" data-es="Ver planes" data-en="View plans">Ver planes</a>
 
     <a href="tunivel.html"
-       class="level-btn options-btn"
-       id="vipBtn"
+       class="level-btn"
        data-es="Servicios"
        data-en="Services">
-      Servicios
+      <span>Servicios</span>
       <small>(VIP)</small>
     </a>
   </div>
@@ -342,6 +298,7 @@ footer{
   </div>
 </section>
 
+<!-- ===== SISTEMA Z ===== -->
 <section class="system-z">
   <h2 class="reveal"
       data-es="ZenSite no es solo una web"
@@ -381,24 +338,14 @@ revealEls.forEach(el=>obs.observe(el));
 /* ===== LANG ===== */
 const langBtns=document.querySelectorAll('.lang');
 const texts=document.querySelectorAll('[data-es]');
+
 function setLang(l){
   langBtns.forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
   texts.forEach(t=>t.textContent=t.dataset[l]);
 }
+
 langBtns.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 setLang('es');
-
-/* ===== VIP TRANSITION ===== */
-const vipBtn=document.getElementById('vipBtn');
-const transition=document.getElementById('pageTransition');
-
-vipBtn.addEventListener('click',e=>{
-  e.preventDefault();
-  transition.classList.add('active');
-  setTimeout(()=>{
-    window.location.href=vipBtn.href;
-  },650);
-});
 </script>
 
 </body>
