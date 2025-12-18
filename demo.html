@@ -36,17 +36,27 @@ body{
   background:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(0,0,0,.4),transparent);
   z-index:1000;
 }
-.brand{font-weight:900}
-.langs span{margin-left:14px;font-weight:800;opacity:.45}
+.brand{
+  font-weight:900;
+  letter-spacing:.5px;
+}
+.langs span{
+  margin-left:14px;
+  cursor:pointer;
+  font-weight:800;
+  opacity:.45;
+  user-select:none;
+}
 .langs span.active{opacity:1}
 
 /* ================= HERO ================= */
 .hero{
-  padding:160px 8% 110px;
+  padding:160px 8% 120px;
 }
 .hero h1{
   font-family:'Playfair Display',serif;
   font-size:clamp(44px,6vw,78px);
+  font-weight:800;
 }
 .hero p{
   margin-top:22px;
@@ -58,14 +68,24 @@ body{
 /* ================= SLIDER ================= */
 .slider{
   max-width:1200px;
-  margin:80px auto 0;
+  margin:90px auto 0;
   border-radius:28px;
   overflow:hidden;
   border:1px solid var(--line);
   background:#000;
+  box-shadow:0 30px 90px rgba(0,0,0,.7);
 }
-.track{display:flex;transition:transform .8s ease}
-.slide{min-width:100%;display:flex;justify-content:center}
+.track{
+  display:flex;
+  transition:transform .9s cubic-bezier(.2,.9,.2,1);
+  will-change:transform;
+}
+.slide{
+  min-width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 .slide img{
   width:100%;
   height:520px;
@@ -76,7 +96,7 @@ body{
 /* ================= STATS ================= */
 .stats{
   max-width:1100px;
-  margin:120px auto 0;
+  margin:120px auto 40px;
   padding:0 6%;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -88,105 +108,133 @@ body{
   border-radius:26px;
   padding:48px 18px;
   text-align:center;
+  backdrop-filter:blur(14px);
 }
 .stat strong{
   font-family:'Playfair Display',serif;
   font-size:56px;
 }
-.stat span{color:var(--muted2)}
+.stat span{
+  display:block;
+  margin-top:8px;
+  font-weight:700;
+  color:var(--muted2);
+}
 
-/* ================= ORBIT SPACE ================= */
-.orbit-zone{
-  margin:140px auto;
-  width:100%;
+/* ================= DEMO ZONE (ESPACIO NEGRO) ================= */
+.demo-zone{
+  height:420px;            /* espacio negro grande */
   display:flex;
+  align-items:center;
   justify-content:center;
+  padding:40px 0;
 }
 
-.orbit-wrapper{
+.demo-field{
   position:relative;
-  width:320px;
-  height:320px;
+  width:min(520px, 92vw);
+  height:360px;
+  /* importante: NO dibuja nada, es "invisible" */
 }
 
-/* órbita invisible */
-.orbit{
+/* ===== BOTONES FIJOS (POSICIONES VERDES) ===== */
+.demo-btn{
   position:absolute;
-  inset:0;
-  animation:orbitSpin 28s linear infinite;
-}
-
-@keyframes orbitSpin{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
-}
-
-/* ================= BUTTONS ================= */
-.orbit-btn{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform-origin:-130px center;
-  padding:16px 42px;
+  padding:18px 44px;
   border-radius:999px;
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.35);
-  backdrop-filter:blur(18px);
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.28);
+  backdrop-filter:blur(24px);
   color:#fff;
-  font-weight:800;
+  font-weight:850;
+  letter-spacing:.3px;
   text-decoration:none;
-  letter-spacing:.4px;
-  animation:heartbeat 4.5s ease-in-out infinite;
-  transition:.35s ease;
   box-shadow:
     0 0 0 rgba(255,255,255,0),
-    0 20px 50px rgba(0,0,0,.65);
+    0 18px 48px rgba(0,0,0,.6);
+  transform:translate(-50%,-50%);
+  transition:transform .35s ease, box-shadow .35s ease, background .35s ease, filter .35s ease;
+  animation:heartBeat 2.8s ease-in-out infinite;
+  will-change:transform, filter;
 }
 
-/* posiciones */
-.b1{transform:rotate(0deg) translateX(130px)}
-.b2{transform:rotate(90deg) translateX(130px)}
-.b3{transform:rotate(180deg) translateX(130px)}
-.b4{transform:rotate(270deg) translateX(130px)}
-
-@keyframes heartbeat{
-  0%,100%{scale:1}
-  50%{scale:1.07}
+/* latido tipo corazón */
+@keyframes heartBeat{
+  0%   { transform:translate(-50%,-50%) scale(1);   filter:brightness(1); }
+  45%  { transform:translate(-50%,-50%) scale(1.07); filter:brightness(1.08); }
+  65%  { transform:translate(-50%,-50%) scale(1.02); filter:brightness(1.02); }
+  100% { transform:translate(-50%,-50%) scale(1);   filter:brightness(1); }
 }
 
-.orbit-btn:hover{
+/* glow suave premium (sin exagerar) */
+.demo-btn::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:999px;
+  background:radial-gradient(120px 70px at 50% 50%, rgba(255,255,255,.25), transparent 70%);
+  opacity:.55;
+  pointer-events:none;
+  transition:opacity .35s ease;
+}
+
+.demo-btn:hover{
   background:#fff;
   color:#000;
   box-shadow:
-    0 0 28px rgba(255,255,255,.55),
-    0 24px 60px rgba(0,0,0,.8);
+    0 0 28px rgba(255,255,255,.45),
+    0 22px 60px rgba(0,0,0,.8);
+  transform:translate(-50%,-50%) scale(1.12);
 }
+.demo-btn:hover::after{opacity:.75}
 
-/* ================= FINAL ================= */
+/* ===== POSICIONES (AJUSTADAS A TU FOTO) =====
+   Estas coordenadas están pensadas para que queden como tus marcas verdes.
+   Si quieres 1:1 exacto, dime “sube 5% el de Store2” etc y lo dejo clavado.
+*/
+.btn-home  { left:22%; top:26%; animation-delay:0s;   }
+.btn-store { left:74%; top:42%; animation-delay:.25s; }
+.btn-store2{ left:30%; top:64%; animation-delay:.5s;  }
+.btn-web   { left:76%; top:78%; animation-delay:.75s; }
+
+/* ================= FINAL TEXT ================= */
 .final{
-  max-width:900px;
-  margin:160px auto;
-  text-align:center;
+  max-width:1000px;
+  margin:140px auto 160px;
   padding:0 8%;
+  text-align:center;
 }
 .final h2{
   font-family:'Playfair Display',serif;
-  font-size:clamp(34px,5vw,56px);
+  font-size:clamp(34px,4.8vw,56px);
 }
 .final p{
   margin-top:26px;
   font-size:17px;
   color:var(--muted);
-  line-height:1.9;
+  line-height:1.85;
 }
 
 /* ================= FOOTER ================= */
 footer{
-  padding:40px;
+  padding:44px 20px;
   text-align:center;
   font-size:13px;
   opacity:.55;
   border-top:1px solid var(--line);
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:640px){
+  .slide img{height:420px}
+  .demo-zone{height:380px}
+  .demo-field{height:320px}
+  .demo-btn{padding:16px 38px}
+  /* mobile fine-tune */
+  .btn-home  { left:24%; top:24%; }
+  .btn-store { left:76%; top:40%; }
+  .btn-store2{ left:30%; top:66%; }
+  .btn-web   { left:78%; top:80%; }
 }
 </style>
 </head>
@@ -195,23 +243,26 @@ footer{
 
 <header class="header">
   <div class="brand">ZenSite</div>
-  <div class="langs"><span class="active">ES</span><span>EN</span></div>
+  <div class="langs">
+    <span class="active">ES</span>
+    <span>EN</span>
+  </div>
 </header>
 
 <section class="hero">
   <h1>Demostraciones premium</h1>
   <p>
-    Sitios diseñados desde cero para negocios que buscan presencia,
-    confianza y conversión real.
+    Ejemplos reales de sitios diseñados para negocios que buscan presencia,
+    confianza y conversión a nivel profesional.
   </p>
 </section>
 
 <div class="slider">
   <div class="track" id="track">
-    <div class="slide"><img src="demo1.jpg"></div>
-    <div class="slide"><img src="demo2.jpg"></div>
-    <div class="slide"><img src="demo3.jpg"></div>
-    <div class="slide"><img src="demo4.jpg"></div>
+    <div class="slide"><img src="demo1.jpg" alt="Demo 1"></div>
+    <div class="slide"><img src="demo2.jpg" alt="Demo 2"></div>
+    <div class="slide"><img src="demo3.jpg" alt="Demo 3"></div>
+    <div class="slide"><img src="demo4.jpg" alt="Demo 4"></div>
   </div>
 </div>
 
@@ -221,32 +272,31 @@ footer{
   <div class="stat"><strong data-count="100">0</strong><span>Satisfacción</span></div>
 </div>
 
-<!-- SOLO BOTONES ORBITANDO -->
-<div class="orbit-zone">
-  <div class="orbit-wrapper">
-    <div class="orbit">
-      <a class="orbit-btn b1" href="https://olivahr.github.io/demohomepage-/" target="_blank">Home Page</a>
-      <a class="orbit-btn b2" href="https://olivahr.github.io/pruebamirandaflow/" target="_blank">Store</a>
-      <a class="orbit-btn b3" href="https://olivahr.github.io/demostore/" target="_blank">Store 2</a>
-      <a class="orbit-btn b4" href="https://olivahr.github.io/demobarberweb/" target="_blank">Web</a>
-    </div>
+<!-- ✅ ESPACIO NEGRO: BOTONES FIJOS LATIENDO -->
+<div class="demo-zone">
+  <div class="demo-field" aria-label="Demos premium">
+    <a class="demo-btn btn-home"   data-url="https://olivahr.github.io/demohomepage-/"  href="https://olivahr.github.io/demohomepage-/"  target="_blank" rel="noopener">Home Page</a>
+    <a class="demo-btn btn-store"  data-url="https://olivahr.github.io/pruebamirandaflow/" href="https://olivahr.github.io/pruebamirandaflow/" target="_blank" rel="noopener">Store</a>
+    <a class="demo-btn btn-store2" data-url="https://olivahr.github.io/demostore/"     href="https://olivahr.github.io/demostore/"     target="_blank" rel="noopener">Store 2</a>
+    <a class="demo-btn btn-web"    data-url="https://olivahr.github.io/demobarberweb/" href="https://olivahr.github.io/demobarberweb/" target="_blank" rel="noopener">Web</a>
   </div>
 </div>
 
 <section class="final">
   <h2>Esto es solo una demostración</h2>
   <p>
-    Cada proyecto se construye desde cero, completamente personalizado.<br><br>
-    Todo se instala y conecta como debe ser: dominio, hosting, formularios,
-    pagos, automatizaciones y escalabilidad.<br><br>
-    No son plantillas. Son sistemas reales que venden.
+    Cada proyecto se desarrolla desde cero, completamente personalizado.<br><br>
+    Todo se instala, conecta y optimiza como debe ser: dominio, hosting,
+    formularios, pagos, automatizaciones y escalabilidad.<br><br>
+    No son plantillas. Son sistemas diseñados para representar la marca
+    al más alto nivel y generar resultados reales.
   </p>
 </section>
 
 <footer>© 2025 ZenSite · Desarrollo web premium</footer>
 
 <script>
-/* SLIDER */
+/* ================= SLIDER ================= */
 const track=document.getElementById("track");
 let i=0;
 setInterval(()=>{
@@ -254,24 +304,86 @@ setInterval(()=>{
   track.style.transform=`translateX(-${i*100}%)`;
 },5200);
 
-/* COUNTERS */
+/* ================= COUNTERS (al entrar) ================= */
 const counters=document.querySelectorAll("[data-count]");
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const el=entry.target;
+      const target=+el.dataset.count;
       let n=0;
-      const t=+e.target.dataset.count;
-      const inc=Math.max(1,Math.floor(t/40));
-      const int=setInterval(()=>{
+      const inc=Math.max(1,Math.floor(target/40));
+      const t=setInterval(()=>{
         n+=inc;
-        if(n>=t){n=t;clearInterval(int)}
-        e.target.textContent=n;
+        if(n>=target){n=target;clearInterval(t)}
+        el.textContent=n;
       },28);
-      obs.unobserve(e.target);
+      observer.unobserve(el);
     }
   });
 },{threshold:.5});
-counters.forEach(c=>obs.observe(c));
+counters.forEach(c=>observer.observe(c));
+
+/* ================= SONIDO SUAVE (CLICK) =================
+   - iOS requiere gesto del usuario (click) para sonar.
+   - Sonido premium: blip corto y bajito.
+*/
+let audioCtx=null;
+
+function ensureAudio(){
+  if(audioCtx) return audioCtx;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+function softClick(){
+  try{
+    const ctx = ensureAudio();
+    if(ctx.state === "suspended") ctx.resume();
+
+    const now = ctx.currentTime;
+
+    const o1 = ctx.createOscillator();
+    const o2 = ctx.createOscillator();
+    const g  = ctx.createGain();
+
+    o1.type = "sine";
+    o2.type = "triangle";
+
+    o1.frequency.setValueAtTime(520, now);
+    o1.frequency.exponentialRampToValueAtTime(390, now + 0.08);
+
+    o2.frequency.setValueAtTime(260, now);
+    o2.frequency.exponentialRampToValueAtTime(210, now + 0.08);
+
+    g.gain.setValueAtTime(0.0001, now);
+    g.gain.exponentialRampToValueAtTime(0.06, now + 0.015);  // volumen sutil
+    g.gain.exponentialRampToValueAtTime(0.0001, now + 0.13);
+
+    o1.connect(g);
+    o2.connect(g);
+    g.connect(ctx.destination);
+
+    o1.start(now);
+    o2.start(now);
+    o1.stop(now + 0.14);
+    o2.stop(now + 0.14);
+  }catch(e){}
+}
+
+/* Click handler: sonar y luego abrir */
+document.querySelectorAll(".demo-btn").forEach(btn=>{
+  btn.addEventListener("click",(e)=>{
+    // sonar primero
+    softClick();
+
+    // dejar que abra normal; pero para asegurar sonido en algunos navegadores:
+    // abrimos nosotros tras 60ms
+    e.preventDefault();
+    const url = btn.dataset.url || btn.href;
+    setTimeout(()=>window.open(url, "_blank", "noopener"), 60);
+  }, {passive:false});
+});
 </script>
 
 </body>
