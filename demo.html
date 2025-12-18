@@ -28,7 +28,7 @@ body{
 /* ================= HEADER ================= */
 .header{
   position:fixed;
-  inset:0 0 auto 0;
+  top:0; left:0; right:0;
   padding:18px 24px;
   display:flex;
   justify-content:space-between;
@@ -76,7 +76,7 @@ body{
 }
 .track{
   display:flex;
-  transition:transform 1.2s cubic-bezier(.2,.9,.2,1);
+  transition:transform .9s cubic-bezier(.2,.9,.2,1);
 }
 .slide{
   min-width:100%;
@@ -119,82 +119,79 @@ body{
   color:var(--muted2);
 }
 
-/* ================= DEMO ZONE ================= */
+/* ================= ORBIT DEMO ================= */
 .demo-zone{
-  height:360px;
+  height:420px;
   display:flex;
   align-items:center;
   justify-content:center;
   position:relative;
 }
 
-/* ================= FLOATING GLOW ================= */
-.demo-zone::before{
-  content:"";
-  position:absolute;
-  width:360px;
-  height:360px;
-  border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,.18), transparent 70%);
-  animation:slowRotate 28s linear infinite;
-  filter:blur(40px);
+.orbit{
+  position:relative;
+  width:320px;
+  height:320px;
+  animation:orbitRotate 34s linear infinite;
 }
 
-@keyframes slowRotate{
+@keyframes orbitRotate{
   from{transform:rotate(0deg)}
   to{transform:rotate(360deg)}
 }
 
-/* ================= BUTTON CLUSTER ================= */
-.demo-cluster{
-  position:relative;
-  width:320px;
-  height:320px;
-  display:grid;
-  place-items:center;
-}
-
-.demo-btn{
+.orbit-btn{
   position:absolute;
-  padding:20px 44px;
+  top:50%;
+  left:50%;
+  transform-origin:-130px center;
+  padding:18px 44px;
   border-radius:999px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.28);
-  backdrop-filter:blur(24px);
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.35);
+  backdrop-filter:blur(22px);
   color:#fff;
   font-weight:800;
-  letter-spacing:.5px;
+  letter-spacing:.4px;
   text-decoration:none;
-  box-shadow:0 18px 48px rgba(0,0,0,.6);
-  animation:heartBeat 4.2s ease-in-out infinite;
-  transition:transform .4s ease, box-shadow .4s ease, background .4s ease;
+  box-shadow:
+    0 0 0 rgba(255,255,255,0),
+    0 18px 48px rgba(0,0,0,.7);
+  animation:heartPulse 4s ease-in-out infinite;
+  transition:all .35s ease;
 }
 
-/* posiciones dispersas */
-.demo-btn.home{transform:translate(0,-140px)}
-.demo-btn.store{transform:translate(150px,-10px)}
-.demo-btn.store2{transform:translate(-20px,140px)}
-.demo-btn.web{transform:translate(-150px,20px)}
+/* posiciones */
+.b1{transform:rotate(0deg) translateX(130px)}
+.b2{transform:rotate(90deg) translateX(130px)}
+.b3{transform:rotate(180deg) translateX(130px)}
+.b4{transform:rotate(270deg) translateX(130px)}
 
-@keyframes heartBeat{
-  0%,100%{transform:scale(1) translate(var(--x,0),var(--y,0))}
-  50%{transform:scale(1.08) translate(var(--x,0),var(--y,0))}
+@keyframes heartPulse{
+  0%,100%{scale:1}
+  50%{scale:1.07}
 }
 
-.demo-btn::after{
+.orbit-btn::after{
   content:"";
   position:absolute;
-  inset:-4px;
+  inset:-2px;
   border-radius:999px;
-  background:radial-gradient(140px 70px at 50% 50%, rgba(255,255,255,.35), transparent 70%);
-  opacity:.4;
+  background:radial-gradient(120px 60px at 50% 50%, rgba(255,255,255,.35), transparent 70%);
+  opacity:.35;
+  pointer-events:none;
 }
 
-.demo-btn:hover{
+.orbit-btn:hover{
   background:#fff;
   color:#000;
-  box-shadow:0 0 32px rgba(255,255,255,.45),0 26px 70px rgba(0,0,0,.9);
-  transform:scale(1.14) translate(var(--x,0),var(--y,0));
+  box-shadow:
+    0 0 32px rgba(255,255,255,.55),
+    0 24px 70px rgba(0,0,0,.9);
+}
+
+.orbit:hover{
+  animation-play-state:paused;
 }
 
 /* ================= FINAL TEXT ================= */
@@ -222,6 +219,13 @@ footer{
   font-size:13px;
   opacity:.55;
   border-top:1px solid var(--line);
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:640px){
+  .slide img{height:420px}
+  .demo-zone{height:340px}
+  .orbit{transform:scale(.9)}
 }
 </style>
 </head>
@@ -260,11 +264,11 @@ footer{
 </div>
 
 <div class="demo-zone">
-  <div class="demo-cluster">
-    <a class="demo-btn home" href="https://olivahr.github.io/demohomepage-/" target="_blank">Home Page</a>
-    <a class="demo-btn store" href="https://olivahr.github.io/pruebamirandaflow/" target="_blank">Store</a>
-    <a class="demo-btn store2" href="https://olivahr.github.io/demostore/" target="_blank">Store 2</a>
-    <a class="demo-btn web" href="https://olivahr.github.io/demobarberweb/" target="_blank">Web</a>
+  <div class="orbit">
+    <a class="orbit-btn b1" href="https://olivahr.github.io/demohomepage-/" target="_blank">Home Page</a>
+    <a class="orbit-btn b2" href="https://olivahr.github.io/pruebamirandaflow/" target="_blank">Store</a>
+    <a class="orbit-btn b3" href="https://olivahr.github.io/demostore/" target="_blank">Store 2</a>
+    <a class="orbit-btn b4" href="https://olivahr.github.io/demobarberweb/" target="_blank">Web</a>
   </div>
 </div>
 
@@ -272,10 +276,10 @@ footer{
   <h2>Esto es solo una demostración</h2>
   <p>
     Cada proyecto se desarrolla desde cero, completamente personalizado.<br><br>
-    Todo se instala y se conecta como debe ser: dominio, hosting,
-    formularios, pagos, automatizaciones y escalabilidad.<br><br>
-    No son plantillas. Son sistemas diseñados para representar marcas
-    de alto nivel y generar resultados reales.
+    Todo se instala y conecta como debe ser: dominio, hosting, formularios,
+    pagos, automatizaciones y escalabilidad.<br><br>
+    No usamos plantillas genéricas. Construimos sistemas reales que representan
+    la marca al más alto nivel y están listos para vender.
   </p>
 </section>
 
@@ -288,7 +292,7 @@ let i=0;
 setInterval(()=>{
   i=(i+1)%track.children.length;
   track.style.transform=`translateX(-${i*100}%)`;
-},6200);
+},5200);
 
 /* COUNTERS */
 const counters=document.querySelectorAll("[data-count]");
@@ -309,28 +313,6 @@ const observer=new IntersectionObserver(entries=>{
   });
 },{threshold:.5});
 counters.forEach(c=>observer.observe(c));
-
-/* SONIDO PREMIUM */
-const AudioCtx=window.AudioContext||window.webkitAudioContext;
-const audioCtx=new AudioCtx();
-function playClickSound(){
-  const osc=audioCtx.createOscillator();
-  const gain=audioCtx.createGain();
-  osc.type="sine";
-  osc.frequency.value=880;
-  gain.gain.value=0.04;
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-  osc.start();
-  gain.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+.12);
-  osc.stop(audioCtx.currentTime+.12);
-}
-document.querySelectorAll(".demo-btn").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    if(audioCtx.state==="suspended") audioCtx.resume();
-    playClickSound();
-  });
-});
 </script>
 
 </body>
