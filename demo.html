@@ -5,28 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ZenSite | Demos Profesionales</title>
 
+<!-- PREMIUM FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --bg:#050505;
-  --glass:rgba(18,18,18,.85);
+  --glass:rgba(16,16,16,.85);
   --line:rgba(255,255,255,.10);
   --muted:rgba(255,255,255,.75);
   --muted2:rgba(255,255,255,.55);
-  --radius:26px;
+  --radius:28px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  font-family:'Inter',system-ui;
   background:var(--bg);
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== HEADER ===== */
+/* ================= HEADER ================= */
 .header{
   position:fixed;
-  inset:0 0 auto 0;
+  top:0; left:0; right:0;
   padding:18px 22px;
   display:flex;
   justify-content:space-between;
@@ -37,44 +41,48 @@ body{
 .brand{
   font-weight:900;
   font-size:20px;
-  letter-spacing:.3px;
+  letter-spacing:.4px;
 }
 .langs span{
   margin-left:14px;
   cursor:pointer;
   font-weight:800;
   opacity:.5;
+  user-select:none;
 }
 .langs span.active{opacity:1}
 
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 .hero{
-  padding:150px 8% 120px;
+  padding:160px 8% 120px;
 }
 .hero h1{
-  font-size:clamp(42px,6vw,76px);
-  font-weight:950;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,6vw,78px);
+  font-weight:800;
   line-height:1.05;
 }
 .hero p{
-  margin-top:20px;
-  max-width:860px;
+  margin-top:22px;
+  max-width:880px;
   font-size:18px;
   color:var(--muted);
 }
 
-/* ===== SLIDER ===== */
+/* ================= SLIDER ================= */
 .slider{
   max-width:1200px;
-  margin:80px auto;
+  margin:90px auto 0;
   border-radius:var(--radius);
   overflow:hidden;
   border:1px solid var(--line);
   background:#000;
+  box-shadow:0 30px 90px rgba(0,0,0,.7);
 }
 .track{
   display:flex;
-  transition:transform .7s cubic-bezier(.2,.9,.2,1);
+  transition:transform .8s cubic-bezier(.2,.9,.2,1);
+  will-change:transform;
 }
 .slide{
   min-width:100%;
@@ -82,42 +90,49 @@ body{
 }
 .slide img{
   width:100%;
-  height:480px;
+  height:500px;
   object-fit:cover;
-  filter:contrast(1.05) saturate(1.04);
+  filter:contrast(1.05) saturate(1.05);
+  transition:transform .6s ease;
+}
+.slide:hover img{
+  transform:scale(1.04);
 }
 
-/* ===== STATS ===== */
+/* ================= STATS ================= */
 .stats{
   max-width:1100px;
-  margin:100px auto 70px;
+  margin:110px auto 40px;
   padding:0 6%;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:22px;
+  gap:24px;
 }
 .stat{
   background:var(--glass);
   border:1px solid var(--line);
-  border-radius:22px;
-  padding:40px 18px;
+  border-radius:24px;
+  padding:44px 18px;
   text-align:center;
+  backdrop-filter:blur(14px);
 }
 .stat strong{
-  font-size:54px;
-  font-weight:950;
+  font-family:'Playfair Display',serif;
+  font-size:56px;
+  font-weight:800;
 }
 .stat span{
   display:block;
-  margin-top:6px;
+  margin-top:8px;
+  font-weight:700;
   color:var(--muted2);
-  font-weight:800;
+  letter-spacing:.4px;
 }
 
-/* ===== FLOATING DEMO BUTTONS (APPLE STYLE) ===== */
+/* ================= FLOATING DEMO ZONE ================= */
 .demo-zone{
   position:relative;
-  height:300px;
+  height:320px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -125,58 +140,59 @@ body{
 .demo-buttons{
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:16px;
 }
 .demo-buttons a{
-  padding:14px 26px;
+  padding:16px 30px;
   border-radius:999px;
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.22);
-  backdrop-filter:blur(14px);
+  backdrop-filter:blur(18px);
   color:#fff;
-  font-weight:900;
-  letter-spacing:.3px;
+  font-weight:800;
+  letter-spacing:.4px;
   text-decoration:none;
   text-align:center;
-  transition:.25s ease;
+  transition:.28s ease;
 }
 .demo-buttons a:hover{
   background:#fff;
   color:#000;
-  transform:scale(1.06);
+  transform:scale(1.08);
 }
 
-/* ===== FINAL TEXT ===== */
+/* ================= FINAL TEXT ================= */
 .final{
-  max-width:980px;
-  margin:120px auto 160px;
+  max-width:1000px;
+  margin:130px auto 160px;
   padding:0 8%;
   text-align:center;
 }
 .final h2{
-  font-size:clamp(32px,4.5vw,52px);
-  font-weight:950;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(34px,4.8vw,56px);
+  font-weight:800;
 }
 .final p{
-  margin-top:22px;
+  margin-top:26px;
   font-size:17px;
   color:var(--muted);
-  line-height:1.75;
+  line-height:1.8;
 }
 
-/* ===== FOOTER ===== */
+/* ================= FOOTER ================= */
 footer{
-  padding:40px 20px;
+  padding:44px 20px;
   text-align:center;
   font-size:13px;
-  opacity:.5;
+  opacity:.55;
   border-top:1px solid var(--line);
 }
 
-/* ===== MOBILE ===== */
+/* ================= MOBILE ================= */
 @media(max-width:600px){
   .slide img{height:380px}
-  .demo-zone{height:260px}
+  .demo-zone{height:280px}
 }
 </style>
 </head>
@@ -194,22 +210,23 @@ footer{
 <section class="hero">
   <h1 data-es="Demostraciones profesionales"
       data-en="Professional demonstrations">
-      Demostraciones profesionales
+    Demostraciones profesionales
   </h1>
-  <p data-es="Explora ejemplos reales de sitios web diseñados para negocios que buscan presencia, confianza y resultados."
-     data-en="Explore real examples of websites designed for businesses seeking presence, trust and results.">
-     Explora ejemplos reales de sitios web diseñados para negocios que buscan presencia, confianza y resultados.
+
+  <p data-es="Ejemplos reales de sitios diseñados para negocios que buscan presencia, confianza y conversión."
+     data-en="Real examples of websites designed for businesses seeking presence, trust and conversion.">
+     Ejemplos reales de sitios diseñados para negocios que buscan presencia, confianza y conversión.
   </p>
 </section>
 
-<!-- SLIDER DEMOS -->
+<!-- SLIDER -->
 <div class="slider">
   <div class="track" id="track">
-    <div class="slide"><img src="demo1.jpg" alt=""></div>
-    <div class="slide"><img src="demo2.jpg" alt=""></div>
-    <div class="slide"><img src="demo3.jpg" alt=""></div>
-    <div class="slide"><img src="demo4.jpg" alt=""></div>
-    <div class="slide"><img src="demo5.jpg" alt=""></div>
+    <div class="slide"><img src="demo1.jpg"></div>
+    <div class="slide"><img src="demo2.jpg"></div>
+    <div class="slide"><img src="demo3.jpg"></div>
+    <div class="slide"><img src="demo4.jpg"></div>
+    <div class="slide"><img src="demo5.jpg"></div>
   </div>
 </div>
 
@@ -234,15 +251,13 @@ footer{
 <section class="final">
   <h2>Esto es solo una demostración</h2>
   <p>
-    Cada proyecto se diseña <strong>desde cero</strong>, adaptado al negocio, la marca y los objetivos reales del cliente.
+    Cada proyecto se diseña desde cero, adaptado completamente al negocio, la marca y los objetivos del cliente.
     <br><br>
-    <strong>No utilizamos plantillas genéricas.</strong>
+    No trabajamos con plantillas genéricas. Todo se desarrolla, instala y conecta correctamente:
+    dominio, hosting, formularios, pagos, optimización y escalabilidad.
     <br><br>
-    Todo se entrega correctamente instalado, optimizado y conectado como debe ser:
-    dominio, hosting, formularios, pagos, analítica y escalabilidad.
-    <br><br>
-    El diseño, la estructura y la tecnología se construyen para vender, posicionar y representar
-    la marca a nivel profesional.
+    El diseño, la estructura y la tecnología están pensados para representar la marca
+    a nivel profesional y generar resultados reales.
   </p>
 </section>
 
@@ -252,33 +267,32 @@ footer{
 
 <script>
 /* ===== SLIDER AUTO ===== */
-const track = document.getElementById("track");
-let index = 0;
+const track=document.getElementById("track");
+let i=0;
 setInterval(()=>{
-  index = (index + 1) % track.children.length;
-  track.style.transform = `translateX(-${index * 100}%)`;
-},4500);
+  i=(i+1)%track.children.length;
+  track.style.transform=`translateX(-${i*100}%)`;
+},4800);
 
 /* ===== COUNTERS ===== */
 document.querySelectorAll("[data-count]").forEach(el=>{
-  const target = +el.dataset.count;
-  let n = 0;
-  const inc = Math.max(1, Math.floor(target/40));
-  const t = setInterval(()=>{
-    n += inc;
-    if(n >= target){ n = target; clearInterval(t); }
-    el.textContent = n;
-  },30);
+  const t=+el.dataset.count;let n=0;
+  const inc=Math.max(1,Math.floor(t/40));
+  const timer=setInterval(()=>{
+    n+=inc;
+    if(n>=t){n=t;clearInterval(timer)}
+    el.textContent=n;
+  },28);
 });
 
 /* ===== LANG ===== */
-const btns = document.querySelectorAll(".langs span");
-const els = document.querySelectorAll("[data-es]");
-function setLang(l){
-  btns.forEach(b=>b.classList.toggle("active",b.dataset.lang===l));
-  els.forEach(e=>e.textContent=e.dataset[l]);
-}
-btns.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+const btns=document.querySelectorAll(".langs span");
+const els=document.querySelectorAll("[data-es]");
+btns.forEach(b=>b.onclick=()=>{
+  btns.forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  els.forEach(e=>e.textContent=e.dataset[b.dataset.lang]);
+});
 </script>
 
 </body>
