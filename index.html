@@ -7,15 +7,8 @@
 
 <style>
 /* ===== RESET ===== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html, body{
-  touch-action: manipulation;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{touch-action:manipulation}
 
 /* ===== BODY ===== */
 body{
@@ -24,250 +17,113 @@ body{
     radial-gradient(900px 500px at 50% 10%, rgba(0,120,255,.25), transparent 60%),
     radial-gradient(800px 600px at 20% 85%, rgba(0,255,150,.22), transparent 65%),
     #050505;
-  color:#fff;
-  overflow-x:hidden;
+  color:#fff;overflow-x:hidden;
 }
 
 /* ===== TOP BAR ===== */
 .topbar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 22px;
-  background:rgba(5,5,5,.55);
-  backdrop-filter:blur(14px);
-  z-index:1000;
+  position:fixed;top:0;left:0;width:100%;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;background:rgba(5,5,5,.55);
+  backdrop-filter:blur(14px);z-index:1000;
 }
-
-.nav-left a,
-.nav-right span{
-  color:#fff;
-  text-decoration:none;
-  margin-right:18px;
-  font-weight:700;
-  opacity:.85;
+.nav-left a,.nav-right span{
+  color:#fff;text-decoration:none;margin-right:18px;
+  font-weight:700;opacity:.85;
 }
-
-.nav-left a:hover,
-.nav-right span:hover{
-  opacity:1;
-}
-
-.nav-right span{
-  cursor:pointer;
-}
-
-.nav-right .active{
-  opacity:1;
-}
+.nav-left a:hover,.nav-right span:hover{opacity:1}
+.nav-right span{cursor:pointer}
+.nav-right .active{opacity:1}
 
 /* ===== HERO ===== */
-.hero{
-  min-height:100vh;
-  padding:140px 7% 100px;
-  position:relative;
-}
-
+.hero{min-height:100vh;padding:140px 7% 100px;position:relative}
 .hero h1{
-  font-size:clamp(42px,7vw,82px);
-  font-weight:900;
-  line-height:1.05;
-  letter-spacing:-1px;
-  text-shadow:0 20px 60px rgba(0,0,0,.6);
+  font-size:clamp(42px,7vw,82px);font-weight:900;line-height:1.05;
+  letter-spacing:-1px;text-shadow:0 20px 60px rgba(0,0,0,.6)
 }
-
-.hero h1 span{
-  color:#aaa;
-}
-
-.hero p{
-  margin-top:22px;
-  max-width:520px;
-  font-size:18px;
-  opacity:.9;
-}
+.hero h1 span{color:#aaa}
+.hero p{margin-top:22px;max-width:520px;font-size:18px;opacity:.9}
 
 /* ===== CTA ===== */
 .hero .cta{
-  margin-top:42px;
-  display:flex;
-  gap:32px; /* más separación a la derecha */
-  flex-wrap:wrap;
+  margin-top:42px;display:flex;gap:32px;flex-wrap:wrap;
 }
-
 .hero .cta a{
-  display:inline-flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:18px 36px;
-  border-radius:18px;
-  font-weight:900;
-  text-decoration:none;
-  transition:.35s ease;
-  position:relative;
-  text-align:center;
+  display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:18px 36px;border-radius:18px;font-weight:900;text-decoration:none;
+  transition:.35s ease;position:relative;text-align:center;
 }
 
-/* ===== VER PLANES ===== */
-.hero .cta a:first-child{
-  background:rgba(255,255,255,.92);
-  color:#000;
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.45),
-    0 0 0 rgba(255,255,255,0);
+/* ===== PREMIUM GLASS BUTTON ===== */
+.glass-btn{
+  background:rgba(255,255,255,.14);color:#fff;
+  border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(18px);
+  box-shadow:0 14px 34px rgba(0,0,0,.65),0 18px 40px rgba(255,255,255,.18);
 }
-
-.hero .cta a:first-child:hover{
-  transform:scale(1.05);
-  box-shadow:
-    0 18px 50px rgba(0,0,0,.65),
-    0 0 28px rgba(255,255,255,.45);
+.glass-btn::after{
+  content:"";position:absolute;inset:-2px;border-radius:20px;
+  background:radial-gradient(140px 70px at 50% 120%, rgba(255,255,255,.35), transparent 70%);
+  opacity:.65;pointer-events:none;
 }
-
-/* ===== OPCIONES (NEXT LEVEL) ===== */
-.level-btn{
-  background:rgba(255,255,255,.14);
-  color:#fff;
-  border:1px solid rgba(255,255,255,.28);
-  backdrop-filter:blur(18px);
-  box-shadow:
-    0 10px 32px rgba(0,0,0,.55),
-    inset 0 0 0 rgba(255,255,255,0);
+.glass-btn:hover{
+  transform:scale(1.05);background:rgba(255,255,255,.22);
+  box-shadow:0 20px 60px rgba(0,0,0,.75),0 0 40px rgba(255,255,255,.35);
 }
+.glass-btn .main{font-size:18px;letter-spacing:.5px}
+.glass-btn .sub{margin-top:4px;font-size:11px;font-weight:700;letter-spacing:1.5px;opacity:.7}
 
-.level-btn::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:20px;
-  background:radial-gradient(120px 60px at 50% 120%, rgba(255,255,255,.35), transparent 70%);
-  opacity:.65;
-  pointer-events:none;
-}
-
-.level-btn:hover{
-  transform:scale(1.05);
-  background:rgba(255,255,255,.22);
-  box-shadow:
-    0 18px 55px rgba(0,0,0,.75),
-    0 0 34px rgba(255,255,255,.35);
-}
-
-.level-btn .main{
-  font-size:18px;
-  letter-spacing:.5px;
-}
-
-.level-btn .sub{
-  margin-top:4px;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:1.5px;
-  opacity:.7;
+/* ===== OPTIONS PULSE ===== */
+.pulse-soft{animation:pulseSoft 2.8s ease-in-out infinite}
+@keyframes pulseSoft{
+  0%,100%{box-shadow:0 14px 34px rgba(0,0,0,.65),0 0 0 rgba(255,255,255,0)}
+  50%{box-shadow:0 18px 48px rgba(0,0,0,.75),0 0 28px rgba(255,255,255,.25)}
 }
 
 /* ===== LAPTOP ===== */
-.laptop{
-  margin:90px auto 0;
-  max-width:900px;
-  animation:float 7s ease-in-out infinite;
-}
-
-.laptop img{
-  width:100%;
-  display:block;
-  filter:drop-shadow(0 40px 80px rgba(0,0,0,.7));
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-14px)}
-}
+.laptop{margin:90px auto 0;max-width:900px;animation:float 7s ease-in-out infinite}
+.laptop img{width:100%;display:block;filter:drop-shadow(0 40px 80px rgba(0,0,0,.7))}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 
 /* ===== SISTEMA Z ===== */
-.system-z{
-  padding:120px 7% 80px;
-  text-align:center;
-}
-
+.system-z{padding:120px 7% 80px;text-align:center}
 .system-z h2{
-  font-size:clamp(34px,6vw,64px);
-  font-weight:900;
-  letter-spacing:-.5px;
-  margin-bottom:20px;
+  font-size:clamp(34px,6vw,64px);font-weight:900;letter-spacing:-.5px;margin-bottom:20px
 }
+.system-z p{font-size:18px;opacity:.9}
 
-.system-z p{
-  font-size:18px;
-  opacity:.9;
-}
-
-/* Latido */
-.pulse{
-  animation:pulse 2.5s infinite;
-}
-
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.04)}
-  100%{transform:scale(1)}
-}
+/* ===== PULSE ===== */
+.pulse{animation:pulse 2.5s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
 
 /* ===== 15 OFF ===== */
 .offer{
-  max-width:520px;
-  margin:60px auto 0;
-  padding:36px;
-  border-radius:26px;
-  background:rgba(20,40,30,.6);
-  border:1px solid rgba(255,255,255,.15);
-  text-align:center;
-  backdrop-filter:blur(16px);
+  max-width:520px;margin:60px auto 0;padding:36px;border-radius:26px;
+  background:rgba(20,40,30,.6);border:1px solid rgba(255,255,255,.15);
+  text-align:center;backdrop-filter:blur(16px);position:relative
 }
-
-.offer h3{
-  font-size:36px;
-  font-weight:900;
+.offer .gift{
+  position:absolute;top:-18px;right:-18px;font-size:34px;cursor:pointer;
+  animation:gift 2.8s infinite;filter:drop-shadow(0 0 14px rgba(255,255,255,.45))
 }
+@keyframes gift{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(-8deg) scale(1.15)}}
+.offer h3{font-size:36px;font-weight:900}
+.offer p{margin-top:10px;opacity:.85}
 
-.offer p{
-  margin-top:10px;
-  opacity:.85;
+/* ===== CONFETTI ===== */
+.confetti{
+  position:fixed;left:50%;top:50%;pointer-events:none;
+  width:8px;height:8px;border-radius:50%;opacity:0;z-index:2000
 }
 
 /* ===== FOOTER ===== */
-footer{
-  margin-top:120px;
-  padding:30px 0;
-  text-align:center;
-  opacity:.6;
-  font-size:14px;
-}
+footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14px}
 
 /* ===== REVEAL ===== */
-.reveal{
-  opacity:0;
-  transform:translateY(30px);
-  transition:1s;
-}
-
-.reveal.show{
-  opacity:1;
-  transform:none;
-}
+.reveal{opacity:0;transform:translateY(30px);transition:1s}
+.reveal.show{opacity:1;transform:none}
 
 /* ===== MOBILE ===== */
-@media(max-width:768px){
-  .hero{
-    padding-top:120px;
-  }
-}
+@media(max-width:768px){.hero{padding-top:120px}}
 </style>
 </head>
 
@@ -300,10 +156,12 @@ footer{
 
   <!-- CTA -->
   <div class="cta reveal">
-    <a href="planes.html" data-es="Ver planes" data-en="View plans">Ver planes</a>
+    <a href="planes.html" class="glass-btn">
+      <span class="main" data-es="Ver planes" data-en="View plans">Ver planes</span>
+    </a>
 
-    <a href="level.html" class="level-btn">
-      <span class="main">Opciones</span>
+    <a href="level.html" class="glass-btn pulse-soft">
+      <span class="main" data-es="Opciones" data-en="Options">Opciones</span>
       <span class="sub">(Next Level)</span>
     </a>
   </div>
@@ -328,24 +186,20 @@ footer{
   </p>
 
   <div class="offer reveal">
+    <span class="gift" id="gift">🎁</span>
     <h3>15% OFF</h3>
     <p data-es="Solo por 30 días" data-en="Only for 30 days">Solo por 30 días</p>
   </div>
 </section>
 
-<footer>
-  ©️ 2025 ZenSite — Todos los derechos reservados
-</footer>
+<footer>©️ 2025 ZenSite — Todos los derechos reservados</footer>
 
 <script>
-/* ===== REVEAL ON SCROLL ===== */
+/* ===== REVEAL ===== */
 const revealEls=document.querySelectorAll('.reveal');
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-      obs.unobserve(e.target);
-    }
+    if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target);}
   });
 },{threshold:.2});
 revealEls.forEach(el=>obs.observe(el));
@@ -353,14 +207,31 @@ revealEls.forEach(el=>obs.observe(el));
 /* ===== LANG ===== */
 const langBtns=document.querySelectorAll('.lang');
 const texts=document.querySelectorAll('[data-es]');
-
 function setLang(l){
   langBtns.forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
   texts.forEach(t=>t.textContent=t.dataset[l]);
 }
-
 langBtns.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 setLang('es');
+
+/* ===== CONFETTI EFFECT ===== */
+const gift=document.getElementById('gift');
+gift.addEventListener('click',()=>{
+  for(let i=0;i<22;i++){
+    const c=document.createElement('div');
+    c.className='confetti';
+    c.style.background=`hsl(${Math.random()*360},90%,60%)`;
+    c.style.left='50%';c.style.top='50%';
+    document.body.appendChild(c);
+    const x=(Math.random()-0.5)*300;
+    const y=(Math.random()-1)*300;
+    c.animate([
+      {transform:'translate(0,0)',opacity:1},
+      {transform:`translate(${x}px,${y}px)`,opacity:0}
+    ],{duration:1200,easing:'cubic-bezier(.2,.8,.2,1)'});
+    setTimeout(()=>c.remove(),1200);
+  }
+});
 </script>
 
 </body>
