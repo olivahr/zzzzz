@@ -18,7 +18,7 @@ body{
   color:#fff;
 }
 
-/* TOP BAR */
+/* ===== TOP BAR ===== */
 .topbar{
   position:fixed;
   top:0;left:0;width:100%;
@@ -45,31 +45,32 @@ body{
 }
 .langs .active{opacity:1}
 
-/* WRAP */
+/* ===== WRAP ===== */
 .wrap{
-  padding:120px 7% 120px;
-  max-width:1100px;
+  padding:120px 7% 130px;
+  max-width:1150px;
   margin:0 auto;
 }
 
-/* TITLES */
+/* ===== TITLES ===== */
 h1{
-  font-size:clamp(40px,6vw,72px);
+  font-size:clamp(42px,6vw,76px);
   font-weight:900;
   letter-spacing:-1px;
 }
 h1 span{color:#aaa}
 
 .intro{
-  margin-top:24px;
-  max-width:680px;
+  margin-top:26px;
+  max-width:760px;
   font-size:18px;
   opacity:.9;
+  line-height:1.7;
 }
 
-/* LIST */
+/* ===== LIST ===== */
 .list{
-  margin-top:80px;
+  margin-top:90px;
   display:grid;
   gap:18px;
 }
@@ -78,7 +79,7 @@ h1 span{color:#aaa}
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.14);
   border-radius:22px;
-  padding:22px 26px;
+  padding:24px 28px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -86,7 +87,8 @@ h1 span{color:#aaa}
 }
 
 .item span{
-  opacity:.9;
+  opacity:.92;
+  line-height:1.5;
 }
 
 .price{
@@ -94,42 +96,64 @@ h1 span{color:#aaa}
   white-space:nowrap;
 }
 
-/* BLACK ZEN */
+/* ===== BLACK ZEN ===== */
 .blackzen{
-  margin-top:110px;
-  padding:46px;
-  border-radius:28px;
+  margin-top:120px;
+  padding:52px;
+  border-radius:30px;
   background:
-    linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.05));
-  border:1px solid rgba(255,255,255,.25);
+    linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.28);
   text-align:center;
-  box-shadow:0 40px 90px rgba(0,0,0,.6);
+  box-shadow:0 45px 120px rgba(0,0,0,.7);
 }
 
 .blackzen h2{
-  font-size:clamp(34px,5vw,58px);
+  font-size:clamp(36px,5vw,60px);
   font-weight:900;
 }
 
 .blackzen p{
-  margin-top:22px;
+  margin-top:24px;
   font-size:18px;
-  opacity:.9;
-  line-height:1.7;
+  opacity:.95;
+  line-height:1.75;
 }
 
-.blackzen .price-big{
-  margin-top:28px;
-  font-size:46px;
+.blackzen ul{
+  margin-top:30px;
+  list-style:none;
+  display:grid;
+  gap:14px;
+  font-size:17px;
+  opacity:.95;
+}
+
+.blackzen ul li{
+  position:relative;
+  padding-left:22px;
+}
+.blackzen ul li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  color:#7dffbf;
   font-weight:900;
 }
 
-/* FOOTER TEXT */
+.price-big{
+  margin-top:34px;
+  font-size:52px;
+  font-weight:900;
+}
+
+/* ===== NOTE ===== */
 .note{
-  margin-top:80px;
+  margin-top:90px;
   text-align:center;
   font-size:16px;
   opacity:.7;
+  line-height:1.6;
 }
 </style>
 </head>
@@ -148,50 +172,55 @@ h1 span{color:#aaa}
 
   <h1>
     <span>Mantenimiento</span><br>
-    y evolución real
+    profesional continuo
   </h1>
 
   <p class="intro">
-    Una web profesional no se deja igual para siempre.  
-    Para que funcione bien, se mantenga rápida y actualizada,
-    hay tareas que deben hacerse cuando el negocio crece o cambia.
+    Una web bien hecha no se abandona.  
+    Con el tiempo hay cambios, mejoras, ajustes y optimizaciones que
+    mantienen el sitio rápido, actualizado y alineado con el negocio.
   </p>
 
   <div class="list">
 
     <div class="item">
-      <span>Actualización de textos, precios o información</span>
-      <span class="price">$35</span>
-    </div>
-
-    <div class="item">
-      <span>Cambios de diseño o ajustes visuales</span>
-      <span class="price">$55</span>
-    </div>
-
-    <div class="item">
-      <span>Optimización de velocidad y rendimiento</span>
-      <span class="price">$45</span>
-    </div>
-
-    <div class="item">
-      <span>Agregar nuevas secciones o páginas</span>
-      <span class="price">$60</span>
-    </div>
-
-    <div class="item">
-      <span>Mejoras para móvil y compatibilidad</span>
+      <span>Actualización de textos, precios, horarios o información</span>
       <span class="price">$40</span>
     </div>
 
     <div class="item">
-      <span>Correcciones técnicas o ajustes internos</span>
-      <span class="price">$35</span>
+      <span>Ajustes de diseño, orden visual o estética general</span>
+      <span class="price">$60</span>
     </div>
 
     <div class="item">
-      <span>Integración de nuevas funciones o herramientas</span>
+      <span>Optimización de velocidad y rendimiento</span>
+      <span class="price">$50</span>
+    </div>
+
+    <div class="item">
+      <span>Agregar nuevas secciones o páginas completas</span>
       <span class="price">$70</span>
+    </div>
+
+    <div class="item">
+      <span>Mejoras móviles y compatibilidad en dispositivos</span>
+      <span class="price">$45</span>
+    </div>
+
+    <div class="item">
+      <span>Correcciones técnicas, errores o ajustes internos</span>
+      <span class="price">$40</span>
+    </div>
+
+    <div class="item">
+      <span>Integración de nuevas funciones, formularios o herramientas</span>
+      <span class="price">$80</span>
+    </div>
+
+    <div class="item">
+      <span>Optimización SEO básica y estructura interna</span>
+      <span class="price">$60</span>
     </div>
 
   </div>
@@ -200,24 +229,31 @@ h1 span{color:#aaa}
     <h2>Black Zen Membership</h2>
 
     <p>
-      Acceso completo a todos los cambios, mejoras y optimizaciones.<br><br>
-      Sin pagos mensuales.  
-      Sin límites.  
-      Sin preocuparte por cada ajuste.
+      Acceso completo y permanente a todos los cambios,
+      mejoras y optimizaciones del sitio.
     </p>
 
-    <div class="price-big">$220 · pago único</div>
+    <ul>
+      <li>Sin pagos mensuales</li>
+      <li>Sin límites de solicitudes</li>
+      <li>Prioridad total en cambios</li>
+      <li>Web siempre actualizada y optimizada</li>
+      <li>Soporte técnico continuo</li>
+      <li>Evolución del sitio conforme crece el negocio</li>
+    </ul>
+
+    <div class="price-big">$250 · pago único</div>
 
     <p>
-      Diseñado para negocios que quieren su web siempre actualizada,
-      rápida y funcionando como debe ser.
+      Diseñado para negocios que no quieren preocuparse
+      cada vez que necesiten cambiar o mejorar su web.
     </p>
   </div>
 
   <div class="note">
-    Todo es personalizado según el negocio.  
-    No usamos plantillas genéricas.  
-    Cada cambio se hace con criterio profesional.
+    Cada sitio se construye desde cero y se mantiene con criterio profesional.<br>
+    No son plantillas. No es mantenimiento genérico.<br>
+    Es un sistema pensado para durar y crecer contigo.
   </div>
 
 </div>
