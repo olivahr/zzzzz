@@ -2,12 +2,15 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>ZenSite | Premium Demos</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+/* ================= BASE ================= */
 :root{
   --bg:#050505;
   --glass:rgba(18,18,18,.88);
@@ -15,9 +18,11 @@
   --muted:rgba(255,255,255,.75);
   --muted2:rgba(255,255,255,.55);
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
-
+html,body{
+  overscroll-behavior:none;
+  touch-action:manipulation;
+}
 body{
   font-family:'Inter',system-ui;
   background:var(--bg);
@@ -28,7 +33,7 @@ body{
 /* ================= HEADER ================= */
 .header{
   position:fixed;
-  top:0; left:0; right:0;
+  top:0;left:0;right:0;
   padding:18px 24px;
   display:flex;
   justify-content:space-between;
@@ -36,10 +41,7 @@ body{
   background:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(0,0,0,.4),transparent);
   z-index:1000;
 }
-.brand{
-  font-weight:900;
-  letter-spacing:.5px;
-}
+.brand{font-weight:900}
 .langs span{
   margin-left:14px;
   cursor:pointer;
@@ -50,13 +52,10 @@ body{
 .langs span.active{opacity:1}
 
 /* ================= HERO ================= */
-.hero{
-  padding:160px 8% 120px;
-}
+.hero{padding:160px 8% 120px}
 .hero h1{
   font-family:'Playfair Display',serif;
   font-size:clamp(44px,6vw,78px);
-  font-weight:800;
 }
 .hero p{
   margin-top:22px;
@@ -73,12 +72,10 @@ body{
   overflow:hidden;
   border:1px solid var(--line);
   background:#000;
-  box-shadow:0 30px 90px rgba(0,0,0,.7);
 }
 .track{
   display:flex;
   transition:transform .9s cubic-bezier(.2,.9,.2,1);
-  will-change:transform;
 }
 .slide{
   min-width:100%;
@@ -108,7 +105,6 @@ body{
   border-radius:26px;
   padding:48px 18px;
   text-align:center;
-  backdrop-filter:blur(14px);
 }
 .stat strong{
   font-family:'Playfair Display',serif;
@@ -117,87 +113,44 @@ body{
 .stat span{
   display:block;
   margin-top:8px;
-  font-weight:700;
   color:var(--muted2);
 }
 
-/* ================= DEMO ZONE (ESPACIO NEGRO) ================= */
+/* ================= DEMO ZONE ================= */
 .demo-zone{
-  height:420px;            /* espacio negro grande */
+  height:420px;
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding:40px 0;
+  align-items:center;
 }
-
 .demo-field{
   position:relative;
-  width:min(520px, 92vw);
+  width:520px;
   height:360px;
-  /* importante: NO dibuja nada, es "invisible" */
 }
-
-/* ===== BOTONES FIJOS (POSICIONES VERDES) ===== */
 .demo-btn{
   position:absolute;
+  transform:translate(-50%,-50%);
   padding:18px 44px;
   border-radius:999px;
   background:rgba(255,255,255,.12);
   border:1px solid rgba(255,255,255,.28);
   backdrop-filter:blur(24px);
-  color:#fff;
   font-weight:850;
-  letter-spacing:.3px;
   text-decoration:none;
-  box-shadow:
-    0 0 0 rgba(255,255,255,0),
-    0 18px 48px rgba(0,0,0,.6);
-  transform:translate(-50%,-50%);
-  transition:transform .35s ease, box-shadow .35s ease, background .35s ease, filter .35s ease;
+  color:#fff;
   animation:heartBeat 2.8s ease-in-out infinite;
-  will-change:transform, filter;
 }
-
-/* latido tipo corazón */
 @keyframes heartBeat{
-  0%   { transform:translate(-50%,-50%) scale(1);   filter:brightness(1); }
-  45%  { transform:translate(-50%,-50%) scale(1.07); filter:brightness(1.08); }
-  65%  { transform:translate(-50%,-50%) scale(1.02); filter:brightness(1.02); }
-  100% { transform:translate(-50%,-50%) scale(1);   filter:brightness(1); }
+  0%,100%{transform:translate(-50%,-50%) scale(1)}
+  50%{transform:translate(-50%,-50%) scale(1.08)}
 }
+.btn-home{left:22%;top:26%}
+.btn-store{left:74%;top:42%}
+.btn-store2{left:30%;top:64%}
+.btn-web{left:76%;top:78%}
 
-/* glow suave premium (sin exagerar) */
-.demo-btn::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:999px;
-  background:radial-gradient(120px 70px at 50% 50%, rgba(255,255,255,.25), transparent 70%);
-  opacity:.55;
-  pointer-events:none;
-  transition:opacity .35s ease;
-}
-
-.demo-btn:hover{
-  background:#fff;
-  color:#000;
-  box-shadow:
-    0 0 28px rgba(255,255,255,.45),
-    0 22px 60px rgba(0,0,0,.8);
-  transform:translate(-50%,-50%) scale(1.12);
-}
-.demo-btn:hover::after{opacity:.75}
-
-/* ===== POSICIONES (AJUSTADAS A TU FOTO) =====
-   Estas coordenadas están pensadas para que queden como tus marcas verdes.
-   Si quieres 1:1 exacto, dime “sube 5% el de Store2” etc y lo dejo clavado.
-*/
-.btn-home  { left:22%; top:26%; animation-delay:0s;   }
-.btn-store { left:74%; top:42%; animation-delay:.25s; }
-.btn-store2{ left:30%; top:64%; animation-delay:.5s;  }
-.btn-web   { left:76%; top:78%; animation-delay:.75s; }
-
-/* ================= FINAL TEXT ================= */
+/* ================= FINAL ================= */
 .final{
   max-width:1000px;
   margin:140px auto 160px;
@@ -223,19 +176,6 @@ footer{
   opacity:.55;
   border-top:1px solid var(--line);
 }
-
-/* ================= MOBILE ================= */
-@media(max-width:640px){
-  .slide img{height:420px}
-  .demo-zone{height:380px}
-  .demo-field{height:320px}
-  .demo-btn{padding:16px 38px}
-  /* mobile fine-tune */
-  .btn-home  { left:24%; top:24%; }
-  .btn-store { left:76%; top:40%; }
-  .btn-store2{ left:30%; top:66%; }
-  .btn-web   { left:78%; top:80%; }
-}
 </style>
 </head>
 
@@ -244,147 +184,99 @@ footer{
 <header class="header">
   <div class="brand">ZenSite</div>
   <div class="langs">
-    <span class="active">ES</span>
-    <span>EN</span>
+    <span class="active" data-lang="es">ES</span>
+    <span data-lang="en">EN</span>
   </div>
 </header>
 
 <section class="hero">
-  <h1>Demostraciones premium</h1>
-  <p>
-    Ejemplos reales de sitios diseñados para negocios que buscan presencia,
-    confianza y conversión a nivel profesional.
+  <h1 data-es="Demostraciones premium" data-en="Premium demos">Demostraciones premium</h1>
+  <p data-es="Ejemplos reales de sitios diseñados para negocios que buscan presencia, confianza y conversión."
+     data-en="Real examples of websites built for businesses seeking presence, trust and conversion.">
+    Ejemplos reales de sitios diseñados para negocios que buscan presencia, confianza y conversión.
   </p>
 </section>
 
 <div class="slider">
   <div class="track" id="track">
-    <div class="slide"><img src="demo1.jpg" alt="Demo 1"></div>
-    <div class="slide"><img src="demo2.jpg" alt="Demo 2"></div>
-    <div class="slide"><img src="demo3.jpg" alt="Demo 3"></div>
-    <div class="slide"><img src="demo4.jpg" alt="Demo 4"></div>
+    <div class="slide"><img src="demo1.jpg"></div>
+    <div class="slide"><img src="demo2.jpg"></div>
+    <div class="slide"><img src="demo3.jpg"></div>
+    <div class="slide"><img src="demo4.jpg"></div>
   </div>
 </div>
 
 <div class="stats">
-  <div class="stat"><strong data-count="18">0</strong><span>Proyectos entregados</span></div>
-  <div class="stat"><strong data-count="3">0</strong><span>Países</span></div>
-  <div class="stat"><strong data-count="100">0</strong><span>Satisfacción</span></div>
+  <div class="stat"><strong data-count="18">0</strong><span data-es="Proyectos entregados" data-en="Projects delivered">Proyectos entregados</span></div>
+  <div class="stat"><strong data-count="3">0</strong><span data-es="Países" data-en="Countries">Países</span></div>
+  <div class="stat"><strong data-count="100">0</strong><span data-es="Satisfacción" data-en="Satisfaction">Satisfacción</span></div>
 </div>
 
-<!-- ✅ ESPACIO NEGRO: BOTONES FIJOS LATIENDO -->
 <div class="demo-zone">
-  <div class="demo-field" aria-label="Demos premium">
-    <a class="demo-btn btn-home"   data-url="https://olivahr.github.io/demohomepage-/"  href="https://olivahr.github.io/demohomepage-/"  target="_blank" rel="noopener">Home Page</a>
-    <a class="demo-btn btn-store"  data-url="https://olivahr.github.io/pruebamirandaflow/" href="https://olivahr.github.io/pruebamirandaflow/" target="_blank" rel="noopener">Store</a>
-    <a class="demo-btn btn-store2" data-url="https://olivahr.github.io/demostore/"     href="https://olivahr.github.io/demostore/"     target="_blank" rel="noopener">Store 2</a>
-    <a class="demo-btn btn-web"    data-url="https://olivahr.github.io/demobarberweb/" href="https://olivahr.github.io/demobarberweb/" target="_blank" rel="noopener">Web</a>
+  <div class="demo-field">
+    <a class="demo-btn btn-home" href="https://olivahr.github.io/demohomepage-/" target="_blank">Home Page</a>
+    <a class="demo-btn btn-store" href="https://olivahr.github.io/pruebamirandaflow/" target="_blank">Store</a>
+    <a class="demo-btn btn-store2" href="https://olivahr.github.io/demostore/" target="_blank">Store 2</a>
+    <a class="demo-btn btn-web" href="https://olivahr.github.io/demobarberweb/" target="_blank">Web</a>
   </div>
 </div>
 
 <section class="final">
-  <h2>Esto es solo una demostración</h2>
-  <p>
-    Cada proyecto se desarrolla desde cero, completamente personalizado.<br><br>
-    Todo se instala, conecta y optimiza como debe ser: dominio, hosting,
-    formularios, pagos, automatizaciones y escalabilidad.<br><br>
-    No son plantillas. Son sistemas diseñados para representar la marca
-    al más alto nivel y generar resultados reales.
+  <h2 data-es="Esto es solo una demostración" data-en="This is only a demonstration">
+    Esto es solo una demostración
+  </h2>
+  <p data-es="Cada proyecto se desarrolla desde cero, personalizado, instalado y conectado correctamente."
+     data-en="Every project is built from scratch, customized, installed and properly connected.">
+    Cada proyecto se desarrolla desde cero, personalizado, instalado y conectado correctamente.
   </p>
 </section>
 
 <footer>© 2025 ZenSite · Desarrollo web premium</footer>
 
 <script>
-/* ================= SLIDER ================= */
+/* ===== SLIDER ===== */
 const track=document.getElementById("track");
 let i=0;
-setInterval(()=>{
-  i=(i+1)%track.children.length;
-  track.style.transform=`translateX(-${i*100}%)`;
-},5200);
+setInterval(()=>{i=(i+1)%track.children.length;track.style.transform=`translateX(-${i*100}%)`;},5200);
 
-/* ================= COUNTERS (al entrar) ================= */
+/* ===== COUNTERS ===== */
 const counters=document.querySelectorAll("[data-count]");
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      const el=entry.target;
-      const target=+el.dataset.count;
-      let n=0;
-      const inc=Math.max(1,Math.floor(target/40));
-      const t=setInterval(()=>{
-        n+=inc;
-        if(n>=target){n=target;clearInterval(t)}
-        el.textContent=n;
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      let n=0, t=+e.target.dataset.count;
+      const inc=Math.max(1,Math.floor(t/40));
+      const timer=setInterval(()=>{
+        n+=inc;if(n>=t){n=t;clearInterval(timer)}
+        e.target.textContent=n;
       },28);
-      observer.unobserve(el);
+      io.unobserve(e.target);
     }
   });
 },{threshold:.5});
-counters.forEach(c=>observer.observe(c));
+counters.forEach(c=>io.observe(c));
 
-/* ================= SONIDO SUAVE (CLICK) =================
-   - iOS requiere gesto del usuario (click) para sonar.
-   - Sonido premium: blip corto y bajito.
-*/
-let audioCtx=null;
-
-function ensureAudio(){
-  if(audioCtx) return audioCtx;
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  return audioCtx;
-}
-
-function softClick(){
-  try{
-    const ctx = ensureAudio();
-    if(ctx.state === "suspended") ctx.resume();
-
-    const now = ctx.currentTime;
-
-    const o1 = ctx.createOscillator();
-    const o2 = ctx.createOscillator();
-    const g  = ctx.createGain();
-
-    o1.type = "sine";
-    o2.type = "triangle";
-
-    o1.frequency.setValueAtTime(520, now);
-    o1.frequency.exponentialRampToValueAtTime(390, now + 0.08);
-
-    o2.frequency.setValueAtTime(260, now);
-    o2.frequency.exponentialRampToValueAtTime(210, now + 0.08);
-
-    g.gain.setValueAtTime(0.0001, now);
-    g.gain.exponentialRampToValueAtTime(0.06, now + 0.015);  // volumen sutil
-    g.gain.exponentialRampToValueAtTime(0.0001, now + 0.13);
-
-    o1.connect(g);
-    o2.connect(g);
-    g.connect(ctx.destination);
-
-    o1.start(now);
-    o2.start(now);
-    o1.stop(now + 0.14);
-    o2.stop(now + 0.14);
-  }catch(e){}
-}
-
-/* Click handler: sonar y luego abrir */
-document.querySelectorAll(".demo-btn").forEach(btn=>{
-  btn.addEventListener("click",(e)=>{
-    // sonar primero
-    softClick();
-
-    // dejar que abra normal; pero para asegurar sonido en algunos navegadores:
-    // abrimos nosotros tras 60ms
-    e.preventDefault();
-    const url = btn.dataset.url || btn.href;
-    setTimeout(()=>window.open(url, "_blank", "noopener"), 60);
-  }, {passive:false});
+/* ===== LANG SWITCH ===== */
+const langBtns=document.querySelectorAll(".langs span");
+const transEls=document.querySelectorAll("[data-es]");
+langBtns.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    langBtns.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const l=btn.dataset.lang;
+    transEls.forEach(el=>el.textContent=el.dataset[l]);
+  });
 });
+
+/* ===== BLOCK DOUBLE TAP ZOOM ===== */
+let lastTouchEnd=0;
+document.addEventListener("touchend",e=>{
+  const now=Date.now();
+  if(now-lastTouchEnd<=300){e.preventDefault()}
+  lastTouchEnd=now;
+},{passive:false});
 </script>
 
 </body>
 </html>
+
