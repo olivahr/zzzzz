@@ -22,6 +22,7 @@ body{
   font-family:'Inter',system-ui;
   background:var(--bg);
   color:#fff;
+  overflow-x:hidden;
 }
 
 /* ================= HEADER ================= */
@@ -94,7 +95,7 @@ body{
 }
 .stat span{color:var(--muted2)}
 
-/* ================= ORBIT BLACK ZONE ================= */
+/* ================= ORBIT SPACE ================= */
 .orbit-zone{
   margin:140px auto;
   width:100%;
@@ -102,50 +103,29 @@ body{
   justify-content:center;
 }
 
-.orbit-box{
-  width:360px;
-  height:360px;
-  border-radius:50%;
-  background:#000;
+.orbit-wrapper{
   position:relative;
-  box-shadow:
-    inset 0 0 80px rgba(255,255,255,.05),
-    0 0 120px rgba(0,0,0,.9);
-  overflow:hidden;
+  width:320px;
+  height:320px;
 }
 
-/* glow girando */
-.orbit-box::before{
-  content:"";
-  position:absolute;
-  inset:-40%;
-  background:
-    radial-gradient(circle at 50% 50%,
-    rgba(255,255,255,.18),
-    transparent 60%);
-  animation:spinGlow 18s linear infinite;
-}
-
-@keyframes spinGlow{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
-}
-
-/* ================= ORBIT SYSTEM ================= */
+/* órbita invisible */
 .orbit{
   position:absolute;
   inset:0;
-  animation:spin 28s linear infinite;
+  animation:orbitSpin 28s linear infinite;
 }
 
-@keyframes spin{
+@keyframes orbitSpin{
   from{transform:rotate(0deg)}
   to{transform:rotate(360deg)}
 }
 
+/* ================= BUTTONS ================= */
 .orbit-btn{
   position:absolute;
-  top:50%; left:50%;
+  top:50%;
+  left:50%;
   transform-origin:-130px center;
   padding:16px 42px;
   border-radius:999px;
@@ -155,19 +135,12 @@ body{
   color:#fff;
   font-weight:800;
   text-decoration:none;
-  animation:heartbeat 4s ease-in-out infinite;
+  letter-spacing:.4px;
+  animation:heartbeat 4.5s ease-in-out infinite;
   transition:.35s ease;
-}
-
-@keyframes heartbeat{
-  0%,100%{scale:1}
-  50%{scale:1.08}
-}
-
-.orbit-btn:hover{
-  background:#fff;
-  color:#000;
-  box-shadow:0 0 30px rgba(255,255,255,.6);
+  box-shadow:
+    0 0 0 rgba(255,255,255,0),
+    0 20px 50px rgba(0,0,0,.65);
 }
 
 /* posiciones */
@@ -175,6 +148,19 @@ body{
 .b2{transform:rotate(90deg) translateX(130px)}
 .b3{transform:rotate(180deg) translateX(130px)}
 .b4{transform:rotate(270deg) translateX(130px)}
+
+@keyframes heartbeat{
+  0%,100%{scale:1}
+  50%{scale:1.07}
+}
+
+.orbit-btn:hover{
+  background:#fff;
+  color:#000;
+  box-shadow:
+    0 0 28px rgba(255,255,255,.55),
+    0 24px 60px rgba(0,0,0,.8);
+}
 
 /* ================= FINAL ================= */
 .final{
@@ -235,9 +221,9 @@ footer{
   <div class="stat"><strong data-count="100">0</strong><span>Satisfacción</span></div>
 </div>
 
-<!-- ORBIT BLACK SPACE -->
+<!-- SOLO BOTONES ORBITANDO -->
 <div class="orbit-zone">
-  <div class="orbit-box">
+  <div class="orbit-wrapper">
     <div class="orbit">
       <a class="orbit-btn b1" href="https://olivahr.github.io/demohomepage-/" target="_blank">Home Page</a>
       <a class="orbit-btn b2" href="https://olivahr.github.io/pruebamirandaflow/" target="_blank">Store</a>
@@ -253,7 +239,7 @@ footer{
     Cada proyecto se construye desde cero, completamente personalizado.<br><br>
     Todo se instala y conecta como debe ser: dominio, hosting, formularios,
     pagos, automatizaciones y escalabilidad.<br><br>
-    No usamos plantillas. Creamos sistemas reales que venden.
+    No son plantillas. Son sistemas reales que venden.
   </p>
 </section>
 
