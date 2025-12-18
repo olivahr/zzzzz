@@ -3,211 +3,297 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>ZenSite · Level Up</title>
+<title>ZenSite | Level Up (Black Zen)</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Tipografía igual a tu index -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+/* ===== RESET ===== */
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%; touch-action: manipulation; -webkit-text-size-adjust:100%;}
+html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
+
+/* ===== THEME ===== */
 :root{
   --bg:#050505;
-  --glass:rgba(255,255,255,.06);
-  --line:rgba(255,255,255,.14);
-  --muted:rgba(255,255,255,.78);
-  --muted2:rgba(255,255,255,.55);
+  --line:rgba(255,255,255,.12);
+  --glass:rgba(6,6,6,.58);
+  --glass2:rgba(12,12,12,.72);
+  --muted:rgba(255,255,255,.82);
+  --muted2:rgba(255,255,255,.58);
 
-  --pro:#6fb0ff;
-  --grow:#b98cff;
-  --elite:#ffd36e;
+  --a:rgba(0,120,255,.28);
+  --b:rgba(0,255,150,.24);
 
-  --r:22px;
+  --r:20px;
+  --r2:26px;
+
+  --good:rgba(95,255,190,.95);
+  --warn:rgba(255,210,90,.95);
+
+  --bz:#e8d9a7;
+  --bz2:#ffd37a;
 }
 
+/* ===== BODY ===== */
 body{
   font-family:'Montserrat',system-ui,-apple-system,sans-serif;
   background:
-    radial-gradient(900px 520px at 50% 10%, rgba(0,120,255,.20), transparent 60%),
-    radial-gradient(800px 600px at 20% 85%, rgba(0,255,150,.18), transparent 65%),
-    #050505;
+    radial-gradient(900px 500px at 50% 10%, var(--a), transparent 60%),
+    radial-gradient(800px 600px at 20% 85%, var(--b), transparent 65%),
+    radial-gradient(900px 520px at 80% 70%, rgba(255,210,90,.10), transparent 70%),
+    var(--bg);
   color:#fff;
   overflow-x:hidden;
 }
 
-/* VIP ambient */
-body.elite{
-  background:
-    radial-gradient(1100px 600px at 50% 8%, rgba(255,211,110,.18), transparent 60%),
-    radial-gradient(860px 560px at 15% 88%, rgba(185,140,255,.14), transparent 65%),
-    radial-gradient(920px 540px at 85% 90%, rgba(111,176,255,.12), transparent 65%),
-    #050505;
-}
-
-/* ===== TOP BAR ===== */
+/* ===== TOP BAR (igual estilo) ===== */
 .topbar{
-  position:fixed; top:0; left:0; width:100%;
+  position:fixed;
+  top:0; left:0;
+  width:100%;
   height:64px;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
   background:rgba(5,5,5,.55);
   backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(255,255,255,.08);
   z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
-.left{
-  display:flex; gap:14px; align-items:center;
+
+.nav-left a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+  opacity:.9;
+  letter-spacing:.2px;
 }
-.back{
-  color:#fff; text-decoration:none;
-  font-weight:900; opacity:.9;
+.nav-left a:hover{opacity:1}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
-.brand{
-  font-weight:900;
-  letter-spacing:.6px;
-  opacity:.95;
-}
-.right{
-  display:flex; align-items:center; gap:12px;
-}
-.lang{
+.nav-right .lang{
   cursor:pointer;
-  font-weight:900;
-  opacity:.45;
+  font-weight:800;
+  opacity:.5;
   user-select:none;
 }
-.lang.active{opacity:1}
+.nav-right .lang.active{opacity:1}
+
 .pill{
+  display:flex;
+  gap:8px;
+  align-items:center;
   padding:10px 12px;
   border-radius:999px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.14);
-  font-weight:900;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
   font-size:12px;
-  letter-spacing:.4px;
+  font-weight:800;
+  opacity:.92;
 }
 .pill b{font-weight:900}
 
-/* ===== LAYOUT ===== */
+/* ===== WRAP ===== */
 .wrap{
-  padding:110px 7% 90px;
-  max-width:1100px;
+  padding:120px 7% 110px;
+  max-width:1200px;
   margin:0 auto;
 }
 
 /* ===== HERO ===== */
 .hero{
   display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap:18px;
-  align-items:stretch;
+  grid-template-columns:1.1fr .9fr;
+  gap:26px;
+  align-items:start;
 }
 @media(max-width:980px){
   .hero{grid-template-columns:1fr}
 }
-.hTitle{
-  padding:26px;
-  border-radius:var(--r);
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 30px 90px rgba(0,0,0,.55);
-  position:relative;
-  overflow:hidden;
-}
-.hTitle::after{
-  content:"";
-  position:absolute; inset:-2px;
-  background:radial-gradient(520px 220px at 20% 0%, rgba(255,255,255,.12), transparent 60%);
-  opacity:.7; pointer-events:none;
-}
-.hTitle h1{
-  font-size:clamp(34px,5.2vw,64px);
+
+.hero h1{
+  font-size:clamp(34px,6vw,66px);
   font-weight:900;
-  letter-spacing:-.7px;
-  line-height:1.02;
+  letter-spacing:-1px;
+  line-height:1.04;
   text-shadow:0 20px 60px rgba(0,0,0,.55);
 }
-.hTitle p{
-  margin-top:14px;
+.hero h1 span{color:#aaa}
+
+.hero p{
+  margin-top:16px;
   max-width:720px;
-  color:var(--muted);
-  line-height:1.55;
-  font-size:16px;
+  font-size:18px;
+  opacity:.92;
 }
-.hMeta{
-  margin-top:18px;
+
+.hero .mini{
+  margin-top:22px;
   display:flex;
   flex-wrap:wrap;
   gap:10px;
 }
-.chip{
+.tag{
   padding:10px 12px;
   border-radius:999px;
-  background:rgba(0,0,0,.22);
   border:1px solid rgba(255,255,255,.14);
-  font-weight:900;
+  background:rgba(0,0,0,.28);
+  backdrop-filter:blur(14px);
   font-size:12px;
-  opacity:.95;
+  font-weight:800;
+  opacity:.92;
 }
-.chip i{opacity:.7; font-style:normal}
 
-/* ===== XP PANEL ===== */
-.xpCard{
-  border-radius:var(--r);
-  background:rgba(255,255,255,.06);
+/* ===== CARD BASE ===== */
+.card{
+  border-radius:var(--r2);
+  background:rgba(0,0,0,.28);
   border:1px solid rgba(255,255,255,.12);
-  padding:22px;
-  position:relative;
+  backdrop-filter:blur(16px);
+  box-shadow:0 22px 80px rgba(0,0,0,.55);
   overflow:hidden;
-  box-shadow:0 30px 90px rgba(0,0,0,.55);
-  transform:translateY(14px);
-  opacity:0;
-  animation:in .7s ease forwards;
+  position:relative;
 }
-@keyframes in{to{transform:none; opacity:1}}
-.xpTop{
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  pointer-events:none;
+  background:
+    radial-gradient(520px 260px at 20% 0%, rgba(255,255,255,.12), transparent 60%),
+    radial-gradient(520px 260px at 80% 100%, rgba(0,255,150,.10), transparent 60%);
+  opacity:.6;
+}
+
+.card-inner{position:relative; padding:22px}
+
+/* ===== BZ OFFER ===== */
+.bz{
+  border:1px solid rgba(255,211,122,.24);
+  background:
+    radial-gradient(520px 260px at 20% 0%, rgba(255,211,122,.16), transparent 60%),
+    rgba(0,0,0,.28);
+}
+.bz .title{
   display:flex;
   justify-content:space-between;
-  align-items:flex-start;
   gap:12px;
+  align-items:flex-start;
 }
-.rank{
-  font-weight:900;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  font-size:12px;
-  opacity:.95;
-}
-.rankBadge{
+.bz .badge{
   padding:10px 12px;
   border-radius:999px;
-  border:1px solid rgba(255,255,255,.16);
-  background:rgba(0,0,0,.25);
+  border:1px solid rgba(255,211,122,.32);
+  background:rgba(255,211,122,.08);
   font-weight:900;
+  letter-spacing:.3px;
   font-size:12px;
-  opacity:.95;
+  white-space:nowrap;
 }
-.rankBadge.elite{
-  border-color:rgba(255,211,110,.30);
-  box-shadow:0 0 26px rgba(255,211,110,.20);
-}
-.bigXP{
-  margin-top:18px;
-  display:flex;
-  align-items:baseline;
-  gap:10px;
-}
-.bigXP strong{
-  font-size:56px;
+.bz h2{
+  font-size:22px;
   font-weight:900;
-  letter-spacing:-1px;
+  letter-spacing:-.3px;
 }
-.bigXP span{
-  opacity:.7;
-  font-weight:900;
+.bz p{
+  margin-top:10px;
+  font-size:14px;
+  opacity:.85;
+  line-height:1.65;
 }
-.progress{
+.priceRow{
   margin-top:16px;
-  height:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+.price{
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:-.6px;
+}
+.price small{
+  font-size:13px;
+  opacity:.75;
+  font-weight:800;
+  margin-left:8px;
+}
+.bzCtas{
+  margin-top:16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 16px;
+  border-radius:18px;
+  text-decoration:none;
+  font-weight:900;
+  transition:.22s ease;
+  user-select:none;
+  cursor:pointer;
+  border:none;
+}
+.btn:active{transform:scale(.985)}
+.btn.primary{
+  background:linear-gradient(90deg, rgba(255,255,255,1), rgba(255,211,122,.92));
+  color:#000;
+  box-shadow:0 18px 50px rgba(255,211,122,.18);
+}
+.btn.ghost{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;
+}
+.btn.primary:hover{transform:translateY(-1px)}
+.btn.ghost:hover{filter:brightness(1.12)}
+
+/* ===== GAME PANEL ===== */
+.panel{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.hud{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.hud .meter{
+  flex:1;
+  min-width:260px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(14px);
+}
+.hud .meterTop{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:12px;
+  opacity:.9;
+  font-weight:900;
+}
+.bar{
+  margin-top:10px;
+  height:12px;
   border-radius:999px;
   background:rgba(255,255,255,.12);
   border:1px solid rgba(255,255,255,.10);
@@ -217,291 +303,250 @@ body.elite{
   height:100%;
   width:0%;
   border-radius:999px;
-  background:linear-gradient(90deg,#fff,#cfcfcf,#fff);
-  transition:width .9s cubic-bezier(.2,.9,.2,1);
-  box-shadow:0 0 18px rgba(255,255,255,.18);
+  background:linear-gradient(90deg,#fff,#bdbdbd,#fff);
+  box-shadow:0 0 24px rgba(255,255,255,.18);
+  transition:width .75s cubic-bezier(.2,.9,.2,1);
 }
-body.elite .fill{
-  background:linear-gradient(90deg,#fff,var(--elite),#fff);
-  box-shadow:0 0 26px rgba(255,211,110,.28);
-}
-.nextLine{
-  margin-top:12px;
-  color:var(--muted2);
-  font-weight:800;
-  font-size:13px;
-  line-height:1.4;
-}
-.spark{
-  position:absolute;
-  inset:-1px;
-  background:radial-gradient(520px 220px at 70% 0%, rgba(255,255,255,.12), transparent 60%);
-  opacity:.6;
-  pointer-events:none;
-}
-.shake{animation:shake .35s ease}
-@keyframes shake{
-  0%,100%{transform:translateX(0)}
-  25%{transform:translateX(-3px)}
-  50%{transform:translateX(3px)}
-  75%{transform:translateX(-2px)}
+.fill.gold{
+  background:linear-gradient(90deg,#fff, rgba(255,211,122,1), #fff);
+  box-shadow:0 0 34px rgba(255,211,122,.25);
 }
 
-/* ===== SECTIONS ===== */
-.section{
-  margin-top:34px;
-}
-.h2{
-  font-size:14px;
-  letter-spacing:.26em;
-  text-transform:uppercase;
-  opacity:.9;
-  margin-bottom:14px;
-}
-
-/* ===== LEVEL GRID ===== */
-.levels{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:14px;
-}
-@media(max-width:980px){
-  .levels{grid-template-columns:1fr}
-}
-.level{
-  border-radius:24px;
-  padding:18px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.12);
-  position:relative;
-  overflow:hidden;
-  transition:transform .25s ease, border-color .25s ease, box-shadow .35s ease, filter .25s ease;
-}
-.level:hover{transform:translateY(-2px); border-color:rgba(255,255,255,.18)}
-.level::after{
-  content:"";
-  position:absolute; inset:-2px;
-  background:radial-gradient(520px 240px at 20% 0%, rgba(255,255,255,.12), transparent 60%);
-  opacity:.55; pointer-events:none;
-}
-.lTop{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:10px;
-}
-.lName{
+/* ===== LIST ===== */
+.sectionTitle{
+  margin-top:28px;
+  margin-bottom:12px;
   font-weight:900;
-  letter-spacing:.14em;
+  letter-spacing:.6px;
   text-transform:uppercase;
   font-size:12px;
-  opacity:.95;
-}
-.lRange{opacity:.65; font-weight:800; font-size:12px}
-.lTitle{
-  margin-top:12px;
-  font-size:22px;
-  font-weight:900;
-  letter-spacing:-.4px;
-}
-.lTitle small{
-  font-size:16px;
-  opacity:.65;
-  font-weight:900;
-}
-.level ul{
-  list-style:none;
-  margin-top:12px;
-  line-height:1.65;
-  opacity:.88;
-}
-.level li{margin-bottom:6px}
-.locked{
-  opacity:.45;
-  filter:saturate(.8);
-}
-.active{
-  outline:2px solid rgba(255,255,255,.45);
-  box-shadow:0 0 60px rgba(255,255,255,.10);
-}
-.level.pro.active{outline-color:rgba(111,176,255,.55); box-shadow:0 0 70px rgba(111,176,255,.12)}
-.level.grow.active{outline-color:rgba(185,140,255,.55); box-shadow:0 0 70px rgba(185,140,255,.12)}
-.level.elite.active{
-  outline-color:rgba(255,211,110,.70);
-  box-shadow:0 0 80px rgba(255,211,110,.16);
-}
-.crown{
-  position:absolute;
-  top:14px; left:14px;
-  font-size:22px;
-  opacity:.12;
-  transform:translateY(-6px);
-  transition:opacity .35s ease, transform .35s ease, filter .35s ease;
-}
-.level.elite.active .crown{
-  opacity:1;
-  transform:none;
-  filter:drop-shadow(0 0 18px rgba(255,211,110,.65));
-  animation:crownFloat 2.4s ease-in-out infinite;
-}
-@keyframes crownFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-4px)}
+  opacity:.85;
 }
 
-/* ===== MISSIONS ===== */
-.missions{
+.grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
+  grid-template-columns:repeat(12,1fr);
+  gap:16px;
 }
-@media(max-width:980px){ .missions{grid-template-columns:1fr} }
-.mCard{
-  border-radius:24px;
-  padding:18px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 30px 90px rgba(0,0,0,.45);
+.col-7{grid-column:span 7}
+.col-5{grid-column:span 5}
+.col-12{grid-column:span 12}
+@media(max-width:980px){
+  .col-7,.col-5{grid-column:span 12}
 }
-.mRow{
+
+.list{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  padding:14px 12px;
-  border-radius:18px;
-  background:rgba(0,0,0,.22);
-  border:1px solid rgba(255,255,255,.10);
-  margin-top:10px;
-  transition:transform .22s ease, border-color .22s ease, background .22s ease;
+  flex-direction:column;
+  gap:10px;
 }
-.mRow:hover{transform:translateY(-2px); border-color:rgba(255,255,255,.18); background:rgba(255,255,255,.06)}
-.mText strong{
+.item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.24);
+  transition:.2s ease;
+  position:relative;
+  overflow:hidden;
+}
+.item::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:radial-gradient(420px 220px at 20% 0%, rgba(255,255,255,.12), transparent 60%);
+  opacity:.45;
+  pointer-events:none;
+}
+.item:hover{
+  transform:translateY(-1px);
+  border-color:rgba(255,255,255,.20);
+  background:rgba(255,255,255,.06);
+}
+
+.left{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  min-width:0;
+}
+.ico{
+  width:40px; height:40px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  flex:0 0 auto;
+}
+.txt{
+  min-width:0;
+}
+.txt strong{
   display:block;
   font-weight:900;
-  letter-spacing:-.2px;
+  font-size:13px;
+  letter-spacing:.2px;
 }
-.mText small{
+.txt small{
   display:block;
-  opacity:.7;
   margin-top:4px;
-  font-weight:700;
+  font-size:12px;
+  opacity:.72;
+  line-height:1.45;
 }
-.btn{
-  border:none;
-  cursor:pointer;
-  padding:12px 14px;
+
+.right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+.cost{
+  font-weight:900;
+  font-size:12px;
+  opacity:.9;
+  white-space:nowrap;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+}
+.buy{
+  padding:10px 14px;
   border-radius:999px;
   background:#fff;
   color:#000;
   font-weight:900;
-  font-size:12px;
-  letter-spacing:.06em;
-  transition:transform .15s ease, filter .15s ease;
+  border:none;
+  cursor:pointer;
+  transition:.18s ease;
+  white-space:nowrap;
 }
-.btn:active{transform:scale(.98)}
-.btn[disabled]{opacity:.35; cursor:not-allowed}
+.buy:hover{transform:translateY(-1px)}
+.buy:active{transform:scale(.98)}
+.buy[disabled]{opacity:.45; cursor:not-allowed}
 
-/* ===== PORTAL ===== */
-.portal{
+.note{
+  margin-top:14px;
+  color:var(--muted2);
+  font-size:13px;
+  line-height:1.7;
+}
+
+/* ===== PORTALS ===== */
+.portals{
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:14px;
 }
-@media(max-width:980px){ .portal{grid-template-columns:1fr} }
-.portalCard{
-  border-radius:24px;
-  padding:18px;
-  background:rgba(255,255,255,.05);
+@media(max-width:980px){.portals{grid-template-columns:1fr}}
+.portal{
+  border-radius:22px;
   border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.22);
+  padding:18px;
   position:relative;
   overflow:hidden;
-  transition:transform .25s ease, border-color .25s ease, box-shadow .35s ease;
+  cursor:pointer;
+  user-select:none;
+  transition:.22s ease;
 }
-.portalCard:hover{transform:translateY(-2px); border-color:rgba(255,255,255,.18)}
-.portalCard::after{
+.portal::before{
   content:"";
-  position:absolute; inset:-2px;
-  background:radial-gradient(520px 220px at 30% 0%, rgba(255,255,255,.10), transparent 60%);
-  opacity:.55; pointer-events:none;
+  position:absolute;
+  inset:-2px;
+  background:radial-gradient(520px 260px at 30% 0%, rgba(0,120,255,.18), transparent 60%);
+  opacity:.55;
+  pointer-events:none;
 }
-.portalCard h3{
-  font-size:18px;
+.portal:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.20);
+}
+.portal h3{
+  font-size:14px;
   font-weight:900;
-  letter-spacing:-.2px;
 }
-.portalCard p{
+.portal p{
   margin-top:8px;
+  font-size:12px;
   opacity:.72;
   line-height:1.6;
-  font-weight:700;
 }
-.portalCard .need{
-  margin-top:12px;
-  display:inline-block;
-  padding:9px 12px;
+.portal .go{
+  margin-top:14px;
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:10px 12px;
   border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(0,0,0,.20);
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.06);
   font-weight:900;
   font-size:12px;
-  opacity:.9;
 }
-.portalCard.locked{
-  opacity:.45;
-  filter:saturate(.8);
-}
-.portalCard .go{
-  margin-top:14px;
-  display:inline-block;
-  padding:12px 14px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(255,255,255,.06);
-  color:#fff;
-  text-decoration:none;
-  font-weight:900;
-  opacity:.92;
-}
-.portalCard .go:hover{filter:brightness(1.15)}
-.portalCard.locked .go{pointer-events:none; opacity:.35}
 
 /* ===== TOAST ===== */
 .toast{
   position:fixed;
   left:50%;
   transform:translateX(-50%);
-  bottom:18px;
-  width:calc(100% - 36px);
-  max-width:560px;
-  padding:14px 16px;
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,.16);
+  bottom:16px;
+  width:min(560px, calc(100% - 36px));
   background:rgba(0,0,0,.72);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;
+  padding:14px 16px;
   backdrop-filter:blur(18px);
-  box-shadow:0 20px 60px rgba(0,0,0,.65);
+  box-shadow:0 24px 80px rgba(0,0,0,.65);
   display:none;
   z-index:2000;
 }
-.toast.show{display:flex}
-.toast b{letter-spacing:.12em}
-.toast span{opacity:.8; margin-left:8px}
+.toast.show{display:flex; gap:10px; align-items:center}
+.toast b{font-weight:900}
+.toast span{opacity:.78}
 
-/* ===== FX CANVAS ===== */
+/* ===== CONFETTI ===== */
 #fx{
-  position:fixed; inset:0;
+  position:fixed;
+  inset:0;
   pointer-events:none;
-  z-index:2500;
+  z-index:2100;
 }
 
 /* ===== FOOTER ===== */
 footer{
-  margin-top:70px;
-  padding:28px 0;
+  margin-top:90px;
+  padding:30px 0;
   text-align:center;
-  opacity:.6;
+  opacity:.65;
   font-size:14px;
   border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* ===== REVEAL ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(20px);
+  transition: .9s ease;
+}
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* subtle animated glow (sin colores raros, lujo) */
+@keyframes glowDrift{
+  0%{filter:drop-shadow(0 0 0 rgba(255,255,255,0))}
+  50%{filter:drop-shadow(0 0 18px rgba(255,255,255,.16))}
+  100%{filter:drop-shadow(0 0 0 rgba(255,255,255,0))}
+}
+.softGlow{
+  animation:glowDrift 4.6s ease-in-out infinite;
 }
 </style>
 </head>
@@ -510,14 +555,13 @@ footer{
 
 <canvas id="fx"></canvas>
 
+<!-- ===== TOP BAR ===== -->
 <div class="topbar">
-  <div class="left">
-    <a class="back" href="index.html">←</a>
-    <div class="brand">ZenSite · Level Up</div>
+  <div class="nav-left">
+    <a href="index.html" data-es="← Inicio" data-en="← Home">← Inicio</a>
   </div>
-  <div class="right">
-    <div class="pill">SZ XP: <b id="xp">0</b></div>
-    <div class="pill"><span data-es="Nivel" data-en="Level">Nivel</span>: <b id="rankMini">START</b></div>
+  <div class="nav-right">
+    <div class="pill"><span data-es="SZ Guardados:" data-en="Saved SZ:">SZ Guardados:</span> <b id="sz">0</b></div>
     <span class="lang active" data-lang="es">ES</span>
     <span class="lang" data-lang="en">EN</span>
   </div>
@@ -525,540 +569,603 @@ footer{
 
 <div class="wrap">
 
+  <!-- ===== HERO ===== -->
   <div class="hero">
-    <div class="hTitle">
-      <h1 data-es="Sube de nivel en el Sistema Z"
-          data-en="Level up inside System Z">Sube de nivel en el Sistema Z</h1>
-      <p data-es="Esto es un juego real: acumulas SZ XP y desbloqueas upgrades de verdad. No son plantillas. Son mejoras instaladas, conectadas y optimizadas."
-         data-en="This is a real game: earn SZ XP and unlock real upgrades. Not templates—properly installed, connected, and optimized improvements.">
-        Esto es un juego real: acumulas SZ XP y desbloqueas upgrades de verdad. No son plantillas. Son mejoras instaladas, conectadas y optimizadas.
+    <div class="reveal">
+      <h1>
+        <span data-es="Level Up" data-en="Level Up">Level Up</span><br>
+        <strong data-es="Tu web siempre actualizada" data-en="Your website always updated">Tu web siempre actualizada</strong>
+      </h1>
+
+      <p
+        data-es="Aquí está la lista REAL de lo que una web profesional necesita para no quedarse atrás. Puedes pagar cada mejora por separado o entrar al acceso total: Black Zen (for life)."
+        data-en="Here is the REAL checklist a professional website needs to never fall behind. You can pay each upgrade separately or get full access: Black Zen (for life).">
+        Aquí está la lista REAL de lo que una web profesional necesita para no quedarse atrás. Puedes pagar cada mejora por separado o entrar al acceso total: Black Zen (for life).
       </p>
-      <div class="hMeta">
-        <div class="chip">⚡ <i data-es="Progreso guardado en tu dispositivo" data-en="Progress saved on your device">Progreso guardado en tu dispositivo</i></div>
-        <div class="chip">🎯 <i data-es="Misiones que suben rápido" data-en="Missions that level you up fast">Misiones que suben rápido</i></div>
-        <div class="chip">👑 <i data-es="ELITE se siente ELITE" data-en="ELITE feels ELITE">ELITE se siente ELITE</i></div>
+
+      <div class="mini">
+        <div class="tag softGlow" data-es="Sin pagos mensuales" data-en="No monthly payments">Sin pagos mensuales</div>
+        <div class="tag" data-es="Pagas por mejora o entras a Black Zen" data-en="Pay per upgrade or join Black Zen">Pagas por mejora o entras a Black Zen</div>
+        <div class="tag" data-es="Todo se instala y se conecta bien" data-en="Everything is installed & connected properly">Todo se instala y se conecta bien</div>
       </div>
     </div>
 
-    <div class="xpCard" id="xpCard">
-      <div class="spark"></div>
-      <div class="xpTop">
-        <div>
-          <div class="rank" data-es="ESTADO" data-en="STATUS">ESTADO</div>
-          <div class="rankBadge" id="badge">START</div>
+    <!-- ===== BLACK ZEN CARD ===== -->
+    <div class="card bz reveal">
+      <div class="card-inner">
+        <div class="title">
+          <div>
+            <h2 data-es="Black Zen Membership" data-en="Black Zen Membership">Black Zen Membership</h2>
+            <p
+              data-es="Acceso de por vida a mejoras clave: ajustes, optimización, seguridad, performance, contenido y soporte de cambios. Una vez dentro, tu web se mantiene con el estándar ZenSite."
+              data-en="Lifetime access to key upgrades: edits, optimization, security, performance, content changes and upgrade support. Once inside, your website stays on the ZenSite standard.">
+              Acceso de por vida a mejoras clave: ajustes, optimización, seguridad, performance, contenido y soporte de cambios. Una vez dentro, tu web se mantiene con el estándar ZenSite.
+            </p>
+          </div>
+          <div class="badge" data-es="FOR LIFE" data-en="FOR LIFE">FOR LIFE</div>
         </div>
-        <div class="rank" id="needLine">—</div>
-      </div>
 
-      <div class="bigXP">
-        <strong id="xpBig">0</strong><span>SZ XP</span>
-      </div>
+        <div class="priceRow">
+          <div class="price">$220 <small data-es="pago único" data-en="one-time">pago único</small></div>
+        </div>
 
-      <div class="progress"><div class="fill" id="fill"></div></div>
-      <div class="nextLine" id="nextLine">—</div>
+        <div class="bzCtas">
+          <button class="btn primary" id="joinBZ"
+            data-es="Entrar a Black Zen"
+            data-en="Join Black Zen">
+            Entrar a Black Zen
+          </button>
+
+          <button class="btn ghost" id="seeIncluded"
+            data-es="Ver lo que incluye"
+            data-en="See what's included">
+            Ver lo que incluye
+          </button>
+        </div>
+
+        <div class="note"
+          data-es="* Black Zen es para mantener, mejorar y actualizar. Rediseños completos o tiendas nuevas grandes se cotizan aparte (siempre con precio preferente)."
+          data-en="* Black Zen is for maintenance, upgrades and optimization. Full redesigns or big new stores are quoted separately (always with preferred pricing).">
+          * Black Zen es para mantener, mejorar y actualizar. Rediseños completos o tiendas nuevas grandes se cotizan aparte (siempre con precio preferente).
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- LEVELS -->
-  <section class="section">
-    <div class="h2" data-es="Niveles" data-en="Levels">Niveles</div>
+  <!-- ===== HUD / PROGRESS (sensación de juego con SZ) ===== -->
+  <div class="sectionTitle reveal" data-es="Tu progreso ZenSite" data-en="Your ZenSite progress">Tu progreso ZenSite</div>
 
-    <div class="levels">
-      <div class="level start" id="lv1">
-        <div class="lTop">
-          <div class="lName">LEVEL 1</div>
-          <div class="lRange">0–100</div>
-        </div>
-        <div class="lTitle" data-es="START" data-en="START">START</div>
-        <ul>
-          <li data-es="✔ Acceso al sistema" data-en="✔ Access to the system">✔ Acceso al sistema</li>
-          <li data-es="✔ Home Page profesional" data-en="✔ Professional Home Page">✔ Home Page profesional</li>
-          <li data-es="✖ Sin prioridad / extras" data-en="✖ No priority / extras">✖ Sin prioridad / extras</li>
-        </ul>
-      </div>
-
-      <div class="level pro locked" id="lv2">
-        <div class="lTop">
-          <div class="lName">LEVEL 2</div>
-          <div class="lRange">100–300</div>
-        </div>
-        <div class="lTitle" data-es="PRO" data-en="PRO">PRO <small>100+</small></div>
-        <ul>
-          <li data-es="✔ Animaciones premium" data-en="✔ Premium animations">✔ Animaciones premium</li>
-          <li data-es="✔ Sección extra GRATIS" data-en="✔ 1 extra section FREE">✔ Sección extra GRATIS</li>
-          <li data-es="✔ 1 ronda de cambios" data-en="✔ 1 revision round">✔ 1 ronda de cambios</li>
-        </ul>
-      </div>
-
-      <div class="level grow locked" id="lv3">
-        <div class="lTop">
-          <div class="lName">LEVEL 3</div>
-          <div class="lRange">300–700</div>
-        </div>
-        <div class="lTitle" data-es="GROWTH" data-en="GROWTH">GROWTH <small>300+</small></div>
-        <ul>
-          <li data-es="✔ Formularios conectados" data-en="✔ Connected forms">✔ Formularios conectados</li>
-          <li data-es="✔ Optimización de conversión" data-en="✔ Conversion optimization">✔ Optimización de conversión</li>
-          <li data-es="✔ Mini rediseño visual" data-en="✔ Mini visual redesign">✔ Mini rediseño visual</li>
-        </ul>
-      </div>
-
-      <div class="level elite locked" id="lv4">
-        <div class="crown">👑</div>
-        <div class="lTop">
-          <div class="lName">LEVEL 4</div>
-          <div class="lRange">700+</div>
-        </div>
-        <div class="lTitle" data-es="ELITE" data-en="ELITE">ELITE <small>700+</small></div>
-        <ul>
-          <li data-es="✔ Cambios ilimitados" data-en="✔ Unlimited changes">✔ Cambios ilimitados</li>
-          <li data-es="✔ Automatizaciones" data-en="✔ Automations">✔ Automatizaciones</li>
-          <li data-es="✔ Soporte prioritario" data-en="✔ Priority support">✔ Soporte prioritario</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- MISSIONS -->
-  <section class="section">
-    <div class="h2" data-es="Misiones" data-en="Missions">Misiones</div>
-
-    <div class="missions">
-      <div class="mCard">
-        <div style="font-weight:900; opacity:.95" data-es="Sube rápido" data-en="Level up fast">Sube rápido</div>
-
-        <div class="mRow">
-          <div class="mText">
-            <strong data-es="Propina (opcional)" data-en="Tip (optional)">Propina (opcional)</strong>
-            <small data-es="+20 SZ XP · no es obligado" data-en="+20 SZ XP · not required">+20 SZ XP · no es obligado</small>
+  <div class="card reveal">
+    <div class="card-inner">
+      <div class="hud">
+        <div class="meter">
+          <div class="meterTop">
+            <span data-es="Estado de tu web" data-en="Website status">Estado de tu web</span>
+            <span><span data-es="Checklist" data-en="Checklist">Checklist</span>: <b id="done">0</b>/<b id="total">0</b></span>
           </div>
-          <button class="btn" id="mTip" data-es="Reclamar" data-en="Claim">Reclamar</button>
+          <div class="bar"><div class="fill" id="fill"></div></div>
+          <div class="note" id="statusText"
+            data-es="Completa mejoras para mantener tu web al día. Black Zen lo cubre todo."
+            data-en="Complete upgrades to keep your website up to date. Black Zen covers everything.">
+            Completa mejoras para mantener tu web al día. Black Zen lo cubre todo.
+          </div>
         </div>
 
-        <div class="mRow">
-          <div class="mText">
-            <strong data-es="Reservar y asistir 3 veces en un mes" data-en="Book & show up 3 times in a month">Reservar y asistir 3 veces en un mes</strong>
-            <small data-es="+140 SZ XP · sube duro" data-en="+140 SZ XP · big boost">+140 SZ XP · sube duro</small>
-          </div>
-          <button class="btn" id="m3x" data-es="Reclamar" data-en="Claim">Reclamar</button>
-        </div>
-
-        <div class="mRow">
-          <div class="mText">
-            <strong data-es="Mantener nivel activo" data-en="Keep your level active">Mantener nivel activo</strong>
-            <small data-es="+40 SZ XP · si te mantienes" data-en="+40 SZ XP · stay consistent">+40 SZ XP · si te mantienes</small>
-          </div>
-          <button class="btn" id="mKeep" data-es="Reclamar" data-en="Claim">Reclamar</button>
-        </div>
-      </div>
-
-      <div class="mCard">
-        <div style="font-weight:900; opacity:.95" data-es="Acciones que benefician tu negocio" data-en="Actions that grow your business">Acciones que benefician tu negocio</div>
-
-        <div class="mRow">
-          <div class="mText">
-            <strong data-es="Actualizar contenido (nuevo servicio / fotos)" data-en="Update content (new service / photos)">Actualizar contenido (nuevo servicio / fotos)</strong>
-            <small data-es="+60 SZ XP · mantiene la web viva" data-en="+60 SZ XP · keeps your site alive">+60 SZ XP · mantiene la web viva</small>
-          </div>
-          <button class="btn" id="mUpdate" data-es="Reclamar" data-en="Claim">Reclamar</button>
-        </div>
-
-        <div class="mRow">
-          <div class="mText">
-            <strong data-es="Recomendar ZenSite (cliente nuevo)" data-en="Refer ZenSite (new client)">Recomendar ZenSite (cliente nuevo)</strong>
-            <small data-es="+120 SZ XP · upgrade garantizado" data-en="+120 SZ XP · guaranteed upgrade">+120 SZ XP · upgrade garantizado</small>
-          </div>
-          <button class="btn" id="mRefer" data-es="Reclamar" data-en="Claim">Reclamar</button>
-        </div>
-
-        <div class="mRow">
-          <div class="mText">
-            <strong data-es="Upgrade: tienda / pagos / automatización" data-en="Upgrade: store / payments / automation">Upgrade: tienda / pagos / automatización</strong>
-            <small data-es="+160 SZ XP · salto de nivel" data-en="+160 SZ XP · level jump">+160 SZ XP · salto de nivel</small>
-          </div>
-          <button class="btn" id="mUpgrade" data-es="Reclamar" data-en="Claim">Reclamar</button>
+        <div class="pill softGlow">
+          <span data-es="Black Zen:" data-en="Black Zen:">Black Zen:</span>
+          <b id="bzState">OFF</b>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- PORTAL -->
-  <section class="section">
-    <div class="h2" data-es="Portal de recompensas" data-en="Rewards portal">Portal de recompensas</div>
+  <!-- ===== UPGRADE LIST ===== -->
+  <div class="sectionTitle reveal" data-es="Checklist (pagar uno a uno)" data-en="Checklist (pay individually)">Checklist (pagar uno a uno)</div>
 
-    <div class="portal">
-      <div class="portalCard" id="p1">
-        <h3 data-es="Blueprint Pro" data-en="Pro Blueprint">Blueprint Pro</h3>
-        <p data-es="Paquete de mejoras visuales premium (micro-animaciones + estética de lujo)."
-           data-en="Premium visual upgrades pack (micro-animations + luxury look).">
-          Paquete de mejoras visuales premium (micro-animaciones + estética de lujo).
-        </p>
-        <span class="need" data-es="Desbloquea en PRO" data-en="Unlocks at PRO">Desbloquea en PRO</span><br>
-        <a class="go" href="planes.html" data-es="Ver cómo desbloquear" data-en="See how to unlock">Ver cómo desbloquear</a>
+  <div class="grid">
+
+    <!-- LEFT: LIST -->
+    <div class="col-7">
+      <div class="list" id="list">
+
+        <!-- Items injected by JS (para ES/EN sin romper) -->
+
       </div>
 
-      <div class="portalCard locked" id="p2">
-        <h3 data-es="Conversion Booster" data-en="Conversion Booster">Conversion Booster</h3>
-        <p data-es="Secciones de confianza: casos, reseñas, CTA, embudo simple + formularios conectados."
-           data-en="Trust sections: cases, reviews, CTA, simple funnel + connected forms.">
-          Secciones de confianza: casos, reseñas, CTA, embudo simple + formularios conectados.
-        </p>
-        <span class="need" data-es="Desbloquea en GROWTH" data-en="Unlocks at GROWTH">Desbloquea en GROWTH</span><br>
-        <a class="go" href="planes.html" data-es="Entrar al booster" data-en="Enter booster">Entrar al booster</a>
-      </div>
-
-      <div class="portalCard locked" id="p3">
-        <h3 data-es="Elite System" data-en="Elite System">Elite System</h3>
-        <p data-es="Automatizaciones + soporte prioritario + cambios ilimitados. Tu web evoluciona contigo."
-           data-en="Automations + priority support + unlimited changes. Your site evolves with you.">
-          Automatizaciones + soporte prioritario + cambios ilimitados. Tu web evoluciona contigo.
-        </p>
-        <span class="need" data-es="Desbloquea en ELITE 👑" data-en="Unlocks at ELITE 👑">Desbloquea en ELITE 👑</span><br>
-        <a class="go" href="planes.html" data-es="Activar modo Elite" data-en="Activate Elite mode">Activar modo Elite</a>
+      <div class="note reveal"
+        data-es="Cada mejora se instala y se prueba como debe ser (móvil, rendimiento y estabilidad). Si entras a Black Zen, desbloqueas todo esto sin volver a pagar por cada cosa."
+        data-en="Each upgrade is installed and tested properly (mobile, performance, stability). If you join Black Zen, you unlock everything without paying item by item.">
+        Cada mejora se instala y se prueba como debe ser (móvil, rendimiento y estabilidad). Si entras a Black Zen, desbloqueas todo esto sin volver a pagar por cada cosa.
       </div>
     </div>
-  </section>
 
-  <footer>©️ 2025 ZenSite — System Z</footer>
+    <!-- RIGHT: PORTALS -->
+    <div class="col-5">
+      <div class="card reveal">
+        <div class="card-inner">
+          <div class="sectionTitle" style="margin-top:0" data-es="Portales" data-en="Portals">Portales</div>
+
+          <div class="portals">
+            <div class="portal" id="pAudit">
+              <h3 data-es="Diagnóstico Express" data-en="Express Audit">Diagnóstico Express</h3>
+              <p data-es="Te muestra qué está lento, qué falta y qué se puede mejorar primero."
+                 data-en="Shows what's slow, what's missing and what to improve first.">
+                 Te muestra qué está lento, qué falta y qué se puede mejorar primero.
+              </p>
+              <div class="go" data-es="Entrar →" data-en="Enter →">Entrar →</div>
+            </div>
+
+            <div class="portal" id="pBoost">
+              <h3 data-es="Boost de Conversión" data-en="Conversion Boost">Boost de Conversión</h3>
+              <p data-es="Ajustes que aumentan contacto/ventas sin rediseñar toda la web."
+                 data-en="Tweaks that increase leads/sales without redesigning everything.">
+                 Ajustes que aumentan contacto/ventas sin rediseñar toda la web.
+              </p>
+              <div class="go" data-es="Entrar →" data-en="Enter →">Entrar →</div>
+            </div>
+
+            <div class="portal" id="pVault">
+              <h3 data-es="Zen Vault" data-en="Zen Vault">Zen Vault</h3>
+              <p data-es="Acceso a mejoras premium y upgrades de marca (para Black Zen)."
+                 data-en="Access premium upgrades and brand boosts (for Black Zen).">
+                 Acceso a mejoras premium y upgrades de marca (para Black Zen).
+              </p>
+              <div class="go" data-es="Entrar →" data-en="Enter →">Entrar →</div>
+            </div>
+          </div>
+
+          <div class="note"
+            data-es="* Los portales son demostración. En producción se conectan a formularios, tickets y tablero de cambios."
+            data-en="* Portals are a demo. In production they connect to forms, tickets and a change board.">
+            * Los portales son demostración. En producción se conectan a formularios, tickets y tablero de cambios.
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="margin-top:16px">
+        <div class="card-inner">
+          <div class="sectionTitle" style="margin-top:0" data-es="Black Zen: lo que ganas" data-en="Black Zen: what you get">Black Zen: lo que ganas</div>
+
+          <div class="note"
+            data-es="• Tu web nunca se queda vieja.\n• Cambios y optimizaciones sin estrés.\n• Prioridad y upgrades premium.\n• Estándar ZenSite siempre activo."
+            data-en="• Your site never becomes outdated.\n• Changes and optimization without stress.\n• Priority and premium upgrades.\n• ZenSite standard always active.">
+            • Tu web nunca se queda vieja.<br>
+            • Cambios y optimizaciones sin estrés.<br>
+            • Prioridad y upgrades premium.<br>
+            • Estándar ZenSite siempre activo.
+          </div>
+
+          <button class="btn primary" id="joinBZ2"
+            style="width:100%; margin-top:14px"
+            data-es="Activar Black Zen ($220)"
+            data-en="Activate Black Zen ($220)">
+            Activar Black Zen ($220)
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="reveal">
+    ©️ 2025 ZenSite — Black Zen Membership
+  </footer>
 </div>
 
 <div class="toast" id="toast">
-  <b id="toastT">+SZ XP</b><span id="toastS">Actualizado</span>
+  <b id="toastTitle">Listo</b><span id="toastText">Actualizado</span>
 </div>
 
 <script>
 /* =========================
-   STATE (LOCAL)
+   DEMO: SISTEMA SIN PAGOS REALES
+   - "compras" quedan guardadas en el dispositivo
+   - Black Zen desbloquea todo
+   - SZ = puntos de progreso (sensación juego)
 ========================= */
-const KEY="zensite_levelup_v1";
-const DEFAULT={
-  xp: 120,                 // puedes arrancar en 0 si quieres
-  last:{},                 // cooldown por día (demo)
-  lang:"es"
-};
+const KEY = "zensk_levelup_v1";
 
-function dayId(t=Date.now()){
-  const d=new Date(t);
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
-}
-function load(){
+const state = (() => {
   try{
-    const raw=localStorage.getItem(KEY);
-    if(!raw) return {...DEFAULT};
-    const s=JSON.parse(raw);
-    return {...DEFAULT, ...s, last:{...DEFAULT.last, ...(s.last||{})}};
-  }catch(e){ return {...DEFAULT}; }
-}
-function save(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
+    return Object.assign({
+      lang:"es",
+      sz:0,
+      bz:false,
+      bought:{}
+    }, JSON.parse(localStorage.getItem(KEY) || "{}"));
+  }catch(e){
+    return {lang:"es", sz:0, bz:false, bought:{}};
+  }
+})();
 
-/* =========================
-   LEVELS
-========================= */
-const LEVELS=[
-  {id:1, nameES:"START",  nameEN:"START",  min:0,   max:100, color:"#ffffff"},
-  {id:2, nameES:"PRO",    nameEN:"PRO",    min:100, max:300, color:"var(--pro)"},
-  {id:3, nameES:"GROWTH", nameEN:"GROWTH", min:300, max:700, color:"var(--grow)"},
-  {id:4, nameES:"ELITE",  nameEN:"ELITE",  min:700, max:999999, color:"var(--elite)"}
+function save(){ localStorage.setItem(KEY, JSON.stringify(state)); }
+
+/* ===== Items (reales para este negocio) ===== */
+const ITEMS = [
+  {
+    id:"content",
+    icon:"✍️",
+    es:{
+      title:"Ajuste de contenido (texto / secciones)",
+      desc:"Cambios en copy, botones, secciones y micro-detalles para que convierta mejor."
+    },
+    en:{
+      title:"Content updates (copy / sections)",
+      desc:"Edits to copy, buttons, sections and details to improve conversion."
+    },
+    price:45,
+    sz:30
+  },
+  {
+    id:"speed",
+    icon:"⚡",
+    es:{
+      title:"Optimización de velocidad",
+      desc:"Mejoras de performance (carga, imágenes, scripts). Se siente más pro."
+    },
+    en:{
+      title:"Speed optimization",
+      desc:"Performance improvements (load, images, scripts). Feels more premium."
+    },
+    price:60,
+    sz:45
+  },
+  {
+    id:"mobile",
+    icon:"📱",
+    es:{
+      title:"Ajuste móvil (responsive)",
+      desc:"Corrección de tamaños, espacios, y experiencia en iPhone/Android."
+    },
+    en:{
+      title:"Mobile polish (responsive)",
+      desc:"Fix spacing, sizes and experience on iPhone/Android."
+    },
+    price:55,
+    sz:40
+  },
+  {
+    id:"seo",
+    icon:"🔎",
+    es:{
+      title:"SEO básico + indexación",
+      desc:"Títulos, meta, estructura y guía para que Google lo lea como debe."
+    },
+    en:{
+      title:"Basic SEO + indexing",
+      desc:"Titles, meta, structure and setup so Google reads it properly."
+    },
+    price:75,
+    sz:55
+  },
+  {
+    id:"security",
+    icon:"🛡️",
+    es:{
+      title:"Hardening / seguridad básica",
+      desc:"Ajustes recomendados para reducir riesgos y mantener estabilidad."
+    },
+    en:{
+      title:"Hardening / basic security",
+      desc:"Recommended tweaks to reduce risks and keep stability."
+    },
+    price:70,
+    sz:55
+  },
+  {
+    id:"forms",
+    icon:"📩",
+    es:{
+      title:"Formularios y contacto conectados",
+      desc:"Conectar formularios, WhatsApp/email, y pruebas para que no falle."
+    },
+    en:{
+      title:"Forms & contact connected",
+      desc:"Connect forms, WhatsApp/email and test so it doesn't fail."
+    },
+    price:65,
+    sz:50
+  },
+  {
+    id:"tracking",
+    icon:"📈",
+    es:{
+      title:"Tracking (Analytics / eventos)",
+      desc:"Medición de clicks, leads, y embudo. Para saber qué funciona."
+    },
+    en:{
+      title:"Tracking (analytics / events)",
+      desc:"Measure clicks, leads and funnel. Know what works."
+    },
+    price:85,
+    sz:65
+  },
+  {
+    id:"conversion",
+    icon:"🎯",
+    es:{
+      title:"Boost de conversión (CTA + layout)",
+      desc:"Ajustes de diseño para subir contacto/ventas sin rehacer todo."
+    },
+    en:{
+      title:"Conversion boost (CTA + layout)",
+      desc:"Design tweaks to increase leads/sales without rebuilding."
+    },
+    price:90,
+    sz:70
+  }
 ];
 
-function getLevel(xp){
-  if(xp>=700) return LEVELS[3];
-  if(xp>=300) return LEVELS[2];
-  if(xp>=100) return LEVELS[1];
-  return LEVELS[0];
-}
-function nextGoal(xp){
-  if(xp<100) return {goal:100, label:"PRO"};
-  if(xp<300) return {goal:300, label:"GROWTH"};
-  if(xp<700) return {goal:700, label:"ELITE"};
-  return {goal:700, label:"ELITE"};
-}
-function pctToGoal(xp){
-  // barra basada en 0..700 para que se sienta intensa
-  const p = Math.max(0, Math.min(1, xp/700));
-  return Math.round(p*100);
-}
+/* ===== UI refs ===== */
+const szEl = document.getElementById("sz");
+const doneEl = document.getElementById("done");
+const totalEl = document.getElementById("total");
+const fillEl = document.getElementById("fill");
+const statusText = document.getElementById("statusText");
+const bzState = document.getElementById("bzState");
+const toast = document.getElementById("toast");
+const toastTitle = document.getElementById("toastTitle");
+const toastText = document.getElementById("toastText");
+const list = document.getElementById("list");
 
-/* =========================
-   UI + LANG
-========================= */
-const elXP=document.getElementById("xp");
-const elXPBig=document.getElementById("xpBig");
-const elFill=document.getElementById("fill");
-const elNeed=document.getElementById("needLine");
-const elNext=document.getElementById("nextLine");
-const elBadge=document.getElementById("badge");
-const elRankMini=document.getElementById("rankMini");
-const xpCard=document.getElementById("xpCard");
+totalEl.textContent = ITEMS.length;
 
-const lv1=document.getElementById("lv1");
-const lv2=document.getElementById("lv2");
-const lv3=document.getElementById("lv3");
-const lv4=document.getElementById("lv4");
-
-const p1=document.getElementById("p1");
-const p2=document.getElementById("p2");
-const p3=document.getElementById("p3");
-
-const toast=document.getElementById("toast");
-const toastT=document.getElementById("toastT");
-const toastS=document.getElementById("toastS");
-
-const langBtns=document.querySelectorAll(".lang");
-const transEls=document.querySelectorAll("[data-es]");
-
-function setLang(lang){
-  langBtns.forEach(b=>b.classList.toggle("active", b.dataset.lang===lang));
-  transEls.forEach(el=>{
-    el.textContent = el.dataset[lang];
-  });
+/* ===== Toast ===== */
+function showToast(t, s){
+  toastTitle.textContent = t;
+  toastText.textContent = s;
+  toast.classList.add("show");
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(()=>toast.classList.remove("show"), 2300);
 }
 
-/* =========================
-   SOUND + HAPTIC
-========================= */
-let AC=null;
-function beep(type=1){
-  try{
-    AC = AC || new (window.AudioContext||window.webkitAudioContext)();
-    const o=AC.createOscillator();
-    const g=AC.createGain();
-    o.type="sine";
-    o.frequency.value = type===2 ? 740 : 620;
-    g.gain.value = 0.0001;
-    o.connect(g); g.connect(AC.destination);
-    o.start();
-    const t=AC.currentTime;
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.exponentialRampToValueAtTime(0.035, t+0.02);
-    g.gain.exponentialRampToValueAtTime(0.0001, t+0.14);
-    o.frequency.setValueAtTime(o.frequency.value, t);
-    o.frequency.linearRampToValueAtTime(type===2 ? 980 : 760, t+0.09);
-    o.stop(t+0.16);
-  }catch(e){}
-}
-function vib(ms=18){
-  try{ if(navigator.vibrate) navigator.vibrate(ms); }catch(e){}
-}
-
-/* =========================
-   COUNTER ANIM
-========================= */
+/* ===== Smooth SZ count ===== */
 function animateNumber(el, from, to){
-  const diff = to-from;
-  const steps = Math.min(46, Math.max(14, Math.floor(Math.abs(diff)/6)));
-  let i=0;
-  const t=setInterval(()=>{
+  const diff = to - from;
+  const steps = Math.min(38, Math.max(12, Math.floor(Math.abs(diff)/6)));
+  let i = 0;
+  const timer = setInterval(()=>{
     i++;
-    const v=Math.round(from + diff*(i/steps));
-    el.textContent=v;
-    if(i>=steps){ el.textContent=to; clearInterval(t); }
-  }, 16);
+    el.textContent = Math.round(from + diff*(i/steps));
+    if(i>=steps){ el.textContent = to; clearInterval(timer); }
+  }, 18);
 }
 
-/* =========================
-   CONFETTI FX
-========================= */
-const fx=document.getElementById("fx");
-const ctx=fx.getContext("2d");
+/* ===== Confetti (subtle) ===== */
+const fx = document.getElementById("fx");
+const ctx = fx.getContext("2d");
 function resizeFX(){
-  fx.width=innerWidth*devicePixelRatio;
-  fx.height=innerHeight*devicePixelRatio;
+  fx.width = innerWidth * devicePixelRatio;
+  fx.height = innerHeight * devicePixelRatio;
 }
 addEventListener("resize", resizeFX);
 resizeFX();
 
-let conf=[];
+let conf = [];
 function popConfetti(gold=false){
-  conf=[];
-  const count = gold? 170 : 120;
+  conf = [];
+  const count = gold ? 160 : 110;
   for(let i=0;i<count;i++){
     conf.push({
       x:(Math.random()*innerWidth)*devicePixelRatio,
-      y:(-30 - Math.random()*240)*devicePixelRatio,
-      vx:(-1 + Math.random()*2)*devicePixelRatio*1.15,
+      y:(-40 - Math.random()*240)*devicePixelRatio,
+      vx:(-1 + Math.random()*2)*devicePixelRatio*1.2,
       vy:(2 + Math.random()*5)*devicePixelRatio,
       r:(2 + Math.random()*4)*devicePixelRatio,
       rot:Math.random()*Math.PI,
       vr:(-.2 + Math.random()*.4),
       life:150 + Math.random()*90,
-      gold: gold ? (Math.random()>.35) : (Math.random()>.6)
+      gold: gold ? true : (Math.random()>.7)
     });
   }
   renderConfetti();
+  beep(gold);
 }
 function renderConfetti(){
   ctx.clearRect(0,0,fx.width,fx.height);
   conf.forEach(p=>{
-    p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr;
-    p.vy*=1.01; p.life-=1;
+    p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+    p.vy *= 1.01; p.life -= 1;
 
     ctx.save();
     ctx.translate(p.x,p.y);
     ctx.rotate(p.rot);
-    ctx.globalAlpha=Math.max(0, Math.min(1, p.life/220));
-    ctx.fillStyle=p.gold? "rgba(255,211,110,.95)" : "rgba(255,255,255,.95)";
+    ctx.globalAlpha = Math.max(0, Math.min(1, p.life/220));
+    ctx.fillStyle = p.gold ? "rgba(255,211,122,.95)" : "rgba(255,255,255,.92)";
     ctx.fillRect(-p.r, -p.r, p.r*2.2, p.r*1.2);
     ctx.restore();
   });
-  conf=conf.filter(p=>p.life>0 && p.y<fx.height+320);
+  conf = conf.filter(p=>p.life>0 && p.y < fx.height+300);
   if(conf.length) requestAnimationFrame(renderConfetti);
   else ctx.clearRect(0,0,fx.width,fx.height);
 }
 
-/* =========================
-   TOAST
-========================= */
-function showToast(t, s){
-  toastT.textContent=t;
-  toastS.textContent=s;
-  toast.classList.add("show");
-  clearTimeout(showToast._t);
-  showToast._t=setTimeout(()=>toast.classList.remove("show"), 2200);
+/* ===== Beep ===== */
+function beep(gold=false){
+  try{
+    const ac = new (window.AudioContext||window.webkitAudioContext)();
+    const o = ac.createOscillator();
+    const g = ac.createGain();
+    o.type = "sine";
+    o.frequency.value = gold ? 740 : 880;
+    g.gain.value = 0.025;
+    o.connect(g); g.connect(ac.destination);
+    o.start();
+    setTimeout(()=>{ o.frequency.value = gold ? 520 : 660; }, 70);
+    setTimeout(()=>{ o.stop(); ac.close(); }, 160);
+  }catch(e){}
 }
 
-/* =========================
-   LOCK/UNLOCK UI
-========================= */
-function setActiveLevelUI(levelId){
-  [lv1,lv2,lv3,lv4].forEach(x=>x.classList.remove("active"));
-  lv2.classList.add("locked"); lv3.classList.add("locked"); lv4.classList.add("locked");
+/* ===== Render list ===== */
+function tItem(it){
+  const L = state.lang === "en" ? it.en : it.es;
+  const bought = !!state.bought[it.id] || state.bz;
+  const price = state.bz ? (state.lang==="en" ? "Included" : "Incluido") : `$${it.price}`;
+  const btnLabel = state.bz
+    ? (state.lang==="en" : state.lang==="en") ? "ACTIVE" : "ACTIVO"
+    : (bought ? (state.lang==="en" ? "DONE" : "HECHO") : (state.lang==="en" ? "ADD" : "AGREGAR"));
 
-  if(levelId>=1){ lv1.classList.add("active"); }
-  if(levelId>=2){ lv2.classList.remove("locked"); lv2.classList.add("active"); }
-  if(levelId>=3){ lv3.classList.remove("locked"); lv3.classList.add("active"); }
-  if(levelId>=4){ lv4.classList.remove("locked"); lv4.classList.add("active"); }
-
-  // portal locks
-  p1.classList.remove("locked");
-  p2.classList.toggle("locked", levelId<3);
-  p3.classList.toggle("locked", levelId<4);
-
-  document.body.classList.toggle("elite", levelId>=4);
-  elBadge.classList.toggle("elite", levelId>=4);
+  const wrap = document.createElement("div");
+  wrap.className = "item";
+  wrap.innerHTML = `
+    <div class="left">
+      <div class="ico">${it.icon}</div>
+      <div class="txt">
+        <strong>${L.title}</strong>
+        <small>${L.desc}</small>
+      </div>
+    </div>
+    <div class="right">
+      <div class="cost">${price}</div>
+      <button class="buy" ${bought ? "disabled" : ""} data-id="${it.id}">
+        ${btnLabel}
+      </button>
+    </div>
+  `;
+  return wrap;
 }
 
-function render(state, leveled=false){
-  const lvl=getLevel(state.xp);
-  const prevTop = Number(elXP.textContent||0);
-  animateNumber(elXP, prevTop, state.xp);
-  animateNumber(elXPBig, Number(elXPBig.textContent||0), state.xp);
+function render(){
+  // List
+  list.innerHTML = "";
+  ITEMS.forEach(it => list.appendChild(tItem(it)));
 
-  elFill.style.width = pctToGoal(state.xp) + "%";
+  // Progress
+  const doneCount = state.bz ? ITEMS.length : ITEMS.filter(it => state.bought[it.id]).length;
+  doneEl.textContent = doneCount;
 
-  const lang = state.lang || "es";
-  const name = lang==="es" ? lvl.nameES : lvl.nameEN;
+  const pct = Math.round((doneCount / ITEMS.length) * 100);
+  fillEl.classList.toggle("gold", state.bz);
+  fillEl.style.width = pct + "%";
 
-  elBadge.textContent = name + (lvl.id===4 ? " 👑" : "");
-  elRankMini.textContent = name;
+  // SZ
+  const prev = Number(szEl.textContent || 0);
+  animateNumber(szEl, prev, state.sz);
 
-  // need line
-  const ng = nextGoal(state.xp);
-  if(state.xp>=700){
-    elNeed.textContent = lang==="es" ? "MODO ELITE ACTIVO" : "ELITE MODE ACTIVE";
-    elNext.textContent = lang==="es"
-      ? "Cambios ilimitados + automatizaciones + prioridad total."
-      : "Unlimited changes + automations + total priority.";
+  // BZ
+  bzState.textContent = state.bz ? "ON" : "OFF";
+
+  // Status text
+  if(state.bz){
+    statusText.textContent = (state.lang==="en")
+      ? "Black Zen is active: everything is included. Your website stays on the ZenSite standard."
+      : "Black Zen activo: todo incluido. Tu web se mantiene con el estándar ZenSite.";
   }else{
-    const left = Math.max(0, ng.goal - state.xp);
-    elNeed.textContent = (lang==="es" ? "FALTAN " : "NEED ") + left + " SZ XP";
-    elNext.textContent = lang==="es"
-      ? `Objetivo: ${ng.label} · desbloqueas upgrades reales instalados y conectados.`
-      : `Goal: ${ng.label} · unlock real installed & connected upgrades.`;
+    statusText.textContent = (state.lang==="en")
+      ? `Complete upgrades to keep your website updated. Black Zen unlocks everything for life.`
+      : `Completa mejoras para mantener tu web al día. Black Zen desbloquea todo for life.`;
   }
 
-  setActiveLevelUI(lvl.id);
+  save();
+}
 
-  // shake
-  xpCard.classList.remove("shake"); void xpCard.offsetWidth; xpCard.classList.add("shake");
+/* ===== Actions ===== */
+list.addEventListener("click", (e)=>{
+  const btn = e.target.closest(".buy");
+  if(!btn) return;
+  const id = btn.dataset.id;
+  const it = ITEMS.find(x=>x.id===id);
+  if(!it) return;
 
-  if(leveled){
-    popConfetti(lvl.id===4);
-    showToast(lang==="es" ? "SUBISTE DE NIVEL" : "LEVEL UP", lvl.id===4 ? "ELITE 👑" : name);
-    beep(2); vib(24);
+  // "Add" item
+  state.bought[id] = true;
+  state.sz += it.sz;
+
+  popConfetti(false);
+  showToast(
+    state.lang==="en" ? "Upgrade added" : "Mejora agregada",
+    state.lang==="en" ? `+${it.sz} SZ saved` : `+${it.sz} SZ guardados`
+  );
+  render();
+});
+
+/* ===== Join Black Zen ===== */
+function activateBZ(){
+  if(state.bz){
+    showToast(state.lang==="en" ? "Already active" : "Ya activo",
+              state.lang==="en" ? "Black Zen is ON." : "Black Zen está ON.");
+    return;
   }
+  state.bz = true;
 
-  save(state);
-}
+  // reward SZ for joining (demo)
+  state.sz += 220;
+  popConfetti(true);
+  showToast(
+    state.lang==="en" ? "Black Zen activated" : "Black Zen activado",
+    state.lang==="en" ? "+220 SZ (demo) • Everything unlocked" : "+220 SZ (demo) • Todo desbloqueado"
+  );
 
-/* =========================
-   MISSIONS (cooldown demo)
-========================= */
-function canClaim(state, key){
-  const today=dayId();
-  return (state.last[key]||"") !== today;
-}
-function setClaimed(state, key){
-  state.last[key]=dayId();
-}
-function syncButtons(state){
-  const lang=state.lang||"es";
-  const map=[
-    ["mTip","tip"],
-    ["m3x","three"],
-    ["mKeep","keep"],
-    ["mUpdate","update"],
-    ["mRefer","refer"],
-    ["mUpgrade","upgrade"]
-  ];
-  map.forEach(([id,key])=>{
-    const b=document.getElementById(id);
-    const ok=canClaim(state, key);
-    b.disabled=!ok;
-    b.textContent = ok ? (lang==="es" ? "Reclamar" : "Claim") : (lang==="es" ? "Hecho" : "Done");
-  });
+  render();
+
+  // Auto-scroll to checklist to show "included"
+  setTimeout(()=>{
+    document.querySelector(".sectionTitle")?.scrollIntoView({behavior:"smooth", block:"start"});
+  }, 400);
 }
 
-function addXP(state, amount){
-  const before=getLevel(state.xp).id;
-  state.xp += amount;
-  const after=getLevel(state.xp).id;
-  render(state, after>before);
-  showToast(`+${amount} SZ XP`, (state.lang==="es" ? "Progreso guardado (demo)." : "Progress saved (demo)."));
-}
+document.getElementById("joinBZ").addEventListener("click", activateBZ);
+document.getElementById("joinBZ2").addEventListener("click", activateBZ);
 
-/* =========================
-   INIT
-========================= */
-let state=load();
-
-// bind lang
-function applyLang(){
-  setLang(state.lang||"es");
-  syncButtons(state);
-  render(state,false);
-}
-langBtns.forEach(b=>{
-  b.addEventListener("click", ()=>{
-    beep(1); vib(10);
-    state.lang=b.dataset.lang;
-    applyLang();
-  });
+/* ===== Included scroll ===== */
+document.getElementById("seeIncluded").addEventListener("click", ()=>{
+  const el = document.querySelector('[data-es="Checklist (pagar uno a uno)"]')?.parentElement;
+  document.querySelector('#list')?.scrollIntoView({behavior:"smooth", block:"start"});
+  showToast(
+    state.lang==="en" ? "Included list" : "Lista de mejoras",
+    state.lang==="en" ? "Pick upgrades or activate Black Zen." : "Elige mejoras o activa Black Zen."
+  );
 });
 
-// mission binds
-const binds=[
-  ["mTip","tip",20],
-  ["m3x","three",140],
-  ["mKeep","keep",40],
-  ["mUpdate","update",60],
-  ["mRefer","refer",120],
-  ["mUpgrade","upgrade",160],
-];
-
-binds.forEach(([btnId,key,amount])=>{
-  const btn=document.getElementById(btnId);
-  btn.addEventListener("click", ()=>{
-    if(!canClaim(state, key)) return;
-    beep(1); vib(14);
-    setClaimed(state, key);
-    addXP(state, amount);
-    syncButtons(state);
-  });
+/* ===== Portals (demo) ===== */
+function portalToast(nameEs, nameEn){
+  beep(false);
+  showToast(
+    state.lang==="en" ? nameEn : nameEs,
+    state.lang==="en"
+      ? "Demo portal — in production this connects to forms and tickets."
+      : "Portal demo — en producción se conecta a formularios y tickets."
+  );
+}
+document.getElementById("pAudit").addEventListener("click", ()=>portalToast("Diagnóstico Express","Express Audit"));
+document.getElementById("pBoost").addEventListener("click", ()=>portalToast("Boost de Conversión","Conversion Boost"));
+document.getElementById("pVault").addEventListener("click", ()=>{
+  if(!state.bz){
+    portalToast("Zen Vault (requiere Black Zen)","Zen Vault (requires Black Zen)");
+    return;
+  }
+  portalToast("Zen Vault desbloqueado","Zen Vault unlocked");
+  popConfetti(true);
 });
 
-// initial
-applyLang();
+/* ===== LANG ===== */
+const langBtns = document.querySelectorAll(".lang");
+const transEls = document.querySelectorAll("[data-es]");
+
+function setLang(l){
+  state.lang = l;
+  langBtns.forEach(b=>b.classList.toggle("active", b.dataset.lang===l));
+  transEls.forEach(el => { el.textContent = el.dataset[l]; });
+  render();
+}
+
+langBtns.forEach(b=>b.addEventListener("click", ()=>setLang(b.dataset.lang)));
+
+/* ===== REVEAL ===== */
+const revealEls=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.15});
+revealEls.forEach(el=>obs.observe(el));
+
+/* ===== Init ===== */
+render();
+setLang(state.lang || "es");
 </script>
 
 </body>
