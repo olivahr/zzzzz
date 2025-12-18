@@ -22,7 +22,6 @@ body{
   font-family:'Inter',system-ui;
   background:var(--bg);
   color:#fff;
-  overflow-x:hidden;
 }
 
 /* ================= HEADER ================= */
@@ -36,26 +35,17 @@ body{
   background:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(0,0,0,.4),transparent);
   z-index:1000;
 }
-.brand{
-  font-weight:900;
-  letter-spacing:.5px;
-}
-.langs span{
-  margin-left:14px;
-  cursor:pointer;
-  font-weight:800;
-  opacity:.45;
-}
+.brand{font-weight:900}
+.langs span{margin-left:14px;font-weight:800;opacity:.45}
 .langs span.active{opacity:1}
 
 /* ================= HERO ================= */
 .hero{
-  padding:160px 8% 120px;
+  padding:160px 8% 110px;
 }
 .hero h1{
   font-family:'Playfair Display',serif;
   font-size:clamp(44px,6vw,78px);
-  font-weight:800;
 }
 .hero p{
   margin-top:22px;
@@ -67,23 +57,14 @@ body{
 /* ================= SLIDER ================= */
 .slider{
   max-width:1200px;
-  margin:90px auto 0;
+  margin:80px auto 0;
   border-radius:28px;
   overflow:hidden;
   border:1px solid var(--line);
   background:#000;
-  box-shadow:0 30px 90px rgba(0,0,0,.7);
 }
-.track{
-  display:flex;
-  transition:transform .9s cubic-bezier(.2,.9,.2,1);
-}
-.slide{
-  min-width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
+.track{display:flex;transition:transform .8s ease}
+.slide{min-width:100%;display:flex;justify-content:center}
 .slide img{
   width:100%;
   height:520px;
@@ -94,7 +75,7 @@ body{
 /* ================= STATS ================= */
 .stats{
   max-width:1100px;
-  margin:120px auto 40px;
+  margin:120px auto 0;
   padding:0 6%;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -106,59 +87,87 @@ body{
   border-radius:26px;
   padding:48px 18px;
   text-align:center;
-  backdrop-filter:blur(14px);
 }
 .stat strong{
   font-family:'Playfair Display',serif;
   font-size:56px;
 }
-.stat span{
-  display:block;
-  margin-top:8px;
-  font-weight:700;
-  color:var(--muted2);
-}
+.stat span{color:var(--muted2)}
 
-/* ================= ORBIT DEMO ================= */
-.demo-zone{
-  height:420px;
+/* ================= ORBIT BLACK ZONE ================= */
+.orbit-zone{
+  margin:140px auto;
+  width:100%;
   display:flex;
-  align-items:center;
   justify-content:center;
-  position:relative;
 }
 
+.orbit-box{
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  background:#000;
+  position:relative;
+  box-shadow:
+    inset 0 0 80px rgba(255,255,255,.05),
+    0 0 120px rgba(0,0,0,.9);
+  overflow:hidden;
+}
+
+/* glow girando */
+.orbit-box::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 50% 50%,
+    rgba(255,255,255,.18),
+    transparent 60%);
+  animation:spinGlow 18s linear infinite;
+}
+
+@keyframes spinGlow{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
+/* ================= ORBIT SYSTEM ================= */
 .orbit{
-  position:relative;
-  width:320px;
-  height:320px;
-  animation:orbitRotate 34s linear infinite;
+  position:absolute;
+  inset:0;
+  animation:spin 28s linear infinite;
 }
 
-@keyframes orbitRotate{
+@keyframes spin{
   from{transform:rotate(0deg)}
   to{transform:rotate(360deg)}
 }
 
 .orbit-btn{
   position:absolute;
-  top:50%;
-  left:50%;
+  top:50%; left:50%;
   transform-origin:-130px center;
-  padding:18px 44px;
+  padding:16px 42px;
   border-radius:999px;
   background:rgba(255,255,255,.14);
   border:1px solid rgba(255,255,255,.35);
-  backdrop-filter:blur(22px);
+  backdrop-filter:blur(18px);
   color:#fff;
   font-weight:800;
-  letter-spacing:.4px;
   text-decoration:none;
-  box-shadow:
-    0 0 0 rgba(255,255,255,0),
-    0 18px 48px rgba(0,0,0,.7);
-  animation:heartPulse 4s ease-in-out infinite;
-  transition:all .35s ease;
+  animation:heartbeat 4s ease-in-out infinite;
+  transition:.35s ease;
+}
+
+@keyframes heartbeat{
+  0%,100%{scale:1}
+  50%{scale:1.08}
+}
+
+.orbit-btn:hover{
+  background:#fff;
+  color:#000;
+  box-shadow:0 0 30px rgba(255,255,255,.6);
 }
 
 /* posiciones */
@@ -167,65 +176,31 @@ body{
 .b3{transform:rotate(180deg) translateX(130px)}
 .b4{transform:rotate(270deg) translateX(130px)}
 
-@keyframes heartPulse{
-  0%,100%{scale:1}
-  50%{scale:1.07}
-}
-
-.orbit-btn::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:999px;
-  background:radial-gradient(120px 60px at 50% 50%, rgba(255,255,255,.35), transparent 70%);
-  opacity:.35;
-  pointer-events:none;
-}
-
-.orbit-btn:hover{
-  background:#fff;
-  color:#000;
-  box-shadow:
-    0 0 32px rgba(255,255,255,.55),
-    0 24px 70px rgba(0,0,0,.9);
-}
-
-.orbit:hover{
-  animation-play-state:paused;
-}
-
-/* ================= FINAL TEXT ================= */
+/* ================= FINAL ================= */
 .final{
-  max-width:1000px;
-  margin:140px auto 160px;
-  padding:0 8%;
+  max-width:900px;
+  margin:160px auto;
   text-align:center;
+  padding:0 8%;
 }
 .final h2{
   font-family:'Playfair Display',serif;
-  font-size:clamp(34px,4.8vw,56px);
+  font-size:clamp(34px,5vw,56px);
 }
 .final p{
   margin-top:26px;
   font-size:17px;
   color:var(--muted);
-  line-height:1.85;
+  line-height:1.9;
 }
 
 /* ================= FOOTER ================= */
 footer{
-  padding:44px 20px;
+  padding:40px;
   text-align:center;
   font-size:13px;
   opacity:.55;
   border-top:1px solid var(--line);
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:640px){
-  .slide img{height:420px}
-  .demo-zone{height:340px}
-  .orbit{transform:scale(.9)}
 }
 </style>
 </head>
@@ -234,17 +209,14 @@ footer{
 
 <header class="header">
   <div class="brand">ZenSite</div>
-  <div class="langs">
-    <span class="active">ES</span>
-    <span>EN</span>
-  </div>
+  <div class="langs"><span class="active">ES</span><span>EN</span></div>
 </header>
 
 <section class="hero">
   <h1>Demostraciones premium</h1>
   <p>
-    Ejemplos reales de sitios diseñados para negocios que buscan presencia,
-    confianza y conversión a nivel profesional.
+    Sitios diseñados desde cero para negocios que buscan presencia,
+    confianza y conversión real.
   </p>
 </section>
 
@@ -263,23 +235,25 @@ footer{
   <div class="stat"><strong data-count="100">0</strong><span>Satisfacción</span></div>
 </div>
 
-<div class="demo-zone">
-  <div class="orbit">
-    <a class="orbit-btn b1" href="https://olivahr.github.io/demohomepage-/" target="_blank">Home Page</a>
-    <a class="orbit-btn b2" href="https://olivahr.github.io/pruebamirandaflow/" target="_blank">Store</a>
-    <a class="orbit-btn b3" href="https://olivahr.github.io/demostore/" target="_blank">Store 2</a>
-    <a class="orbit-btn b4" href="https://olivahr.github.io/demobarberweb/" target="_blank">Web</a>
+<!-- ORBIT BLACK SPACE -->
+<div class="orbit-zone">
+  <div class="orbit-box">
+    <div class="orbit">
+      <a class="orbit-btn b1" href="https://olivahr.github.io/demohomepage-/" target="_blank">Home Page</a>
+      <a class="orbit-btn b2" href="https://olivahr.github.io/pruebamirandaflow/" target="_blank">Store</a>
+      <a class="orbit-btn b3" href="https://olivahr.github.io/demostore/" target="_blank">Store 2</a>
+      <a class="orbit-btn b4" href="https://olivahr.github.io/demobarberweb/" target="_blank">Web</a>
+    </div>
   </div>
 </div>
 
 <section class="final">
   <h2>Esto es solo una demostración</h2>
   <p>
-    Cada proyecto se desarrolla desde cero, completamente personalizado.<br><br>
+    Cada proyecto se construye desde cero, completamente personalizado.<br><br>
     Todo se instala y conecta como debe ser: dominio, hosting, formularios,
     pagos, automatizaciones y escalabilidad.<br><br>
-    No usamos plantillas genéricas. Construimos sistemas reales que representan
-    la marca al más alto nivel y están listos para vender.
+    No usamos plantillas. Creamos sistemas reales que venden.
   </p>
 </section>
 
@@ -296,23 +270,22 @@ setInterval(()=>{
 
 /* COUNTERS */
 const counters=document.querySelectorAll("[data-count]");
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      const el=entry.target;
-      const target=+el.dataset.count;
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
       let n=0;
-      const inc=Math.max(1,Math.floor(target/40));
-      const t=setInterval(()=>{
+      const t=+e.target.dataset.count;
+      const inc=Math.max(1,Math.floor(t/40));
+      const int=setInterval(()=>{
         n+=inc;
-        if(n>=target){n=target;clearInterval(t)}
-        el.textContent=n;
+        if(n>=t){n=t;clearInterval(int)}
+        e.target.textContent=n;
       },28);
-      observer.unobserve(el);
+      obs.unobserve(e.target);
     }
   });
 },{threshold:.5});
-counters.forEach(c=>observer.observe(c));
+counters.forEach(c=>obs.observe(c));
 </script>
 
 </body>
