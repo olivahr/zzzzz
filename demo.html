@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZenSite | Demos Profesionales</title>
 
 <!-- PREMIUM FONTS -->
@@ -27,7 +27,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ================= HEADER ================= */
+/* ===== HEADER ===== */
 .header{
   position:fixed;
   top:0; left:0; right:0;
@@ -35,24 +35,22 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:linear-gradient(to bottom,rgba(0,0,0,.85),rgba(0,0,0,.45),transparent);
+  background:linear-gradient(to bottom,rgba(0,0,0,.9),rgba(0,0,0,.5),transparent);
   z-index:1000;
 }
 .brand{
   font-weight:900;
   font-size:20px;
-  letter-spacing:.4px;
 }
 .langs span{
   margin-left:14px;
   cursor:pointer;
   font-weight:800;
-  opacity:.5;
-  user-select:none;
+  opacity:.45;
 }
 .langs span.active{opacity:1}
 
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 .hero{
   padding:160px 8% 120px;
 }
@@ -60,7 +58,6 @@ body{
   font-family:'Playfair Display',serif;
   font-size:clamp(44px,6vw,78px);
   font-weight:800;
-  line-height:1.05;
 }
 .hero p{
   margin-top:22px;
@@ -69,7 +66,7 @@ body{
   color:var(--muted);
 }
 
-/* ================= SLIDER ================= */
+/* ===== SLIDER ===== */
 .slider{
   max-width:1200px;
   margin:90px auto 0;
@@ -81,28 +78,26 @@ body{
 }
 .track{
   display:flex;
-  transition:transform .8s cubic-bezier(.2,.9,.2,1);
-  will-change:transform;
+  transition:transform .9s cubic-bezier(.2,.9,.2,1);
 }
 .slide{
   min-width:100%;
-  position:relative;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .slide img{
   width:100%;
   height:500px;
-  object-fit:cover;
-  filter:contrast(1.05) saturate(1.05);
-  transition:transform .6s ease;
-}
-.slide:hover img{
-  transform:scale(1.04);
+  object-fit:contain; /* 🔥 NO RECORTE */
+  background:#000;
 }
 
-/* ================= STATS ================= */
+/* ===== STATS ===== */
 .stats{
   max-width:1100px;
-  margin:110px auto 40px;
+  margin:120px auto 40px;
   padding:0 6%;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -119,19 +114,16 @@ body{
 .stat strong{
   font-family:'Playfair Display',serif;
   font-size:56px;
-  font-weight:800;
 }
 .stat span{
   display:block;
   margin-top:8px;
   font-weight:700;
   color:var(--muted2);
-  letter-spacing:.4px;
 }
 
-/* ================= FLOATING DEMO ZONE ================= */
+/* ===== DEMO BUTTONS ===== */
 .demo-zone{
-  position:relative;
   height:320px;
   display:flex;
   align-items:center;
@@ -143,16 +135,14 @@ body{
   gap:16px;
 }
 .demo-buttons a{
-  padding:16px 30px;
+  padding:16px 32px;
   border-radius:999px;
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.22);
   backdrop-filter:blur(18px);
   color:#fff;
   font-weight:800;
-  letter-spacing:.4px;
   text-decoration:none;
-  text-align:center;
   transition:.28s ease;
 }
 .demo-buttons a:hover{
@@ -161,7 +151,7 @@ body{
   transform:scale(1.08);
 }
 
-/* ================= FINAL TEXT ================= */
+/* ===== FINAL ===== */
 .final{
   max-width:1000px;
   margin:130px auto 160px;
@@ -171,7 +161,6 @@ body{
 .final h2{
   font-family:'Playfair Display',serif;
   font-size:clamp(34px,4.8vw,56px);
-  font-weight:800;
 }
 .final p{
   margin-top:26px;
@@ -180,7 +169,7 @@ body{
   line-height:1.8;
 }
 
-/* ================= FOOTER ================= */
+/* ===== FOOTER ===== */
 footer{
   padding:44px 20px;
   text-align:center;
@@ -189,7 +178,6 @@ footer{
   border-top:1px solid var(--line);
 }
 
-/* ================= MOBILE ================= */
 @media(max-width:600px){
   .slide img{height:380px}
   .demo-zone{height:280px}
@@ -212,10 +200,9 @@ footer{
       data-en="Professional demonstrations">
     Demostraciones profesionales
   </h1>
-
   <p data-es="Ejemplos reales de sitios diseñados para negocios que buscan presencia, confianza y conversión."
      data-en="Real examples of websites designed for businesses seeking presence, trust and conversion.">
-     Ejemplos reales de sitios diseñados para negocios que buscan presencia, confianza y conversión.
+    Ejemplos reales de sitios diseñados para negocios que buscan presencia, confianza y conversión.
   </p>
 </section>
 
@@ -231,13 +218,22 @@ footer{
 </div>
 
 <!-- STATS -->
-<div class="stats">
-  <div class="stat"><strong data-count="18">0</strong><span data-es="Proyectos entregados" data-en="Projects delivered">Proyectos entregados</span></div>
-  <div class="stat"><strong data-count="3">0</strong><span data-es="Países" data-en="Countries">Países</span></div>
-  <div class="stat"><strong data-count="100">0</strong><span data-es="Satisfacción" data-en="Satisfaction">Satisfacción</span></div>
+<div class="stats" id="stats">
+  <div class="stat">
+    <strong data-count="18">0</strong>
+    <span>Proyectos entregados</span>
+  </div>
+  <div class="stat">
+    <strong data-count="3">0</strong>
+    <span>Países</span>
+  </div>
+  <div class="stat">
+    <strong data-count="100">0</strong>
+    <span>Satisfacción</span>
+  </div>
 </div>
 
-<!-- FLOATING DEMOS -->
+<!-- DEMOS -->
 <div class="demo-zone">
   <div class="demo-buttons">
     <a href="https://olivahr.github.io/demohomepage-/" target="_blank">Home Page</a>
@@ -247,17 +243,15 @@ footer{
   </div>
 </div>
 
-<!-- FINAL -->
 <section class="final">
   <h2>Esto es solo una demostración</h2>
   <p>
-    Cada proyecto se diseña desde cero, adaptado completamente al negocio, la marca y los objetivos del cliente.
+    Cada proyecto se diseña desde cero, completamente personalizado.
     <br><br>
-    No trabajamos con plantillas genéricas. Todo se desarrolla, instala y conecta correctamente:
+    No usamos plantillas genéricas. Todo se desarrolla, instala y conecta correctamente:
     dominio, hosting, formularios, pagos, optimización y escalabilidad.
     <br><br>
-    El diseño, la estructura y la tecnología están pensados para representar la marca
-    a nivel profesional y generar resultados reales.
+    El objetivo es representar la marca al más alto nivel y generar resultados reales.
   </p>
 </section>
 
@@ -272,26 +266,38 @@ let i=0;
 setInterval(()=>{
   i=(i+1)%track.children.length;
   track.style.transform=`translateX(-${i*100}%)`;
-},4800);
+},5200);
 
-/* ===== COUNTERS ===== */
-document.querySelectorAll("[data-count]").forEach(el=>{
-  const t=+el.dataset.count;let n=0;
-  const inc=Math.max(1,Math.floor(t/40));
-  const timer=setInterval(()=>{
-    n+=inc;
-    if(n>=t){n=t;clearInterval(timer)}
-    el.textContent=n;
-  },28);
-});
+/* ===== COUNTERS (ON VIEW) ===== */
+const counters=document.querySelectorAll("[data-count]");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const el=entry.target;
+      const target=+el.dataset.count;
+      let n=0;
+      const inc=Math.max(1,Math.floor(target/40));
+      const t=setInterval(()=>{
+        n+=inc;
+        if(n>=target){n=target;clearInterval(t)}
+        el.textContent=n;
+      },28);
+      observer.unobserve(el);
+    }
+  });
+},{threshold:.5});
+
+counters.forEach(c=>observer.observe(c));
 
 /* ===== LANG ===== */
 const btns=document.querySelectorAll(".langs span");
 const els=document.querySelectorAll("[data-es]");
-btns.forEach(b=>b.onclick=()=>{
-  btns.forEach(x=>x.classList.remove("active"));
-  b.classList.add("active");
-  els.forEach(e=>e.textContent=e.dataset[b.dataset.lang]);
+btns.forEach(b=>{
+  b.onclick=()=>{
+    btns.forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    els.forEach(e=>e.textContent=e.dataset[b.dataset.lang]);
+  };
 });
 </script>
 
