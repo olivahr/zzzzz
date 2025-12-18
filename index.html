@@ -94,6 +94,9 @@ body{
 
 .hero .cta{
   margin-top:40px;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
 }
 
 .hero .cta a{
@@ -109,6 +112,18 @@ body{
 
 .hero .cta a:hover{
   transform:scale(1.04);
+}
+
+/* ===== LEVEL BUTTON (NUEVO) ===== */
+.level-btn{
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.28);
+  backdrop-filter:blur(18px);
+}
+
+.level-btn:hover{
+  background:rgba(255,255,255,.22);
 }
 
 /* ===== LAPTOP ===== */
@@ -237,8 +252,10 @@ footer{
      Diseñamos webs modernas, rápidas y pensadas para convertir.
   </p>
 
+  <!-- CTA -->
   <div class="cta reveal">
     <a href="planes.html" data-es="Ver planes" data-en="View plans">Ver planes</a>
+    <a href="level.html" class="level-btn" data-es="Level" data-en="Level">Level</a>
   </div>
 
   <div class="laptop reveal">
@@ -266,9 +283,8 @@ footer{
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
-  © 2025 ZenSite — Todos los derechos reservados
+  ©️ 2025 ZenSite — Todos los derechos reservados
 </footer>
 
 <script>
