@@ -1,254 +1,1065 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ZenSite Levels</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>ZenSite · Level Up</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%; touch-action: manipulation; -webkit-text-size-adjust:100%;}
+:root{
+  --bg:#050505;
+  --glass:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.14);
+  --muted:rgba(255,255,255,.78);
+  --muted2:rgba(255,255,255,.55);
+
+  --pro:#6fb0ff;
+  --grow:#b98cff;
+  --elite:#ffd36e;
+
+  --r:22px;
+}
 
 body{
   font-family:'Montserrat',system-ui,-apple-system,sans-serif;
-  background:#050505;
+  background:
+    radial-gradient(900px 520px at 50% 10%, rgba(0,120,255,.20), transparent 60%),
+    radial-gradient(800px 600px at 20% 85%, rgba(0,255,150,.18), transparent 65%),
+    #050505;
   color:#fff;
   overflow-x:hidden;
 }
 
-/* ===== HEADER ===== */
-.header{
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 22px;
-  background:rgba(0,0,0,.55);
-  backdrop-filter:blur(14px);
-  z-index:1000;
+/* VIP ambient */
+body.elite{
+  background:
+    radial-gradient(1100px 600px at 50% 8%, rgba(255,211,110,.18), transparent 60%),
+    radial-gradient(860px 560px at 15% 88%, rgba(185,140,255,.14), transparent 65%),
+    radial-gradient(920px 540px at 85% 90%, rgba(111,176,255,.12), transparent 65%),
+    #050505;
 }
 
-.header a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:800;
-  opacity:.9;
+/* ===== TOP BAR ===== */
+.topbar{
+  position:fixed; top:0; left:0; width:100%;
+  height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 18px;
+  background:rgba(5,5,5,.55);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  z-index:1000;
+}
+.left{
+  display:flex; gap:14px; align-items:center;
+}
+.back{
+  color:#fff; text-decoration:none;
+  font-weight:900; opacity:.9;
+}
+.brand{
+  font-weight:900;
+  letter-spacing:.6px;
+  opacity:.95;
+}
+.right{
+  display:flex; align-items:center; gap:12px;
+}
+.lang{
+  cursor:pointer;
+  font-weight:900;
+  opacity:.45;
+  user-select:none;
+}
+.lang.active{opacity:1}
+.pill{
+  padding:10px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.4px;
+}
+.pill b{font-weight:900}
+
+/* ===== LAYOUT ===== */
+.wrap{
+  padding:110px 7% 90px;
+  max-width:1100px;
+  margin:0 auto;
 }
 
 /* ===== HERO ===== */
 .hero{
-  min-height:100vh;
-  padding:140px 8% 100px;
-  text-align:center;
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:18px;
+  align-items:stretch;
 }
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr}
+}
+.hTitle{
+  padding:26px;
+  border-radius:var(--r);
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 30px 90px rgba(0,0,0,.55);
+  position:relative;
+  overflow:hidden;
+}
+.hTitle::after{
+  content:"";
+  position:absolute; inset:-2px;
+  background:radial-gradient(520px 220px at 20% 0%, rgba(255,255,255,.12), transparent 60%);
+  opacity:.7; pointer-events:none;
+}
+.hTitle h1{
+  font-size:clamp(34px,5.2vw,64px);
+  font-weight:900;
+  letter-spacing:-.7px;
+  line-height:1.02;
+  text-shadow:0 20px 60px rgba(0,0,0,.55);
+}
+.hTitle p{
+  margin-top:14px;
+  max-width:720px;
+  color:var(--muted);
+  line-height:1.55;
+  font-size:16px;
+}
+.hMeta{
+  margin-top:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.chip{
+  padding:10px 12px;
+  border-radius:999px;
+  background:rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.14);
+  font-weight:900;
+  font-size:12px;
+  opacity:.95;
+}
+.chip i{opacity:.7; font-style:normal}
 
-.hero h1{
-  font-size:clamp(40px,6vw,74px);
+/* ===== XP PANEL ===== */
+.xpCard{
+  border-radius:var(--r);
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  padding:22px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 30px 90px rgba(0,0,0,.55);
+  transform:translateY(14px);
+  opacity:0;
+  animation:in .7s ease forwards;
+}
+@keyframes in{to{transform:none; opacity:1}}
+.xpTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+.rank{
+  font-weight:900;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-size:12px;
+  opacity:.95;
+}
+.rankBadge{
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(0,0,0,.25);
+  font-weight:900;
+  font-size:12px;
+  opacity:.95;
+}
+.rankBadge.elite{
+  border-color:rgba(255,211,110,.30);
+  box-shadow:0 0 26px rgba(255,211,110,.20);
+}
+.bigXP{
+  margin-top:18px;
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+}
+.bigXP strong{
+  font-size:56px;
   font-weight:900;
   letter-spacing:-1px;
 }
-
-.hero p{
-  margin-top:22px;
-  font-size:18px;
-  opacity:.85;
-  max-width:680px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-/* ===== LEVELS ===== */
-.levels{
-  margin-top:90px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
-}
-
-.level{
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:28px;
-  padding:36px 28px;
-  backdrop-filter:blur(18px);
-  transition:.35s ease;
-  position:relative;
-}
-
-.level:hover{
-  transform:translateY(-8px);
-  box-shadow:0 30px 80px rgba(0,0,0,.7);
-}
-
-/* badge */
-.level span{
-  display:inline-block;
-  padding:6px 14px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:800;
-  background:rgba(255,255,255,.12);
-  margin-bottom:16px;
-}
-
-/* title */
-.level h3{
-  font-size:28px;
+.bigXP span{
+  opacity:.7;
   font-weight:900;
+}
+.progress{
+  margin-top:16px;
+  height:14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.10);
+  overflow:hidden;
+}
+.fill{
+  height:100%;
+  width:0%;
+  border-radius:999px;
+  background:linear-gradient(90deg,#fff,#cfcfcf,#fff);
+  transition:width .9s cubic-bezier(.2,.9,.2,1);
+  box-shadow:0 0 18px rgba(255,255,255,.18);
+}
+body.elite .fill{
+  background:linear-gradient(90deg,#fff,var(--elite),#fff);
+  box-shadow:0 0 26px rgba(255,211,110,.28);
+}
+.nextLine{
+  margin-top:12px;
+  color:var(--muted2);
+  font-weight:800;
+  font-size:13px;
+  line-height:1.4;
+}
+.spark{
+  position:absolute;
+  inset:-1px;
+  background:radial-gradient(520px 220px at 70% 0%, rgba(255,255,255,.12), transparent 60%);
+  opacity:.6;
+  pointer-events:none;
+}
+.shake{animation:shake .35s ease}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-3px)}
+  50%{transform:translateX(3px)}
+  75%{transform:translateX(-2px)}
+}
+
+/* ===== SECTIONS ===== */
+.section{
+  margin-top:34px;
+}
+.h2{
+  font-size:14px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  opacity:.9;
   margin-bottom:14px;
 }
 
-/* list */
+/* ===== LEVEL GRID ===== */
+.levels{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:14px;
+}
+@media(max-width:980px){
+  .levels{grid-template-columns:1fr}
+}
+.level{
+  border-radius:24px;
+  padding:18px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  position:relative;
+  overflow:hidden;
+  transition:transform .25s ease, border-color .25s ease, box-shadow .35s ease, filter .25s ease;
+}
+.level:hover{transform:translateY(-2px); border-color:rgba(255,255,255,.18)}
+.level::after{
+  content:"";
+  position:absolute; inset:-2px;
+  background:radial-gradient(520px 240px at 20% 0%, rgba(255,255,255,.12), transparent 60%);
+  opacity:.55; pointer-events:none;
+}
+.lTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+.lName{
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:12px;
+  opacity:.95;
+}
+.lRange{opacity:.65; font-weight:800; font-size:12px}
+.lTitle{
+  margin-top:12px;
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:-.4px;
+}
+.lTitle small{
+  font-size:16px;
+  opacity:.65;
+  font-weight:900;
+}
 .level ul{
   list-style:none;
-  margin-top:16px;
+  margin-top:12px;
+  line-height:1.65;
+  opacity:.88;
+}
+.level li{margin-bottom:6px}
+.locked{
+  opacity:.45;
+  filter:saturate(.8);
+}
+.active{
+  outline:2px solid rgba(255,255,255,.45);
+  box-shadow:0 0 60px rgba(255,255,255,.10);
+}
+.level.pro.active{outline-color:rgba(111,176,255,.55); box-shadow:0 0 70px rgba(111,176,255,.12)}
+.level.grow.active{outline-color:rgba(185,140,255,.55); box-shadow:0 0 70px rgba(185,140,255,.12)}
+.level.elite.active{
+  outline-color:rgba(255,211,110,.70);
+  box-shadow:0 0 80px rgba(255,211,110,.16);
+}
+.crown{
+  position:absolute;
+  top:14px; left:14px;
+  font-size:22px;
+  opacity:.12;
+  transform:translateY(-6px);
+  transition:opacity .35s ease, transform .35s ease, filter .35s ease;
+}
+.level.elite.active .crown{
+  opacity:1;
+  transform:none;
+  filter:drop-shadow(0 0 18px rgba(255,211,110,.65));
+  animation:crownFloat 2.4s ease-in-out infinite;
+}
+@keyframes crownFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
 }
 
-.level ul li{
-  margin-bottom:12px;
-  font-size:15px;
-  opacity:.85;
-  line-height:1.5;
+/* ===== MISSIONS ===== */
+.missions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
 }
-
-/* CTA */
-.level a{
-  display:inline-block;
-  margin-top:26px;
-  padding:14px 26px;
-  border-radius:16px;
+@media(max-width:980px){ .missions{grid-template-columns:1fr} }
+.mCard{
+  border-radius:24px;
+  padding:18px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 30px 90px rgba(0,0,0,.45);
+}
+.mRow{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:14px 12px;
+  border-radius:18px;
+  background:rgba(0,0,0,.22);
+  border:1px solid rgba(255,255,255,.10);
+  margin-top:10px;
+  transition:transform .22s ease, border-color .22s ease, background .22s ease;
+}
+.mRow:hover{transform:translateY(-2px); border-color:rgba(255,255,255,.18); background:rgba(255,255,255,.06)}
+.mText strong{
+  display:block;
+  font-weight:900;
+  letter-spacing:-.2px;
+}
+.mText small{
+  display:block;
+  opacity:.7;
+  margin-top:4px;
+  font-weight:700;
+}
+.btn{
+  border:none;
+  cursor:pointer;
+  padding:12px 14px;
+  border-radius:999px;
   background:#fff;
   color:#000;
   font-weight:900;
-  text-decoration:none;
-  transition:.25s;
+  font-size:12px;
+  letter-spacing:.06em;
+  transition:transform .15s ease, filter .15s ease;
 }
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.35; cursor:not-allowed}
 
-.level a:hover{
-  transform:scale(1.05);
+/* ===== PORTAL ===== */
+.portal{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
 }
-
-/* ===== FINAL ===== */
-.final{
-  margin:140px auto 120px;
-  max-width:820px;
-  text-align:center;
-  padding:0 8%;
+@media(max-width:980px){ .portal{grid-template-columns:1fr} }
+.portalCard{
+  border-radius:24px;
+  padding:18px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  position:relative;
+  overflow:hidden;
+  transition:transform .25s ease, border-color .25s ease, box-shadow .35s ease;
 }
-
-.final h2{
-  font-size:clamp(32px,5vw,56px);
+.portalCard:hover{transform:translateY(-2px); border-color:rgba(255,255,255,.18)}
+.portalCard::after{
+  content:"";
+  position:absolute; inset:-2px;
+  background:radial-gradient(520px 220px at 30% 0%, rgba(255,255,255,.10), transparent 60%);
+  opacity:.55; pointer-events:none;
+}
+.portalCard h3{
+  font-size:18px;
   font-weight:900;
+  letter-spacing:-.2px;
 }
+.portalCard p{
+  margin-top:8px;
+  opacity:.72;
+  line-height:1.6;
+  font-weight:700;
+}
+.portalCard .need{
+  margin-top:12px;
+  display:inline-block;
+  padding:9px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(0,0,0,.20);
+  font-weight:900;
+  font-size:12px;
+  opacity:.9;
+}
+.portalCard.locked{
+  opacity:.45;
+  filter:saturate(.8);
+}
+.portalCard .go{
+  margin-top:14px;
+  display:inline-block;
+  padding:12px 14px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  text-decoration:none;
+  font-weight:900;
+  opacity:.92;
+}
+.portalCard .go:hover{filter:brightness(1.15)}
+.portalCard.locked .go{pointer-events:none; opacity:.35}
 
-.final p{
-  margin-top:26px;
-  font-size:17px;
-  opacity:.85;
-  line-height:1.8;
+/* ===== TOAST ===== */
+.toast{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:18px;
+  width:calc(100% - 36px);
+  max-width:560px;
+  padding:14px 16px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(18px);
+  box-shadow:0 20px 60px rgba(0,0,0,.65);
+  display:none;
+  z-index:2000;
+}
+.toast.show{display:flex}
+.toast b{letter-spacing:.12em}
+.toast span{opacity:.8; margin-left:8px}
+
+/* ===== FX CANVAS ===== */
+#fx{
+  position:fixed; inset:0;
+  pointer-events:none;
+  z-index:2500;
 }
 
 /* ===== FOOTER ===== */
 footer{
-  padding:32px;
+  margin-top:70px;
+  padding:28px 0;
   text-align:center;
-  font-size:14px;
   opacity:.6;
-  border-top:1px solid rgba(255,255,255,.12);
+  font-size:14px;
+  border-top:1px solid rgba(255,255,255,.08);
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <a href="index.html">← Volver</a>
-  <strong>Zen Levels</strong>
+<canvas id="fx"></canvas>
+
+<div class="topbar">
+  <div class="left">
+    <a class="back" href="index.html">←</a>
+    <div class="brand">ZenSite · Level Up</div>
+  </div>
+  <div class="right">
+    <div class="pill">SZ XP: <b id="xp">0</b></div>
+    <div class="pill"><span data-es="Nivel" data-en="Level">Nivel</span>: <b id="rankMini">START</b></div>
+    <span class="lang active" data-lang="es">ES</span>
+    <span class="lang" data-lang="en">EN</span>
+  </div>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Lleva tu web al siguiente nivel</h1>
-  <p>
-    ZenSite funciona por niveles.  
-    Cada nivel desbloquea mejoras reales, nuevas funciones y optimizaciones
-    que hacen crecer tu negocio.
-  </p>
+<div class="wrap">
 
-  <!-- LEVEL GRID -->
-  <div class="levels">
-
-    <!-- LEVEL 1 -->
-    <div class="level">
-      <span>LEVEL 1</span>
-      <h3>Base</h3>
-      <ul>
-        <li>✔ Diseño profesional inicial</li>
-        <li>✔ Web rápida y responsive</li>
-        <li>✔ Textos optimizados</li>
-        <li>✔ Hosting y dominio conectados</li>
-      </ul>
-      <a href="#">Incluido</a>
+  <div class="hero">
+    <div class="hTitle">
+      <h1 data-es="Sube de nivel en el Sistema Z"
+          data-en="Level up inside System Z">Sube de nivel en el Sistema Z</h1>
+      <p data-es="Esto es un juego real: acumulas SZ XP y desbloqueas upgrades de verdad. No son plantillas. Son mejoras instaladas, conectadas y optimizadas."
+         data-en="This is a real game: earn SZ XP and unlock real upgrades. Not templates—properly installed, connected, and optimized improvements.">
+        Esto es un juego real: acumulas SZ XP y desbloqueas upgrades de verdad. No son plantillas. Son mejoras instaladas, conectadas y optimizadas.
+      </p>
+      <div class="hMeta">
+        <div class="chip">⚡ <i data-es="Progreso guardado en tu dispositivo" data-en="Progress saved on your device">Progreso guardado en tu dispositivo</i></div>
+        <div class="chip">🎯 <i data-es="Misiones que suben rápido" data-en="Missions that level you up fast">Misiones que suben rápido</i></div>
+        <div class="chip">👑 <i data-es="ELITE se siente ELITE" data-en="ELITE feels ELITE">ELITE se siente ELITE</i></div>
+      </div>
     </div>
 
-    <!-- LEVEL 2 -->
-    <div class="level">
-      <span>LEVEL 2</span>
-      <h3>Pro</h3>
-      <ul>
-        <li>✔ Mejoras visuales avanzadas</li>
-        <li>✔ Animaciones y micro-interacciones</li>
-        <li>✔ Optimización SEO inicial</li>
-        <li>✔ Ajustes según feedback del cliente</li>
-      </ul>
-      <a href="#">Subir a Pro</a>
-    </div>
+    <div class="xpCard" id="xpCard">
+      <div class="spark"></div>
+      <div class="xpTop">
+        <div>
+          <div class="rank" data-es="ESTADO" data-en="STATUS">ESTADO</div>
+          <div class="rankBadge" id="badge">START</div>
+        </div>
+        <div class="rank" id="needLine">—</div>
+      </div>
 
-    <!-- LEVEL 3 -->
-    <div class="level">
-      <span>LEVEL 3</span>
-      <h3>Growth</h3>
-      <ul>
-        <li>✔ Formularios inteligentes</li>
-        <li>✔ Automatizaciones (leads, WhatsApp, email)</li>
-        <li>✔ Optimización para conversión</li>
-        <li>✔ Nuevas secciones estratégicas</li>
-      </ul>
-      <a href="#">Desbloquear</a>
-    </div>
+      <div class="bigXP">
+        <strong id="xpBig">0</strong><span>SZ XP</span>
+      </div>
 
-    <!-- LEVEL 4 -->
-    <div class="level">
-      <span>LEVEL 4</span>
-      <h3>Elite</h3>
-      <ul>
-        <li>✔ Branding avanzado</li>
-        <li>✔ Escalabilidad y nuevas funciones</li>
-        <li>✔ Sistema completo conectado</li>
-        <li>✔ Actualizaciones continuas</li>
-      </ul>
-      <a href="#">Nivel Elite</a>
+      <div class="progress"><div class="fill" id="fill"></div></div>
+      <div class="nextLine" id="nextLine">—</div>
     </div>
-
   </div>
-</section>
 
-<!-- FINAL -->
-<section class="final">
-  <h2>Esto no es una plantilla</h2>
-  <p>
-    Cada nivel representa trabajo real: diseño, código, optimización y estrategia.<br><br>
-    Las mejoras se aplican solo si el cliente las necesita y las solicita.
-    Nada es genérico. Todo se adapta al negocio, al mercado y al objetivo.
-  </p>
-</section>
+  <!-- LEVELS -->
+  <section class="section">
+    <div class="h2" data-es="Niveles" data-en="Levels">Niveles</div>
 
-<footer>
-  © 2025 ZenSite · Sistema de niveles profesional
-</footer>
+    <div class="levels">
+      <div class="level start" id="lv1">
+        <div class="lTop">
+          <div class="lName">LEVEL 1</div>
+          <div class="lRange">0–100</div>
+        </div>
+        <div class="lTitle" data-es="START" data-en="START">START</div>
+        <ul>
+          <li data-es="✔ Acceso al sistema" data-en="✔ Access to the system">✔ Acceso al sistema</li>
+          <li data-es="✔ Home Page profesional" data-en="✔ Professional Home Page">✔ Home Page profesional</li>
+          <li data-es="✖ Sin prioridad / extras" data-en="✖ No priority / extras">✖ Sin prioridad / extras</li>
+        </ul>
+      </div>
+
+      <div class="level pro locked" id="lv2">
+        <div class="lTop">
+          <div class="lName">LEVEL 2</div>
+          <div class="lRange">100–300</div>
+        </div>
+        <div class="lTitle" data-es="PRO" data-en="PRO">PRO <small>100+</small></div>
+        <ul>
+          <li data-es="✔ Animaciones premium" data-en="✔ Premium animations">✔ Animaciones premium</li>
+          <li data-es="✔ Sección extra GRATIS" data-en="✔ 1 extra section FREE">✔ Sección extra GRATIS</li>
+          <li data-es="✔ 1 ronda de cambios" data-en="✔ 1 revision round">✔ 1 ronda de cambios</li>
+        </ul>
+      </div>
+
+      <div class="level grow locked" id="lv3">
+        <div class="lTop">
+          <div class="lName">LEVEL 3</div>
+          <div class="lRange">300–700</div>
+        </div>
+        <div class="lTitle" data-es="GROWTH" data-en="GROWTH">GROWTH <small>300+</small></div>
+        <ul>
+          <li data-es="✔ Formularios conectados" data-en="✔ Connected forms">✔ Formularios conectados</li>
+          <li data-es="✔ Optimización de conversión" data-en="✔ Conversion optimization">✔ Optimización de conversión</li>
+          <li data-es="✔ Mini rediseño visual" data-en="✔ Mini visual redesign">✔ Mini rediseño visual</li>
+        </ul>
+      </div>
+
+      <div class="level elite locked" id="lv4">
+        <div class="crown">👑</div>
+        <div class="lTop">
+          <div class="lName">LEVEL 4</div>
+          <div class="lRange">700+</div>
+        </div>
+        <div class="lTitle" data-es="ELITE" data-en="ELITE">ELITE <small>700+</small></div>
+        <ul>
+          <li data-es="✔ Cambios ilimitados" data-en="✔ Unlimited changes">✔ Cambios ilimitados</li>
+          <li data-es="✔ Automatizaciones" data-en="✔ Automations">✔ Automatizaciones</li>
+          <li data-es="✔ Soporte prioritario" data-en="✔ Priority support">✔ Soporte prioritario</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSIONS -->
+  <section class="section">
+    <div class="h2" data-es="Misiones" data-en="Missions">Misiones</div>
+
+    <div class="missions">
+      <div class="mCard">
+        <div style="font-weight:900; opacity:.95" data-es="Sube rápido" data-en="Level up fast">Sube rápido</div>
+
+        <div class="mRow">
+          <div class="mText">
+            <strong data-es="Propina (opcional)" data-en="Tip (optional)">Propina (opcional)</strong>
+            <small data-es="+20 SZ XP · no es obligado" data-en="+20 SZ XP · not required">+20 SZ XP · no es obligado</small>
+          </div>
+          <button class="btn" id="mTip" data-es="Reclamar" data-en="Claim">Reclamar</button>
+        </div>
+
+        <div class="mRow">
+          <div class="mText">
+            <strong data-es="Reservar y asistir 3 veces en un mes" data-en="Book & show up 3 times in a month">Reservar y asistir 3 veces en un mes</strong>
+            <small data-es="+140 SZ XP · sube duro" data-en="+140 SZ XP · big boost">+140 SZ XP · sube duro</small>
+          </div>
+          <button class="btn" id="m3x" data-es="Reclamar" data-en="Claim">Reclamar</button>
+        </div>
+
+        <div class="mRow">
+          <div class="mText">
+            <strong data-es="Mantener nivel activo" data-en="Keep your level active">Mantener nivel activo</strong>
+            <small data-es="+40 SZ XP · si te mantienes" data-en="+40 SZ XP · stay consistent">+40 SZ XP · si te mantienes</small>
+          </div>
+          <button class="btn" id="mKeep" data-es="Reclamar" data-en="Claim">Reclamar</button>
+        </div>
+      </div>
+
+      <div class="mCard">
+        <div style="font-weight:900; opacity:.95" data-es="Acciones que benefician tu negocio" data-en="Actions that grow your business">Acciones que benefician tu negocio</div>
+
+        <div class="mRow">
+          <div class="mText">
+            <strong data-es="Actualizar contenido (nuevo servicio / fotos)" data-en="Update content (new service / photos)">Actualizar contenido (nuevo servicio / fotos)</strong>
+            <small data-es="+60 SZ XP · mantiene la web viva" data-en="+60 SZ XP · keeps your site alive">+60 SZ XP · mantiene la web viva</small>
+          </div>
+          <button class="btn" id="mUpdate" data-es="Reclamar" data-en="Claim">Reclamar</button>
+        </div>
+
+        <div class="mRow">
+          <div class="mText">
+            <strong data-es="Recomendar ZenSite (cliente nuevo)" data-en="Refer ZenSite (new client)">Recomendar ZenSite (cliente nuevo)</strong>
+            <small data-es="+120 SZ XP · upgrade garantizado" data-en="+120 SZ XP · guaranteed upgrade">+120 SZ XP · upgrade garantizado</small>
+          </div>
+          <button class="btn" id="mRefer" data-es="Reclamar" data-en="Claim">Reclamar</button>
+        </div>
+
+        <div class="mRow">
+          <div class="mText">
+            <strong data-es="Upgrade: tienda / pagos / automatización" data-en="Upgrade: store / payments / automation">Upgrade: tienda / pagos / automatización</strong>
+            <small data-es="+160 SZ XP · salto de nivel" data-en="+160 SZ XP · level jump">+160 SZ XP · salto de nivel</small>
+          </div>
+          <button class="btn" id="mUpgrade" data-es="Reclamar" data-en="Claim">Reclamar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTAL -->
+  <section class="section">
+    <div class="h2" data-es="Portal de recompensas" data-en="Rewards portal">Portal de recompensas</div>
+
+    <div class="portal">
+      <div class="portalCard" id="p1">
+        <h3 data-es="Blueprint Pro" data-en="Pro Blueprint">Blueprint Pro</h3>
+        <p data-es="Paquete de mejoras visuales premium (micro-animaciones + estética de lujo)."
+           data-en="Premium visual upgrades pack (micro-animations + luxury look).">
+          Paquete de mejoras visuales premium (micro-animaciones + estética de lujo).
+        </p>
+        <span class="need" data-es="Desbloquea en PRO" data-en="Unlocks at PRO">Desbloquea en PRO</span><br>
+        <a class="go" href="planes.html" data-es="Ver cómo desbloquear" data-en="See how to unlock">Ver cómo desbloquear</a>
+      </div>
+
+      <div class="portalCard locked" id="p2">
+        <h3 data-es="Conversion Booster" data-en="Conversion Booster">Conversion Booster</h3>
+        <p data-es="Secciones de confianza: casos, reseñas, CTA, embudo simple + formularios conectados."
+           data-en="Trust sections: cases, reviews, CTA, simple funnel + connected forms.">
+          Secciones de confianza: casos, reseñas, CTA, embudo simple + formularios conectados.
+        </p>
+        <span class="need" data-es="Desbloquea en GROWTH" data-en="Unlocks at GROWTH">Desbloquea en GROWTH</span><br>
+        <a class="go" href="planes.html" data-es="Entrar al booster" data-en="Enter booster">Entrar al booster</a>
+      </div>
+
+      <div class="portalCard locked" id="p3">
+        <h3 data-es="Elite System" data-en="Elite System">Elite System</h3>
+        <p data-es="Automatizaciones + soporte prioritario + cambios ilimitados. Tu web evoluciona contigo."
+           data-en="Automations + priority support + unlimited changes. Your site evolves with you.">
+          Automatizaciones + soporte prioritario + cambios ilimitados. Tu web evoluciona contigo.
+        </p>
+        <span class="need" data-es="Desbloquea en ELITE 👑" data-en="Unlocks at ELITE 👑">Desbloquea en ELITE 👑</span><br>
+        <a class="go" href="planes.html" data-es="Activar modo Elite" data-en="Activate Elite mode">Activar modo Elite</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>©️ 2025 ZenSite — System Z</footer>
+</div>
+
+<div class="toast" id="toast">
+  <b id="toastT">+SZ XP</b><span id="toastS">Actualizado</span>
+</div>
+
+<script>
+/* =========================
+   STATE (LOCAL)
+========================= */
+const KEY="zensite_levelup_v1";
+const DEFAULT={
+  xp: 120,                 // puedes arrancar en 0 si quieres
+  last:{},                 // cooldown por día (demo)
+  lang:"es"
+};
+
+function dayId(t=Date.now()){
+  const d=new Date(t);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
+function load(){
+  try{
+    const raw=localStorage.getItem(KEY);
+    if(!raw) return {...DEFAULT};
+    const s=JSON.parse(raw);
+    return {...DEFAULT, ...s, last:{...DEFAULT.last, ...(s.last||{})}};
+  }catch(e){ return {...DEFAULT}; }
+}
+function save(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
+
+/* =========================
+   LEVELS
+========================= */
+const LEVELS=[
+  {id:1, nameES:"START",  nameEN:"START",  min:0,   max:100, color:"#ffffff"},
+  {id:2, nameES:"PRO",    nameEN:"PRO",    min:100, max:300, color:"var(--pro)"},
+  {id:3, nameES:"GROWTH", nameEN:"GROWTH", min:300, max:700, color:"var(--grow)"},
+  {id:4, nameES:"ELITE",  nameEN:"ELITE",  min:700, max:999999, color:"var(--elite)"}
+];
+
+function getLevel(xp){
+  if(xp>=700) return LEVELS[3];
+  if(xp>=300) return LEVELS[2];
+  if(xp>=100) return LEVELS[1];
+  return LEVELS[0];
+}
+function nextGoal(xp){
+  if(xp<100) return {goal:100, label:"PRO"};
+  if(xp<300) return {goal:300, label:"GROWTH"};
+  if(xp<700) return {goal:700, label:"ELITE"};
+  return {goal:700, label:"ELITE"};
+}
+function pctToGoal(xp){
+  // barra basada en 0..700 para que se sienta intensa
+  const p = Math.max(0, Math.min(1, xp/700));
+  return Math.round(p*100);
+}
+
+/* =========================
+   UI + LANG
+========================= */
+const elXP=document.getElementById("xp");
+const elXPBig=document.getElementById("xpBig");
+const elFill=document.getElementById("fill");
+const elNeed=document.getElementById("needLine");
+const elNext=document.getElementById("nextLine");
+const elBadge=document.getElementById("badge");
+const elRankMini=document.getElementById("rankMini");
+const xpCard=document.getElementById("xpCard");
+
+const lv1=document.getElementById("lv1");
+const lv2=document.getElementById("lv2");
+const lv3=document.getElementById("lv3");
+const lv4=document.getElementById("lv4");
+
+const p1=document.getElementById("p1");
+const p2=document.getElementById("p2");
+const p3=document.getElementById("p3");
+
+const toast=document.getElementById("toast");
+const toastT=document.getElementById("toastT");
+const toastS=document.getElementById("toastS");
+
+const langBtns=document.querySelectorAll(".lang");
+const transEls=document.querySelectorAll("[data-es]");
+
+function setLang(lang){
+  langBtns.forEach(b=>b.classList.toggle("active", b.dataset.lang===lang));
+  transEls.forEach(el=>{
+    el.textContent = el.dataset[lang];
+  });
+}
+
+/* =========================
+   SOUND + HAPTIC
+========================= */
+let AC=null;
+function beep(type=1){
+  try{
+    AC = AC || new (window.AudioContext||window.webkitAudioContext)();
+    const o=AC.createOscillator();
+    const g=AC.createGain();
+    o.type="sine";
+    o.frequency.value = type===2 ? 740 : 620;
+    g.gain.value = 0.0001;
+    o.connect(g); g.connect(AC.destination);
+    o.start();
+    const t=AC.currentTime;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.035, t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t+0.14);
+    o.frequency.setValueAtTime(o.frequency.value, t);
+    o.frequency.linearRampToValueAtTime(type===2 ? 980 : 760, t+0.09);
+    o.stop(t+0.16);
+  }catch(e){}
+}
+function vib(ms=18){
+  try{ if(navigator.vibrate) navigator.vibrate(ms); }catch(e){}
+}
+
+/* =========================
+   COUNTER ANIM
+========================= */
+function animateNumber(el, from, to){
+  const diff = to-from;
+  const steps = Math.min(46, Math.max(14, Math.floor(Math.abs(diff)/6)));
+  let i=0;
+  const t=setInterval(()=>{
+    i++;
+    const v=Math.round(from + diff*(i/steps));
+    el.textContent=v;
+    if(i>=steps){ el.textContent=to; clearInterval(t); }
+  }, 16);
+}
+
+/* =========================
+   CONFETTI FX
+========================= */
+const fx=document.getElementById("fx");
+const ctx=fx.getContext("2d");
+function resizeFX(){
+  fx.width=innerWidth*devicePixelRatio;
+  fx.height=innerHeight*devicePixelRatio;
+}
+addEventListener("resize", resizeFX);
+resizeFX();
+
+let conf=[];
+function popConfetti(gold=false){
+  conf=[];
+  const count = gold? 170 : 120;
+  for(let i=0;i<count;i++){
+    conf.push({
+      x:(Math.random()*innerWidth)*devicePixelRatio,
+      y:(-30 - Math.random()*240)*devicePixelRatio,
+      vx:(-1 + Math.random()*2)*devicePixelRatio*1.15,
+      vy:(2 + Math.random()*5)*devicePixelRatio,
+      r:(2 + Math.random()*4)*devicePixelRatio,
+      rot:Math.random()*Math.PI,
+      vr:(-.2 + Math.random()*.4),
+      life:150 + Math.random()*90,
+      gold: gold ? (Math.random()>.35) : (Math.random()>.6)
+    });
+  }
+  renderConfetti();
+}
+function renderConfetti(){
+  ctx.clearRect(0,0,fx.width,fx.height);
+  conf.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr;
+    p.vy*=1.01; p.life-=1;
+
+    ctx.save();
+    ctx.translate(p.x,p.y);
+    ctx.rotate(p.rot);
+    ctx.globalAlpha=Math.max(0, Math.min(1, p.life/220));
+    ctx.fillStyle=p.gold? "rgba(255,211,110,.95)" : "rgba(255,255,255,.95)";
+    ctx.fillRect(-p.r, -p.r, p.r*2.2, p.r*1.2);
+    ctx.restore();
+  });
+  conf=conf.filter(p=>p.life>0 && p.y<fx.height+320);
+  if(conf.length) requestAnimationFrame(renderConfetti);
+  else ctx.clearRect(0,0,fx.width,fx.height);
+}
+
+/* =========================
+   TOAST
+========================= */
+function showToast(t, s){
+  toastT.textContent=t;
+  toastS.textContent=s;
+  toast.classList.add("show");
+  clearTimeout(showToast._t);
+  showToast._t=setTimeout(()=>toast.classList.remove("show"), 2200);
+}
+
+/* =========================
+   LOCK/UNLOCK UI
+========================= */
+function setActiveLevelUI(levelId){
+  [lv1,lv2,lv3,lv4].forEach(x=>x.classList.remove("active"));
+  lv2.classList.add("locked"); lv3.classList.add("locked"); lv4.classList.add("locked");
+
+  if(levelId>=1){ lv1.classList.add("active"); }
+  if(levelId>=2){ lv2.classList.remove("locked"); lv2.classList.add("active"); }
+  if(levelId>=3){ lv3.classList.remove("locked"); lv3.classList.add("active"); }
+  if(levelId>=4){ lv4.classList.remove("locked"); lv4.classList.add("active"); }
+
+  // portal locks
+  p1.classList.remove("locked");
+  p2.classList.toggle("locked", levelId<3);
+  p3.classList.toggle("locked", levelId<4);
+
+  document.body.classList.toggle("elite", levelId>=4);
+  elBadge.classList.toggle("elite", levelId>=4);
+}
+
+function render(state, leveled=false){
+  const lvl=getLevel(state.xp);
+  const prevTop = Number(elXP.textContent||0);
+  animateNumber(elXP, prevTop, state.xp);
+  animateNumber(elXPBig, Number(elXPBig.textContent||0), state.xp);
+
+  elFill.style.width = pctToGoal(state.xp) + "%";
+
+  const lang = state.lang || "es";
+  const name = lang==="es" ? lvl.nameES : lvl.nameEN;
+
+  elBadge.textContent = name + (lvl.id===4 ? " 👑" : "");
+  elRankMini.textContent = name;
+
+  // need line
+  const ng = nextGoal(state.xp);
+  if(state.xp>=700){
+    elNeed.textContent = lang==="es" ? "MODO ELITE ACTIVO" : "ELITE MODE ACTIVE";
+    elNext.textContent = lang==="es"
+      ? "Cambios ilimitados + automatizaciones + prioridad total."
+      : "Unlimited changes + automations + total priority.";
+  }else{
+    const left = Math.max(0, ng.goal - state.xp);
+    elNeed.textContent = (lang==="es" ? "FALTAN " : "NEED ") + left + " SZ XP";
+    elNext.textContent = lang==="es"
+      ? `Objetivo: ${ng.label} · desbloqueas upgrades reales instalados y conectados.`
+      : `Goal: ${ng.label} · unlock real installed & connected upgrades.`;
+  }
+
+  setActiveLevelUI(lvl.id);
+
+  // shake
+  xpCard.classList.remove("shake"); void xpCard.offsetWidth; xpCard.classList.add("shake");
+
+  if(leveled){
+    popConfetti(lvl.id===4);
+    showToast(lang==="es" ? "SUBISTE DE NIVEL" : "LEVEL UP", lvl.id===4 ? "ELITE 👑" : name);
+    beep(2); vib(24);
+  }
+
+  save(state);
+}
+
+/* =========================
+   MISSIONS (cooldown demo)
+========================= */
+function canClaim(state, key){
+  const today=dayId();
+  return (state.last[key]||"") !== today;
+}
+function setClaimed(state, key){
+  state.last[key]=dayId();
+}
+function syncButtons(state){
+  const lang=state.lang||"es";
+  const map=[
+    ["mTip","tip"],
+    ["m3x","three"],
+    ["mKeep","keep"],
+    ["mUpdate","update"],
+    ["mRefer","refer"],
+    ["mUpgrade","upgrade"]
+  ];
+  map.forEach(([id,key])=>{
+    const b=document.getElementById(id);
+    const ok=canClaim(state, key);
+    b.disabled=!ok;
+    b.textContent = ok ? (lang==="es" ? "Reclamar" : "Claim") : (lang==="es" ? "Hecho" : "Done");
+  });
+}
+
+function addXP(state, amount){
+  const before=getLevel(state.xp).id;
+  state.xp += amount;
+  const after=getLevel(state.xp).id;
+  render(state, after>before);
+  showToast(`+${amount} SZ XP`, (state.lang==="es" ? "Progreso guardado (demo)." : "Progress saved (demo)."));
+}
+
+/* =========================
+   INIT
+========================= */
+let state=load();
+
+// bind lang
+function applyLang(){
+  setLang(state.lang||"es");
+  syncButtons(state);
+  render(state,false);
+}
+langBtns.forEach(b=>{
+  b.addEventListener("click", ()=>{
+    beep(1); vib(10);
+    state.lang=b.dataset.lang;
+    applyLang();
+  });
+});
+
+// mission binds
+const binds=[
+  ["mTip","tip",20],
+  ["m3x","three",140],
+  ["mKeep","keep",40],
+  ["mUpdate","update",60],
+  ["mRefer","refer",120],
+  ["mUpgrade","upgrade",160],
+];
+
+binds.forEach(([btnId,key,amount])=>{
+  const btn=document.getElementById(btnId);
+  btn.addEventListener("click", ()=>{
+    if(!canClaim(state, key)) return;
+    beep(1); vib(14);
+    setClaimed(state, key);
+    addXP(state, amount);
+    syncButtons(state);
+  });
+});
+
+// initial
+applyLang();
+</script>
 
 </body>
 </html>
