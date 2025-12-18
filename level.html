@@ -14,7 +14,6 @@
   --line:rgba(255,255,255,.12);
   --muted:rgba(255,255,255,.75);
   --muted2:rgba(255,255,255,.55);
-  --accent:#ffffff;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -38,14 +37,9 @@ h1,h2,h3{
   font-family:'Playfair Display',serif;
 }
 
-h1{
-  font-size:clamp(42px,6vw,78px);
-}
-
-h2{
-  font-size:clamp(32px,5vw,56px);
-  margin-bottom:22px;
-}
+h1{font-size:clamp(42px,6vw,78px)}
+h2{font-size:clamp(32px,5vw,56px);margin-bottom:22px}
+h3{font-size:24px;margin-bottom:14px}
 
 p{
   font-size:18px;
@@ -54,14 +48,8 @@ p{
 }
 
 /* ===== HERO ===== */
-.hero{
-  text-align:center;
-}
-
-.hero p{
-  max-width:860px;
-  margin:30px auto 0;
-}
+.hero{text-align:center}
+.hero p{max-width:860px;margin:30px auto 0}
 
 /* ===== BLOCK ===== */
 .block{
@@ -74,10 +62,7 @@ p{
 }
 
 /* ===== LIST ===== */
-.list{
-  margin-top:28px;
-}
-
+.list{margin-top:28px}
 .list li{
   list-style:none;
   padding:14px 0;
@@ -85,7 +70,6 @@ p{
   font-size:16px;
   color:var(--muted);
 }
-
 .list li:last-child{border:none}
 
 /* ===== STATUS ===== */
@@ -95,7 +79,6 @@ p{
   gap:30px;
   margin-top:50px;
 }
-
 .status div{
   padding:36px;
   border-radius:24px;
@@ -103,27 +86,13 @@ p{
   background:rgba(0,0,0,.35);
 }
 
-.status h3{
-  font-size:22px;
-  margin-bottom:14px;
-}
-
 /* ===== PRICE ===== */
-.price{
-  text-align:center;
-  margin-top:80px;
-}
-
-.price h2{
-  margin-bottom:14px;
-}
-
+.price{text-align:center;margin-top:80px}
 .amount{
   font-size:72px;
   font-weight:800;
   letter-spacing:-1px;
 }
-
 .note{
   margin-top:12px;
   font-size:15px;
@@ -131,10 +100,7 @@ p{
 }
 
 /* ===== CTA ===== */
-.cta{
-  margin-top:40px;
-}
-
+.cta{margin-top:40px}
 .cta a{
   display:inline-block;
   padding:20px 46px;
@@ -145,10 +111,7 @@ p{
   text-decoration:none;
   transition:.25s;
 }
-
-.cta a:hover{
-  transform:scale(1.05);
-}
+.cta a:hover{transform:scale(1.05)}
 
 /* ===== FOOTER ===== */
 footer{
@@ -160,7 +123,6 @@ footer{
   margin-top:120px;
 }
 
-/* ===== MOBILE ===== */
 @media(max-width:820px){
   .status{grid-template-columns:1fr}
 }
@@ -169,82 +131,107 @@ footer{
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Tu web funciona.<br>Pero… ¿está activa?</h1>
-
   <p>
     Una web puede estar online y aun así perder velocidad, valor y conversión con el tiempo.
-    El mercado cambia, la tecnología cambia y los hábitos de los clientes también.
     <br><br>
-    La pregunta no es si tu web funciona hoy, sino si seguirá siendo relevante mañana.
+    La tecnología cambia. El mercado cambia.  
+    La pregunta real es si tu web cambia contigo.
   </p>
 </section>
 
+<!-- NECESIDADES -->
 <section class="block">
-  <h2>Lo que una web moderna necesita para mantenerse activa</h2>
-
+  <h2>Lo que una web moderna necesita constantemente</h2>
   <ul class="list">
     <li>Optimización continua de velocidad y rendimiento</li>
-    <li>Ajustes visuales para evitar que se vea desactualizada</li>
+    <li>Ajustes visuales para no verse desactualizada</li>
     <li>Adaptación a cambios de Google y navegadores</li>
-    <li>Optimización móvil según nuevos dispositivos</li>
-    <li>Correcciones invisibles que evitan errores futuros</li>
-    <li>Protección básica contra ataques y comportamientos sospechosos</li>
-    <li>Prevención de fraudes, formularios falsos y spam</li>
-    <li>Mejoras de conversión según comportamiento real de usuarios</li>
-    <li>Actualización de secciones cuando el negocio crece</li>
+    <li>Optimización móvil para nuevos dispositivos</li>
+    <li>Correcciones técnicas invisibles pero críticas</li>
+    <li>Protección contra spam, bots y formularios falsos</li>
+    <li>Prevención básica de fraude digital</li>
+    <li>Mejoras de conversión según comportamiento real</li>
+    <li>Actualizaciones cuando el negocio evoluciona</li>
   </ul>
 </section>
 
+<!-- COMPARACIÓN -->
 <section class="status">
   <div>
     <h3>Web estándar</h3>
     <p>
-      La web permanece online y funcional.<br>
+      La web sigue online.<br>
       No se cae.<br><br>
-      Pero no recibe mejoras, no se optimiza y no evoluciona con el negocio.
-      Con el tiempo, pierde impacto y eficiencia.
+      Pero no mejora, no se optimiza y no evoluciona.
+      Con el tiempo, pierde impacto y autoridad.
     </p>
   </div>
 
   <div>
     <h3>Estado Black Zen</h3>
     <p>
-      Tu web se mantiene activa, optimizada y protegida.<br><br>
-      Cada ajuste, mejora o corrección necesaria se realiza sin fricción.
-      Tu web evoluciona contigo, no se queda atrás.
+      Tu web se mantiene activa, protegida y optimizada.<br><br>
+      Cada ajuste necesario se realiza sin fricción.
+      La web evoluciona contigo.
     </p>
   </div>
 </section>
 
+<!-- BLACK ZEN -->
 <section class="price">
-  <h2>Black Zen Membresía</h2>
-
+  <h2>Black Zen Membership</h2>
   <div class="amount">$420</div>
-
   <div class="note">
     Pago único · Acceso de por vida<br>
-    Cambios, ajustes, optimizaciones y mejoras incluidas
+    Ajustes, mejoras, optimización y protección incluidos
   </div>
-
   <div class="cta">
-    <a href="https://wa.me/XXXXXXXXXX" target="_blank">
-      Activar Black Zen
-    </a>
+    <a href="https://wa.me/XXXXXXXXXX" target="_blank">Activar Black Zen</a>
   </div>
 </section>
 
+<!-- ACLARACIÓN -->
 <section class="block">
   <p>
     Black Zen no es obligatorio.<br><br>
-    Tu web seguirá funcionando aunque no lo actives.
-    <br><br>
-    Pero los negocios que se toman en serio su presencia online
-    no dejan su web estática.
+    Tu web seguirá funcionando sin él.<br><br>
+    Pero los negocios serios no dejan su web estática.
     <br><br>
     No es mantenimiento.<br>
-    Es protección de valor.
+    Es protección de valor digital.
   </p>
+</section>
+
+<!-- ZEN ACCESS -->
+<section class="block">
+  <h2>Zen Access</h2>
+  <p>
+    Zen Access es para quienes quieren estar dentro.<br><br>
+    No es mantenimiento, ni soporte.
+    Es acceso prioritario al futuro de ZenSite.
+  </p>
+
+  <ul class="list">
+    <li>Acceso anticipado a nuevas herramientas y funciones</li>
+    <li>Prioridad para futuras apps y sistemas privados</li>
+    <li>Integraciones exclusivas no liberadas al público</li>
+    <li>Invitaciones cerradas a proyectos piloto</li>
+    <li>Beneficios reservados solo para miembros activos</li>
+  </ul>
+
+  <div class="price">
+    <div class="amount">$69</div>
+    <div class="note">
+      Pago inicial único<br>
+      + $5 mensuales automáticos para mantener el acceso activo
+    </div>
+    <div class="cta">
+      <a href="https://wa.me/XXXXXXXXXX" target="_blank">Entrar a Zen Access</a>
+    </div>
+  </div>
 </section>
 
 <footer>
