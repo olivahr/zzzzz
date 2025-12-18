@@ -92,38 +92,67 @@ body{
   opacity:.9;
 }
 
+/* ===== CTA ===== */
 .hero .cta{
-  margin-top:40px;
+  margin-top:42px;
   display:flex;
-  gap:16px;
+  gap:22px; /* más separados */
   flex-wrap:wrap;
 }
 
 .hero .cta a{
   display:inline-block;
-  padding:18px 34px;
+  padding:18px 36px;
   border-radius:18px;
-  background:#fff;
-  color:#000;
   font-weight:900;
   text-decoration:none;
-  transition:.25s;
+  transition:.35s ease;
+  position:relative;
 }
 
-.hero .cta a:hover{
-  transform:scale(1.04);
+/* ===== VER PLANES ===== */
+.hero .cta a:first-child{
+  background:rgba(255,255,255,.92);
+  color:#000;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.45),
+    0 0 0 rgba(255,255,255,0);
 }
 
-/* ===== LEVEL BUTTON (NUEVO) ===== */
+.hero .cta a:first-child:hover{
+  transform:scale(1.05);
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.65),
+    0 0 28px rgba(255,255,255,.45);
+}
+
+/* ===== LEVEL BUTTON ===== */
 .level-btn{
-  background:rgba(255,255,255,.12);
+  background:rgba(255,255,255,.14);
   color:#fff;
   border:1px solid rgba(255,255,255,.28);
   backdrop-filter:blur(18px);
+  box-shadow:
+    0 10px 32px rgba(0,0,0,.55),
+    inset 0 0 0 rgba(255,255,255,0);
+}
+
+.level-btn::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:20px;
+  background:radial-gradient(120px 60px at 50% 120%, rgba(255,255,255,.35), transparent 70%);
+  opacity:.65;
+  pointer-events:none;
 }
 
 .level-btn:hover{
+  transform:scale(1.05);
   background:rgba(255,255,255,.22);
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.75),
+    0 0 34px rgba(255,255,255,.35);
 }
 
 /* ===== LAPTOP ===== */
