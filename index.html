@@ -56,6 +56,7 @@ body{
   gap:26px;
   flex-wrap:wrap;
 }
+
 .hero .cta a{
   display:flex;
   flex-direction:column;
@@ -70,42 +71,24 @@ body{
   color:#fff;
   border:1px solid rgba(255,255,255,.35);
   backdrop-filter:blur(18px);
-  box-shadow:
-    0 12px 36px rgba(0,0,0,.65),
-    0 0 26px rgba(255,255,255,.25);
-}
-.hero .cta a:hover{
-  transform:scale(1.06);
-  background:rgba(255,255,255,.24);
-  box-shadow:
-    0 22px 65px rgba(0,0,0,.85),
-    0 0 44px rgba(255,255,255,.45);
+  box-shadow:0 12px 36px rgba(0,0,0,.65);
 }
 
-/* ===== SERVICIOS VIP ===== */
+.hero .cta a:hover{
+  transform:scale(1.05);
+  background:rgba(255,255,255,.22);
+  box-shadow:0 22px 60px rgba(0,0,0,.85);
+}
+
+/* ===== SERVICIOS VIP (SIN RAYA, SIN GLOW) ===== */
 .vip-btn span{
   font-size:20px;
 }
 .vip-label{
   margin-top:6px;
   font-size:12px;
-  letter-spacing:.3em;
-  opacity:.9;
-}
-.vip-line{
-  margin-top:6px;
-  width:34px;
-  height:2px;
-  background:#6bff6b;
-  border-radius:2px;
-  box-shadow:0 0 12px rgba(107,255,107,.8);
-}
-.vip-btn{
-  animation:vipGlow 3s ease-in-out infinite;
-}
-@keyframes vipGlow{
-  0%,100%{box-shadow:0 0 30px rgba(107,255,107,.35)}
-  50%{box-shadow:0 0 55px rgba(107,255,107,.65)}
+  letter-spacing:.28em;
+  opacity:.75;
 }
 
 /* ===== LAPTOP ===== */
@@ -145,7 +128,9 @@ footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14
 .reveal.show{opacity:1;transform:none}
 
 /* ===== MOBILE ===== */
-@media(max-width:768px){.hero{padding-top:120px}}
+@media(max-width:768px){
+  .hero{padding-top:120px}
+}
 </style>
 </head>
 
@@ -187,7 +172,6 @@ footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14
     <a href="level.html" class="vip-btn">
       <span data-es="Servicios" data-en="Services">Servicios</span>
       <div class="vip-label">VIP</div>
-      <div class="vip-line"></div>
     </a>
   </div>
 
