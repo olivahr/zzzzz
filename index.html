@@ -6,11 +6,9 @@
 <title>ZenSite</title>
 
 <style>
-/* ===== RESET ===== */
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{touch-action:manipulation}
 
-/* ===== BODY ===== */
 body{
   font-family:'Montserrat',system-ui,-apple-system,sans-serif;
   background:
@@ -21,7 +19,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== TOP BAR ===== */
+/* TOP BAR */
 .topbar{
   position:fixed;
   top:0;left:0;width:100%;height:64px;
@@ -39,22 +37,21 @@ body{
 .nav-right span{cursor:pointer}
 .nav-right .active{opacity:1}
 
-/* ===== HERO ===== */
+/* HERO */
 .hero{min-height:100vh;padding:140px 7% 100px;position:relative}
 .hero h1{
   font-size:clamp(42px,7vw,82px);
-  font-weight:900;line-height:1.05;letter-spacing:-1px;
+  font-weight:900;line-height:1.05;
+  letter-spacing:-1px;
   text-shadow:0 20px 60px rgba(0,0,0,.6)
 }
 .hero h1 span{color:#aaa}
 .hero p{margin-top:22px;max-width:520px;font-size:18px;opacity:.9}
 
-/* ===== CTA ===== */
+/* CTA */
 .hero .cta{
   margin-top:42px;
-  display:flex;
-  gap:26px;
-  flex-wrap:wrap;
+  position:relative;
 }
 
 .hero .cta a{
@@ -80,10 +77,18 @@ body{
   box-shadow:0 22px 60px rgba(0,0,0,.85);
 }
 
-/* ===== SERVICIOS VIP (SIN RAYA, SIN GLOW) ===== */
-.vip-btn span{
-  font-size:20px;
+/* POSICIÓN EXACTA */
+.cta .planes{
+  display:inline-flex;
 }
+
+.cta .vip-btn{
+  display:inline-flex;
+  margin-left:34px;   /* a la derecha */
+  margin-top:18px;    /* un poco más abajo */
+}
+
+/* VIP TEXT */
 .vip-label{
   margin-top:6px;
   font-size:12px;
@@ -91,7 +96,7 @@ body{
   opacity:.75;
 }
 
-/* ===== LAPTOP ===== */
+/* LAPTOP */
 .laptop{margin:90px auto 0;max-width:900px;animation:float 7s ease-in-out infinite}
 .laptop img{
   width:100%;display:block;
@@ -102,7 +107,7 @@ body{
   50%{transform:translateY(-14px)}
 }
 
-/* ===== SISTEMA Z ===== */
+/* SISTEMA Z */
 .system-z{padding:120px 7% 80px;text-align:center}
 .system-z h2{
   font-size:clamp(34px,6vw,64px);
@@ -110,7 +115,7 @@ body{
 }
 .system-z p{font-size:18px;opacity:.9}
 
-/* ===== OFFER ===== */
+/* OFFER */
 .offer{
   max-width:520px;margin:60px auto 0;padding:36px;
   border-radius:26px;background:rgba(20,40,30,.6);
@@ -120,23 +125,23 @@ body{
 .offer h3{font-size:36px;font-weight:900}
 .offer p{margin-top:10px;opacity:.85}
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14px}
 
-/* ===== REVEAL ===== */
+/* REVEAL */
 .reveal{opacity:0;transform:translateY(30px);transition:1s}
 .reveal.show{opacity:1;transform:none}
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media(max-width:768px){
   .hero{padding-top:120px}
+  .cta .vip-btn{margin-left:0}
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
   <div class="nav-left">
     <a href="demo.html" data-es="Demo" data-en="Demo">Demo</a>
@@ -148,7 +153,6 @@ footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <h1 class="reveal">
     <span data-es="Lleva tu negocio al" data-en="Take your business to the">Lleva tu negocio al</span><br>
@@ -161,13 +165,10 @@ footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14
      Diseñamos webs modernas, rápidas y pensadas para convertir.
   </p>
 
-  <!-- CTA -->
   <div class="cta reveal">
-    <a href="planes.html"
+    <a href="planes.html" class="planes"
        data-es="Ver planes"
-       data-en="View plans">
-       Ver planes
-    </a>
+       data-en="View plans">Ver planes</a>
 
     <a href="level.html" class="vip-btn">
       <span data-es="Servicios" data-en="Services">Servicios</span>
@@ -180,7 +181,6 @@ footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14
   </div>
 </section>
 
-<!-- SISTEMA Z -->
 <section class="system-z">
   <h2 class="reveal"
       data-es="ZenSite no es solo una web"
@@ -203,7 +203,6 @@ footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14
 <footer>© 2025 ZenSite — Todos los derechos reservados</footer>
 
 <script>
-/* REVEAL */
 const revealEls=document.querySelectorAll('.reveal');
 const obs=new IntersectionObserver(e=>{
   e.forEach(x=>{
@@ -215,7 +214,6 @@ const obs=new IntersectionObserver(e=>{
 },{threshold:.2});
 revealEls.forEach(el=>obs.observe(el));
 
-/* LANG */
 const langBtns=document.querySelectorAll('.lang');
 const texts=document.querySelectorAll('[data-es]');
 function setLang(l){
