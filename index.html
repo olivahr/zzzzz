@@ -49,10 +49,7 @@ body{
 .hero p{margin-top:22px;max-width:520px;font-size:18px;opacity:.9}
 
 /* CTA */
-.hero .cta{
-  margin-top:42px;
-  position:relative;
-}
+.hero .cta{margin-top:42px;position:relative}
 
 .hero .cta a{
   display:flex;
@@ -77,18 +74,11 @@ body{
   box-shadow:0 22px 60px rgba(0,0,0,.85);
 }
 
-/* POSICIÓN EXACTA */
-.cta .planes{
-  display:inline-flex;
-}
+/* POSICIÓN */
+.cta .planes{display:inline-flex}
+.cta .vip-btn{display:inline-flex;margin-left:34px;margin-top:18px}
 
-.cta .vip-btn{
-  display:inline-flex;
-  margin-left:34px;   /* a la derecha */
-  margin-top:18px;    /* un poco más abajo */
-}
-
-/* VIP TEXT */
+/* VIP */
 .vip-label{
   margin-top:6px;
   font-size:12px;
@@ -122,8 +112,27 @@ body{
   border:1px solid rgba(255,255,255,.15);
   text-align:center;backdrop-filter:blur(16px);
 }
-.offer h3{font-size:36px;font-weight:900}
+.offer h3{
+  font-size:36px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+}
 .offer p{margin-top:10px;opacity:.85}
+
+/* 🎁 REGALO */
+.gift{
+  display:inline-block;
+  animation:giftFloat 2.4s ease-in-out infinite;
+  filter:drop-shadow(0 0 12px rgba(0,255,150,.45));
+}
+
+@keyframes giftFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
 
 /* FOOTER */
 footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14px}
@@ -195,7 +204,7 @@ footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14
   </p>
 
   <div class="offer reveal">
-    <h3>15% OFF</h3>
+    <h3><span class="gift">🎁</span> 15% OFF</h3>
     <p data-es="Solo por 30 días" data-en="Only for 30 days">Solo por 30 días</p>
   </div>
 </section>
