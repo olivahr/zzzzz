@@ -7,15 +7,8 @@
 
 <style>
 /* ===== RESET ===== */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html, body{
-  touch-action: manipulation;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{touch-action:manipulation}
 
 /* ===== BODY ===== */
 body{
@@ -31,66 +24,30 @@ body{
 /* ===== TOP BAR ===== */
 .topbar{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  top:0;left:0;width:100%;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
   padding:0 22px;
   background:rgba(5,5,5,.55);
   backdrop-filter:blur(14px);
   z-index:1000;
 }
-
-.nav-left a,
-.nav-right span{
-  color:#fff;
-  text-decoration:none;
-  margin-right:18px;
-  font-weight:700;
-  opacity:.85;
+.nav-left a,.nav-right span{
+  color:#fff;text-decoration:none;margin-right:18px;
+  font-weight:700;opacity:.85
 }
-
-.nav-left a:hover,
-.nav-right span:hover{
-  opacity:1;
-}
-
-.nav-right span{
-  cursor:pointer;
-}
-
-.nav-right .active{
-  opacity:1;
-}
+.nav-left a:hover,.nav-right span:hover{opacity:1}
+.nav-right span{cursor:pointer}
+.nav-right .active{opacity:1}
 
 /* ===== HERO ===== */
-.hero{
-  min-height:100vh;
-  padding:140px 7% 100px;
-  position:relative;
-}
-
+.hero{min-height:100vh;padding:140px 7% 100px;position:relative}
 .hero h1{
   font-size:clamp(42px,7vw,82px);
-  font-weight:900;
-  line-height:1.05;
-  letter-spacing:-1px;
-  text-shadow:0 20px 60px rgba(0,0,0,.6);
+  font-weight:900;line-height:1.05;letter-spacing:-1px;
+  text-shadow:0 20px 60px rgba(0,0,0,.6)
 }
-
-.hero h1 span{
-  color:#aaa;
-}
-
-.hero p{
-  margin-top:22px;
-  max-width:520px;
-  font-size:18px;
-  opacity:.9;
-}
+.hero h1 span{color:#aaa}
+.hero p{margin-top:22px;max-width:520px;font-size:18px;opacity:.9}
 
 /* ===== CTA ===== */
 .hero .cta{
@@ -99,19 +56,16 @@ body{
   gap:26px;
   flex-wrap:wrap;
 }
-
 .hero .cta a{
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  padding:18px 40px;
-  border-radius:18px;
+  padding:20px 44px;
+  border-radius:22px;
   font-weight:900;
   text-decoration:none;
   transition:.35s ease;
-  position:relative;
-
   background:rgba(255,255,255,.16);
   color:#fff;
   border:1px solid rgba(255,255,255,.35);
@@ -120,7 +74,6 @@ body{
     0 12px 36px rgba(0,0,0,.65),
     0 0 26px rgba(255,255,255,.25);
 }
-
 .hero .cta a:hover{
   transform:scale(1.06);
   background:rgba(255,255,255,.24);
@@ -129,133 +82,76 @@ body{
     0 0 44px rgba(255,255,255,.45);
 }
 
-/* ===== VIP BUTTON ===== */
-.level-btn{
-  animation:vipPulse 3.5s ease-in-out infinite;
+/* ===== SERVICIOS VIP ===== */
+.vip-btn span{
+  font-size:20px;
 }
-
-.level-btn span{
-  font-size:18px;
-}
-
-.level-btn small{
-  margin-top:4px;
+.vip-label{
+  margin-top:6px;
   font-size:12px;
-  letter-spacing:.25em;
-  opacity:.85;
+  letter-spacing:.3em;
+  opacity:.9;
 }
-
-@keyframes vipPulse{
-  0%,100%{box-shadow:0 0 26px rgba(255,255,255,.35)}
-  50%{box-shadow:0 0 46px rgba(255,255,255,.65)}
+.vip-line{
+  margin-top:6px;
+  width:34px;
+  height:2px;
+  background:#6bff6b;
+  border-radius:2px;
+  box-shadow:0 0 12px rgba(107,255,107,.8);
+}
+.vip-btn{
+  animation:vipGlow 3s ease-in-out infinite;
+}
+@keyframes vipGlow{
+  0%,100%{box-shadow:0 0 30px rgba(107,255,107,.35)}
+  50%{box-shadow:0 0 55px rgba(107,255,107,.65)}
 }
 
 /* ===== LAPTOP ===== */
-.laptop{
-  margin:90px auto 0;
-  max-width:900px;
-  animation:float 7s ease-in-out infinite;
-}
-
+.laptop{margin:90px auto 0;max-width:900px;animation:float 7s ease-in-out infinite}
 .laptop img{
-  width:100%;
-  display:block;
-  filter:drop-shadow(0 40px 80px rgba(0,0,0,.7));
+  width:100%;display:block;
+  filter:drop-shadow(0 40px 80px rgba(0,0,0,.7))
 }
-
 @keyframes float{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-14px)}
 }
 
 /* ===== SISTEMA Z ===== */
-.system-z{
-  padding:120px 7% 80px;
-  text-align:center;
-}
-
+.system-z{padding:120px 7% 80px;text-align:center}
 .system-z h2{
   font-size:clamp(34px,6vw,64px);
-  font-weight:900;
-  letter-spacing:-.5px;
-  margin-bottom:20px;
+  font-weight:900;letter-spacing:-.5px;margin-bottom:20px
 }
-
-.system-z p{
-  font-size:18px;
-  opacity:.9;
-}
+.system-z p{font-size:18px;opacity:.9}
 
 /* ===== OFFER ===== */
 .offer{
-  max-width:520px;
-  margin:60px auto 0;
-  padding:36px;
-  border-radius:26px;
-  background:rgba(20,40,30,.6);
+  max-width:520px;margin:60px auto 0;padding:36px;
+  border-radius:26px;background:rgba(20,40,30,.6);
   border:1px solid rgba(255,255,255,.15);
-  text-align:center;
-  backdrop-filter:blur(16px);
-  position:relative;
+  text-align:center;backdrop-filter:blur(16px);
 }
-
-.offer h3{
-  font-size:36px;
-  font-weight:900;
-}
-
-.offer p{
-  margin-top:10px;
-  opacity:.85;
-}
-
-.offer::after{
-  content:"🎁";
-  position:absolute;
-  top:-18px;
-  right:-18px;
-  font-size:40px;
-  animation:gift 2.8s infinite;
-}
-
-@keyframes gift{
-  0%,100%{transform:rotate(0)}
-  50%{transform:rotate(12deg)}
-}
+.offer h3{font-size:36px;font-weight:900}
+.offer p{margin-top:10px;opacity:.85}
 
 /* ===== FOOTER ===== */
-footer{
-  margin-top:120px;
-  padding:30px 0;
-  text-align:center;
-  opacity:.6;
-  font-size:14px;
-}
+footer{margin-top:120px;padding:30px 0;text-align:center;opacity:.6;font-size:14px}
 
 /* ===== REVEAL ===== */
-.reveal{
-  opacity:0;
-  transform:translateY(30px);
-  transition:1s;
-}
-
-.reveal.show{
-  opacity:1;
-  transform:none;
-}
+.reveal{opacity:0;transform:translateY(30px);transition:1s}
+.reveal.show{opacity:1;transform:none}
 
 /* ===== MOBILE ===== */
-@media(max-width:768px){
-  .hero{
-    padding-top:120px;
-  }
-}
+@media(max-width:768px){.hero{padding-top:120px}}
 </style>
 </head>
 
 <body>
 
-<!-- ===== TOP BAR ===== -->
+<!-- TOP BAR -->
 <div class="topbar">
   <div class="nav-left">
     <a href="demo.html" data-es="Demo" data-en="Demo">Demo</a>
@@ -267,7 +163,7 @@ footer{
   </div>
 </div>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
   <h1 class="reveal">
     <span data-es="Lleva tu negocio al" data-en="Take your business to the">Lleva tu negocio al</span><br>
@@ -282,14 +178,16 @@ footer{
 
   <!-- CTA -->
   <div class="cta reveal">
-    <a href="planes.html" data-es="Ver planes" data-en="View plans">Ver planes</a>
+    <a href="planes.html"
+       data-es="Ver planes"
+       data-en="View plans">
+       Ver planes
+    </a>
 
-    <a href="tunivel.html"
-       class="level-btn"
-       data-es="Servicios"
-       data-en="Services">
-      <span>Servicios</span>
-      <small>(VIP)</small>
+    <a href="level.html" class="vip-btn">
+      <span data-es="Servicios" data-en="Services">Servicios</span>
+      <div class="vip-label">VIP</div>
+      <div class="vip-line"></div>
     </a>
   </div>
 
@@ -298,7 +196,7 @@ footer{
   </div>
 </section>
 
-<!-- ===== SISTEMA Z ===== -->
+<!-- SISTEMA Z -->
 <section class="system-z">
   <h2 class="reveal"
       data-es="ZenSite no es solo una web"
@@ -318,32 +216,28 @@ footer{
   </div>
 </section>
 
-<footer>
-  ©️ 2025 ZenSite — Todos los derechos reservados
-</footer>
+<footer>© 2025 ZenSite — Todos los derechos reservados</footer>
 
 <script>
-/* ===== REVEAL ===== */
+/* REVEAL */
 const revealEls=document.querySelectorAll('.reveal');
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('show');
-      obs.unobserve(e.target);
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{
+    if(x.isIntersecting){
+      x.target.classList.add('show');
+      obs.unobserve(x.target);
     }
   });
 },{threshold:.2});
 revealEls.forEach(el=>obs.observe(el));
 
-/* ===== LANG ===== */
+/* LANG */
 const langBtns=document.querySelectorAll('.lang');
 const texts=document.querySelectorAll('[data-es]');
-
 function setLang(l){
   langBtns.forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
   texts.forEach(t=>t.textContent=t.dataset[l]);
 }
-
 langBtns.forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 setLang('es');
 </script>
