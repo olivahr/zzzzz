@@ -1,308 +1,320 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>ZenSite | Planes</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>ZenSite | Planes</title>
 
-  <style>
-    :root{
-      --bg:#050505;
-      --card: rgba(18,18,18,.72);
-      --stroke: rgba(255,255,255,.12);
-      --stroke2: rgba(255,255,255,.18);
-      --txt:#fff;
-      --muted: rgba(255,255,255,.74);
-      --muted2: rgba(255,255,255,.55);
-      --shadow: 0 22px 60px rgba(0,0,0,.55);
-      --shadow2: 0 12px 34px rgba(0,0,0,.55);
-      --radius: 26px;
-      --radius2: 18px;
-      --ease: cubic-bezier(.2,.9,.2,1);
-    }
+<style>
+:root{
+--bg:#050505;
+--card:rgba(18,18,18,.72);
+--stroke:rgba(255,255,255,.12);
+--stroke2:rgba(255,255,255,.18);
+--txt:#fff;
+--muted:rgba(255,255,255,.74);
+--shadow:0 22px 60px rgba(0,0,0,.55);
+--radius:26px;
+--ease:cubic-bezier(.2,.9,.2,1);
+}
 
-    *{ margin:0; padding:0; box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--txt);
-      overflow-x:hidden;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+background:var(--bg);
+color:#fff;
+overflow-x:hidden;
+}
 
-    .wrap{
-      min-height: 100svh;
-      padding: 92px 6% 80px;
-      position: relative;
-      overflow:hidden;
-      background:
-        radial-gradient(950px 520px at 50% 8%, rgba(0,120,255,.26), transparent 60%),
-        radial-gradient(820px 560px at 18% 82%, rgba(0,255,150,.18), transparent 62%),
-        radial-gradient(820px 560px at 86% 86%, rgba(255,200,0,.16), transparent 62%),
-        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.65)),
-        #050505;
-    }
+.wrap{
+min-height:100vh;
+padding:92px 6% 80px;
+background:
+radial-gradient(950px 520px at 50% 8%, rgba(0,120,255,.26), transparent 60%),
+radial-gradient(820px 560px at 18% 82%, rgba(0,255,150,.18), transparent 62%),
+linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.65)),
+#050505;
+}
 
-    .grain{
-      pointer-events:none;
-      position:absolute; inset:0;
-      opacity:.10;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-      mix-blend-mode: overlay;
-    }
+.topbar{
+position:fixed;
+top:0;left:0;right:0;
+padding:16px;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(255,255,255,.08);
+z-index:50;
+}
 
-    .topbar{
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 50;
-      padding: 16px;
-      background: linear-gradient(180deg, rgba(0,0,0,.70), rgba(0,0,0,.25));
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
+.topbar-inner{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
 
-    .topbar-inner{
-      max-width: 1200px;
-      margin: 0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
+.back{
+display:flex;
+align-items:center;
+gap:10px;
+color:#fff;
+text-decoration:none;
+font-weight:900;
+opacity:.85;
+}
 
-    .back{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      text-decoration:none;
-      color:#fff;
-      font-weight:900;
-      opacity:.9;
-    }
+.hero{
+max-width:1100px;
+margin:0 auto 46px;
+}
 
-    .lang button{
-      background:none;
-      border:none;
-      color:#fff;
-      font-weight:900;
-      cursor:pointer;
-      margin-left:10px;
-      opacity:.6;
-    }
+.kicker{
+font-size:12px;
+letter-spacing:.18em;
+opacity:.6;
+font-weight:800;
+text-transform:uppercase;
+margin-bottom:10px;
+}
 
-    .lang button.active{ opacity:1; }
+h1{
+font-size:clamp(40px,5vw,74px);
+font-weight:1000;
+line-height:1.02;
+letter-spacing:-.03em;
+}
 
-    .hero{
-      max-width:1100px;
-      margin:0 auto 46px;
-    }
+h1 .fade{opacity:.5}
 
-    .kicker{
-      opacity:.75;
-      font-weight:800;
-      letter-spacing:.12em;
-      font-size:12px;
-      text-transform:uppercase;
-      margin-bottom:10px;
-    }
+.subtitle{
+margin-top:14px;
+max-width:740px;
+font-size:16px;
+opacity:.75;
+}
 
-    h1{
-      font-size:clamp(40px,5.2vw,74px);
-      font-weight:1000;
-      line-height:1.02;
-      letter-spacing:-0.03em;
-    }
+.grid{
+max-width:1200px;
+margin:auto;
+display:grid;
+gap:18px;
+grid-template-columns:1fr 1fr;
+}
 
-    h1 .fade{
-      display:block;
-      opacity:.55;
-    }
+@media(max-width:980px){
+.grid{grid-template-columns:1fr}
+}
 
-    .subtitle{
-      margin-top:14px;
-      max-width:740px;
-      font-size:16px;
-      line-height:1.7;
-      color:rgba(255,255,255,.78);
-    }
+.card{
+background:var(--card);
+border:1px solid var(--stroke);
+border-radius:var(--radius);
+padding:26px 22px;
+box-shadow:var(--shadow);
+backdrop-filter:blur(18px);
+transition:.4s var(--ease);
+}
 
-    .grid{
-      max-width:1200px;
-      margin:0 auto;
-      display:grid;
-      gap:18px;
-      grid-template-columns:1fr 1fr;
-    }
+.card:hover{
+border-color:var(--stroke2);
+transform:translateY(-4px);
+}
 
-    @media(max-width:980px){
-      .grid{ grid-template-columns:1fr; }
-    }
+.tagline{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:8px;
+}
 
-    .card{
-      border-radius:26px;
-      background:rgba(18,18,18,.72);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:0 22px 60px rgba(0,0,0,.55);
-      padding:26px 22px 22px;
-    }
+.pill{
+font-size:12px;
+letter-spacing:.22em;
+opacity:.7;
+font-weight:900;
+}
 
-    .pill{
-      font-weight:900;
-      letter-spacing:.22em;
-      font-size:12px;
-      text-transform:uppercase;
-      opacity:.7;
-    }
+.badge{
+background:rgba(255,255,255,.1);
+padding:6px 10px;
+border-radius:14px;
+font-size:12px;
+font-weight:900;
+}
 
-    .title{
-      font-size:28px;
-      font-weight:1000;
-      margin-bottom:8px;
-    }
+.title{
+font-size:28px;
+font-weight:1000;
+margin-bottom:8px;
+}
 
-    .price{
-      display:flex;
-      gap:10px;
-      align-items:baseline;
-      margin:12px 0;
-    }
+.price{
+display:flex;
+gap:10px;
+align-items:baseline;
+margin:12px 0;
+}
 
-    .amount{
-      font-size:34px;
-      font-weight:1000;
-    }
+.price .amount{
+font-size:34px;
+font-weight:1000;
+}
 
-    .note{
-      font-size:13px;
-      opacity:.55;
-    }
+.price .note{
+font-size:13px;
+opacity:.55;
+}
 
-    .desc{
-      font-size:15px;
-      line-height:1.7;
-      opacity:.8;
-    }
+.desc{
+font-size:15px;
+line-height:1.7;
+opacity:.75;
+}
 
-    .list{
-      list-style:none;
-      margin-top:16px;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
+.list{
+list-style:none;
+margin-top:16px;
+border-top:1px solid rgba(255,255,255,.08);
+}
 
-    .list li{
-      padding:12px 2px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex;
-      justify-content:space-between;
-      font-size:14px;
-    }
+.list li{
+display:flex;
+justify-content:space-between;
+padding:12px 2px;
+border-bottom:1px solid rgba(255,255,255,.08);
+font-size:14px;
+}
 
-    .cta{
-      margin-top:18px;
-      width:100%;
-      padding:16px;
-      border-radius:16px;
-      background:#fff;
-      color:#000;
-      font-weight:1000;
-      border:none;
-      cursor:pointer;
-    }
+.cta{
+margin-top:18px;
+width:100%;
+padding:16px;
+border-radius:16px;
+border:none;
+font-weight:1000;
+cursor:pointer;
+background:#fff;
+color:#111;
+}
 
-    footer{
-      text-align:center;
-      opacity:.55;
-      margin-top:40px;
-      font-size:13px;
-    }
-  </style>
+.final{
+max-width:1200px;
+margin:32px auto 0;
+padding:22px;
+border-radius:var(--radius);
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+line-height:1.7;
+opacity:.8;
+}
+
+footer{
+margin-top:28px;
+text-align:center;
+font-size:13px;
+opacity:.55;
+}
+</style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="topbar-inner">
-      <a href="index.html" class="back">← Inicio</a>
-      <div class="lang">
-        <button class="active">ES</button>
-        <button>EN</button>
-      </div>
-    </div>
-  </div>
 
-  <main class="wrap">
-    <div class="grain"></div>
+<div class="topbar">
+<div class="topbar-inner">
+<a class="back" href="index.html">← Inicio</a>
+</div>
+</div>
 
-    <section class="hero">
-      <div class="kicker">Planes</div>
-      <h1>
-        Plans ZenSite
-        <span class="fade">Elige tu nivel</span>
-      </h1>
-      <p class="subtitle">
-        Diseño agresivo, tecnología real y presencia de alto nivel.
-      </p>
-    </section>
+<main class="wrap">
 
-    <section class="grid">
-      <article class="card">
-        <div class="pill">Z</div>
-        <div class="title">Home Page</div>
-        <div class="price">
-          <div class="amount">$200</div>
-          <div class="note">Pago único</div>
-        </div>
-        <p class="desc">Home profesional moderna y lista para convertir.</p>
-        <ul class="list">
-          <li>Diseño premium <span>✔</span></li>
-          <li>WhatsApp directo <span>✔</span></li>
-          <li>Responsive <span>✔</span></li>
-        </ul>
-        <button class="cta" onclick="openWA('Z')">Elegir Z</button>
-      </article>
+<section class="hero">
+<div class="kicker">Planes</div>
+<h1>ZenSite <span class="fade">Elige tu nivel</span></h1>
+<p class="subtitle">
+No vendemos “páginas web”.  
+Construimos presencia digital que hace que tu negocio se vea serio, confiable y listo para vender.
+</p>
+</section>
 
-      <article class="card">
-        <div class="pill">Z+</div>
-        <div class="title">Web 3–5 páginas</div>
-        <div class="price">
-          <div class="amount">$520</div>
-          <div class="note">Pago único</div>
-        </div>
-        <p class="desc">El plan más pedido para negocios serios.</p>
-        <ul class="list">
-          <li>SEO base <span>✔</span></li>
-          <li>Animaciones <span>✔</span></li>
-          <li>Conversión <span>✔</span></li>
-        </ul>
-        <button class="cta" onclick="openWA('Z+')">Elegir Z+</button>
-      </article>
+<section class="grid">
 
-      <article class="card">
-        <div class="pill">Z Premium</div>
-        <div class="title">Tienda Online</div>
-        <div class="price">
-          <div class="amount">$760</div>
-          <div class="note">Pago único</div>
-        </div>
-        <p class="desc">Tienda lista para vender con inventario.</p>
-        <ul class="list">
-          <li>Carrito <span>✔</span></li>
-          <li>Inventario <span>✔</span></li>
-          <li>UX Pro <span>✔</span></li>
-        </ul>
-        <button class="cta" onclick="openWA('Z Premium')">Elegir Premium</button>
-      </article>
-    </section>
+<!-- Z -->
+<article class="card">
+<div class="tagline"><div class="pill">Z</div></div>
+<div class="title">Z</div>
+<div class="price"><div class="amount">$180 – $280</div><div class="note">Pago único</div></div>
+<p class="desc">
+Para negocios que necesitan presencia inmediata.
+Una Home Page que explica quién eres, qué haces y cómo contactarte,
+sin parecer amateur ni improvisado.
+</p>
+<ul class="list">
+<li><b>Home Page estratégica</b><span>Mensaje claro</span></li>
+<li><b>Diseño premium</b><span>Profesional</span></li>
+<li><b>WhatsApp directo</b><span>Clientes escriben</span></li>
+<li><b>Autoridad visual</b><span>Confianza</span></li>
+</ul>
+<button class="cta" onclick="wa('Z desde $180')">Elegir Z</button>
+</article>
 
-    <footer>© 2025 ZenSite · Todos los derechos reservados</footer>
-  </main>
+<!-- Z+ -->
+<article class="card">
+<div class="tagline"><div class="pill">Z+</div><div class="badge">Más vendido</div></div>
+<div class="title">Z+</div>
+<div class="price"><div class="amount">$480 – $780</div><div class="note">Según alcance</div></div>
+<p class="desc">
+Website completo para negocios que entienden que
+si tu web se ve fuerte, te toman en serio.
+Aquí ya hay estructura, flujo y lógica de conversión.
+</p>
+<ul class="list">
+<li><b>3–5 páginas</b><span>Personalizadas</span></li>
+<li><b>Animaciones limpias</b><span>Pro</span></li>
+<li><b>SEO base</b><span>Google friendly</span></li>
+<li><b>Flujo de confianza</b><span>Ventas</span></li>
+</ul>
+<button class="cta" onclick="wa('Z+ desde $480')">Elegir Z+</button>
+</article>
 
-  <script>
-    const phone = "15024714725";
-    function openWA(plan){
-      const msg = "Hola, quiero el plan " + plan + ". ¿Cómo empezamos?";
-      window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(msg), "_blank");
-    }
-  </script>
+<!-- Z Premium -->
+<article class="card">
+<div class="tagline"><div class="pill">Z Premium</div></div>
+<div class="title">Z Premium</div>
+<div class="price"><div class="amount">$700 – $1,200</div><div class="note">Tienda completa</div></div>
+<p class="desc">
+Para negocios que quieren vender online de verdad.
+Catálogo, carrito, estructura clara y experiencia fluida.
+No es una tienda improvisada: es una base para escalar.
+</p>
+<ul class="list">
+<li><b>Tienda online</b><span>Lista para vender</span></li>
+<li><b>Inventario</b><span>Organizado</span></li>
+<li><b>UX premium</b><span>Fluida</span></li>
+<li><b>Escalable</b><span>Negocio serio</span></li>
+</ul>
+<button class="cta" onclick="wa('Z Premium desde $700')">Elegir Premium</button>
+</article>
+
+</section>
+
+<div class="final">
+<strong>No es gasto.</strong>  
+Es la diferencia entre que un cliente te ignore o te escriba.
+</div>
+
+<footer>© 2025 ZenSite — Todos los derechos reservados</footer>
+
+</main>
+
+<script>
+function wa(plan){
+const phone="15024714725";
+const msg="Hola, quiero el plan "+plan+". ¿Cómo empezamos?";
+window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg));
+}
+</script>
+
 </body>
 </html>
